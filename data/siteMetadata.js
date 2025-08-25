@@ -1,11 +1,12 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Devbrew | AI for Fintech',
+  title: 'Devbrew',
   author: 'Devbrew',
   headerTitle: 'Devbrew',
-  description: 'A blog created with Next.js and Tailwind.css',
+  description:
+    'Devbrew is an AI engineering firm. We partner with fintech founders and product teams to design and build custom AI applications',
   language: 'en-us',
-  theme: 'system', // system, dark or light
+  theme: 'light', // system, dark or light
   siteUrl: 'https://fintech.devbrew.ai',
   siteRepo: 'https://github.com/DevbrewCo/fintech.devbrew.ai',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,

@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog, Research } from 'contentlayer/generated'
+import type { Research, Insight, CaseStudy } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
@@ -15,9 +15,9 @@ interface PaginationProps {
   currentPage: number
 }
 interface ListLayoutProps {
-  posts: CoreContent<Blog | Research>[]
+  posts: CoreContent<Research | Insight | CaseStudy>[]
   title: string
-  initialDisplayPosts?: CoreContent<Blog | Research>[]
+  initialDisplayPosts?: CoreContent<Research | Insight | CaseStudy>[]
   pagination?: PaginationProps
   basePath?: string
   allLabel?: string
@@ -75,8 +75,8 @@ export default function ListLayoutWithTags({
   title,
   initialDisplayPosts = [],
   pagination,
-  basePath = 'blog',
-  allLabel = 'All Posts',
+  basePath = 'research',
+  allLabel = 'All Articles',
 }: ListLayoutProps) {
   const pathname = usePathname()
   const tagCounts = tagData as Record<string, number>

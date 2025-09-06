@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog, Authors, Research } from 'contentlayer/generated'
+import type { Authors, Research, Insight, CaseStudy } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import { Linkedin as LinkedinIcon, X as XIcon } from '@/components/social-icons/icons'
 import PageTitle from '@/components/PageTitle'
@@ -27,7 +27,7 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 }
 
 interface LayoutProps {
-  content: CoreContent<Blog | Research>
+  content: CoreContent<Research | Insight | CaseStudy>
   authorDetails: CoreContent<Authors>[]
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
@@ -51,7 +51,7 @@ export default function PostLayout({
 }: LayoutProps) {
   const { filePath, path, slug, date, title, tags } = content
   const basePath = path.split('/')[0]
-  const backLabel = basePath === 'blog' ? 'blog' : basePath
+  const backLabel = basePath
 
   return (
     <SectionContainer>

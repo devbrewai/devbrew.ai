@@ -11,6 +11,7 @@ import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
+import { Toaster } from '@/components/ui/sonner'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' })
 
@@ -95,6 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </SearchProvider>
             <Footer />
           </SectionContainer>
+          <Toaster />
         </ThemeProviders>
       </body>
     </html>

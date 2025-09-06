@@ -25,6 +25,11 @@ import rehypePresetMinify from 'rehype-preset-minify'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import prettier from 'prettier'
+import type {
+  Research as ResearchDoc,
+  Insight as InsightDoc,
+  CaseStudy as CaseStudyDoc,
+} from 'contentlayer/generated'
 
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
@@ -93,9 +98,9 @@ function createSearchIndex(allDocs) {
   }
 }
 
-export const Blog = defineDocumentType(() => ({
-  name: 'Blog',
-  filePathPattern: 'blog/**/*.mdx',
+export const Insight = defineDocumentType(() => ({
+  name: 'Insight',
+  filePathPattern: 'insights/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -116,7 +121,42 @@ export const Blog = defineDocumentType(() => ({
       type: 'json',
       resolve: (doc) => ({
         '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
+        '@type': 'Article',
+        headline: doc.title,
+        datePublished: doc.date,
+        dateModified: doc.lastmod || doc.date,
+        description: doc.summary,
+        image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
+        url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
+      }),
+    },
+  },
+}))
+
+export const CaseStudy = defineDocumentType(() => ({
+  name: 'CaseStudy',
+  filePathPattern: 'case-studies/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    tags: { type: 'list', of: { type: 'string' }, default: [] },
+    lastmod: { type: 'date' },
+    draft: { type: 'boolean' },
+    summary: { type: 'string' },
+    images: { type: 'json' },
+    authors: { type: 'list', of: { type: 'string' } },
+    layout: { type: 'string' },
+    bibliography: { type: 'string' },
+    canonicalUrl: { type: 'string' },
+  },
+  computedFields: {
+    ...computedFields,
+    structuredData: {
+      type: 'json',
+      resolve: (doc) => ({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
         headline: doc.title,
         datePublished: doc.date,
         dateModified: doc.lastmod || doc.date,
@@ -184,7 +224,7 @@ export const Authors = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Research, Authors],
+  documentTypes: [Research, Insight, CaseStudy, Authors],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
@@ -215,8 +255,16 @@ export default makeSource({
     ],
   },
   onSuccess: async (importData) => {
-    const { allBlogs, allResearch } = await importData()
-    const allDocs = [...allBlogs, ...allResearch]
+    const data = (await importData()) as {
+      allResearch?: ResearchDoc[]
+      allInsights?: InsightDoc[]
+      allCaseStudies?: CaseStudyDoc[]
+    }
+    const allDocs = [
+      ...(data.allResearch ?? []),
+      ...(data.allInsights ?? []),
+      ...(data.allCaseStudies ?? []),
+    ]
     createTagCount(allDocs)
     createSearchIndex(allDocs)
   },

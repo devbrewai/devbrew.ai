@@ -1,14 +1,14 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Devbrew | AI Engineering for Fintech & Finance',
+  title: 'Devbrew | AI Engineering for Fintech and Finance',
   author: 'Devbrew',
   headerTitle: 'Devbrew',
   description:
     'Devbrew is an AI engineering firm. We partner with fintech founders and product teams to design and build custom AI applications',
   language: 'en-us',
   theme: 'light', // system, dark or light
-  siteUrl: 'https://fintech.devbrew.ai',
-  siteRepo: 'https://github.com/DevbrewCo/fintech.devbrew.ai',
+  siteUrl: 'https://wwww.devbrew.ai',
+  siteRepo: 'https://github.com/DevbrewCo/devbrew.ai',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   // mastodon: 'https://mastodon.social/@mastodonuser',

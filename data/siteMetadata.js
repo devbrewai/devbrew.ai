@@ -1,6 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Devbrew',
+  title: 'Devbrew | AI Engineering for Fintech & Finance',
   author: 'Devbrew',
   headerTitle: 'Devbrew',
   description:
@@ -11,21 +11,21 @@ const siteMetadata = {
   siteRepo: 'https://github.com/DevbrewCo/fintech.devbrew.ai',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
-  mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'hello@devbrew.ai',
-  github: 'https://github.com/DevbrewCo',
-  x: 'https://twitter.com/devbrew',
+  // mastodon: 'https://mastodon.social/@mastodonuser',
+  // email: 'hello@devbrew.ai',
+  // github: 'https://github.com/DevbrewCo',
+  // x: 'https://twitter.com/devbrew',
   // twitter: 'https://twitter.com/Twitter',
   // facebook: 'https://facebook.com',
   // youtube: 'https://youtube.com',
-  linkedin: 'https://www.linkedin.com',
+  linkedin: 'https://www.linkedin.com/company/devbrewco/',
   // threads: 'https://www.threads.net',
   // instagram: 'https://www.instagram.com',
   // medium: 'https://medium.com',
   // bluesky: 'https://bsky.app/',
   locale: 'en-US',
   // set to true if you want a navbar fixed to the top
-  stickyNav: false,
+  stickyNav: true,
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.

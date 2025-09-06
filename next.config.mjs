@@ -45,6 +45,16 @@ export default () => {
     async headers() {
       return [{ source: '/(.*)', headers: securityHeaders }]
     },
+    async redirects() {
+      return [
+        { source: '/start', destination: '/contact', permanent: true },
+        { source: '/get-started', destination: '/contact', permanent: true },
+        { source: '/consult', destination: '/contact', permanent: true },
+        { source: '/book', destination: '/contact', permanent: true },
+        { source: '/call', destination: '/contact', permanent: true },
+        { source: '/schedule-call', destination: '/contact', permanent: true },
+      ]
+    },
     webpack: (config) => {
       config.module.rules.push({ test: /\.svg$/, use: ['@svgr/webpack'] })
       return config

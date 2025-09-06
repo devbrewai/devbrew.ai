@@ -103,6 +103,32 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
     }
   })
 
+  // Build related content by tag overlap within Research
+  const overlapScore = (a?: string[], b?: string[]) => {
+    if (!a || !b) return 0
+    const setB = new Set(b)
+    return a.reduce((acc, t) => acc + (setB.has(t) ? 1 : 0), 0)
+  }
+  const related = allResearch
+    .filter((p) => p.slug !== slug && p.draft !== true)
+    .map((p) => ({
+      item: p,
+      score: overlapScore(post.tags, p.tags),
+    }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score
+      return new Date(b.item.date).getTime() - new Date(a.item.date).getTime()
+    })
+    .slice(0, 4)
+    .map(({ item }) => ({
+      path: item.path,
+      title: item.title,
+      summary: item.summary,
+      tags: item.tags,
+      date: item.date,
+    }))
+
   const Layout = layouts[post.layout || defaultLayout]
 
   return (
@@ -111,7 +137,13 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Layout content={mainContent} authorDetails={authorDetails} next={next} prev={prev}>
+      <Layout
+        content={mainContent}
+        authorDetails={authorDetails}
+        next={next}
+        prev={prev}
+        related={related}
+      >
         <MDXLayoutRenderer code={post.body.code} components={components} toc={post.toc} />
       </Layout>
     </>

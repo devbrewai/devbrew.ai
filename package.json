@@ -1,7 +1,24 @@
 {
-  "name": "tailwind-nextjs-starter-blog",
-  "version": "2.4.0",
+  "name": "devbrew.ai",
+  "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "Devbrew",
+    "email": "hello@devbrew.ai",
+    "url": "https://www.devbrew.ai"
+  },
+  "contributors": [
+    {
+      "name": "Joe Kariuki",
+      "url": "https://www.linkedin.com/in/joe-kariuki/"
+    }
+  ],
+  "repository": "https://github.com/DevbrewCo/devbrew.ai",
+  "bugs": {
+    "url": "https://github.com/DevbrewCo/devbrew.ai/issues"
+  },
+  "homepage": "https://www.devbrew.ai",
+  "license": "UNLICENSED",
   "scripts": {
     "start": "next dev",
     "dev": "cross-env INIT_CWD=$PWD next dev",

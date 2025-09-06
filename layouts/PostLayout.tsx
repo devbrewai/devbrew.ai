@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog, Authors } from 'contentlayer/generated'
-import Comments from '@/components/Comments'
+import type { Blog, Authors, Research } from 'contentlayer/generated'
 import Link from '@/components/Link'
+import { Linkedin as LinkedinIcon, X as XIcon } from '@/components/social-icons/icons'
 import PageTitle from '@/components/PageTitle'
 import SectionContainer from '@/components/SectionContainer'
 import Image from '@/components/Image'
@@ -10,9 +10,14 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
-const editUrl = (path) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
-const discussUrl = (path) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`
+const buildShareTargetUrl = (path: string, source: 'linkedin' | 'x') =>
+  `${siteMetadata.siteUrl}/${path}?utm_source=${source}&utm_medium=social&utm_campaign=content_share&utm_content=post`
+
+const linkedinShareUrl = (path: string) =>
+  `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(buildShareTargetUrl(path, 'linkedin'))}`
+
+const xShareUrl = (path: string, title: string) =>
+  `https://x.com/intent/tweet?url=${encodeURIComponent(buildShareTargetUrl(path, 'x'))}&text=${encodeURIComponent(title)}`
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -22,16 +27,31 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 }
 
 interface LayoutProps {
-  content: CoreContent<Blog>
+  content: CoreContent<Blog | Research>
   authorDetails: CoreContent<Authors>[]
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
+  related?: Array<{
+    path: string
+    title: string
+    summary?: string
+    tags?: string[]
+    date: string
+  }>
   children: ReactNode
 }
 
-export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
+export default function PostLayout({
+  content,
+  authorDetails,
+  next,
+  prev,
+  related = [],
+  children,
+}: LayoutProps) {
   const { filePath, path, slug, date, title, tags } = content
   const basePath = path.split('/')[0]
+  const backLabel = basePath === 'blog' ? 'blog' : basePath
 
   return (
     <SectionContainer>
@@ -74,6 +94,13 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                       <dl className="text-sm leading-5 font-medium whitespace-nowrap">
                         <dt className="sr-only">Name</dt>
                         <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
+                        {(author.occupation || author.company) && (
+                          <dd className="text-gray-600 dark:text-gray-300">
+                            {author.occupation}
+                            {author.occupation && author.company ? ', ' : ''}
+                            {author.company}
+                          </dd>
+                        )}
                         <dt className="sr-only">Twitter</dt>
                         <dd>
                           {author.twitter && (
@@ -96,18 +123,58 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
             <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
               <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
               <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                <Link href={discussUrl(path)} rel="nofollow">
-                  Discuss on Twitter
-                </Link>
-                {` • `}
-                <Link href={editUrl(filePath)}>View on GitHub</Link>
+                <div className="flex items-center gap-4">
+                  <a
+                    href={linkedinShareUrl(path)}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 inline-flex items-center gap-2"
+                    aria-label="Share on LinkedIn"
+                  >
+                    <LinkedinIcon className="h-5 w-5 fill-current" />
+                    <span>Share on LinkedIn</span>
+                  </a>
+                  <a
+                    href={xShareUrl(path, title)}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 inline-flex items-center gap-2"
+                    aria-label="Share on X"
+                  >
+                    <XIcon className="h-5 w-5 fill-current" />
+                    <span>Share on X</span>
+                  </a>
+                </div>
               </div>
-              {siteMetadata.comments && (
-                <div
-                  className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300"
-                  id="comment"
-                >
-                  <Comments slug={slug} />
+              {related.length > 0 && (
+                <div className="pt-6 pb-6">
+                  <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
+                    Related content
+                  </h2>
+                  <ul className="mt-4 space-y-6">
+                    {related.slice(0, 4).map((item) => (
+                      <li key={item.path} className="space-y-2">
+                        <div>
+                          <Link
+                            href={`/${item.path}`}
+                            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-lg font-medium"
+                          >
+                            {item.title}
+                          </Link>
+                        </div>
+                        {item.summary && (
+                          <p className="text-sm text-gray-600 dark:text-gray-300">{item.summary}</p>
+                        )}
+                        {item.tags && item.tags.length > 0 && (
+                          <div className="flex flex-wrap">
+                            {item.tags.map((t) => (
+                              <Tag key={t} text={t} />
+                            ))}
+                          </div>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               )}
             </div>
@@ -154,9 +221,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <Link
                   href={`/${basePath}`}
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                  aria-label="Back to the blog"
+                  aria-label={`Back to the ${backLabel}`}
                 >
-                  &larr; Back to the blog
+                  &larr; Back to the {backLabel}
                 </Link>
               </div>
             </footer>

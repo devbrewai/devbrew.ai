@@ -19,89 +19,13 @@ import {
   ArrowRight,
   Clock,
 } from 'lucide-react'
+import { Hero } from '../components/hero'
 
 export default function HomeView() {
   return (
     <main className="bg-background text-foreground min-h-screen">
       {/* Hero */}
-      <section className="relative">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-12 lg:px-8">
-          <div className="lg:col-span-7">
-            <Badge variant="secondary" className="mb-4">
-              Fintech‑focused AI engineering
-            </Badge>
-            <h1 className="text-3xl leading-tight font-semibold tracking-tight sm:text-5xl">
-              AI for FinTech & Finance
-              <span className="text-muted-foreground mt-2 block">
-                From idea to working prototype in 2–4 weeks.
-              </span>
-            </h1>
-            <p className="text-muted-foreground mt-6 max-w-2xl">
-              We partner with funded fintech startups and financial institutions in the U.S. to
-              design and deliver custom AI systems— starting with a focused prototype that proves
-              value fast.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link href="#book">Book 15‑min briefing</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="#how">How it works</Link>
-              </Button>
-            </div>
-            <dl className="mt-10 grid grid-cols-2 gap-6 text-sm sm:grid-cols-4">
-              <div>
-                <dt className="text-muted-foreground">Prototype window</dt>
-                <dd className="mt-1 font-semibold">2–4 weeks</dd>
-              </div>
-              <div>
-                <dt className="text-muted-foreground">Offer</dt>
-                <dd className="mt-1 font-semibold">$5k start • $10k on success</dd>
-              </div>
-              <div>
-                <dt className="text-muted-foreground">Focus</dt>
-                <dd className="mt-1 font-semibold">Payments • Risk • Underwriting</dd>
-              </div>
-              <div>
-                <dt className="text-muted-foreground">Delivery</dt>
-                <dd className="mt-1 font-semibold">API + mini dashboard</dd>
-              </div>
-            </dl>
-          </div>
-          <div className="lg:col-span-5">
-            <Card>
-              <CardHeader>
-                <CardTitle>Prototype preview</CardTitle>
-                <CardDescription>Risk score + latency chart (placeholder)</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="bg-muted aspect-[4/3] w-full rounded-xl" />
-              </CardContent>
-              <CardFooter>
-                <Button variant="ghost" asChild>
-                  <Link href="/research">
-                    See recent demos <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Social proof */}
-      <section className="border-t">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-          <p className="text-muted-foreground text-xs tracking-widest uppercase">
-            Trusted by leaders in fintech & finance
-          </p>
-          <div className="mt-6 grid grid-cols-2 items-center gap-6 opacity-80 sm:grid-cols-4 lg:grid-cols-6">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="bg-muted h-10 rounded" />
-            ))}
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Outcomes */}
       <section className="border-t" id="outcomes">
@@ -145,7 +69,7 @@ export default function HomeView() {
       </section>
 
       {/* How it works */}
-      <section className="border-t" id="how">
+      <section id="how">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
             How the AI Prototype Accelerator works
@@ -183,7 +107,7 @@ export default function HomeView() {
       </section>
 
       {/* Proof / Case studies */}
-      <section className="border-t">
+      <section>
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
@@ -211,7 +135,7 @@ export default function HomeView() {
       </section>
 
       {/* Insights */}
-      <section className="border-t">
+      <section>
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">Insights</h2>

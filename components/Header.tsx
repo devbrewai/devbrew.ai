@@ -1,8 +1,11 @@
+'use client'
+
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import Image from 'next/image'
+import { buttonVariants } from './ui/button'
 // import ThemeSwitch from './ThemeSwitch'
 // import SearchButton from './SearchButton'
 
@@ -37,7 +40,7 @@ const Header = () => {
       <div className="flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6">
         <div className="no-scrollbar hidden max-w-40 items-center gap-x-4 overflow-x-auto sm:flex md:max-w-72 lg:max-w-96">
           {headerNavLinks
-            .filter((link) => link.href !== '/')
+            .filter((link) => link.href !== '/' && link.href !== '/contact')
             .map((link) => (
               <Link
                 key={link.title}
@@ -47,6 +50,19 @@ const Header = () => {
                 {link.title}
               </Link>
             ))}
+        </div>
+        <div className="hidden sm:block">
+          <Link
+            href="/contact"
+            className={buttonVariants({
+              variant: 'outline',
+              size: 'sm',
+              className:
+                'border-primary-500 text-primary-600 hover:bg-primary-500 dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-400 hover:text-white',
+            })}
+          >
+            Get Started
+          </Link>
         </div>
         {/* <SearchButton /> */}
         {/* <ThemeSwitch /> */}

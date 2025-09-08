@@ -1,15 +1,18 @@
 {
   "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "features": {
+    "ghcr.io/devcontainers/features/bun:1": {}
+  },
   "hostRequirements": {
     "memory": "8gb"
   },
   "waitFor": "onCreateCommand",
-  "updateContentCommand": "yarn",
+  "updateContentCommand": "bun install",
   "postCreateCommand": "",
-  "postAttachCommand": "yarn dev",
+  "postAttachCommand": "bun dev",
   "customizations": {
     "codespaces": {
-      "openFiles": ["data/blog/code-sample.mdx"]
+      "openFiles": ["data/research/sample-research.mdx"]
     },
     "vscode": {
       "settings": {

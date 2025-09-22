@@ -4,7 +4,7 @@ import SocialIcon from '@/components/social-icons'
 export default function Footer() {
   return (
     <footer className="py-10">
-      <div className="flex flex-col-reverse items-center justify-between gap-4 md:flex-row md:gap-0">
+      <div className="mx-auto flex max-w-7xl flex-col-reverse items-center justify-between gap-4 px-4 md:flex-row md:gap-0">
         {/* Copyright on the left for desktop, below icons for mobile */}
         <div className="text-xs text-gray-500 dark:text-gray-400">
           © {new Date().getFullYear()} Devbrew LLC. All rights reserved.

@@ -4,8 +4,6 @@ import { ContactSchema } from '@/modules/contact/schema'
 
 export const runtime = 'nodejs'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(req: Request) {
   try {
     const body = await req.json()
@@ -41,6 +39,14 @@ export async function POST(req: Request) {
       `Consent: ${data.consent ? 'yes' : 'no'}\n\n` +
       `Message:\n${data.message}`
 
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) {
+      // In local/dev or when key is not configured, do not crash build; log and no-op.
+      console.warn('[API_CONTACT_POST] RESEND_API_KEY is not set. Skipping email send.')
+      return NextResponse.json({ ok: true, skipped: true })
+    }
+
+    const resend = new Resend(apiKey)
     const { error } = await resend.emails.send({
       from: 'Devbrew <hello@devbrew.ai>',
       to,

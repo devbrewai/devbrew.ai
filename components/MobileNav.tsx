@@ -61,7 +61,7 @@ const MobileNav = () => {
             <DialogPanel className="fixed top-0 left-0 z-70 h-full w-full bg-white/95 duration-300 dark:bg-gray-950/98">
               <nav
                 ref={navRef}
-                className="mt-8 flex h-full basis-0 flex-col items-start overflow-y-auto px-4 pt-2 pl-12 text-left"
+                className="mt-4 flex h-full basis-0 flex-col items-start overflow-y-auto px-4 pt-2 pl-12 text-left"
               >
                 {headerNavLinks
                   .filter((link) => link.href !== '/contact')

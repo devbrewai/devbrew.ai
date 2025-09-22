@@ -22,9 +22,9 @@ const Header = () => {
           <div className="flex items-center justify-between">
             <div className="mr-3">
               <Image
-                src="/static/images/logo.svg"
+                src="/static/images/devbrew-black.svg"
                 alt={`${siteMetadata.headerTitle} logo`}
-                width={24}
+                width={100}
                 height={24}
                 priority
               />

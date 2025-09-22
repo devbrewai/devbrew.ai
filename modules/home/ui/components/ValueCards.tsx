@@ -43,7 +43,7 @@ export function ValueCards({ className = '' }: { className?: string }) {
         >
           <motion.div variants={item} className="mb-10">
             <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Why Devbrew</h2>
-            <p className="mt-3 max-w-2xl text-neutral-700">
+            <p className="mt-4 max-w-2xl text-balance text-neutral-700">
               Accelerated delivery, derisked deployments, and measurable business value, the
               principles we bring to every engagement.
             </p>

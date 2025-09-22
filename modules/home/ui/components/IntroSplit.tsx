@@ -35,7 +35,7 @@ export function IntroSplit() {
               institutions design, build, and deploy production AI systems.
             </motion.p>
             <motion.div variants={item} className="mt-8 flex gap-3">
-              <Button size="lg" variant="outline" className="cursor-pointer">
+              <Button size="lg" variant="outline" className="cursor-pointer hover:bg-white">
                 <Link href="/about" className="flex items-center justify-between gap-4">
                   About Us
                 </Link>

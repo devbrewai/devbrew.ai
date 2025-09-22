@@ -28,6 +28,33 @@ export default function HomeView() {
       <IntroSplit />
       {/* What We Do / Offerings */}
       <Offerings title="What We Do" className="bg-neutral-50" />
+      {/* Proof / Case studies */}
+      <section>
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between gap-4">
+            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+              Recent research & case studies
+            </h2>
+            <Button asChild variant="ghost">
+              <Link href="/research">View all</Link>
+            </Button>
+          </div>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <CaseCard
+              title="Fraud & sanctions screening for cross‑border payments"
+              href="/research/fraud-sanctions-payments"
+            />
+            <CaseCard
+              title="Credit‑builder default risk & limit optimization"
+              href="/research/credit-builder-limit-optimization"
+            />
+            <CaseCard
+              title="Claims triage & fraud for P&C and pet"
+              href="/research/claims-triage-fraud"
+            />
+          </div>
+        </div>
+      </section>
       {/* Value */}
       <ValueCards />
       {/* Outcomes */}
@@ -67,34 +94,6 @@ export default function HomeView() {
                 See full service <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Proof / Case studies */}
-      <section>
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between gap-4">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              Recent research & case studies
-            </h2>
-            <Button asChild variant="ghost">
-              <Link href="/research">View all</Link>
-            </Button>
-          </div>
-          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <CaseCard
-              title="Fraud & sanctions screening for cross‑border payments"
-              href="/research/fraud-sanctions-payments"
-            />
-            <CaseCard
-              title="Credit‑builder default risk & limit optimization"
-              href="/research/credit-builder-limit-optimization"
-            />
-            <CaseCard
-              title="Claims triage & fraud for P&C and pet"
-              href="/research/claims-triage-fraud"
-            />
           </div>
         </div>
       </section>

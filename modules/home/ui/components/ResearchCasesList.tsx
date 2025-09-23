@@ -30,7 +30,7 @@ export function ResearchCasesList() {
   const showNav = items.length > 3
 
   return (
-    <section className="bg-background">
+    <section className="bg-background" id="research">
       <div className="mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row">
           <div className="w-full max-w-xl">

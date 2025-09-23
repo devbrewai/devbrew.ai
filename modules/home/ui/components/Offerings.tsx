@@ -62,7 +62,7 @@ export function Offerings({
     show: { opacity: 1, y: 0, filter: reduce ? 'none' : 'blur(0px)' },
   }
   return (
-    <section className={cn('relative w-full text-neutral-900', className)}>
+    <section className={cn('relative w-full text-neutral-900', className)} id="services">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <motion.div
           variants={container}

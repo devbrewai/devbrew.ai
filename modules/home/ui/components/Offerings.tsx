@@ -120,7 +120,7 @@ export function Offerings({
                 </div>
                 <div className="mt-6">
                   <Button asChild className="w-full">
-                    <Link href="/services">
+                    <Link href="/get-started">
                       Explore Services <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>

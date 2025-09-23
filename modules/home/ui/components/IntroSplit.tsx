@@ -13,7 +13,7 @@ export function IntroSplit() {
     show: { opacity: 1, y: 0, filter: reduce ? 'none' : 'blur(0px)' },
   }
   return (
-    <section className="relative w-full bg-neutral-50 text-neutral-900">
+    <section className="relative w-full bg-neutral-50 text-neutral-900" id="about">
       <div className="mx-auto max-w-7xl px-6 pt-24 pb-12 md:pt-28 md:pb-16">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           {/* Left: Headline + CTA */}

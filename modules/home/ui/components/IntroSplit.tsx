@@ -1,7 +1,5 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import React from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 
@@ -35,11 +33,19 @@ export function IntroSplit() {
               institutions design, build, and deploy production AI systems.
             </motion.p>
             <motion.div variants={item} className="mt-8 flex gap-3">
-              <Button size="lg" variant="outline" className="cursor-pointer hover:bg-white">
-                <Link href="/about" className="flex items-center justify-between gap-4">
+              {/*
+              <Button size="lg" variant="outline" className="bg-white">
+                <Link href="/#about" className="flex items-center justify-between gap-4">
                   About Us
                 </Link>
               </Button>
+              */}
+              <span
+                className="inline-flex items-center justify-center rounded-none border border-neutral-200 bg-white px-6 py-3 text-sm font-semibold text-neutral-900"
+                aria-hidden="true"
+              >
+                About Us
+              </span>
             </motion.div>
           </motion.div>
 

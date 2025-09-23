@@ -1,11 +1,20 @@
+'use client'
+
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
+import { motion, useReducedMotion } from 'framer-motion'
 
 export function CTA() {
+  const reduce = useReducedMotion()
+  const container = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
+  const item = {
+    hidden: { opacity: 0, y: reduce ? 0 : 12, filter: reduce ? 'none' : 'blur(8px)' },
+    show: { opacity: 1, y: 0, filter: reduce ? 'none' : 'blur(0px)' },
+  }
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white py-20 text-neutral-900"
+      className="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white py-24 text-neutral-900"
       id="book"
     >
       <div
@@ -17,17 +26,32 @@ export function CTA() {
         aria-hidden
       />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-2 text-sm font-semibold text-blue-700">Ready to get started?</p>
-          <h2 className="text-4xl font-medium tracking-tighter sm:text-5xl">
-            Turn AI potential into measurable results
-          </h2>
-          <p className="mt-4 text-balance text-neutral-700">
-            Stop wondering if AI can work for your business. We’ll help you identify high‑impact
-            opportunities, implement proven solutions, and deliver outcomes that stand up to the
-            CFO.
-          </p>
-          <div className="mt-8">
+        <motion.div
+          className="mx-auto max-w-3xl space-y-6 text-center"
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <div className="mb-2">
+            <motion.p variants={item} className="mb-2 text-sm font-semibold text-blue-700">
+              Ready to get started?
+            </motion.p>
+            <motion.h2
+              variants={item}
+              className="text-4xl font-medium tracking-tighter text-balance sm:text-6xl"
+            >
+              Turn AI potential into ROI in weeks
+            </motion.h2>
+          </div>
+          <motion.p
+            variants={item}
+            className="mx-auto mt-6 max-w-xl text-sm text-balance text-neutral-700 sm:text-base"
+          >
+            We help fintech leaders build AI solutions that accelerate growth and deliver measurable
+            returns.
+          </motion.p>
+          <motion.div variants={item}>
             <Button
               asChild
               size="lg"
@@ -35,8 +59,8 @@ export function CTA() {
             >
               <Link href="/get-started">Get Started</Link>
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

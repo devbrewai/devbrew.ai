@@ -54,7 +54,7 @@ const Header = () => {
           </div>
           <div className="hidden sm:block">
             <Link
-              href="/contact"
+              href="/get-started"
               className={buttonVariants({
                 variant: 'outline',
                 size: 'sm',

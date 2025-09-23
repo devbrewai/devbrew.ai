@@ -16,18 +16,18 @@ export function ValueCards({ className = '' }: { className?: string }) {
 
   const cards = [
     {
-      title: 'Accelerated Delivery',
-      body: 'Decrease time to magic with AI. From rapid prototyping to end to end AI product development, we help you go from idea to production in months instead of years.',
+      title: 'Rapid Delivery',
+      body: 'Go from strategy to production with speed and precision. We prototype, validate, and deploy AI solutions in weeks, not months.',
       Illustration: IllustrationAccelerated,
     },
     {
-      title: 'Derisked Deployments',
-      body: 'We were building AI products long before it was cool. We specialize in AI and our customers benefit from our experience building hundreds of AI products for large enterprises.',
+      title: 'Secure Deployments',
+      body: 'We deploy with discipline. We pilot, measure, and scale through controlled rollouts, with security, compliance, and monitoring built in from day one.',
       Illustration: IllustrationDerisked,
     },
     {
-      title: 'Real Business Value',
-      body: 'We are committed to building AI applications that deliver ROI. From technical approach to business model implications, we deliver outcomes not people.',
+      title: 'Measurable Impact',
+      body: 'We build AI with ROI at the core. Each solution is anchored to business objectives, guided by clear metrics, and designed to deliver lasting growth.',
       Illustration: IllustrationROI,
     },
   ] as const
@@ -44,8 +44,8 @@ export function ValueCards({ className = '' }: { className?: string }) {
           <motion.div variants={item} className="mb-10">
             <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Why Devbrew</h2>
             <p className="mt-4 max-w-2xl text-balance text-neutral-700">
-              Accelerated delivery, derisked deployments, and measurable business value, the
-              principles we bring to every engagement.
+              Every engagement is guided by the same principles: fast execution, lower risk, and
+              lasting impact.
             </p>
           </motion.div>
 
@@ -70,7 +70,9 @@ export function ValueCards({ className = '' }: { className?: string }) {
                       >
                         <h3>{title}</h3>
                       </CardTitle>
-                      <CardDescription className="mt-2 text-neutral-700">{body}</CardDescription>
+                      <CardDescription className="mt-2 text-balance text-neutral-700">
+                        {body}
+                      </CardDescription>
                     </CardHeader>
 
                     <CardContent className={cn('p-5 pt-0 lg:p-6 lg:pt-0')}>

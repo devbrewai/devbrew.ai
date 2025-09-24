@@ -37,7 +37,6 @@ export async function POST(req: Request) {
       `Title: ${data.title || '-'}\n` +
       `Company: ${data.company || '-'}\n` +
       `Phone: ${data.phone || '-'}\n` +
-      `Timeline: ${data.timeline || '-'}\n` +
       `Consent: ${data.consent ? 'yes' : 'no'}\n\n` +
       `Message:\n${data.message}`
 

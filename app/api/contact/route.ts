@@ -24,11 +24,14 @@ export async function POST(req: Request) {
     }
     const data = parsed.data
 
-    const to = process.env.CONTACT_TO_EMAIL || 'hello@devbrew.ai'
+    const to = process.env.CONTACT_TO_EMAIL
+    const fromEmail = process.env.CONTACT_FROM_EMAIL
+    const fromName = process.env.CONTACT_FROM_NAME
+    const from = fromName && fromEmail ? `${fromName} <${fromEmail}>` : fromEmail || ''
 
     const subject = `New website inquiry from ${data.fullName}`
     const text =
-      `New inquiry submitted on fintech.devbrew.ai\n\n` +
+      `New inquiry submitted on devbrew.ai\n\n` +
       `Name: ${data.fullName}\n` +
       `Email: ${data.email}\n` +
       `Title: ${data.title || '-'}\n` +
@@ -46,9 +49,21 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: true, skipped: true })
     }
 
+    // Ensure required email envs are present. Skip in dev, error in prod.
+    if (!to || !fromEmail) {
+      const isDev = process.env.NODE_ENV !== 'production'
+      const msg = '[API_CONTACT_POST] Missing CONTACT_TO_EMAIL or CONTACT_FROM_EMAIL. '
+      if (isDev) {
+        console.warn(msg + 'Skipping email send in development.')
+        return NextResponse.json({ ok: true, skipped: true })
+      }
+      console.error(msg + 'Failing in production.')
+      return NextResponse.json({ error: 'Server not configured' }, { status: 500 })
+    }
+
     const resend = new Resend(apiKey)
     const { error } = await resend.emails.send({
-      from: 'Devbrew <hello@devbrew.ai>',
+      from,
       to,
       subject,
       text,

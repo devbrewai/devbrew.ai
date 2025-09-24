@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <section className="bg-neutral-50 py-12 sm:py-16 lg:py-20">
+    <section className="min-h-screen bg-neutral-50 py-12 sm:py-16 lg:py-20">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
         <div>
           <p className="text-primary-500 mb-3 text-sm font-medium tracking-widest uppercase">

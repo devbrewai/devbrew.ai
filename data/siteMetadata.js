@@ -1,6 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Devbrew | AI Engineering for Fintech and Finance',
+  title: 'Devbrew',
   author: 'Devbrew',
   headerTitle: 'Devbrew',
   description:

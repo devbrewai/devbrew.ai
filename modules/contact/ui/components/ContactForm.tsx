@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { ContactSchema, type ContactInput } from '@/modules/contact/schema'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -214,7 +215,7 @@ export default function ContactForm() {
           name="consent"
           render={({ field }) => (
             <FormItem>
-              <div className="flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
+              <div className="flex min-w-0 items-start gap-2 text-xs text-gray-600 dark:text-gray-400">
                 <FormControl>
                   <Checkbox
                     checked={!!field.value}
@@ -222,9 +223,22 @@ export default function ContactForm() {
                     className="cursor-pointer"
                   />
                 </FormControl>
-                <Label className="leading-tight">
-                  I agree to the Devbrew Terms and Privacy Policy and consent to be contacted about
-                  this request.*
+                <Label className="block min-w-0 flex-1 text-xs leading-normal break-words hyphens-auto">
+                  I agree to the Devbrew{' '}
+                  <Link
+                    href="/terms-of-service"
+                    className="hover:text-primary underline underline-offset-2"
+                  >
+                    Terms
+                  </Link>{' '}
+                  and{' '}
+                  <Link
+                    href="/privacy-policy"
+                    className="hover:text-primary underline underline-offset-2"
+                  >
+                    Privacy Policy
+                  </Link>{' '}
+                  and consent to be contacted about this request.*
                 </Label>
               </div>
               <FormMessage />

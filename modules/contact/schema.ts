@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const SERVICE_OPTIONS = [
   'AI Advisory',
   'AI Prototype Accelerator',
-  'AI MVP Deployment',
+  'AI Deployment',
   'AI Scale Partnership',
 ] as const
 
@@ -21,7 +21,7 @@ export const ContactSchema = z
     title: z.string().max(120, 'Title is too long').optional().or(z.literal('')),
     company: z.string().min(1, 'Company is required').max(200, 'Company name is too long'),
     phone: z.string().max(50, 'Phone is too long').optional().or(z.literal('')),
-    service: z.enum(SERVICE_OPTIONS),
+    // service: z.enum(SERVICE_OPTIONS),
     timeline: z.enum(TIMELINE_OPTIONS).optional().or(z.literal('')),
     message: z.string().min(10, 'Please provide a bit more detail (≥ 10 chars)'),
     consent: z.boolean().refine((v) => v === true, { message: 'Consent is required' }),

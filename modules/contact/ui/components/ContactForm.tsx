@@ -2,12 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import {
-  ContactSchema,
-  SERVICE_OPTIONS,
-  TIMELINE_OPTIONS,
-  type ContactInput,
-} from '@/modules/contact/schema'
+import { ContactSchema, type ContactInput } from '@/modules/contact/schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import {
@@ -19,14 +14,8 @@ import {
   FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
+// import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+
 import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
@@ -155,7 +144,7 @@ export default function ContactForm() {
             name="company"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Company</FormLabel>
+                <FormLabel>Company*</FormLabel>
                 <FormControl>
                   <Input placeholder="Acme Inc." {...field} />
                 </FormControl>
@@ -178,38 +167,8 @@ export default function ContactForm() {
           />
         </div>
 
-        <FormField<ContactInput, 'service'>
-          control={form.control}
-          name="service"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Which service are you interested in?</FormLabel>
-              <FormControl>
-                <RadioGroup
-                  className="grid grid-cols-1 gap-2 sm:grid-cols-2"
-                  onValueChange={(val) => {
-                    field.onChange(val)
-                    form.clearErrors('service')
-                  }}
-                  value={field.value}
-                >
-                  {SERVICE_OPTIONS.map((opt) => {
-                    const id = `service-${opt}`
-                    return (
-                      <div key={opt} className="flex items-center gap-2 text-sm">
-                        <RadioGroupItem id={id} value={opt} />
-                        <label htmlFor={id}>{opt}</label>
-                      </div>
-                    )
-                  })}
-                </RadioGroup>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {/* Timeline field hidden for now
           <FormField<ContactInput, 'timeline'>
             control={form.control}
             name="timeline"
@@ -234,6 +193,7 @@ export default function ContactForm() {
               </FormItem>
             )}
           />
+          */}
           <FormField<ContactInput, 'message'>
             control={form.control}
             name="message"
@@ -259,11 +219,12 @@ export default function ContactForm() {
                   <Checkbox
                     checked={!!field.value}
                     onCheckedChange={(checked) => field.onChange(!!checked)}
+                    className="cursor-pointer"
                   />
                 </FormControl>
                 <Label className="leading-tight">
                   I agree to the Devbrew Terms and Privacy Policy and consent to be contacted about
-                  this request.
+                  this request.*
                 </Label>
               </div>
               <FormMessage />

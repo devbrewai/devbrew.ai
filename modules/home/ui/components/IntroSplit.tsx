@@ -29,8 +29,8 @@ export function IntroSplit() {
               We build AI that ships, scales, and drives ROI.
             </motion.h1>
             <motion.p variants={item} className="mt-4 max-w-xl text-neutral-700">
-              Devbrew is a founder-led AI engineering firm. We help fintech startups and financial
-              institutions design, build, and deploy production AI systems.
+              From pilot to production in 4–6 weeks. We embed with your team, ship weekly, and align
+              on measurable KPIs, so you see impact fast.
             </motion.p>
             <motion.div variants={item} className="mt-8 flex gap-3">
               {/*
@@ -66,7 +66,6 @@ export function IntroSplit() {
                 <li>Proven track record shipping AI to production</li>
               </ul>
             </div> */}
-
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">How to think of us</h2>
               <p className="mt-2 text-neutral-700">
@@ -74,12 +73,18 @@ export function IntroSplit() {
                 laser-focused on delivering production systems.
               </p>
             </motion.div>
-
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">What makes us different</h2>
               <p className="mt-2 text-neutral-700">
                 We combine deep technical expertise with direct execution. We don't just advise, we
                 build alongside you.
+              </p>
+            </motion.div>
+            <motion.div variants={item}>
+              <h2 className="text-base font-semibold text-neutral-700">Where we drive impact</h2>
+              <p className="mt-2 text-neutral-700">
+                We design AI systems for credit risk, fraud, compliance, and predictive analytics.
+                We also deploy automation for operations, customer support, and generative AI.
               </p>
             </motion.div>
           </motion.div>

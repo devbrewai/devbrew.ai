@@ -3,7 +3,7 @@ import { IntroSplit } from '../components/IntroSplit'
 import { ValueCards } from '../components/ValueCards'
 import { Offerings } from '../components/Offerings'
 import { ResearchCasesList } from '../components/ResearchCasesList'
-import { CTA } from '../components/CTA'
+import { CTA } from '@/components/CTA'
 
 export default function HomeView() {
   return (
@@ -20,6 +20,7 @@ export default function HomeView() {
       {/* Insights */}
       {/* <Insights /> */}
       {/* CTA */}
+      {/* <CTA /> */}
       <CTA />
     </main>
   )

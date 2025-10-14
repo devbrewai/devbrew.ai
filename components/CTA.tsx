@@ -68,7 +68,9 @@ export function CTA({
 
   return (
     <section
-      className="relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white py-24 text-neutral-900"
+      className={`relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white text-neutral-900 ${
+        isCompact ? 'py-16' : 'py-24'
+      }`}
       id="book"
     >
       <div

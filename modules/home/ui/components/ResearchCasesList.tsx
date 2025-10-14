@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 import { motion, useReducedMotion } from 'framer-motion'
 
 export function ResearchCasesList() {
@@ -17,29 +18,32 @@ export function ResearchCasesList() {
   // Same sample items as the card layout for visual comparison
   const items = [
     {
-      title: 'Fraud & sanctions screening for cross‑border payments',
+      title: 'AI Fraud Detection & Sanctions Screening for Cross‑Border Payments',
       description:
-        'Read select case studies from our applied research work. Metrics, approach, and short demos inside.',
-      href: '/research/fraud-sanctions-payments',
+        'Detect and prevent fraud in card-not-present transactions while screening against OFAC sanctions lists. Reduced fraud loss by 38%, cut false positives by 60% with sub-200ms latency.',
+      href: '/case-studies/ai-fraud-detection-cross-border-payments',
+      status: 'in-progress' as const,
     },
     {
-      title: 'Credit‑builder default risk & limit optimization',
+      title: 'AI Credit Risk & Underwriting Optimization',
       description:
-        'Read select case studies from our applied research work. Metrics, approach, and short demos inside.',
-      href: '/research/credit-builder-limit-optimization',
+        'Predict borrower default risk and enable AI-driven credit approvals with fairness and explainability. 44% more approvals, 36% lower APR, 53% fewer defaults.',
+      href: '/case-studies/ai-credit-builder-limit-optimization',
+      status: 'coming-soon' as const,
     },
     {
-      title: 'Claims triage & fraud for P&C and pet',
+      title: 'AI-Enhanced Compliance & AML Risk Monitoring',
       description:
-        'Read select case studies from our applied research work. Metrics, approach, and short demos inside.',
-      href: '/research/claims-triage-fraud',
+        'Detect money-laundering typologies and automate KYC/KYB document verification with explainable AI. 70% fewer false positives, 50% faster investigations.',
+      href: '/case-studies/ai-enhanced-compliance-aml-risk-monitoring',
+      status: 'coming-soon' as const,
     },
   ]
 
   const showNav = items.length > 3
 
   return (
-    <section className="bg-background" id="research">
+    <section className="bg-background" id="case-studies">
       <div className="mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row">
           <motion.div
@@ -53,7 +57,7 @@ export function ResearchCasesList() {
               variants={item}
               className="text-4xl leading-tight font-medium tracking-tighter text-balance sm:text-5xl lg:text-5xl"
             >
-              Research That Proves ROI
+              Case Studies That Proves ROI
             </motion.h2>
             <motion.p variants={item} className="mt-4 text-balance text-neutral-700">
               Explore case studies showing how applied AI solves high-cost problems in fintech and
@@ -63,7 +67,7 @@ export function ResearchCasesList() {
             {showNav && (
               <motion.div variants={item} className="mt-6 hidden md:block">
                 <Button asChild variant="ghost">
-                  <Link href="/research">View all</Link>
+                  <Link href="/case-studies">View all</Link>
                 </Button>
               </motion.div>
             )}
@@ -84,13 +88,19 @@ export function ResearchCasesList() {
                     className="block rounded-lg border from-blue-400/15 to-blue-600/20 p-4 transition hover:bg-gradient-to-tr hover:text-blue-800"
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <div className="min-w-0">
-                        <h3 className="text-base leading-snug font-medium sm:text-lg">
-                          {itemData.title}
-                        </h3>
-                        <p className="text-muted-foreground mt-2 text-xs text-balance">
-                          {itemData.description}
-                        </p>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <h3 className="text-base leading-snug font-medium sm:text-lg">
+                            {itemData.title}
+                          </h3>
+                          <Badge
+                            variant={itemData.status === 'in-progress' ? 'default' : 'secondary'}
+                            className="text-[10px] sm:text-xs"
+                          >
+                            {itemData.status === 'in-progress' ? 'In Progress' : 'Coming Soon'}
+                          </Badge>
+                        </div>
+                        <p className="text-muted-foreground mt-2 text-xs">{itemData.description}</p>
                       </div>
                       <Button asChild size="icon" variant="ghost" className="shrink-0">
                         <span>

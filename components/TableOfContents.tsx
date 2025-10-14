@@ -25,6 +25,10 @@ export default function TableOfContents({ className = '' }: TableOfContentsProps
     const tocItems: TocItem[] = []
 
     headings.forEach((heading) => {
+      // Skip headings that are inside the CTA section
+      const isInCTA = heading.closest('section[id="book"]')
+      if (isInCTA) return
+
       const id = heading.id || heading.textContent?.toLowerCase().replace(/\s+/g, '-') || ''
 
       // Add id to heading if it doesn't have one

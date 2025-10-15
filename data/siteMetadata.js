@@ -10,7 +10,7 @@ const siteMetadata = {
   siteUrl: 'https://wwww.devbrew.ai',
   siteRepo: 'https://github.com/DevbrewCo/devbrew.ai',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.svg`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/api/og`,
   // mastodon: 'https://mastodon.social/@mastodonuser',
   // email: 'hello@devbrew.ai',
   // github: 'https://github.com/DevbrewCo',

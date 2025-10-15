@@ -106,7 +106,7 @@ export function HeroCentered() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-balance text-neutral-700 sm:text-base">
-            We help U.S. fintech startups and financial institutions design and deliver AI solutions
+            We help U.S. fintech startups and financial institutions design and deploy AI solutions
             that drive results in as little as 4 weeks
           </p>
 
@@ -120,7 +120,7 @@ export function HeroCentered() {
               </Link>
             </Button>
             <Button size="lg" variant="ghost">
-              <Link href="#research" className="flex items-center justify-center">
+              <Link href="#case-studies" className="flex items-center justify-center">
                 View Case Studies
               </Link>
             </Button>

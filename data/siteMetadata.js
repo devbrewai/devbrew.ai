@@ -7,7 +7,7 @@ const siteMetadata = {
     'Devbrew is an AI engineering firm. We partner with fintech founders and product teams to design and build custom AI applications',
   language: 'en-us',
   theme: 'light', // system, dark or light
-  siteUrl: 'https://wwww.devbrew.ai',
+  siteUrl: 'https://www.devbrew.ai',
   siteRepo: 'https://github.com/DevbrewCo/devbrew.ai',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.svg`,
   socialBanner: `${process.env.BASE_PATH || ''}/api/og`,

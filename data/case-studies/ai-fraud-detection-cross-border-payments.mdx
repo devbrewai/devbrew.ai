@@ -1,0 +1,181 @@
+---
+title: 'AI Fraud Detection & Sanctions Screening for Cross-Border Payments'
+date: '2025-10-14'
+lastmod: '2025-10-14'
+tags: ['ai', 'fraud-detection', 'payments', 'fintech', 'machine-learning', 'compliance']
+draft: false
+summary: 'An open-source reference implementation demonstrating production-grade ML engineering for fraud detection and sanctions screening in cross-border payments.'
+images: ['/static/images/case-studies/ai-fraud-detection-cross-border-payments/og.png']
+authors: ['default']
+layout: PostLayout
+canonicalUrl: 'https://www.devbrew.ai/case-studies/ai-fraud-detection-cross-border-payments'
+---
+
+**Status:** **In Progress** - _This project is currently under active development and being built in public._
+
+## The Problem
+
+Payment processors and financial institutions face a dual challenge that costs billions annually:
+
+**Fraud losses are escalating.** Card-not-present (CNP) transactions, the backbone of e-commerce and cross-border payments, are increasingly targeted by sophisticated fraud rings. Traditional rule-based systems can't keep pace with evolving attack patterns.
+
+**False positives kill conversion.** Legacy fraud systems flag 10-20% of legitimate transactions as suspicious, forcing manual review queues that delay payments, frustrate customers, and cost millions in lost revenue.
+
+**Compliance is non-negotiable.** Every cross-border payment must be screened against OFAC, EU, and UN sanctions lists in real-time. Slow or inaccurate screening creates regulatory risk and operational bottlenecks.
+
+The industry needs a solution that detects fraud accurately, reduces false positives dramatically, and maintains sub-200ms latency, all while meeting compliance requirements.
+
+## The Solution
+
+We're building an **AI-powered fraud detection and sanctions screening pipeline** that demonstrates production-grade ML engineering for financial services:
+
+- **High-accuracy fraud detection** using ensemble gradient boosting models (LightGBM/XGBoost) trained on real-world transaction patterns, achieving significant improvements over rule-based systems
+- **Intelligent sanctions screening** with fuzzy matching algorithms (RapidFuzz) against OFAC SDN and Consolidated Lists, handling name variations while minimizing false positives
+- **Real-time inference** with sub-200ms end-to-end latency through optimized model serving and caching strategies
+- **Explainable AI** using SHAP values to provide transparent, auditable predictions that meet regulatory requirements
+
+### System Architecture & Capabilities
+
+**Fraud Detection Engine**
+
+- **ML Models**: Gradient boosting ensembles (LightGBM/XGBoost) optimized for imbalanced fraud datasets, delivering superior precision-recall tradeoffs compared to traditional rule engines
+- **Feature Engineering**: Production-grade features including velocity counters (transaction frequency by time windows), device fingerprinting, BIN-IP geographic mismatch detection, and z-scored transaction amounts
+- **Decision Optimization**: Calibrated probability outputs with cost-sensitive thresholds that balance fraud prevention against false positive rates
+- **Explainability**: SHAP-based feature attribution for every prediction, providing regulatory-compliant transparency
+
+**Sanctions Screening Module**
+
+- **Fuzzy Matching**: Token-based similarity scoring using RapidFuzz to handle name variations, transliterations, and common data quality issues
+- **Smart Filtering**: Country-of-origin and date-based filters to reduce false positives while maintaining screening coverage
+- **Confidence Scoring**: Probabilistic match scoring with configurable thresholds for different risk appetites
+- **Compliance Trail**: Complete audit logging of all screening decisions with match rationale
+
+**Production-Ready API Infrastructure**
+
+- **Service Layer**: FastAPI-based REST API with `/score` endpoint delivering fraud risk scores, SHAP explanations, and sanctions matches in a single request
+- **Performance Optimization**: Redis caching for velocity features and sanctions list lookups, ensuring sub-200ms P95 latency
+- **Data Persistence**: PostgreSQL for audit logs, transaction history, and compliance reporting
+- **Observability**: Structured logging, request tracing, and performance metrics for production monitoring
+
+**Interactive Demo Dashboard**
+
+- Real-time transaction scoring with visual risk indicators
+- Feature importance visualization showing model decision factors
+- Sanctions match alerts with confidence scores and match details
+- Performance analytics tracking accuracy, latency, and false positive rates
+
+## Technology Stack
+
+Built on battle-tested, production-grade technologies:
+
+- **ML Framework**: Python with LightGBM/XGBoost for gradient boosting, SHAP for explainability, scikit-learn for preprocessing
+- **API Layer**: FastAPI for high-performance async request handling with automatic OpenAPI documentation
+- **Caching**: Redis for low-latency feature lookups and velocity counters (sub-millisecond access)
+- **Database**: PostgreSQL for ACID-compliant audit logs and transaction storage
+- **Frontend**: Next.js with TypeScript, Tailwind CSS for styling, Recharts for data visualization
+- **Infrastructure**: Docker containerization, deployable to any cloud provider (Fly.io, AWS, GCP, Azure)
+- **Monitoring**: Structured logging with correlation IDs, metrics exportable to Prometheus/Grafana
+
+## What This Demonstrates
+
+This reference implementation showcases production-grade ML engineering patterns that solve real business problems:
+
+### Technical Depth & Business Impact
+
+- **Advanced Feature Engineering**: Domain-specific features (velocity counters, device fingerprinting, BIN-IP mismatch) that capture fraud patterns rule-based systems miss, directly reducing fraud losses
+- **Real-Time ML Inference**: Architecture optimized for sub-200ms P95 latency through model optimization, caching strategies, and async processing—fast enough to score transactions inline without impacting checkout conversion
+- **Intelligent Fuzzy Matching**: Sanctions screening that handles real-world data quality issues (name variations, typos, transliterations) while keeping false positive rates below 5%, reducing manual review costs
+- **Regulatory-Grade Explainability**: SHAP-based feature attribution providing auditable explanations for every decision, meeting compliance requirements for model transparency
+- **Production-Ready Architecture**: Comprehensive logging, monitoring, and error handling designed for 99.9% uptime in high-stakes financial environments
+
+### Industry Applications
+
+This approach is applicable to:
+
+- Payment processors screening high-volume card transactions
+- Money transfer operators managing cross-border payment risk
+- Banking-as-a-Service platforms providing fraud detection to fintech clients
+- Digital wallets protecting users from account takeover and unauthorized transactions
+- E-commerce platforms reducing chargeback rates and fraud losses
+
+### Target Outcomes
+
+Upon completion, this case study will demonstrate:
+
+- Significant reduction in fraud losses through improved detection accuracy
+- Dramatic decrease in false positives, reducing manual review burden
+- Sub-200ms end-to-end latency for real-time transaction scoring
+- Explainable AI meeting regulatory and business requirements
+
+## Data Sources & Research Restrictions
+
+This reference implementation uses publicly available datasets to demonstrate production-grade ML engineering patterns:
+
+**Fraud Detection Datasets**
+
+- **[IEEE-CIS Fraud Detection Dataset](https://www.kaggle.com/c/ieee-fraud-detection)** — Real-world e-commerce transaction data (non-commercial research use only)
+- **[PaySim Synthetic Dataset](https://www.kaggle.com/ntnu-testimon/paysim1)** — Synthetic mobile money transactions (open data)
+
+**Sanctions Screening**
+
+- **[OFAC SDN and Consolidated Lists](https://sanctionslist.ofac.treas.gov/Home)** — U.S. Treasury sanctions data (public domain)
+
+### Important: Dataset Licensing Restrictions
+
+> **Research Use Only**: Models trained on IEEE-CIS data are restricted to **non-commercial research use**. This dataset cannot be redistributed or used for commercial model training.
+>
+> **Production Deployments**: Any commercial implementation requires retraining on proprietary or licensed datasets with appropriate usage rights.
+
+This restriction is why we position this as a **research case study and reference implementation**. It demonstrates our technical capabilities and ML engineering expertise while respecting dataset licensing terms.
+
+## Open Source & License
+
+**Repository**: [github.com/devbrewai/ai-fraud-detection-cross-border-payments](https://github.com/devbrewai/ai-fraud-detection-cross-border-payments)
+
+**License**: Apache 2.0 — enterprise-friendly, permissive, and patent-protected.
+
+### Why Open Source?
+
+We're building this project in public to:
+
+1. **Demonstrate our expertise** in production-grade AI systems for fintech startups and financial institutions that deal with cross-border payments
+2. **Accelerate safe adoption** by providing reference implementations
+3. **Build trust through transparency** in how AI-powered fraud detection works
+
+The repository includes complete source code, trained models, API implementation, interactive demo, and comprehensive technical documentation.
+
+### Enterprise Deployment
+
+This open-source project demonstrates core capabilities and ML engineering patterns. **For production deployments**, we provide:
+
+- **Custom model training** on your proprietary transaction data (with appropriate licensing)
+- **Infrastructure setup** and scaling guidance for production workloads
+- **Integration support** with your existing payment stack and compliance systems
+- **Ongoing optimization** and model retraining pipelines
+- **Security hardening** including penetration testing and incident response procedures
+- **Compliance consulting** for regulatory requirements (PCI-DSS, SOC 2, etc.)
+
+**Why This Matters**: Production fraud detection systems require training on real transaction data from your specific business context. This case study demonstrates the infrastructure, pipelines, and models needed to build the system in production, your data would be required to make it production-ready.
+
+### Research vs. Production
+
+| Aspect             | This Research Case Study           | Production Implementation         |
+| ------------------ | ---------------------------------- | --------------------------------- |
+| **Data**           | Public datasets (IEEE-CIS, PaySim) | Your proprietary transaction data |
+| **Models**         | Demonstration benchmarks           | Custom-trained on your patterns   |
+| **Infrastructure** | Reference architecture             | Enterprise-grade with SLAs        |
+| **Compliance**     | Basic audit logging                | Full regulatory compliance        |
+| **Support**        | Community (GitHub)                 | Dedicated engineering team        |
+| **License**        | Apache 2.0 (research use)          | Commercial license with your data |
+
+This approach lets us demonstrate technical expertise transparently while respecting dataset licensing and setting clear expectations for production deployments.
+
+---
+
+## About Devbrew
+
+Devbrew partners with fintech startups and financial institutions to design and deploy production-grade AI solutions.
+
+From prototypes to full-scale systems, we help teams ship faster, improve decision accuracy, and unlock measurable ROI.
+
+**Want to explore how this solution could work in your business?** [Book a call](/contact) to discuss your fraud detection and compliance challenges.

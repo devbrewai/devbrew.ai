@@ -29,6 +29,10 @@ export default function TableOfContents({ className = '' }: TableOfContentsProps
       const isInCTA = heading.closest('section[id="book"]')
       if (isInCTA) return
 
+      // Skip headings that are inside the footer section (Related/Next/Previous navigation)
+      const isInFooter = heading.closest('footer')
+      if (isInFooter) return
+
       const id = heading.id || heading.textContent?.toLowerCase().replace(/\s+/g, '-') || ''
 
       // Add id to heading if it doesn't have one

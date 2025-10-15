@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
 import { motion, useReducedMotion } from 'framer-motion'
+import { cn } from '@/lib/utils'
 
 /**
  * Reusable CTA (Call-to-Action) component with customizable content
@@ -13,7 +14,7 @@ import { motion, useReducedMotion } from 'framer-motion'
  * <CTA />
  *
  * @example
- * // Case study page
+ * // Case study page with custom styling
  * <CTA
  *   eyebrow="Interested in similar results?"
  *   title="Let's discuss your AI transformation"
@@ -21,6 +22,8 @@ import { motion, useReducedMotion } from 'framer-motion'
  *   buttonText="Schedule a Consultation"
  *   buttonHref="/contact"
  *   variant="compact"
+ *   className="py-20"
+ *   titleClassName="text-5xl"
  * />
  *
  * @example
@@ -47,6 +50,16 @@ interface CTAProps {
   buttonHref?: string
   /** Visual variant - 'default' for large text, 'compact' for smaller text */
   variant?: 'default' | 'compact'
+  /** Additional classes for the section wrapper */
+  className?: string
+  /** Additional classes for the inner container */
+  containerClassName?: string
+  /** Additional classes for the title */
+  titleClassName?: string
+  /** Additional classes for the description */
+  descriptionClassName?: string
+  /** Additional classes for the button */
+  buttonClassName?: string
 }
 
 export function CTA({
@@ -56,6 +69,11 @@ export function CTA({
   buttonText = 'Get Started',
   buttonHref = '/get-started',
   variant = 'default',
+  className,
+  containerClassName,
+  titleClassName,
+  descriptionClassName,
+  buttonClassName,
 }: CTAProps) {
   const reduce = useReducedMotion()
   const container = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
@@ -68,9 +86,11 @@ export function CTA({
 
   return (
     <section
-      className={`relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white text-neutral-900 ${
-        isCompact ? 'py-16' : 'py-24'
-      }`}
+      className={cn(
+        'relative overflow-hidden bg-gradient-to-b from-blue-50 via-white to-white text-neutral-900',
+        isCompact ? 'py-16' : 'py-24',
+        className
+      )}
       id="book"
     >
       <div
@@ -83,7 +103,11 @@ export function CTA({
       />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
-          className={`mx-auto space-y-6 text-center ${isCompact ? 'max-w-2xl' : 'max-w-3xl'}`}
+          className={cn(
+            'mx-auto space-y-6 text-center',
+            isCompact ? 'max-w-2xl' : 'max-w-3xl',
+            containerClassName
+          )}
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -97,9 +121,11 @@ export function CTA({
             )}
             <motion.h2
               variants={item}
-              className={`font-medium tracking-tighter text-balance ${
-                isCompact ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-6xl'
-              }`}
+              className={cn(
+                'font-medium tracking-tighter text-balance',
+                isCompact ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-6xl',
+                titleClassName
+              )}
             >
               {title}
             </motion.h2>
@@ -107,7 +133,10 @@ export function CTA({
           {description && (
             <motion.p
               variants={item}
-              className="mx-auto mt-6 max-w-xl text-sm text-balance text-neutral-700 sm:text-base"
+              className={cn(
+                'mx-auto mt-6 max-w-xl text-sm text-balance text-neutral-700 sm:text-base',
+                descriptionClassName
+              )}
             >
               {description}
             </motion.p>
@@ -116,7 +145,10 @@ export function CTA({
             <Button
               asChild
               size="lg"
-              className="rounded-none bg-blue-600 px-8 text-white hover:bg-blue-700"
+              className={cn(
+                'rounded-none bg-blue-600 px-8 text-white hover:bg-blue-700',
+                buttonClassName
+              )}
             >
               <Link href={buttonHref}>{buttonText}</Link>
             </Button>

@@ -1,8 +1,14 @@
 {
-  "ai": 1,
+  "ai": 3,
+  "credit-risk": 1,
+  "underwriting": 1,
+  "fintech": 3,
+  "machine-learning": 3,
+  "lending": 1,
+  "compliance": 2,
+  "aml": 1,
+  "kyc": 1,
+  "regulatory": 1,
   "fraud-detection": 1,
-  "payments": 1,
-  "fintech": 1,
-  "machine-learning": 1,
-  "compliance": 1
+  "payments": 1
 }

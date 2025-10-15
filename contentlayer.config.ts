@@ -149,6 +149,8 @@ export const CaseStudy = defineDocumentType(() => ({
     layout: { type: 'string' },
     bibliography: { type: 'string' },
     canonicalUrl: { type: 'string' },
+    clientLogo: { type: 'string' }, // Path to client logo image
+    clientName: { type: 'string' }, // Client name for alt text
   },
   computedFields: {
     ...computedFields,

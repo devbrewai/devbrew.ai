@@ -1,9 +1,9 @@
-import ListLayout from '@/layouts/ListLayout'
+import CaseStudiesListLayout from '@/layouts/CaseStudiesListLayout'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allCaseStudies } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
 
-const POSTS_PER_PAGE = 5
+const POSTS_PER_PAGE = 6
 
 export const metadata = genPageMetadata({ title: 'Case Studies' })
 
@@ -18,7 +18,7 @@ export default async function CaseStudiesPage() {
   }
 
   return (
-    <ListLayout
+    <CaseStudiesListLayout
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}

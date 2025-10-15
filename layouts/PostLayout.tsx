@@ -26,7 +26,7 @@ const xShareUrl = (path: string, title: string) =>
   `https://x.com/intent/tweet?url=${encodeURIComponent(buildShareTargetUrl(path, 'x'))}&text=${encodeURIComponent(title)}`
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
-  weekday: 'long',
+  // weekday: 'long', Uncomment if you want the weekday to be displayed
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -57,6 +57,7 @@ export default function PostLayout({
 }: LayoutProps) {
   const router = useRouter()
   const { filePath, path, slug, date, title, tags, summary } = content
+  const lastmod = 'lastmod' in content ? content.lastmod : null
   const basePath = path.split('/')[0]
   // Format the label: remove hyphens and capitalize words
   const backLabel = basePath
@@ -132,9 +133,29 @@ export default function PostLayout({
                       ))}
                     </div>
                     <div className="text-sm">
-                      <time dateTime={date}>
-                        {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
-                      </time>
+                      {lastmod && lastmod !== date ? (
+                        <div className="flex flex-col gap-1 text-right">
+                          <time dateTime={lastmod} className="font-medium text-white">
+                            Last updated:{' '}
+                            {new Date(lastmod).toLocaleDateString(
+                              siteMetadata.locale,
+                              postDateTemplate
+                            )}
+                          </time>
+                          <time dateTime={date} className="text-xs text-blue-300">
+                            Published:{' '}
+                            {new Date(date).toLocaleDateString(
+                              siteMetadata.locale,
+                              postDateTemplate
+                            )}
+                          </time>
+                        </div>
+                      ) : (
+                        <time dateTime={date}>
+                          Published:{' '}
+                          {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
+                        </time>
+                      )}
                     </div>
                   </div>
                 </div>

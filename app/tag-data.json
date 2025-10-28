@@ -1,14 +1,15 @@
 {
   "ai": 3,
-  "credit-risk": 1,
-  "underwriting": 1,
-  "fintech": 3,
+  "chargebacks": 1,
+  "prediction": 1,
+  "fraud-prevention": 1,
+  "payments": 2,
   "machine-learning": 3,
-  "lending": 1,
-  "compliance": 2,
-  "aml": 1,
-  "kyc": 1,
-  "regulatory": 1,
+  "risk-management": 2,
   "fraud-detection": 1,
-  "payments": 1
+  "fintech": 1,
+  "compliance": 1,
+  "merchant-risk": 1,
+  "portfolio-optimization": 1,
+  "underwriting": 1
 }

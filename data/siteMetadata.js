@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Devbrew',
   headerTitle: 'Devbrew',
   description:
-    'Devbrew is an AI engineering firm. We partner with fintech founders and product teams to design and build custom AI applications',
+    'Devbrew is an AI engineering and research firm. We partner with payments companies to design, research, and deploy custom AI solutions',
   language: 'en-us',
   theme: 'light', // system, dark or light
   siteUrl: 'https://www.devbrew.ai',

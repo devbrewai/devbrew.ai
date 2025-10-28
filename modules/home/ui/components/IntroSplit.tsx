@@ -69,22 +69,23 @@ export function IntroSplit() {
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">How to think of us</h2>
               <p className="mt-2 text-neutral-700">
-                We are not an agency. We are your out-of-the-box AI engineering partner,
-                laser-focused on delivering production systems.
+                We are a hands-on AI engineering and research partner for focused on helping you
+                design and deploy AI production systems.
               </p>
             </motion.div>
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">What makes us different</h2>
               <p className="mt-2 text-neutral-700">
-                We combine deep technical expertise with direct execution. We don't just advise, we
-                build alongside you.
+                We research and combine deep technical expertise with direct execution. We don't
+                just advise, we build alongside you.
               </p>
             </motion.div>
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">Where we drive impact</h2>
               <p className="mt-2 text-neutral-700">
-                We design AI systems for credit risk, fraud, compliance, and predictive analytics.
-                We also deploy automation for operations, customer support, and generative AI.
+                We design, build, and deploy AI across the payments stack to raise approvals, cut
+                losses, and automate operations, covering fraud, merchant risk, disputes,
+                chargebacks, KYC/KYB, reconciliation, and more.
               </p>
             </motion.div>
           </motion.div>

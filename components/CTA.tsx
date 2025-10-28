@@ -65,7 +65,7 @@ interface CTAProps {
 export function CTA({
   eyebrow = 'Ready to get started?',
   title = 'Turn AI potential into ROI in weeks',
-  description = 'We help fintech leaders build AI solutions that accelerate growth and deliver measurable returns.',
+  description = 'We help payments companies build AI solutions that accelerate growth and deliver measurable returns.',
   buttonText = 'Get Started',
   buttonHref = '/get-started',
   variant = 'default',

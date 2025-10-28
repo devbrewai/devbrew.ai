@@ -60,8 +60,8 @@ export function ResearchCasesList() {
               Case Studies With Measurable Impact
             </motion.h2>
             <motion.p variants={item} className="mt-4 text-balance text-neutral-700">
-              Explore case studies showing how applied AI solves high-cost problems in fintech and
-              finance, reducing losses, improving decisions, and delivering measurable value.
+              Explore case studies showing how applied AI solves high-cost problems in payments,
+              reducing losses, improving decisions, and delivering measurable value.
             </motion.p>
 
             {showNav && (

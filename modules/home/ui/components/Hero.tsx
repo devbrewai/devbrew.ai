@@ -102,11 +102,12 @@ export function HeroCentered() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <h1 className="text-4xl font-medium tracking-tighter text-balance text-neutral-900 sm:text-5xl lg:text-6xl">
-            AI Engineering for Fintech & Finance
+            AI Engineering for Payments
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-balance text-neutral-700 sm:text-base">
-            We help U.S. fintech startups and financial institutions design and deploy AI solutions
+            We design, research, and deploy custom AI that grows revenue, reduces losses, and
+            automates workflows across the payments stack, with measurable ROI in weeks.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center">

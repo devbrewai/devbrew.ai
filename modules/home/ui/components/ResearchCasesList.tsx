@@ -18,21 +18,21 @@ export function ResearchCasesList() {
   // Same sample items as the card layout for visual comparison
   const items = [
     {
-      title: 'Fraud Detection & Sanctions Screening for Cross‑Border Payments',
+      title: 'AI Fraud Detection & Sanctions Screening for Cross‑Border Payments',
       description:
         'Detect and prevent fraud in card-not-present transactions while screening against OFAC sanctions lists. Reduced fraud loss by 38%, cut false positives by 60% with sub-200ms latency.',
       href: '/case-studies/fraud-detection-cross-border-payments',
       status: 'in-progress' as const,
     },
     {
-      title: 'Chargeback Prediction & Prevention',
+      title: 'AI Chargeback Prediction & Prevention',
       description:
         'Predict chargebacks before they occur and trigger prevention strategies to reduce disputes and losses. 20-35% chargeback reduction with less than 2% conversion impact.',
       href: '/case-studies/chargeback-prediction-prevention',
       status: 'coming-soon' as const,
     },
     {
-      title: 'Merchant Risk Scoring & Portfolio Optimization',
+      title: 'AI Merchant Risk Scoring & Portfolio Optimization',
       description:
         'Score merchants by risk to optimize underwriting and portfolio exposure. 15-25% fraud exposure reduction while reviewing 30% fewer merchants.',
       href: '/case-studies/merchant-risk-scoring-portfolio-optimization',

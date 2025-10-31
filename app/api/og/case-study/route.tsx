@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
                   maxWidth: '900px',
                 }}
               >
-                {description.length > 150 ? `${description.substring(0, 150)}...` : description}
+                {description.length > 180 ? `${description.substring(0, 180)}...` : description}
               </div>
             )}
           </div>

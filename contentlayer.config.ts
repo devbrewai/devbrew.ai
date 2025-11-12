@@ -27,7 +27,7 @@ import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import prettier from 'prettier'
 import type {
   Research as ResearchDoc,
-  Insight as InsightDoc,
+  Blog as BlogDoc,
   CaseStudy as CaseStudyDoc,
 } from 'contentlayer/generated'
 
@@ -98,9 +98,9 @@ function createSearchIndex(allDocs) {
   }
 }
 
-export const Insight = defineDocumentType(() => ({
-  name: 'Insight',
-  filePathPattern: 'insights/**/*.mdx',
+export const Blog = defineDocumentType(() => ({
+  name: 'Blog',
+  filePathPattern: 'blog/**/*.mdx',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
@@ -226,7 +226,7 @@ export const Authors = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Research, Insight, CaseStudy, Authors],
+  documentTypes: [Research, Blog, CaseStudy, Authors],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
@@ -259,12 +259,12 @@ export default makeSource({
   onSuccess: async (importData) => {
     const data = (await importData()) as {
       allResearch?: ResearchDoc[]
-      allInsights?: InsightDoc[]
+      allBlogs?: BlogDoc[]
       allCaseStudies?: CaseStudyDoc[]
     }
     const allDocs = [
       ...(data.allResearch ?? []),
-      ...(data.allInsights ?? []),
+      ...(data.allBlogs ?? []),
       ...(data.allCaseStudies ?? []),
     ]
     createTagCount(allDocs)

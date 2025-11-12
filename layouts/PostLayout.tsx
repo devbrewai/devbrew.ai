@@ -3,7 +3,7 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import { useRouter } from 'next/navigation'
-import type { Authors, Research, Insight, CaseStudy } from 'contentlayer/generated'
+import type { Authors, Research, Blog, CaseStudy } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import { Linkedin as LinkedinIcon, X as XIcon } from '@/components/social-icons/icons'
 // import PageTitle from '@/components/PageTitle'
@@ -33,7 +33,7 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 }
 
 interface LayoutProps {
-  content: CoreContent<Research | Insight | CaseStudy>
+  content: CoreContent<Research | Blog | CaseStudy>
   authorDetails: CoreContent<Authors>[]
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
@@ -56,14 +56,16 @@ export default function PostLayout({
   children,
 }: LayoutProps) {
   const router = useRouter()
-  const { filePath, path, slug, date, title, tags, summary } = content
-  const lastmod = 'lastmod' in content ? content.lastmod : null
+  const { filePath, path, slug, date, title, tags, summary, readingTime } = content
   const basePath = path.split('/')[0]
   // Format the label: remove hyphens and capitalize words
   const backLabel = basePath
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
+
+  // Format reading time
+  const readingTimeText = readingTime?.text || '1 min read'
 
   return (
     <>
@@ -110,52 +112,39 @@ export default function PostLayout({
                   </div>
 
                   {/* Author and Date Info */}
-                  <div className="flex flex-col gap-4 text-blue-200 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex flex-wrap items-center gap-6">
-                      {authorDetails.map((author, index) => (
-                        <div key={author.name} className="flex items-center gap-3">
-                          {author.avatar && (
-                            <Image
-                              src={author.avatar}
-                              width={40}
-                              height={40}
-                              alt={author.name}
-                              className="rounded-full ring-2 ring-white/20"
-                            />
-                          )}
-                          <div>
-                            <div className="font-medium text-white">{author.name}</div>
-                            {author.occupation && (
-                              <div className="text-sm text-blue-200">{author.occupation}</div>
-                            )}
+                  <div className="flex items-start gap-4">
+                    {authorDetails[0]?.avatar && (
+                      <Link href={`/authors/${authorDetails[0].slug}`} className="flex-shrink-0">
+                        <Image
+                          src={authorDetails[0].avatar}
+                          width={40}
+                          height={40}
+                          alt={authorDetails[0].name}
+                          className="rounded-full ring-2 ring-white/20"
+                        />
+                      </Link>
+                    )}
+                    <div className="flex flex-col">
+                      <div className="flex flex-wrap items-center gap-2">
+                        {authorDetails.map((author, index) => (
+                          <div key={author.name} className="flex items-center gap-2">
+                            {index > 0 && <span className="text-blue-400">•</span>}
+                            <Link
+                              href={`/authors/${author.slug}`}
+                              className="text-sm font-semibold text-white transition-colors hover:text-blue-200"
+                            >
+                              {author.name}
+                            </Link>
                           </div>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="text-sm">
-                      {lastmod && lastmod !== date ? (
-                        <div className="flex flex-col gap-1 text-right">
-                          <time dateTime={lastmod} className="font-medium text-white">
-                            Last updated:{' '}
-                            {new Date(lastmod).toLocaleDateString(
-                              siteMetadata.locale,
-                              postDateTemplate
-                            )}
-                          </time>
-                          <time dateTime={date} className="text-xs text-blue-300">
-                            Published:{' '}
-                            {new Date(date).toLocaleDateString(
-                              siteMetadata.locale,
-                              postDateTemplate
-                            )}
-                          </time>
-                        </div>
-                      ) : (
-                        <time dateTime={date}>
-                          Published:{' '}
+                        ))}
+                      </div>
+                      <div className="mt-1 flex items-center gap-2 text-sm text-blue-200">
+                        <span>{readingTimeText}</span>
+                        <span>•</span>
+                        <time dateTime={date} className="text-blue-200">
                           {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                         </time>
-                      )}
+                      </div>
                     </div>
                   </div>
                 </div>

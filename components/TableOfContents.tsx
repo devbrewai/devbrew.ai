@@ -106,7 +106,7 @@ export default function TableOfContents({ className = '' }: TableOfContentsProps
   return (
     <nav className={`space-y-1 ${className}`}>
       <h3 className="mb-4 text-sm font-semibold tracking-wide text-gray-900 uppercase dark:text-white">
-        On this page
+        Content
       </h3>
       <ul className="space-y-2 text-sm">
         {toc.map((item) => {

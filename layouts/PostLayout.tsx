@@ -177,7 +177,7 @@ export default function PostLayout({
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-12">
               {/* Main Content */}
               <div className="space-y-8 lg:col-span-3">
-                <div className="prose prose-lg dark:prose-invert max-w-none">{children}</div>
+                <div className="prose prose-base dark:prose-invert max-w-none">{children}</div>
 
                 {/* Share Section */}
                 <div className="border-t border-gray-200 pt-8 dark:border-gray-800">

@@ -4,8 +4,8 @@ import 'katex/dist/katex.css'
 import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
-import { allInsights, allAuthors } from 'contentlayer/generated'
-import type { Authors, Insight } from 'contentlayer/generated'
+import { allBlogs, allAuthors } from 'contentlayer/generated'
+import type { Authors, Blog } from 'contentlayer/generated'
 import PostSimple from '@/layouts/PostSimple'
 import PostLayout from '@/layouts/PostLayout'
 import PostBanner from '@/layouts/PostBanner'
@@ -25,7 +25,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata | undefined> {
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
-  const post = allInsights.find((p) => p.slug === slug)
+  const post = allBlogs.find((p) => p.slug === slug)
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
@@ -73,7 +73,7 @@ export async function generateMetadata(props: {
 }
 
 export const generateStaticParams = async () => {
-  return allInsights.map((p) => ({
+  return allBlogs.map((p) => ({
     slug: p.slug.split('/').map((name) => decodeURI(name)),
   }))
 }
@@ -81,7 +81,7 @@ export const generateStaticParams = async () => {
 export default async function Page(props: { params: Promise<{ slug: string[] }> }) {
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
-  const sortedCoreContents = allCoreContent(sortPosts(allInsights))
+  const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
   if (postIndex === -1) {
     return notFound()
@@ -89,7 +89,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
 
   const prev = sortedCoreContents[postIndex + 1]
   const next = sortedCoreContents[postIndex - 1]
-  const post = allInsights.find((p) => p.slug === slug) as Insight
+  const post = allBlogs.find((p) => p.slug === slug) as Blog
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
@@ -104,13 +104,13 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
     }
   })
 
-  // Related content within Insights
+  // Related content within Blogs
   const overlapScore = (a?: string[], b?: string[]) => {
     if (!a || !b) return 0
     const setB = new Set(b)
     return a.reduce((acc, t) => acc + (setB.has(t) ? 1 : 0), 0)
   }
-  const related = allInsights
+  const related = allBlogs
     .filter((p) => p.slug !== slug && p.draft !== true)
     .map((p) => ({ item: p, score: overlapScore(post.tags, p.tags) }))
     .filter(({ score }) => score > 0)

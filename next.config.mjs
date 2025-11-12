@@ -45,6 +45,8 @@ export default () => {
       remotePatterns: [
         { protocol: 'https', hostname: 'picsum.photos' },
         { protocol: 'http', hostname: 'localhost' },
+        { protocol: 'https', hostname: 'www.devbrew.ai' },
+        { protocol: 'https', hostname: 'devbrew.ai' },
       ],
       unoptimized,
     },

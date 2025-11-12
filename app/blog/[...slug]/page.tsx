@@ -9,15 +9,17 @@ import type { Authors, Blog } from 'contentlayer/generated'
 import PostSimple from '@/layouts/PostSimple'
 import PostLayout from '@/layouts/PostLayout'
 import PostBanner from '@/layouts/PostBanner'
+import BlogPostLayout from '@/layouts/BlogPostLayout'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
 
-const defaultLayout = 'PostLayout'
+const defaultLayout = 'BlogPostLayout'
 const layouts = {
   PostSimple,
   PostLayout,
   PostBanner,
+  BlogPostLayout,
 }
 
 export async function generateMetadata(props: {
@@ -48,12 +50,19 @@ export async function generateMetadata(props: {
     }
   })
 
+  // Use custom OG metadata if available, otherwise fall back to title/summary
+  const ogTitle = post.ogTitle || post.title
+  const ogDescription = post.ogDescription || post.summary
+
   return {
     title: post.title,
     description: post.summary,
+    alternates: {
+      canonical: post.canonicalUrl || `${siteMetadata.siteUrl}/${post.path}`,
+    },
     openGraph: {
-      title: post.title,
-      description: post.summary,
+      title: ogTitle,
+      description: ogDescription,
       siteName: siteMetadata.title,
       locale: 'en_US',
       type: 'article',
@@ -65,8 +74,8 @@ export async function generateMetadata(props: {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.summary,
+      title: ogTitle,
+      description: ogDescription,
       images: imageList,
     },
   }

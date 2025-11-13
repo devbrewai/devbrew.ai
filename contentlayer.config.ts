@@ -51,11 +51,24 @@ const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
   slug: {
     type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath.replace(/^.+?(\/)/, ''),
+    resolve: (doc) => {
+      // Use custom slug from frontmatter if provided, otherwise fall back to filename-based slug
+      if (doc.slug) {
+        return doc.slug
+      }
+      return doc._raw.flattenedPath.replace(/^.+?(\/)/, '')
+    },
   },
   path: {
     type: 'string',
-    resolve: (doc) => doc._raw.flattenedPath,
+    resolve: (doc) => {
+      // Use custom slug for path if provided
+      if (doc.slug) {
+        const contentType = doc._raw.flattenedPath.split('/')[0]
+        return `${contentType}/${doc.slug}`
+      }
+      return doc._raw.flattenedPath
+    },
   },
   filePath: {
     type: 'string',
@@ -105,6 +118,7 @@ export const Blog = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    slug: { type: 'string' }, // Custom URL slug (2-3 words, hyphen-separated)
     tags: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
@@ -113,7 +127,7 @@ export const Blog = defineDocumentType(() => ({
     authors: { type: 'list', of: { type: 'string' } },
     layout: { type: 'string' },
     bibliography: { type: 'string' },
-    canonicalUrl: { type: 'string' },
+    canonicalUrl: { type: 'string' }, // Optional: only use for republished content
     ogTitle: { type: 'string' },
     ogDescription: { type: 'string' },
   },
@@ -142,6 +156,7 @@ export const CaseStudy = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    slug: { type: 'string' }, // Custom URL slug (2-3 words, hyphen-separated)
     tags: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
@@ -150,7 +165,7 @@ export const CaseStudy = defineDocumentType(() => ({
     authors: { type: 'list', of: { type: 'string' } },
     layout: { type: 'string' },
     bibliography: { type: 'string' },
-    canonicalUrl: { type: 'string' },
+    canonicalUrl: { type: 'string' }, // Optional: only use for republished content
     clientLogo: { type: 'string' }, // Path to client logo image
     clientName: { type: 'string' }, // Client name for alt text
   },
@@ -179,6 +194,7 @@ export const Research = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
+    slug: { type: 'string' }, // Custom URL slug (2-3 words, hyphen-separated)
     tags: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
@@ -187,7 +203,7 @@ export const Research = defineDocumentType(() => ({
     authors: { type: 'list', of: { type: 'string' } },
     layout: { type: 'string' },
     bibliography: { type: 'string' },
-    canonicalUrl: { type: 'string' },
+    canonicalUrl: { type: 'string' }, // Optional: only use for republished content
   },
   computedFields: {
     ...computedFields,

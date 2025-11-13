@@ -33,6 +33,14 @@ export default function TableOfContents({ className = '' }: TableOfContentsProps
       const isInFooter = heading.closest('footer')
       if (isInFooter) return
 
+      // Skip headings that are inside aside/sidebar elements (Authors, Tags, etc.)
+      const isInAside = heading.closest('aside')
+      if (isInAside) return
+
+      // Only include headings from main content area
+      const isInMain = heading.closest('main')
+      if (!isInMain) return
+
       const id = heading.id || heading.textContent?.toLowerCase().replace(/\s+/g, '-') || ''
 
       // Add id to heading if it doesn't have one
@@ -63,7 +71,7 @@ export default function TableOfContents({ className = '' }: TableOfContentsProps
         })
       },
       {
-        rootMargin: '-80px 0px -80% 0px',
+        rootMargin: '-120px 0px -80% 0px',
         threshold: 0,
       }
     )
@@ -84,7 +92,7 @@ export default function TableOfContents({ className = '' }: TableOfContentsProps
     e.preventDefault()
     const element = document.getElementById(id)
     if (element) {
-      const offset = 80 // Adjust based on your header height
+      const offset = 120 // Adjust based on your header height
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - offset
 

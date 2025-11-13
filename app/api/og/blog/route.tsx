@@ -88,7 +88,7 @@ export async function GET(request: NextRequest) {
             </svg>
 
             {/* Badge */}
-            {/* <div
+            <div
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -110,7 +110,7 @@ export async function GET(request: NextRequest) {
               >
                 Blog
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       ),

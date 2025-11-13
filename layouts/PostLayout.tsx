@@ -127,7 +127,7 @@ export default function PostLayout({
                     <div className="flex flex-col">
                       <div className="flex flex-wrap items-center gap-2">
                         {authorDetails.map((author, index) => (
-                          <div key={author.name} className="flex items-center gap-2">
+                          <div key={author.name} className="flex items-center gap-4">
                             {index > 0 && <span className="text-blue-400">•</span>}
                             <Link
                               href={`/authors/${author.slug}`}
@@ -135,6 +135,32 @@ export default function PostLayout({
                             >
                               {author.name}
                             </Link>
+                            <div className="flex items-center gap-1.5">
+                              {author.twitter && (
+                                <Link
+                                  href={`https://x.com/intent/follow?screen_name=${author.twitter.split('/').pop()}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-blue-200 transition-colors hover:text-white"
+                                  aria-label={`Follow ${author.name} on X/Twitter`}
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <XIcon className="h-3.5 w-3.5 fill-current" />
+                                </Link>
+                              )}
+                              {author.linkedin && (
+                                <Link
+                                  href={author.linkedin}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-blue-200 transition-colors hover:text-white"
+                                  aria-label={`${author.name} on LinkedIn`}
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <LinkedinIcon className="h-3.5 w-3.5 fill-current" />
+                                </Link>
+                              )}
+                            </div>
                           </div>
                         ))}
                       </div>

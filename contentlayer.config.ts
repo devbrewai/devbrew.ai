@@ -118,7 +118,7 @@ export const Blog = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
-    slug: { type: 'string' }, // Custom URL slug (2-3 words, hyphen-separated)
+    slug: { type: 'string', required: true }, // Custom URL slug (2-3 words, hyphen-separated)
     tags: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
@@ -156,7 +156,7 @@ export const CaseStudy = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
-    slug: { type: 'string' }, // Custom URL slug (2-3 words, hyphen-separated)
+    slug: { type: 'string', required: true }, // Custom URL slug (2-3 words, hyphen-separated)
     tags: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
@@ -194,7 +194,7 @@ export const Research = defineDocumentType(() => ({
   fields: {
     title: { type: 'string', required: true },
     date: { type: 'date', required: true },
-    slug: { type: 'string' }, // Custom URL slug (2-3 words, hyphen-separated)
+    slug: { type: 'string', required: true }, // Custom URL slug (2-3 words, hyphen-separated)
     tags: { type: 'list', of: { type: 'string' }, default: [] },
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },

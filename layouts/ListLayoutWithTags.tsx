@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import { slug } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Research, Insight, CaseStudy } from 'contentlayer/generated'
+import type { Research, Blog, CaseStudy } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
@@ -15,9 +15,9 @@ interface PaginationProps {
   currentPage: number
 }
 interface ListLayoutProps {
-  posts: CoreContent<Research | Insight | CaseStudy>[]
+  posts: CoreContent<Research | Blog | CaseStudy>[]
   title: string
-  initialDisplayPosts?: CoreContent<Research | Insight | CaseStudy>[]
+  initialDisplayPosts?: CoreContent<Research | Blog | CaseStudy>[]
   pagination?: PaginationProps
   basePath?: string
   allLabel?: string

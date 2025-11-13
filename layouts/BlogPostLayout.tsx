@@ -4,8 +4,6 @@ import { CoreContent } from 'pliny/utils/contentlayer'
 
 import type { Blog, Authors } from 'contentlayer/generated'
 
-import Comments from '@/components/Comments'
-
 import Link from '@/components/Link'
 
 import PageTitle from '@/components/PageTitle'
@@ -20,10 +18,9 @@ import siteMetadata from '@/data/siteMetadata'
 
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
 
-const editUrl = (path: string) => `${siteMetadata.siteRepo}/blob/main/data/${path}`
+import TableOfContents from '@/components/TableOfContents'
 
-const discussUrl = (path: string) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/${path}`)}`
+import BackButton from '@/components/BackButton'
 
 const postDateTemplate: Intl.DateTimeFormatOptions = {
   weekday: 'long',
@@ -47,137 +44,211 @@ export default function BlogPostLayout({
   prev,
   children,
 }: LayoutProps) {
-  const { filePath, path, slug, date, title, tags } = content
+  const { path, date, title, tags, readingTime } = content
   const basePath = path.split('/')[0]
+  const readingTimeText = readingTime?.text || '5 min read'
 
   return (
     <SectionContainer>
-      <ScrollTopAndComment />
+      {/* <ScrollTopAndComment /> */}
       <article>
-        <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
-          <header className="pt-6 xl:pb-6">
-            <div className="space-y-1 text-center">
-              <dl className="space-y-10">
-                <div>
-                  <dt className="sr-only">Published on</dt>
-                  <dd className="text-base leading-6 font-medium text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>
-                      {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
-                    </time>
-                  </dd>
+        <div className="mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 gap-8 pt-12 lg:grid-cols-[250px_1fr] xl:grid-cols-[280px_1fr_280px]">
+            <aside className="hidden lg:block">
+              <div className="sticky top-24 space-y-6">
+                <BackButton />
+
+                <hr className="border-gray-200 dark:border-gray-700" />
+
+                <div className="space-y-4">
+                  {authorDetails.map((author) => {
+                    const twitterUsername = author.twitter
+                      ?.replace('https://twitter.com/', '')
+                      .replace('https://x.com/', '')
+                      .replace('@', '')
+                    const followIntentUrl = twitterUsername
+                      ? `https://twitter.com/intent/follow?screen_name=${twitterUsername}`
+                      : author.twitter
+
+                    return (
+                      <div className="flex items-start space-x-3" key={author.name}>
+                        {author.avatar && (
+                          <Image
+                            src={author.avatar}
+                            width={48}
+                            height={48}
+                            alt="avatar"
+                            className="h-12 w-12 rounded-full"
+                          />
+                        )}
+                        <div className="text-sm">
+                          {author.twitter ? (
+                            <Link
+                              href={followIntentUrl || '#'}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 font-medium"
+                            >
+                              {author.name}
+                            </Link>
+                          ) : (
+                            <div className="font-medium text-gray-900 dark:text-gray-100">
+                              {author.name}
+                            </div>
+                          )}
+                          {author.occupation && (
+                            <div className="text-gray-600 dark:text-gray-400">
+                              {author.occupation}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  })}
                 </div>
-              </dl>
-              <div>
-                <PageTitle>{title}</PageTitle>
+
+                <div>
+                  <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">
+                    Metadata
+                  </h3>
+                  <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                    <div className="flex items-center gap-2">
+                      <svg
+                        className="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                      </svg>
+                      <time dateTime={date}>
+                        {new Date(date).toLocaleDateString(siteMetadata.locale, {
+                          year: 'numeric',
+                          month: '2-digit',
+                          day: '2-digit',
+                        })}
+                      </time>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <svg
+                        className="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                      </svg>
+                      <span>{readingTimeText}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </header>
-          <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0 dark:divide-gray-700">
-            <dl className="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
-              <dt className="sr-only">Authors</dt>
-              <dd>
-                <ul className="flex flex-wrap justify-center gap-4 sm:space-x-12 xl:block xl:space-y-8 xl:space-x-0">
-                  {authorDetails.map((author) => (
-                    <li className="flex items-center space-x-2" key={author.name}>
+            </aside>
+
+            <main className="min-w-0">
+              <header className="mb-8">
+                <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-gray-100">
+                  {title}
+                </h1>
+              </header>
+              <div className="prose dark:prose-invert max-w-none">{children}</div>
+            </main>
+
+            <aside className="hidden xl:block">
+              <div className="sticky top-24">
+                <TableOfContents />
+              </div>
+            </aside>
+          </div>
+
+          <footer className="mt-12 border-t border-gray-200 pt-8 lg:hidden dark:border-gray-700">
+            <div className="space-y-6">
+              <BackButton />
+
+              <hr className="border-gray-200 dark:border-gray-700" />
+
+              <div className="space-y-4">
+                {authorDetails.map((author) => {
+                  const twitterUsername = author.twitter
+                    ?.replace('https://twitter.com/', '')
+                    .replace('https://x.com/', '')
+                    .replace('@', '')
+                  const followIntentUrl = twitterUsername
+                    ? `https://twitter.com/intent/follow?screen_name=${twitterUsername}`
+                    : author.twitter
+
+                  return (
+                    <div className="flex items-start space-x-3" key={author.name}>
                       {author.avatar && (
                         <Image
                           src={author.avatar}
-                          width={38}
-                          height={38}
+                          width={48}
+                          height={48}
                           alt="avatar"
-                          className="h-10 w-10 rounded-full"
+                          className="h-12 w-12 rounded-full"
                         />
                       )}
-                      <dl className="text-sm leading-5 font-medium whitespace-nowrap">
-                        <dt className="sr-only">Name</dt>
-                        <dd className="text-gray-900 dark:text-gray-100">{author.name}</dd>
-                        <dt className="sr-only">Twitter</dt>
-                        <dd>
-                          {author.twitter && (
-                            <Link
-                              href={author.twitter}
-                              className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                            >
-                              {author.twitter
-                                .replace('https://twitter.com/', '@')
-                                .replace('https://x.com/', '@')}
-                            </Link>
-                          )}
-                        </dd>
-                      </dl>
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </dl>
-            <div className="divide-y divide-gray-200 xl:col-span-3 xl:row-span-2 xl:pb-0 dark:divide-gray-700">
-              <div className="prose dark:prose-invert max-w-none pt-10 pb-8">{children}</div>
-              <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-                <Link href={discussUrl(path)} rel="nofollow">
-                  Discuss on Twitter
-                </Link>
-                {` • `}
-                <Link href={editUrl(filePath)}>View on GitHub</Link>
-              </div>
-              {siteMetadata.comments && (
-                <div
-                  className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300"
-                  id="comment"
-                >
-                  <Comments slug={slug} />
-                </div>
-              )}
-            </div>
-            <footer>
-              <div className="divide-gray-200 text-sm leading-5 font-medium xl:col-start-1 xl:row-start-2 xl:divide-y dark:divide-gray-700">
-                {tags && (
-                  <div className="py-4 xl:py-8">
-                    <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                      Tags
-                    </h2>
-                    <div className="flex flex-wrap">
-                      {tags.map((tag) => (
-                        <Tag key={tag} text={tag} />
-                      ))}
+                      <div className="text-sm">
+                        {author.twitter ? (
+                          <Link
+                            href={followIntentUrl || '#'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 font-medium"
+                          >
+                            {author.name}
+                          </Link>
+                        ) : (
+                          <div className="font-medium text-gray-900 dark:text-gray-100">
+                            {author.name}
+                          </div>
+                        )}
+                        {author.occupation && (
+                          <div className="text-gray-600 dark:text-gray-400">
+                            {author.occupation}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
-                {(next || prev) && (
-                  <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
-                    {prev && prev.path && (
-                      <div>
-                        <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          Previous Article
-                        </h2>
-                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/${prev.path}`}>{prev.title}</Link>
-                        </div>
-                      </div>
-                    )}
-                    {next && next.path && (
-                      <div>
-                        <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          Next Article
-                        </h2>
-                        <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
-                          <Link href={`/${next.path}`}>{next.title}</Link>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                )}
+                  )
+                })}
               </div>
-              <div className="pt-4 xl:pt-8">
-                <Link
-                  href={`/${basePath}`}
-                  className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                  aria-label="Back to the blog"
-                >
-                  &larr; Back to the blog
-                </Link>
+
+              <div>
+                <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">
+                  Metadata
+                </h3>
+                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center gap-2">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                      <line x1="16" y1="2" x2="16" y2="6" />
+                      <line x1="8" y1="2" x2="8" y2="6" />
+                      <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                    <time dateTime={date}>
+                      {new Date(date).toLocaleDateString(siteMetadata.locale, {
+                        year: 'numeric',
+                        month: '2-digit',
+                        day: '2-digit',
+                      })}
+                    </time>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                    <span>{readingTimeText}</span>
+                  </div>
+                </div>
               </div>
-            </footer>
-          </div>
+            </div>
+          </footer>
         </div>
       </article>
     </SectionContainer>

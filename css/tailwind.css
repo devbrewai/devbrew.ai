@@ -344,3 +344,65 @@ input:-webkit-autofill:focus {
   display: inline-block;
   vertical-align: middle;
 }
+
+/* Mermaid diagram styling */
+.mermaid-container {
+  position: relative;
+}
+
+.mermaid-diagram svg,
+.mermaid-diagram-enlarged svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.mermaid-diagram svg {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.mermaid-diagram-enlarged svg {
+  min-height: 400px;
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* Scale diagrams appropriately based on viewport */
+@media (min-width: 768px) {
+  .mermaid-diagram svg {
+    min-height: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mermaid-diagram svg {
+    min-height: 240px;
+  }
+}
+
+/* Compact variant for smaller diagrams */
+.mermaid-compact .mermaid-diagram svg {
+  min-height: 150px !important;
+  max-height: 300px;
+}
+
+@media (min-width: 768px) {
+  .mermaid-compact .mermaid-diagram svg {
+    min-height: 180px !important;
+    max-height: 350px;
+  }
+}
+
+/* Better spacing for flowcharts and sequence diagrams */
+.mermaid-diagram .node,
+.mermaid-diagram-enlarged .node {
+  padding: 8px 12px;
+}
+
+.mermaid-diagram .edgeLabel,
+.mermaid-diagram-enlarged .edgeLabel {
+  background-color: transparent;
+}

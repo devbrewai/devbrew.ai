@@ -40,19 +40,26 @@ export async function generateMetadata(props: {
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
   const authors = authorDetails.map((author) => author.name)
-  let imageList = [siteMetadata.socialBanner]
-  if (post.images) {
-    imageList = typeof post.images === 'string' ? [post.images] : post.images
-  }
-  const ogImages = imageList.map((img) => {
-    return {
-      url: img && img.includes('http') ? img : siteMetadata.siteUrl + img,
-    }
-  })
-
   // Use custom OG metadata if available, otherwise fall back to title/summary
   const ogTitle = post.ogTitle || post.title
   const ogDescription = post.ogDescription || post.summary
+
+  // Generate dynamic OG image or use custom images
+  let imageList = [siteMetadata.socialBanner]
+  let ogImages: { url: string }[] = []
+
+  if (post.images && post.images.length > 0) {
+    // Use custom images if provided
+    imageList = typeof post.images === 'string' ? [post.images] : post.images
+    ogImages = imageList.map((img) => ({
+      url: img && img.includes('http') ? img : siteMetadata.siteUrl + img,
+    }))
+  } else {
+    // Generate dynamic OG image
+    const ogImageUrl = `${siteMetadata.siteUrl}/api/og/blog?title=${encodeURIComponent(ogTitle)}&description=${encodeURIComponent(ogDescription || '')}`
+    imageList = [ogImageUrl]
+    ogImages = [{ url: ogImageUrl }]
+  }
 
   return {
     title: post.title,

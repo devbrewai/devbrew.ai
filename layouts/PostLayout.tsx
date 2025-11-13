@@ -114,27 +114,32 @@ export default function PostLayout({
                   {/* Author and Date Info */}
                   <div className="flex items-start gap-4">
                     {authorDetails[0]?.avatar && (
-                      <Link href={`/authors/${authorDetails[0].slug}`} className="flex-shrink-0">
-                        <Image
-                          src={authorDetails[0].avatar}
-                          width={40}
-                          height={40}
-                          alt={authorDetails[0].name}
-                          className="rounded-full ring-2 ring-white/20"
-                        />
-                      </Link>
+                      // TODO: uncomment once authors page is ready
+                      // <Link href={`/authors/${authorDetails[0].slug}`} className="flex-shrink-0">
+                      <Image
+                        src={authorDetails[0].avatar}
+                        width={40}
+                        height={40}
+                        alt={authorDetails[0].name}
+                        className="rounded-full ring-2 ring-white/20"
+                      />
+                      // </Link>
                     )}
                     <div className="flex flex-col">
                       <div className="flex flex-wrap items-center gap-2">
                         {authorDetails.map((author, index) => (
                           <div key={author.name} className="flex items-center gap-4">
                             {index > 0 && <span className="text-blue-400">•</span>}
+
+                            {/* 
+                             // TODO: uncomment once authors page is ready
+                            
                             <Link
                               href={`/authors/${author.slug}`}
                               className="text-sm font-semibold text-white transition-colors hover:text-blue-200"
-                            >
-                              {author.name}
-                            </Link>
+                            > */}
+                            <span className="text-sm font-semibold text-white">{author.name}</span>
+                            {/* </Link> */}
                             <div className="flex items-center gap-1.5">
                               {author.twitter && (
                                 <Link

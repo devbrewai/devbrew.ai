@@ -52,7 +52,7 @@ export async function GET() {
               textAlign: 'center',
             }}
           >
-            AI Engineering for Fintech and Finance
+            AI Engineering for Payments
           </div>
 
           {/* Subtitle */}
@@ -65,8 +65,7 @@ export async function GET() {
               textAlign: 'center',
             }}
           >
-            We partner with fintech startups and financial institutions to design and deploy custom
-            AI solutions
+            We research, design and deploy custom AI solutions for payments companies.
           </div>
         </div>
       </div>

@@ -106,8 +106,7 @@ export function HeroCentered() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-balance text-neutral-700 sm:text-base">
-            We design, research, and deploy custom AI that grows revenue, reduces losses, and
-            automates workflows across the payments stack, with measurable ROI in weeks.
+            We design, research, and deploy custom AI for payments companies.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center">

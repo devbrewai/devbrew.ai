@@ -64,15 +64,15 @@ We did not treat that bug as a one-off. We turned it into a pattern.
 During data exploration and feature engineering, we built a small validation suite that runs **before** any modeling work. It checks things like:
 
 - **Missing values**
-  Required fields are present. Engineered features do not introduce new gaps.
+  - Required fields are present. Engineered features do not introduce new gaps.
 - **Types and ranges**
-  Amounts are greater than zero. Probabilities are between 0 and 1. Timestamps actually parse.
+  - Amounts are greater than zero. Probabilities are between 0 and 1. Timestamps actually parse.
 - **Row and feature counts**
-  The final feature matrix has the shape we expect after merges and drops.
+  - The final feature matrix has the shape we expect after merges and drops.
 - **Class balance**
-  The fraud rate looks sane. For example, ~3–4 percent in IEEE-CIS, ~0.2 percent in PaySim. Not suddenly 20 percent because of a bad filter.
+  - The fraud rate looks sane. For example, ~3–4 percent in IEEE-CIS, ~0.2 percent in PaySim. Not suddenly 20 percent because of a bad filter.
 - **Memory footprint**
-  Simple casting (like float64 → float32) actually reduces size without breaking anything.
+  - Simple casting (like float64 → float32) actually reduces size without breaking anything.
 
 It runs on a sample first, then on the full processed dataset. It is fast, boring, and ruthless.
 

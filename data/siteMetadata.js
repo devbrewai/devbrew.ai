@@ -4,13 +4,13 @@ const siteMetadata = {
   author: 'Devbrew',
   headerTitle: 'Devbrew',
   description:
-    'Devbrew is an AI engineering and research firm. We partner with payments companies to design, research, and deploy custom AI solutions',
+    'Devbrew is an AI engineering and research firm. We partner with payments companies to research, design, and deploy custom AI solutions',
   language: 'en-us',
   theme: 'light', // system, dark or light
   siteUrl: 'https://www.devbrew.ai',
   siteRepo: 'https://github.com/DevbrewCo/devbrew.ai',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.svg`,
-  socialBanner: `${process.env.BASE_PATH || ''}/api/og`,
+  socialBanner: process.env.BASE_PATH ? `${process.env.BASE_PATH}/api/og` : '/static/images/og.png',
   // mastodon: 'https://mastodon.social/@mastodonuser',
   // email: 'hello@devbrew.ai',
   // github: 'https://github.com/DevbrewCo',

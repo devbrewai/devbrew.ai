@@ -109,9 +109,16 @@ export default function PostLayout({
                         {summary}
                       </p>
                     )}
+                    <div className="flex items-center gap-2 text-sm text-blue-200">
+                      <span>{readingTimeText}</span>
+                      <span>•</span>
+                      <time dateTime={date} className="text-blue-200">
+                        {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
+                      </time>
+                    </div>
                   </div>
 
-                  {/* Author and Date Info */}
+                  {/* Author Info */}
                   <div className="flex items-start gap-4">
                     {authorDetails[0]?.avatar && (
                       // TODO: uncomment once authors page is ready
@@ -125,21 +132,22 @@ export default function PostLayout({
                       />
                       // </Link>
                     )}
-                    <div className="flex flex-col">
+                    <div className="flex flex-col justify-center">
                       <div className="flex flex-wrap items-center gap-2">
                         {authorDetails.map((author, index) => (
                           <div key={author.name} className="flex items-center gap-4">
                             {index > 0 && <span className="text-blue-400">•</span>}
 
-                            {/* 
-                             // TODO: uncomment once authors page is ready
-                            
-                            <Link
-                              href={`/authors/${author.slug}`}
-                              className="text-sm font-semibold text-white transition-colors hover:text-blue-200"
-                            > */}
-                            <span className="text-sm font-semibold text-white">{author.name}</span>
-                            {/* </Link> */}
+                            <div className="flex flex-col">
+                              <span className="text-sm font-semibold text-white">
+                                {author.name}
+                              </span>
+                              {author.occupation && (
+                                <span className="text-xs text-blue-200">{author.occupation}</span>
+                              )}
+                            </div>
+
+                            {/* Social icons commented out
                             <div className="flex items-center gap-1.5">
                               {author.twitter && (
                                 <Link
@@ -166,15 +174,9 @@ export default function PostLayout({
                                 </Link>
                               )}
                             </div>
+                            */}
                           </div>
                         ))}
-                      </div>
-                      <div className="mt-1 flex items-center gap-2 text-sm text-blue-200">
-                        <span>{readingTimeText}</span>
-                        <span>•</span>
-                        <time dateTime={date} className="text-blue-200">
-                          {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
-                        </time>
                       </div>
                     </div>
                   </div>
@@ -182,17 +184,13 @@ export default function PostLayout({
 
                 {/* Client/Company Logo or Badge */}
                 {/* <div className="flex items-start justify-start lg:justify-end">
-                  <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
-                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                      <svg
-                        className="w-5 h-5 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
+                  <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-6 py-3 backdrop-blur-sm">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20">
+                      <svg className="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" />
                       </svg>
                     </div>
-                    <span className="text-white font-semibold uppercase text-sm tracking-wider">
+                    <span className="text-sm font-semibold tracking-wider text-white uppercase">
                       {basePath}
                     </span>
                   </div>

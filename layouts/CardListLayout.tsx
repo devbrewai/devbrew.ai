@@ -2,14 +2,12 @@
 
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { CaseStudy } from 'contentlayer/generated'
+import type { Blog, CaseStudy, Research } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Image from '@/components/Image'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import siteMetadata from '@/data/siteMetadata'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Search } from 'lucide-react'
 import { CTA } from '@/components/CTA'
@@ -19,11 +17,20 @@ interface PaginationProps {
   currentPage: number
 }
 
-interface CaseStudiesListLayoutProps {
-  posts: CoreContent<CaseStudy>[]
+interface CardListLayoutProps {
+  posts: CoreContent<Blog | CaseStudy | Research>[]
   title: string
-  initialDisplayPosts?: CoreContent<CaseStudy>[]
+  description?: string
+  initialDisplayPosts?: CoreContent<Blog | CaseStudy | Research>[]
   pagination?: PaginationProps
+  showCTA?: boolean
+  ctaProps?: {
+    eyebrow?: string
+    title?: string
+    description?: string
+    buttonText?: string
+    buttonHref?: string
+  }
 }
 
 function Pagination({ totalPages, currentPage }: PaginationProps) {
@@ -77,12 +84,15 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   )
 }
 
-export default function CaseStudiesListLayout({
+export default function CardListLayout({
   posts,
   title,
+  description,
   initialDisplayPosts = [],
   pagination,
-}: CaseStudiesListLayoutProps) {
+  showCTA = false,
+  ctaProps,
+}: CardListLayoutProps) {
   const reduce = useReducedMotion()
   const [searchValue, setSearchValue] = useState('')
 
@@ -127,19 +137,20 @@ export default function CaseStudiesListLayout({
               {title}
             </h1>
 
-            <p className="mt-6 max-w-3xl text-base leading-relaxed text-blue-100 sm:text-lg md:text-xl">
-              Explore case studies showing how applied AI solves high-cost problems in fintech and
-              finance, reducing losses, improving decisions, and delivering measurable value.
-            </p>
+            {description && (
+              <p className="mt-6 max-w-3xl text-base leading-relaxed text-blue-100 sm:text-lg md:text-xl">
+                {description}
+              </p>
+            )}
 
             {/* Search Bar */}
             <div className="mt-8 max-w-lg">
               <div className="relative">
                 <input
-                  aria-label="Search case studies"
+                  aria-label={`Search ${title.toLowerCase()}`}
                   type="text"
                   onChange={(e) => setSearchValue(e.target.value)}
-                  placeholder="Search case studies..."
+                  placeholder={`Search ${title.toLowerCase()}...`}
                   className="block w-full rounded-md border border-white/20 bg-white/10 px-4 py-3 pl-11 text-white backdrop-blur-sm transition-colors placeholder:text-blue-200 focus:border-white/40 focus:bg-white/20 focus:ring-2 focus:ring-white/30 focus:outline-none"
                 />
                 <Search className="absolute top-3.5 left-3 h-5 w-5 text-blue-200" />
@@ -149,15 +160,15 @@ export default function CaseStudiesListLayout({
         </div>
       </section>
 
-      {/* Case Studies Grid */}
+      {/* Posts Grid */}
       <section className="bg-neutral-50 py-16 dark:bg-gray-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           {!displayPosts.length && (
             <div className="py-12 text-center">
               <p className="text-muted-foreground text-lg">
                 {searchValue
-                  ? 'No case studies found matching your search.'
-                  : 'No case studies available.'}
+                  ? `No ${title.toLowerCase()} found matching your search.`
+                  : `No ${title.toLowerCase()} available.`}
               </p>
             </div>
           )}
@@ -171,7 +182,32 @@ export default function CaseStudiesListLayout({
               viewport={{ once: true, amount: 0.1 }}
             >
               {displayPosts.map((post) => {
-                const { path, date, title, summary, tags, clientLogo, clientName } = post
+                const { path, title: postTitle, summary, tags } = post
+
+                // Type guard for CaseStudy properties
+                const isCaseStudy = (
+                  p: CoreContent<Blog | CaseStudy | Research>
+                ): p is CoreContent<CaseStudy> => 'clientLogo' in p
+                const clientLogo = isCaseStudy(post) ? post.clientLogo : undefined
+                const clientName = isCaseStudy(post) ? post.clientName : undefined
+                const images = 'images' in post ? (post.images as string[]) : []
+
+                // Determine image source and mode
+                let imageSrc = '/static/images/devbrew-white.svg'
+                let imageMode: 'logo' | 'cover' = 'logo'
+                let altText = 'Devbrew'
+
+                if (clientLogo) {
+                  imageSrc = clientLogo
+                  imageMode = 'logo'
+                  altText = clientName || 'Client logo'
+                } else if (images && images.length > 0) {
+                  imageSrc = images[0]
+                  // Heuristic: SVGs are typically logos, other formats are likely cover images
+                  imageMode = imageSrc.toLowerCase().endsWith('.svg') ? 'logo' : 'cover'
+                  altText = postTitle
+                }
+
                 return (
                   <motion.article
                     key={path}
@@ -179,34 +215,31 @@ export default function CaseStudiesListLayout({
                     className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-all hover:border-gray-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900 dark:hover:border-gray-700"
                   >
                     <Link href={`/${path}`} className="flex h-full flex-col">
-                      {/* Card Header with dark gradient background */}
-                      <div className="relative h-32 overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 p-6 transition-all group-hover:from-slate-800 group-hover:via-blue-800 group-hover:to-slate-800 sm:h-40 dark:from-slate-950 dark:via-blue-950 dark:to-slate-950">
-                        {/* Radial gradient overlay */}
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-700/20 via-transparent to-transparent" />
+                      {/* Card Header */}
+                      <div className="relative h-32 overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 transition-all group-hover:from-slate-800 group-hover:via-blue-800 group-hover:to-slate-800 sm:h-40 dark:from-slate-950 dark:via-blue-950 dark:to-slate-950">
+                        {/* Radial gradient overlay (only visible if not covered) */}
+                        {imageMode === 'logo' && (
+                          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-700/20 via-transparent to-transparent" />
+                        )}
 
-                        {/* Content container - centered logo */}
-                        <div className="relative flex h-full items-center justify-center">
-                          {/* Logo - small and centered */}
-                          <div className="flex items-center">
-                            {clientLogo ? (
-                              <Image
-                                src={clientLogo}
-                                alt={clientName || 'Client logo'}
-                                width={60}
-                                height={20}
-                                className="h-5 w-auto object-contain opacity-90"
-                              />
-                            ) : (
-                              <div className="flex items-center gap-1">
-                                <div className="flex h-4 w-4 items-center justify-center rounded bg-white/10 backdrop-blur-sm">
-                                  <span className="text-[10px] font-bold text-white">D</span>
-                                </div>
-                                <span className="text-[11px] font-semibold text-white opacity-90">
-                                  devbrew
-                                </span>
-                              </div>
-                            )}
-                          </div>
+                        {/* Image Container */}
+                        <div className="relative flex h-full w-full items-center justify-center p-6">
+                          {imageMode === 'logo' ? (
+                            <Image
+                              src={imageSrc}
+                              alt={altText}
+                              width={60}
+                              height={20}
+                              className="h-8 w-auto object-contain opacity-90 transition-transform duration-300 group-hover:scale-105"
+                            />
+                          ) : (
+                            <Image
+                              src={imageSrc}
+                              alt={altText}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            />
+                          )}
                         </div>
                       </div>
 
@@ -225,7 +258,7 @@ export default function CaseStudiesListLayout({
 
                         {/* Title */}
                         <h2 className="mb-3 text-xl leading-tight font-semibold tracking-tight text-gray-900 transition-colors dark:text-gray-100">
-                          {title}
+                          {postTitle}
                         </h2>
 
                         {/* Summary */}
@@ -235,7 +268,7 @@ export default function CaseStudiesListLayout({
 
                         {/* Read More Link */}
                         <div className="text-primary mt-auto flex items-center gap-2 text-sm font-medium transition-all group-hover:gap-3">
-                          View Case Study
+                          Read More
                           <ArrowRight className="h-4 w-4" />
                         </div>
                       </div>
@@ -256,7 +289,7 @@ export default function CaseStudiesListLayout({
             <div className="mt-8 text-center">
               <p className="text-muted-foreground text-sm">
                 Showing {displayPosts.length} of {searchValue ? filteredPosts.length : posts.length}{' '}
-                case {posts.length === 1 ? 'study' : 'studies'}
+                {posts.length === 1 ? title.slice(0, -1) : title.toLowerCase()}
                 {searchValue && ` matching "${searchValue}"`}
               </p>
             </div>
@@ -265,14 +298,19 @@ export default function CaseStudiesListLayout({
       </section>
 
       {/* CTA Section */}
-      <CTA
-        eyebrow="Ready to get started?"
-        title="Turn AI potential into measurable results"
-        description="Start building your AI solution today with our expert team and achieve ROI in weeks."
-        buttonText="Get Started"
-        buttonHref="/get-started"
-        variant="default"
-      />
+      {showCTA && (
+        <CTA
+          eyebrow={ctaProps?.eyebrow || 'Ready to get started?'}
+          title={ctaProps?.title || 'Turn AI potential into measurable results'}
+          description={
+            ctaProps?.description ||
+            'Start building your AI solution today with our expert team and achieve ROI in weeks.'
+          }
+          buttonText={ctaProps?.buttonText || 'Get Started'}
+          buttonHref={ctaProps?.buttonHref || '/get-started'}
+          variant="default"
+        />
+      )}
     </div>
   )
 }

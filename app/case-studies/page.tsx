@@ -1,4 +1,4 @@
-import CaseStudiesListLayout from '@/layouts/CaseStudiesListLayout'
+import CardListLayout from '@/layouts/CardListLayout'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allCaseStudies } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
@@ -18,11 +18,21 @@ export default async function CaseStudiesPage() {
   }
 
   return (
-    <CaseStudiesListLayout
+    <CardListLayout
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
       title="Case Studies"
+      description="Explore case studies showing how applied AI solves high-cost problems in fintech and payments, reducing losses, improving decisions, and delivering measurable value."
+      showCTA={true}
+      ctaProps={{
+        eyebrow: 'You have seen the outcomes',
+        title: 'Now create yours',
+        description:
+          'If you run cross border payments, you know how much impact AI can have. We help teams reduce losses, improve routing, and ship production AI fast.',
+        buttonText: 'Start Now',
+        buttonHref: '/get-started',
+      }}
     />
   )
 }

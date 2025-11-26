@@ -22,7 +22,7 @@ export default async function InsightsPage() {
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
-      title="Blog"
+      title="Insights"
     />
   )
 }

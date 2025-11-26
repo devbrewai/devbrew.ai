@@ -23,6 +23,7 @@ export default async function InsightsPage() {
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
       title="Insights"
+      description="Discover insights, research, and thought leadership on applied AI in fintech and payments."
     />
   )
 }

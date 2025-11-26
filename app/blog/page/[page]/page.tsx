@@ -35,6 +35,7 @@ export default async function Page(props: { params: Promise<{ page: string }> })
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
       title="Insights"
+      description="Discover insights, research, and thought leadership on applied AI in fintech and payments."
     />
   )
 }

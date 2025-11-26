@@ -5,7 +5,7 @@ import { genPageMetadata } from 'app/seo'
 
 const POSTS_PER_PAGE = 5
 
-export const metadata = genPageMetadata({ title: 'Blogs' })
+export const metadata = genPageMetadata({ title: 'Blog' })
 
 export default async function InsightsPage() {
   const posts = allCoreContent(sortPosts(allBlogs))
@@ -22,7 +22,7 @@ export default async function InsightsPage() {
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
-      title="Blogs"
+      title="Blog"
     />
   )
 }

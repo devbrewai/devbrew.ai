@@ -134,7 +134,7 @@ export function CTA({
             <motion.p
               variants={item}
               className={cn(
-                'mx-auto mt-6 max-w-xl text-sm text-balance text-neutral-700 sm:text-base',
+                'mx-auto mt-6 max-w-2xl text-sm text-balance text-neutral-700 sm:text-base',
                 descriptionClassName
               )}
             >

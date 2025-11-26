@@ -381,9 +381,9 @@ export default function PostLayout({
 
         {/* CTA Section */}
         <CTA
-          eyebrow="Interested in similar results?"
-          title="Let's discuss your AI transformation"
-          description="See how we can help you achieve measurable results with AI solutions tailored to your business needs."
+          eyebrow=""
+          title="Let’s explore your AI roadmap"
+          description="We help payments teams build production AI that reduces losses, improves speed, and strengthens margins. Reach out and we can help you get started."
           buttonText="Get Started"
           buttonHref="/contact"
           variant="compact"

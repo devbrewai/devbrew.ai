@@ -108,7 +108,7 @@ export async function GET(request: NextRequest) {
                   letterSpacing: '0.1em',
                 }}
               >
-                Blog
+                Insight
               </div>
             </div>
           </div>

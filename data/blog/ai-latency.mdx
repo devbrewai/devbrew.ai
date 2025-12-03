@@ -1,0 +1,226 @@
+---
+title: 'Why Real Time AI Breaks Between 30ms and 200ms in Cross Border Payments'
+date: '2025-12-03'
+lastmod: '2025-12-03'
+slug: 'ai-latency'
+tags:
+  [
+    'ai',
+    'fraud',
+    'sanctions',
+    'payments',
+    'fintech',
+    'latency',
+    'real-time',
+    'cross-border-payments',
+  ]
+draft: false
+summary: 'Most cross border payments teams hit the same brick wall. Keeping fraud, sanctions, and risk models both accurate and real time. Here is why things break between 30ms and 200ms and how adaptive scoring keeps systems fast without sacrificing compliance.'
+images: ['/static/images/blog/ai-latency/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Why Real Time AI Breaks Between 30ms and 200ms in Cross Border Payments'
+ogDescription: 'An adaptive AI scoring system that gives cross border payments teams sub 50ms decisions with 98 percent recall. Built to fit your existing stack, hit audit requirements, and show results in weeks.'
+---
+
+Real time AI in payments has one brutal rule.
+
+You can have speed.
+
+You can have accuracy.
+
+But getting both inside a tight latency budget is where things crack.
+
+The root mechanism is simple. Most systems treat every query as if it has the same difficulty, even though the true cost varies wildly. That mistake creates a hard tradeoff inside the 30ms to 200ms window where most AI failures in payments actually happen.
+
+Cross border payments make the problem worse.
+
+You are operating with fragmented rails, inconsistent data quality, unpredictable regulatory constraints, and users who expect a decision in under 100ms. At the same time your compliance team expects recall above 98 percent on sanctions, fraud, and high risk entities.
+
+The model is rarely the bottleneck.
+
+The milliseconds around it are.
+
+If you run payments, your ideal outcome is simple. Decisions in under 50ms, recall above 98 percent, and an audit story you do not have to stress over.
+
+---
+
+## Where real Time AI breaks
+
+While building the sanctions module for Devbrew’s [AI fraud detection case study](/case-studies/fraud-detection), we ran into the same tradeoff every payments team eventually faces.
+
+### Fast path
+
+- Latency: 26ms
+
+- Recall: 97.5 percent
+
+Below the compliance threshold.
+
+### Accurate path
+
+- Recall: 98 percent plus
+
+- Latency: 200ms plus
+
+Breaks real time authorization.
+
+Most teams choose one of two weak solutions.
+
+They drop recall and hope it passes audit.
+
+Or they accept slower queries and degrade the user experience.
+
+Both choices create silent revenue, compliance, and risk leakage across cross border payments.
+
+---
+
+## Why teams choose the wrong path
+
+Cross border payments platforms usually fall into the same traps.
+
+1. **Single path scoring**
+
+   Every transaction is treated like it requires the same computational work.
+
+2. **Fragmented infrastructure**
+
+   Different rails. Different regions. Different latencies. No unified strategy for real time scoring under mixed conditions.
+
+3. **Rigid compliance rules**
+
+   Every decision must meet the maximum accuracy threshold even when the underlying transaction is obviously low risk.
+
+4. **Misdiagnosing the problem**
+
+   Teams try to tune the model when the real failure is the system surrounding it.
+
+   The latency budget is blown long before the model produces its answer.
+
+The outcome is predictable.
+
+Systems slow down.
+
+Recall leaks into production.
+
+Compliance debt piles up.
+
+---
+
+## A better approach: two stage adaptive scoring
+
+Instead of forcing every sanctions check through the same heavy process, we built a system that adapts to the complexity of each transaction.
+
+Here is the simplified workflow.
+
+1. **Receive the transaction**
+
+   Extract only the features relevant for fast evaluation.
+
+2. **Estimate complexity**
+
+   Identify whether the candidate set is easy or ambiguous.
+
+3. **Fast pass**
+
+   Score the top 2,000 easy candidates.
+
+   These are low entropy matches that complete in under 30ms.
+
+4. **Confidence check**
+
+   If the fast pass result is unclear or near threshold, trigger a deeper search.
+
+5. **Return decision under the latency budget**
+
+   Keep the experience real time for the vast majority of transactions.
+
+Most transactions are clearly safe or clearly risky.
+
+The system should respond to that reality.
+
+---
+
+## The outcome
+
+Adaptive scoring gave us the balance every payments team wants.
+
+- **Recall: 98.0 percent**
+- **p95 latency: 47.51ms**
+- **False positives: 0.0 percent**
+- **Real time preserved**
+- **Compliance threshold satisfied**
+
+This design hits the sweet spot.
+
+The product stays fast.
+
+The compliance story gets stronger.
+
+Audit friction decreases.
+
+The payoff is simple. Fewer missed sanctions hits, fewer unnecessary manual reviews, and more volume pushed through your rails without slowdowns or surprises during audits.
+
+The model did not change.
+
+The system around it did.
+
+---
+
+## Why this matters for cross border payments
+
+Cross border payments live under intense operational pressure.
+
+- Fragmented rails
+- Multiple jurisdictions
+- Different sanctions lists
+- Latency sensitive flows
+- Higher fraud exposure
+- Strict audit expectations
+
+A static scoring system cannot survive this environment.
+
+To operate at scale, you need adaptive systems that make different decisions based on the complexity of the transaction in front of them.
+
+This is the future of real time AI in payments.
+
+---
+
+## The hidden difficulty most teams underestimate
+
+Running a two stage adaptive scoring system in production requires more than a clever idea.
+
+You need:
+
+- Real time data pipelines
+- Feature stores tuned for low latency
+- Monitoring that catches data quality drift early
+- Caching layers that minimize unnecessary calls
+- Routing logic that adapts without breaking audit trails
+- Infrastructure that can guarantee p95 under 50ms at scale
+
+The challenge is not the model.
+
+It is the architecture that surrounds it.
+
+This is why most teams understand the idea but struggle to implement it without slowing down the roadmap or breaking compliance requirements.
+
+---
+
+## How Devbrew helps
+
+At Devbrew we design production grade AI and real time decision systems for cross border payments teams that need to balance:
+
+- Compliance accuracy
+- Real time execution
+- Latency budgets
+- Audit requirements
+
+We solve the system level challenges that determine whether your product stays fast and compliant under real world constraints.
+
+You do not need to rebuild your stack. We plug adaptive scoring into your existing flow, keep your current risk policies, and work inside your latency budgets.
+
+If you want clarity on where your latency bottlenecks sit or want to explore adaptive scoring for your product, you can reach us directly through our contact page:
+[**Contact Devbrew**](https://www.devbrew.ai/contact)
+
+**P.S.** If you want to dive deeper, you can follow the applied AI research case study here: [AI fraud detection for cross border payments](https://www.devbrew.ai/case-studies/fraud-detection)

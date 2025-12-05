@@ -69,8 +69,9 @@ export function IntroSplit() {
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">How to think of us</h2>
               <p className="mt-2 text-neutral-700">
-                We are a hands-on AI engineering and research partner for focused on helping you
-                design and deploy AI production systems.
+                We are an AI engineering and applied research firm for payments. We help payments
+                companies solve their biggest pain points with custom AI solutions that fit directly
+                into their existing workflows.
               </p>
             </motion.div>
             <motion.div variants={item}>

@@ -1,0 +1,364 @@
+---
+title: 'Building the Intelligent Payment Stack: A Practical Blueprint for Payments Founders'
+date: '2025-12-06'
+lastmod: '2025-12-06'
+slug: 'intelligent-payment-stack-blueprint'
+tags:
+  [
+    'ai',
+    'payments',
+    'fintech',
+    'infrastructure',
+    'data',
+    'fraud',
+    'fx',
+    'compliance',
+    'risk',
+    'architecture',
+  ]
+draft: false
+summary: 'Turn siloed payments data into one intelligent brain, without pausing your roadmap, in the next 12 months.'
+images: ['/static/images/blog/intelligent-payment-stack-blueprint/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Building the Intelligent Payment Stack: A Practical Blueprint for Payments Founders'
+ogDescription: 'Turn siloed payments data into one intelligent brain, without pausing your roadmap, in the next 12 months.'
+---
+
+If you are a payments founder right now, your stack probably grew the same way your company did. Fast, messy, and full of good intentions.
+
+This post is about how to turn that into an intelligent payment stack. Not a prettier diagram. A real architecture that compounds insight and revenue every month it runs.
+
+And we are going to ground it in what actual companies are doing, not theory.
+
+---
+
+## The core mechanism: from “patchwork tools” to an intelligence layer
+
+Most payment stacks evolve like this:
+
+1. You launch with a core processor and a ledger.
+2. You bolt on fraud for chargebacks.
+3. You add KYC and AML when compliance taps your shoulder.
+4. You add routing when you expand rails and geos.
+5. You sprinkle AI on top in “projects”.
+
+Each decision makes sense in the moment. The long term result is a stack where fraud, routing, FX, onboarding, and compliance each live in their own little universe.
+
+Klarna is the extreme version of this. At one point they were running about **1,200 SaaS tools** across the business. Everything from CRM to compliance sat in separate systems. The company later had to unwind this bloat and move to a more AI native, unified stack to cut cost and regain control. Their public commentary ties this consolidation to cost reductions on the order of **tens of millions of dollars**, including about **40 million dollars** from SaaS and tech savings alone.[^1]
+
+Your version may not be as loud as Klarna, but the pattern is the same.
+
+The core idea of the intelligent payment stack is simple:
+
+> Take everything your payment business knows and does, pull it into a unified data and decision layer, then let AI and rules act on the full picture in real time.
+
+Not AI in twelve places. One shared brain that everything plugs into.
+
+GoodData’s AI Transformation Playbook says AI platforms work only when they **unify and govern data across systems and make it available in real time**. Otherwise analytics and AI “cannot deliver their full value.”[^2]
+
+Thomson Reuters puts it even more bluntly. Siloed systems “restrict information flow and undermine the agility businesses need,” and “success depends on connecting insights through integrated ecosystems that unite teams and accelerate collaboration.”[^3]
+
+That is the mechanism. Connect the insights. Then let decisions compound.
+
+---
+
+## Why fragmented stacks kill AI before it starts
+
+You have probably already tried AI in your stack.
+
+- A fraud model here.
+- A chatbot over there.
+- Maybe some scoring in credit or underwriting.
+
+On their own, these projects can work. The problem, as RTInsights points out, is that most organizations still try to get intelligence out of disparate systems that were never designed to work together.[^4]
+
+So you get a fraud AI trained only on transactions.
+
+A marketing AI trained only on CRM.
+
+A risk AI trained only on one ledger.
+
+None of them see the full picture.
+
+A real time data platform CTO interviewed by RTInsights summarized what many fintech teams admit after a few years of buying tools.
+
+> “These solutions are great for individual siloed problems, but I need to make my entire data ecosystem more efficient holistically.”[^4]
+
+Thomson Reuters sees the same thing in large enterprises. Silos used to feel safe and controllable. Now they are simply slow. They delay decisions, block communication, and turn every AI project into a one off experiment instead of a shared advantage.[^3]
+
+FinTech Futures looks ahead and basically says the quiet part out loud. By 2026, major banks will run production scale AI agents across the business. The leaders are building with AI embedded as a core operating layer, not a bolt on feature.[^5]
+
+If your stack is still a loose bundle of tools by then, every AI project you run will feel like pushing a boulder uphill.
+
+---
+
+## The blueprint: what an intelligent payment stack actually looks like
+
+Let’s make this concrete.
+
+An intelligent payment stack has two big layers:
+
+1. A **unified data hub** that becomes the source of truth for everything payments.
+2. A **shared decision engine** that uses that data for routing, fraud, FX, compliance, and product logic.
+
+On top of that, you plug in AI models and agents in a coordinated way.
+
+### Unified data hub
+
+RTInsights describes a modern real time platform as one place where live events and history are processed together, instead of separate batch jobs.[^4]
+
+In practice, your data hub should:
+
+- Ingest events from processors, banking partners, wallets, cards, rails, and ledgers.
+- Join that with customer, device, and behavioral data.
+- Make it available in real time to any downstream decision.
+
+FinTech Futures predicts that fragmented data will consolidate into a **real time, trusted foundation** that fuels accurate decisioning, continuous learning, and hyper personal experiences for each customer.[^5]
+
+This is not a “nice to have.” If the hub is weak, every AI project you launch will inherit that weakness.
+
+### Integrated fraud and compliance intelligence
+
+Today, most teams still treat fraud, KYC, KYB, and AML as separate worlds. You have one provider for onboarding, one for transaction monitoring, another for sanctions, another for case management.
+
+Fraud.net is one of the vendors showing a different pattern. They market “unified AI for KYC, KYB, AML, and fraud detection in a single system,” aggregating signals across sources instead of forcing teams to jump between tools.[^6]
+
+Unit21 takes a similar approach for fast moving fintechs. They bring **detection, investigation, and regulatory workflows** into one risk suite. Their public case studies talk about customers cutting fraud losses and investigation time once they moved off scattered spreadsheets and custom dashboards.[^7]
+
+The pattern is the same: one risk brain instead of five.
+
+An intelligent payment stack copies that idea, but goes further. You do not just unify fraud and AML. You connect them to onboarding, device data, behavior, and transaction flows as well.
+
+### Intelligent routing and FX
+
+Routing is where compounding intelligence shows up in your P&L.
+
+Most teams start with static rules.
+
+- “For US cards, use PSP A.”
+- “For EU, default to routing B.”
+
+Reports from the payments space now talk about **intelligent routing** that optimizes each transaction for approval rate, cost, and experience instead.[^9]
+
+You can see the industry direction in the “payment orchestration” world. Xenoss describes modern orchestration platforms as **democratizing enterprise grade capabilities** like routing optimization and fraud, and giving smaller players the “ace” they need to compete with giants through AI powered infrastructure.[^10]
+
+Add FX to that picture.
+
+With a unified stack you can:
+
+- Pull live FX rates and your own positions.
+- Factor in fraud risk and network health.
+- Decide when and where to convert to keep more spread while staying compliant.
+
+This is the difference between “we pay whatever the PSP charges” and “we treat every cross border payment as an optimization problem.”
+
+### Embedded onboarding and customer intelligence
+
+KYC and onboarding used to be a gateway with no memory. Customer passes the checks, walks through the door, and the onboarding system never speaks to fraud or product again.
+
+Vendors like Moody’s and Fraud.net are already pushing a **lifecycle view** where KYC, AML, and ongoing monitoring sit on one track.[^6]
+
+In an intelligent payment stack:
+
+- Every onboarding outcome and signal goes into the hub.
+- The fraud engine knows if a customer scraped through KYC by the skin of their teeth.
+- The routing and limit engines know if a merchant has a past pattern of chargebacks.
+
+You also get the mirror image.
+
+Transaction behavior feeds back into how you screen new accounts. If a new signup looks suspiciously like a known bad actor, you can throttle or block before anything bad clears.
+
+### Real time shared decision engine
+
+This is the “brain” that sits on top.
+
+RTInsights notes that a unified platform can **minimize data movement and latency** and handle multidimensional problems more efficiently. Instead of bouncing data between databases, you evaluate events once with full context.[^4]
+
+In practice, that can look like:
+
+- A scoring service that runs fraud, credit, compliance, and product logic on every event.
+- A library of models and rules that teams can plug into.
+- A consistent way to log, audit, and explain each decision for regulators or partners.
+
+FinTech Futures expects banks to run **fleets of AI agents** across operations by 2026. The key detail is that those agents share the same view of the customer and the same data foundation.[^5]
+
+Your goal as a founder is not “more agents.” It is “one memory, many agents.”
+
+---
+
+## What this delivers in the real world
+
+This is where the research gets interesting. Once companies unify data and decisioning, the numbers move.
+
+### Efficiency and cost
+
+Thomson Reuters found that organizations with unified AI and tech ecosystems see better communication, faster workflows, more automation, and lower manual effort.[^3] That is the boring way of saying “you pay fewer people to push CSVs between systems.”
+
+Klarna is the loud example here again. When they went after their SaaS bloat and rebuilt the stack around AI native principles, they reported about **40 million dollars** in annual savings tied in part to consolidating overlapping tools.[^1]
+
+That is before you factor in soft benefits like faster experimentation and less internal friction.
+
+### Fraud and risk
+
+Unit21’s case studies show what happens when you drag risk data out of silos.
+
+- Digital bank **Lili** reportedly cut fraud losses by around **50 percent** and reduced investigation time by roughly **75 percent** after unifying case management and monitoring on a single risk platform.[^7]
+- **Bakkt** consolidated its monitoring setup and drove down the time to file suspicious activity reports by about **two thirds**.[^7]
+
+The exact numbers will vary for your stack. The point is clear.
+
+When analysts stop toggling between five dashboards and models see the full picture, the same team can catch more fraud with fewer false positives.
+
+### Customer experience
+
+On the customer side, the payoff is just as strong.
+
+Jaja Finance worked with Marqeta to roll out an AI assistant that now handles about **50 percent** of their customer service queries with an average response time of **9 seconds**.[^8]
+
+That only works because the bot has access to real account and transaction context, not a generic FAQ.
+
+Blend360 describes the broader trend. Payment companies are using their data to launch new products, give merchants better insight, and open new revenue streams.[^9]
+
+Hyper personal experiences, proactive alerts, smarter routing decisions. All of that falls out of the same underlying move. Connect the data. Share the intelligence.
+
+### New revenue and compounding advantage
+
+Once your payment stack is one coherent brain, you can start to play offense.
+
+- Use transaction and cash flow data to launch lending or working capital products.
+- Offer merchants analytics on customer cohorts and churn risk.
+- Build risk based pricing that responds to behavior in near real time.
+
+Blend360 notes that many payment firms are already doing this, expanding into lending and advisory roles instead of staying stuck as “just” processors.[^9]
+
+McKinsey’s conversation with Bhavin Turakhia at Zeta shows the same move. Zeta’s “omnistack” runs bank products on a single platform so they can ship new offerings faster on top of one unified data and decision layer.[^11]
+
+First movers who do this build a compounding data edge. The more volume flows through the stack, the better the models get, which brings more volume. That flywheel is the real moat.
+
+---
+
+## Common mistakes to avoid
+
+While you think about this shift, there are a few traps most teams fall into.
+
+### Mistake 1: Treating AI as a side project
+
+“Let’s buy one AI fraud tool this year and see how it goes.”
+
+This is how you end up with three separate AI projects that never talk to each other. GoodData’s playbook warns that AI bolted on to legacy and point systems will always be constrained by the underlying fragmentation.[^2]
+
+You cannot get a compounding advantage from isolated experiments.
+
+### Mistake 2: Rebuilding everything from scratch
+
+Some teams overcorrect. They decide the only path forward is a full rebuild. New ledger, new processor, new everything.
+
+You do not need that. RTInsights and GridGain both highlight patterns where you **layer a unified real time platform on top of existing systems**, then migrate logic and workloads over time.[^4]
+
+Think “progressive refactor toward an intelligence layer,” not “two year big bang cutover.”
+
+### Mistake 3: Ignoring governance and explainability
+
+If your shared brain cannot explain itself, your auditors, regulators, and bank partners will slow everything down.
+
+FinTech Futures expects banks to deploy AI agents at scale, but the underlying message is that they will need **control, observability, and guardrails** baked in.[^5]
+
+That means:
+
+- Clear model registries and versioning.
+- Decision logs with reasons and inputs.
+- Playbooks for when humans must stay in the loop.
+
+The tech is not the hard part at this point. The governance is.
+
+---
+
+## How to start the shift as a founder
+
+If you are a Series A to C founder or product lead, here is a simple way to move toward an intelligent stack without blowing up your roadmap.
+
+1. **Map the truth.**
+   - List every system that touches money, risk, or customer data.
+   - Mark where source of truth really lives today.
+2. **Pick one domain to unify first.**
+   - Fraud and risk is usually the best wedge.
+   - Or routing and FX if your margins are tight on cross border.
+3. **Stand up a lightweight data hub.**
+   - Start streaming events from your processor, ledger, and risk systems into one place.
+   - Even basic joining and enrichment will reveal gaps and duplications.
+4. **Wrap a single shared decision around that hub.**
+   - For example, a consolidated “approve or step up” decision for transactions.
+   - Plug in your current rules and models, but now on full context.
+5. **Measure the change.**
+   - False positives. Approval rates. Time to resolve cases.
+   - Make this “the brain” that new features integrate with.
+6. **Iterate horizontally.**
+   - Once the first domain works, fold in onboarding, compliance, and routing.
+   - Push more decisions through the same shared engine instead of standing up new ones.
+
+You do not need to wait for a board meeting to start this. You can begin with one product line, one corridor, or one risk flow.
+
+---
+
+## Where Devbrew fits in this picture
+
+Most teams already feel underwater just keeping the current stack alive. Rearchitecting it while shipping your roadmap can feel impossible.
+
+This is exactly where partners come in.
+
+Devbrew’s whole focus is helping payments companies design and implement the **intelligence layer** of their stack. That usually looks like:
+
+- Turning your fragmented payment data into a unified, AI ready asset.
+- Designing and deploying shared decision engines for fraud, routing, FX, and compliance.
+- Orchestrating models and rules so you have one brain the whole business can trust.
+
+You keep your processors, ledgers, and PSPs. We help you wire them into something that behaves like a coherent system instead of a collection of apps.
+
+The research is clear on the direction of travel. Unified data. Shared intelligence. AI integrated into core architecture, not sprinkled on top. The only real question is whether you want to be the company that patches its way there, or the one that designs the blueprint and then executes it.
+
+If you want help turning a messy payment stack into a simple, intelligent one, you can reach us through our [contact page](https://devbrew.ai/contact). We are happy to look at your setup and talk through where the biggest gains can come from.
+
+[^1]:
+    Efi Pylarinou, “From SaaS Bloat to AI-Native: Klarna’s Tech Stack Overhaul.” Medium.  
+     https://efipm.medium.com/from-saas-bloat-to-ai-native-klarnas-tech-stack-overhaul-4cbcd1c2ecb0
+
+[^2]:
+    GoodData, “AI Transformation Playbook for Financial Services and Fintech.”  
+     https://www.gooddata.com/resources/ai-transformation-playbook-for-financial-services-and-fintech/
+
+[^3]:
+    Thomson Reuters, “How Unified AI and Tech Ecosystems Transform Corporate Collaboration.”  
+     https://legal.thomsonreuters.com/blog/how-unified-ai-and-tech-ecosystems-transform-corporate-collaboration/
+
+[^4]:
+    RTInsights, “Why Fintechs Need a Unified Real-Time Data Platform.”  
+     https://www.rtinsights.com/why-fintechs-need-a-unified-real-time-data-platform/
+
+[^5]:
+    Sovan Shatpathy, “Banking in 2026: Production Scale AI Agents.” FinTech Futures.  
+     https://www.fintechfutures.com/ai-in-fintech/banking-in-2026-production-scale-ai-agents
+
+[^6]:
+    Fraud.net, “Best KYC Verification Software for Secure Onboarding.”  
+     https://www.fraud.net/resources/best-kyc-verification-software/
+
+[^7]:
+    Unit21, “Real-Time Risk Ops for the Speed of Fintech.”  
+     https://www.unit21.ai/blog/real-time-risk-ops-for-the-speed-of-fintech
+
+[^8]:
+    Marqeta, “AI in Payments and Fintech: Enhancing Human Decision-Making and Innovation.”  
+     https://www.marqeta.com/blog/ai-in-payments-and-fintech-enhancing-human-decision-making-and-innovation
+
+[^9]:
+    Blend360, “Beyond Transactions: How AI Is Writing the Future of Payments.”  
+     https://www.blend360.com/thought-leadership/beyond-transactions-how-ai-is-writing-the-future-of-payments
+
+[^10]:
+    Xenoss, “Banking AI: Agentic Ops, Instant Payments and Compliance.”  
+     https://xenoss.io/blog/banking-ai-agentic-ops-instant-payments-compliance
+
+[^11]:
+    Bhavin Turakhia, “A New Breed of Payment Processors.” McKinsey & Company.  
+     https://www.mckinsey.com/industries/financial-services/our-insights/a-new-breed-of-payment-processors

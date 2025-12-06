@@ -21,7 +21,7 @@ export default function TableOfContents({ className = '' }: TableOfContentsProps
     const article = document.querySelector('article')
     if (!article) return
 
-    const headings = article.querySelectorAll('h2, h3, h4')
+    const headings = article.querySelectorAll('h2')
     const tocItems: TocItem[] = []
 
     headings.forEach((heading) => {

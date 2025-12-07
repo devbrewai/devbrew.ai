@@ -1,0 +1,372 @@
+---
+title: 'Fighting Smarter Against Fraud Rings'
+date: '2025-12-07'
+lastmod: '2025-12-07'
+slug: 'fraud-rings-payments'
+tags:
+  [
+    'ai',
+    'payments',
+    'fintech',
+    'fraud',
+    'risk',
+    'compliance',
+    'data',
+    'cross-border',
+    'infrastructure',
+  ]
+draft: false
+summary: 'Cut fraud ring losses in payments by 25 to 40 percent using AI, without blocking good customers, in under 90 days.'
+images: ['/static/images/blog/fraud-rings-payments/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Fighting Smarter Against Fraud Rings'
+ogDescription: 'Cut fraud ring losses in payments by 25 to 40 percent using AI, without blocking good customers, in under 90 days.'
+---
+
+### TLDR
+
+- **Fraud rings are network problems, not transaction problems.**
+- **Fraud network detection** treats your payments data as a graph and scores relationships, not isolated events.
+- Payments companies that move from rules only to network based AI typically **cut fraud and chargeback losses by 25 to 40 percent**, and **compress investigations from days to hours**.
+- The hard part is not the idea. It is **data fragmentation, real time scoring, and integration into your existing stack**.
+- That system level work is exactly what Devbrew handles for **Series A to C payments companies, especially in cross border payments**.
+
+---
+
+Fraud rings do not think in single transactions.
+
+They think in networks.
+
+If your fraud controls are still looking at one swipe, one login, one KYC file at a time, you are always reacting. At best, you are catching the tail of a pattern that has already cost you money and reputation.
+
+This is where fraud network detection changes the game.
+
+In simple terms, **fraud network detection treats your entire payments footprint as a graph** and scores the relationships between entities, instead of scoring each transaction in isolation.
+
+In this post, I will walk through how that works, why it matters so much in payments, and how teams like yours use it to cut chargebacks, speed up investigations, and rebuild customer trust.
+
+If you are building a payments company, especially in cross border payments, this should feel very familiar.
+
+---
+
+## The real problem is not one bad transaction, it is the network behind it
+
+Cross border payments are very attractive to organized fraud.
+
+You deal with:
+
+- Multiple geographies, currencies, and regulators
+- Patchy data between partners and processors
+- Higher average ticket sizes and more complex flows
+
+Fraud rings play the gaps between all of these.
+
+They route money through multiple countries, split payments across many accounts, and hide behind money mules and synthetic identities. A single payment looks normal, the KYC file looks fine, the ticket size is just under your threshold.
+
+Together, those transactions form a layered pattern of organized fraud hiding in plain sight.
+
+Fraudsters coordinate in real time, share stolen data, and test your systems the same way engineers run experiments. They will:
+
+- Probe your rules with tiny transactions
+- See what gets blocked and what slides through
+- Adjust the amounts, timing, and routes until they blend in
+
+If your fraud logic is built only around transaction level rules:
+
+- “Block if amount is greater than X from country Y”
+- “Flag if more than N transactions in M minutes”
+- “Reject if device fingerprint score is low”
+
+Then you are only asking one question.
+
+“Does this transaction look suspicious?”
+
+Fraud rings win because the real question is different.
+
+“Does this transaction look like it belongs to a suspicious network of people, devices, and entities?”
+
+---
+
+## The big mistake, treating fraud like isolated events
+
+Most payments teams are still here:
+
+- Rule based systems tuned around individual transactions
+- A basic machine learning model on top, still focused on point scores
+- Manual review queues that try to stitch patterns together after the fact
+
+If you are Series A to C, you have enough volume that fraud hurts, but not enough headcount to brute force this with a giant ops team.
+
+The symptoms probably feel familiar.
+
+- Sudden spikes in chargebacks that look random
+- Support tickets from good customers blocked by over aggressive rules
+- Analysts spending hours pulling SQL to prove a pattern exists
+- Issuers or partners asking what changed, and you do not have a clear story
+
+Take a simple example. You set a rule that flags international payments above 500 dollars. A fraud ring just runs twelve payments of 499 dollars instead. Your rules engine sees twelve unrelated, harmless transactions. In reality, you just let one coordinated 6,000 dollar fraud walk through the door.
+
+This is where teams end up playing whack a mole:
+
+- Fraudsters learn your thresholds by testing small transactions, then sit just under them
+- Rigid rules without context flag a lot of legitimate activity, so good customers get blocked while fraud slips through
+- Every alert looks at one dimension, amount, device, or country, so the system never connects the dots
+
+The mistake is not that you use rules or models. You need both.
+
+The mistake is that they operate in one dimension.
+
+Fraud is multi dimensional, relational, and temporal. It lives in the connections.
+
+---
+
+## How fraud network detection works in plain language
+
+Fraud network detection turns your raw payments data into a graph.
+
+Instead of seeing:
+
+- Transaction A from card C123 at merchant M1
+
+You see a web of relationships.
+
+- Card C123 is linked to email E5 and device D9
+- Device D9 has also been used by accounts A7 and A12
+- Account A12 was involved in three chargebacks last week
+- All of these touch an IP range and a cluster of high risk merchants
+
+You start to model the structure of fraud, not just its surface.
+
+In practice, the system mixes a few techniques:
+
+- **Link analysis and clustering**, to group accounts, devices, IPs, and merchants that quietly share the same infrastructure
+- **Graph pattern recognition**, to spot tight communities that behave like mule rings, even if each account looks clean on its own
+- **Anomaly detection**, to flag new links that do not fit normal network behavior, for example a fresh account suddenly tied to a previously risky device
+- **Real time pattern matching**, to check every new transaction against known rings in milliseconds and block anything that connects too closely
+
+Under the hood, three ideas matter.
+
+### 1. Build the graph
+
+You connect entities such as:
+
+- Cards
+- Accounts and user IDs
+- Devices and browser fingerprints
+- Emails and phone numbers
+- IPs and geolocations
+- Merchants and partners
+
+Each transaction becomes a new set of links in this graph. The same email across multiple cards. The same device used across different customers. The same IP touching multiple merchants in different countries.
+
+### 2. Score the network, not only the node
+
+Instead of scoring just the transaction, you score:
+
+- How close this node is to known bad activity
+- How dense the cluster is around it
+- How fast new connections are forming
+
+You are asking questions like:
+
+- “Is this new account one hop away from a confirmed fraudster?”
+- “Is this device at the center of an unusually tight cluster of high risk activity?”
+- “Are we seeing a burst of new identities tied to the same underlying infrastructure?”
+
+Graph based machine learning and network analytics can see patterns that do not show up when you only look at rows in a table.
+
+### 3. Watch the pattern over time
+
+Fraud rings evolve. They probe, learn your rules, and shift tactics.
+
+Network detection systems track changes such as:
+
+- Sudden growth in links around a suspicious node
+- New connections from previously clean regions to known bad clusters
+- Repeated use of similar structures, such as the same pattern of fake merchants and mule accounts
+
+This turns fraud defense from “flag what broke the rule” into “watch how the network is behaving.”
+
+---
+
+## What “before they emerge” looks like in practice
+
+“Detect fraud rings before they emerge” sounds like marketing. So let us make it concrete.
+
+Here is how this plays out for a payments company, especially one operating cross border.
+
+### Early stage, the network is forming
+
+- A few new customers sign up from a similar IP range
+- They all use different cards, different emails, and different phone numbers
+- Transaction level checks are clean, amounts are small, KYC passes
+
+A rules engine shrugs.
+
+A network model notices that:
+
+- All of these new accounts are two hops away from a known bad device
+- Their transactions connect to the same tight group of high risk merchants
+- The pattern looks like a known tactic from previous campaigns in another region
+
+Result, you get a soft alert, your risk limits tighten automatically, and your team has a simple graph view that explains why.
+
+A good example is promo abuse. One marketplace discovered that hundreds of accounts claiming sign up bonuses were all created on the same device. On the surface, every account had different names and details. Once they ran graph queries, the pattern popped in seconds. They shut down the entire ring instead of chasing single tickets.
+
+### Mid stage, the ring starts to monetize
+
+- Volumes ramp up, still just below your high value rules
+- A few chargebacks land, but nothing that would trigger a full incident
+
+A network system shows you:
+
+- The cluster around these entities is now large and very dense
+- The same infrastructure is spinning up new merchants and customers
+- The overall pattern correlates strongly with historic fraud campaigns
+
+Here you can:
+
+- Preemptively lower limits or add extra verification for that cluster
+- Push adaptive friction to high risk nodes, not to everyone
+- Warn partners before they are hit with an unexplained spike
+
+### Late stage, traditional teams notice
+
+This is the stage many teams are at today when they first realize there is a fraud ring.
+
+- Issuers start complaining
+- Chargeback ratios spike
+- Finance asks why loss projections are off
+- Your analysts finally piece together the pattern manually
+
+By this time, you have real loss, real brand damage, and nervous partners.
+
+Network detection shifts your visibility earlier in the curve. That is where the economics change.
+
+---
+
+## The outcome, what the numbers look like
+
+Teams that move from transaction only controls to fraud network detection usually see three big shifts.
+
+### 1. Chargeback losses drop
+
+Because you identify and block clusters, not random events, you:
+
+- Shut down coordinated attacks earlier
+- Reduce repeat hits from the same underlying network
+- Limit the spread of synthetic identities linked to one ring
+
+In practice, many payments providers that move from rules only to AI and network based detection see fraud and chargeback losses come down in that **25 to 40 percent** range. When they combine stronger identity checks with link analysis, the reduction can climb even higher.
+
+### 2. Investigation time compresses
+
+Right now, your fraud and risk team probably spends hours pulling data:
+
+- Joining tables to see shared devices or emails
+- Manually mapping out links in spreadsheets or slide decks
+- Going back and forth with partners and processors to get missing fields
+
+A network centric system gives them:
+
+- An instant graph view of how entities relate
+- Pre computed features that explain why something is risky
+- Short, human readable summaries they can send to partners or issuers
+
+Complex investigations move from **days to hours**.
+
+Teams that roll out this kind of tooling often see manual fraud work drop by more than half and investigation throughput jump significantly, because the system connects related alerts for them instead of forcing them to live in spreadsheets.
+
+### 3. Customer trust and brand equity improve
+
+The least visible, but most important effect, is on your good customers.
+
+When you can target friction at risky clusters instead of everyone:
+
+- Fewer legitimate users get blocked or delayed
+- High value, clean customers enjoy smoother cross border experiences
+- You avoid blanket rules that kill conversion in entire regions
+
+Linking devices, accounts, and history lets you collapse a lot of noisy alerts into a few high quality ones. In some deployments, false positives drop to a small fraction of total alerts, which means far fewer random declines for legitimate users.
+
+It is not a surprise that companies that upgrade their fraud stack this way also report better customer satisfaction. People notice when a platform feels safe without being paranoid.
+
+Trust is not only about having fewer fraud incidents. It is about how often you make life harder for honest customers.
+
+---
+
+## The hidden difficulty, why this is hard to do alone
+
+On paper, this all sounds straightforward. Build a graph, score it, plug it into your decision engine.
+
+In practice, three things make it hard to pull off internally.
+
+- **Data fragmentation**. Cards, wallets, merchants, partners, and processors often live in different systems, with different schemas and inconsistent identifiers. Turning that into a clean, near real time graph is not a weekend project.
+- **Real time constraints**. Scoring a graph in a notebook is one thing. Serving low latency risk scores in line with live authorizations, payouts, and onboarding flows, without slowing everything down, is a different level of engineering.
+- **Monitoring and drift**. Fraud rings change tactics. Devices, IPs, and merchants churn. Keeping the graph fresh, the features stable, and the scores reliable over time needs proper pipelines and observability, not manual reports.
+
+The hard part is not the idea of a graph. The hard part is running a reliable fraud network detection system in production, inside an already busy payments stack.
+
+---
+
+## What Devbrew actually does here
+
+At Devbrew, we build these fraud network detection systems end to end for payments companies.
+
+We handle the data pipelines that connect your processors and products, the graph modeling that links cards, accounts, devices, and merchants, and the risk scoring services that sit beside your existing rules and queues.
+
+Your team keeps control of the decisions and policy.
+
+We handle the engineering that makes the network view possible in production without derailing your roadmap.
+
+---
+
+## What this looks like for a payments team
+
+You do not need a full in house data science team to start doing this.
+
+You need three building blocks.
+
+1. **Data foundation**
+   - Clean, consistent entity identifiers across processors and products
+   - A way to map all of that into a simple internal schema
+   - Clear ownership of which team can change what
+2. **Network modeling layer**
+   - A graph model that connects cards, accounts, devices, IPs, and merchants
+   - Features that describe how suspicious each node and cluster is
+   - A scoring engine that can feed into your existing rules and model stack
+3. **Decision integration**
+   - Hooks into your existing risk engine and review queues
+   - Clear playbooks for what to do when a cluster crosses a threshold
+   - Feedback loops from outcomes to keep improving the models
+
+The goal is not to rip and replace your current tooling.
+
+The goal is to give your team an additional sense, one that sees how fraud behaves as a network over time.
+
+For Series A to C teams, this is usually the point where you can no longer scale fraud review just by hiring more analysts. You need leverage, not just headcount.
+
+---
+
+## Fighting smarter, not harder
+
+If you are running a payments business, fraud rings are not a question of if.
+
+They are a question of how prepared you are when they show up.
+
+Transaction level rules and models will always have a role. They are necessary, but no longer sufficient.
+
+To protect margin, cut chargebacks by that **twenty five to forty percent** range, and keep customer trust as you scale, you need to:
+
+- See fraud as a network problem, not just a transaction problem
+- Give your team tools that surface patterns in minutes, not weeks
+- Design your fraud systems so that clean customers feel the least friction
+
+That is what fraud network detection is really about.
+
+Fighting smarter, not simply pushing more rules into an already noisy system.
+
+If you are building a Series A to C payments company, especially in cross border payments, and you want to see how fraud network detection would map to your own stack, get in touch with us through our [contact page](/contact). We can walk through a simple architecture review of your current flows and data.
+
+No pitch. Just a clear view of where a network level system would save you money and protect your brand.

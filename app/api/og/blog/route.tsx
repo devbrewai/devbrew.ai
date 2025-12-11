@@ -3,11 +3,27 @@ import { NextRequest } from 'next/server'
 
 export const runtime = 'edge'
 
+// Smart truncation: cut at word boundaries, preserve complete thoughts (280 chars like X/Twitter)
+function truncateDescription(text: string, maxLength: number = 280): string {
+  if (text.length <= maxLength) return text
+
+  // Find the last space before the limit to avoid cutting mid-word
+  const truncated = text.substring(0, maxLength)
+  const lastSpace = truncated.lastIndexOf(' ')
+
+  // If we found a space, cut there; otherwise cut at maxLength
+  const cutPoint = lastSpace > maxLength * 0.8 ? lastSpace : maxLength
+
+  return text.substring(0, cutPoint) + '...'
+}
+
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url)
     const title = searchParams.get('title') || 'Blog Post'
     const description = searchParams.get('description') || ''
+
+    const truncatedDescription = description ? truncateDescription(description) : ''
 
     return new ImageResponse(
       (
@@ -49,7 +65,7 @@ export async function GET(request: NextRequest) {
             </div>
 
             {/* Summary/Description */}
-            {description && (
+            {truncatedDescription && (
               <div
                 style={{
                   fontSize: 28,
@@ -59,7 +75,7 @@ export async function GET(request: NextRequest) {
                   maxWidth: '900px',
                 }}
               >
-                {description.length > 180 ? `${description.substring(0, 180)}...` : description}
+                {truncatedDescription}
               </div>
             )}
           </div>

@@ -1,0 +1,147 @@
+---
+title: 'Fraud agents that cut false positives, not customers'
+date: '2025-12-11'
+lastmod: '2025-12-11'
+slug: 'fraud-agents-false-positives'
+tags: ['ai', 'fraud', 'risk', 'payments', 'fintech', 'card-fraud', 'agents', 'risk-ops']
+draft: false
+summary: 'A practical walkthrough of how AI fraud agents for payments, sitting on top of your existing fraud stack, can cut false positives from 5 to 10% toward 2 to 3%, recover millions of legitimate approvals, and free your Risk Ops team from constant rules firefighting.'
+images: ['/static/images/blog/fraud-agents-false-positives/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Fraud agents that cut false positives, not customers'
+ogDescription: 'For founders, product leaders, and risk teams in payments, a practical guide to using AI fraud agents on top of your existing stack to cut false positives from 5 to 10% toward 2 to 3%, recover millions of legitimate approvals, and free Risk Ops from rules firefighting.'
+---
+
+## **Fraud agents that cut false positives, not customers**
+
+If you run a payments business long enough, you realize there are **two fraud problems.**
+
+The money fraudsters steal, and the money your own system blocks by mistake.
+
+Most teams already catch the obvious bad traffic.
+
+Where you quietly bleed margin is the good cardholder who gets treated like a thief.
+
+Card declined on a normal purchase.
+
+They try again, declined again.
+
+Now they hate your brand, spam support, and finish the transaction with someone else.
+
+## What a fraud co pilot really is
+
+The simple version.
+
+Your models score risk, your rules set guardrails, and a fraud agent sits on top as a co pilot.
+
+The agent watches the transaction stream, asks the right questions, uses your models, then decides whether to approve, challenge, or block.
+
+It also explains why.
+
+## How the system actually works
+
+In practice, a fraud agent for payments behaves like this.
+
+1. **It listens to events.**
+
+   It taps into your auth stream, chargebacks, disputes, device data, KYC, and historic behavior.
+
+2. **It scores each transaction.**
+
+   It calls one or more fraud models, plus your existing rules, to get a risk view.
+
+3. **It picks the next action.**
+
+   Approve if it looks clean, step up authentication if it is suspicious, block or hold if risk is high.
+
+4. **It explains what it did.**
+
+   For each case it generates a short reason that a human can understand.
+
+5. **It learns from outcomes.**
+
+   It watches which approvals become chargebacks and which declines turn into complaints, then feeds that back.
+
+High clarity, low detail.
+
+Enough for your team to see how it fits into the stack.
+
+## Where most teams go wrong
+
+Most teams do some version of this already, but in a brittle way.
+
+They rely on static rules that never die, even when the product changes.
+
+They push marginal cases into review queues that grow faster than volume.
+
+They accept **5 to 10% false positive rates** on card transactions because “that is the industry norm.”
+
+At **50 million card transactions per month**, a 5 to 10 percent false positive rate means **2.5 to 5 million legitimate attempts blocked**.
+
+Cutting that to around **2 to 3%** frees up something like **1 to 4 million extra approvals every month.**
+
+The pattern is always the same.
+
+Losses creep up, teams add more rules, and spend their weeks fighting fires instead of improving the system.
+
+## What changes when you fix it
+
+When teams move from rules alone to model plus agent, the numbers change.
+
+You see false positives drop from the **5 to 10%** band into something closer **to 2 to 3%.**
+
+On a 50 million transaction portfolio, that is **over a million extra approvals per month** that used to be blocked.
+
+Real deployments report results like:
+
+- Around **40% fewer false positives**, with about **30 percent fewer false negatives**.
+- One merchant saw an **86% drop in order declines** while keeping fraud inside target.
+
+Translate that to margin and it is simple.
+
+More real customers get through, fewer bad transactions slip past, and your Risk Ops team deals with a smaller, higher quality queue.
+
+## Why this is harder than it looks
+
+On paper this sounds straightforward.
+
+In production it is not.
+
+You need clean, real time access to payment events across multiple processors, acquirers, and regions.
+
+You need models that understand both global patterns and local quirks, without punishing new markets.
+
+You need the agent to run inside tight latency limits so authorizations are not delayed.
+
+You also need clear explanations for every decision for regulators, partners, and internal audit.
+
+That means proper feature tracking, decision logs, and a way to explain model behavior in normal language.
+
+On top of that, you have to land all of this inside a stack that already has a decade of rules, hard coded exceptions, and one off PSP integrations.
+
+Most teams underestimate that part.
+
+This is why many fraud projects never get past the slide stage.
+
+## Where Devbrew fits in
+
+**Devbrew** comes in at the system level.
+
+We design and ship fraud co pilot agents that sit on top of your current stack.
+
+We handle the hard parts around data plumbing, real time orchestration, and explainable decision flows, without forcing a full rebuild.
+
+We focus on two measurable outcomes.
+
+**Lower false positives and lower investigation time**, expressed in extra approvals, recovered revenue, and hours saved in Risk Ops.
+
+## If your false positives are high, you are already paying
+
+If you already know your false positive rate is too high, you are not early.
+
+You are already paying for it in lost approvals and support cost.
+
+I am happy to review your current fraud flow, look at your numbers, and show you where an agent layer would recover the most margin.
+
+If you want to see what this could look like on your existing payments stack, [get in touch](/contact) and we can start from a simple baseline.

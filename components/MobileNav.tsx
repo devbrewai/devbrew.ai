@@ -86,7 +86,7 @@ const MobileNav = () => {
                       'border-primary-500 text-primary-600 hover:bg-primary-500 dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-400 w-full hover:text-white',
                   })} mt-4`}
                 >
-                  Get Started
+                  Get in touch
                 </Link>
               </nav>
 

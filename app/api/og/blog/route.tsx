@@ -12,7 +12,7 @@ function truncateDescription(text: string, maxLength: number = 280): string {
   const lastSpace = truncated.lastIndexOf(' ')
 
   // If we found a space, cut there; otherwise cut at maxLength
-  const cutPoint = lastSpace > maxLength * 0.8 ? lastSpace : maxLength
+  const cutPoint = lastSpace > -1 ? lastSpace : maxLength
 
   return text.substring(0, cutPoint) + '...'
 }

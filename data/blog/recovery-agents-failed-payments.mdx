@@ -1,0 +1,305 @@
+---
+title: 'Recovery agents that turn failed payments into found revenue'
+date: '2025-12-17'
+lastmod: '2025-12-17'
+slug: 'recovery-agents-failed-payments'
+tags:
+  [
+    'ai',
+    'payments',
+    'revenue-recovery',
+    'collections',
+    'dunning',
+    'subscriptions',
+    'billing',
+    'agents',
+    'risk-ops',
+    'fintech',
+  ]
+draft: false
+summary: 'Soft declines and expired cards quietly drive involuntary churn. This post shows how recovery agents orchestrate retries, channel selection, and messaging to lift recovered revenue and cut manual work.'
+images: ['/static/images/blog/recovery-agents-failed-payments/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Recovery agents that turn failed payments into found revenue'
+ogDescription: 'Stop treating failed payments like churn. Use an AI recovery agent to orchestrate retries, channel selection, and messaging, and turn payment failures into measurable recovered revenue.'
+---
+
+Soft declines. Expired cards. "Insufficient funds" that somehow disappears two days later.
+
+If you run recurring payments, you have seen this up close. A customer who wants your product hits a temporary payment failure, then your system treats it like the end of the relationship. That is involuntary churn, and it is brutal because it shows up as "normal churn" in your dashboards.
+
+And in a lot of Series A to C payments companies, recovery still looks like this:
+
+- Retry three times on a fixed schedule
+- Send a generic email
+- Call it "collections" and move on
+
+The frustrating part is that this is not lazy. It is just outdated.
+
+Failures are contextual now. Issuer behavior changes. Customer cash flow is not uniform. Authentication, risk controls, and wallets add new failure modes.
+
+So recovery has to stop being a timer. It has to become a decision system.
+
+---
+
+## The core mechanism: treat recovery as orchestration, not retries
+
+Think of a recovery agent as the layer that connects billing, payments, messaging, and support, so recovery stops being blind.
+
+It does not replace your processor. It makes your existing stack smarter about what to do next, and when.
+
+Stripe's own revenue recovery tooling points in the same direction. Smart Retries uses AI to choose better retry timing, because timing changes outcomes in the real world.[^1] [^2]
+
+The takeaway is simple:
+
+> Failed payments are recoverable, but not with a one size fits all schedule.
+
+---
+
+## Why "three retries and a reminder" underperforms
+
+Here is why the usual playbook stops working once you have real scale.
+
+### 1. Timing matters
+
+Retrying in one hour is not the same as retrying in 36 hours. Even for the same customer.
+
+Success rates vary by time of day, day of week, and customer behavior, which is why smart retry strategies exist in the first place.[^2] [^3]
+
+### 2. Channel matters
+
+Email is not push. Push is not SMS. SMS is not in app.
+
+If you only have one channel, your "recovery strategy" becomes hope plus an unsubscribe link.
+
+### 3. Message matters
+
+"Your payment failed" is not a recovery message.
+
+It is a churn trigger if the next step is unclear, or if fixing it takes more than 30 seconds.
+
+---
+
+## What a recovery agent actually does
+
+If you want this to work in production, you need a loop that is consistent and measurable, not a handful of one off automations.
+
+A recovery agent runs five steps.
+
+### 1. Detect
+
+Listen for failures in real time and capture context, not just the decline code.
+
+If you only store "failed," you cannot make good decisions later. You end up building a recovery workflow that is basically guessing.
+
+### 2. Diagnose
+
+Classify the failure into a "next action" bucket.
+
+This is where you stop treating all failures like the same problem.
+
+For example:
+
+- Soft decline, retry at an optimal time
+- Expired card, request an update and offer a fast path
+- Authentication required, trigger step up
+- Risk flagged, route to review or a safer flow
+- Delinquency, shift into a compliant collections workflow
+
+### 3. Decide
+
+Choose timing, channel, and message as one decision.
+
+Not "retry then email."
+
+More like "Retry tomorrow morning, and if it fails, send an in app prompt with a one click update method link."
+
+### 4. Execute
+
+Run the workflow across your stack.
+
+Retries, dunning, support handoff, and escalation should be coordinated. Otherwise, customers get mixed signals, and your ops team gets dragged into cleanup.
+
+### 5. Learn
+
+Capture outcomes and improve the policy over time.
+
+Every action should be labeled, so the system can actually get better:
+
+- recovered within 24 hours
+- recovered within 7 days
+- churned
+- escalated to human
+- entered collections
+- complaint or negative response
+
+That dataset becomes your compounding edge. The more volume you run, the smarter recovery gets.
+
+---
+
+## Collections and recovery performance, what "good" looks like
+
+You need a benchmark, even if it is imperfect.
+
+Traditional collections recovery rates are often cited around the 20 to 30% range, depending on debt type, age, and portfolio.[^4] [^5]
+
+Digital first collections strategies can improve outcomes and reduce cost by shifting the experience toward proactive and customer friendly engagement.
+
+McKinsey has reported that digitally contacted customers can make more payments than those contacted via traditional channels, with knock on benefits in cost efficiency and reduced conduct risk.[^6]
+
+On the AI side, BCG has noted AI agents handling collections with improved success rates and meaningfully lower costs, alongside higher cure rates.[^7]
+
+You will also see a common operational claim across vendors and industry write ups: conversational AI can handle a large share of routine debtor queries, which reduces cost per recovered dollar by freeing humans for complex cases.[^8] [^9]
+
+One nuance for payments teams: subscriptions and stored cards are usually earlier in the lifecycle than traditional debt collections. The relationship is often still salvageable. That is why orchestration and messaging quality matter so much here.
+
+---
+
+## Map this to subscriptions and stored cards
+
+You do not need a miracle for this to matter.
+
+You need a small uplift at scale.
+
+Example:
+
+- 200,000 recurring invoices per month
+- 6% fail, that is 12,000 failures
+- If you recover 40% today, you recover 4,800
+
+If an agent adds even a 5 to 10% absolute uplift in recovered invoices, that is 600 to 1,200 extra recoveries per month.
+
+Multiply by your average invoice value and you just "found" revenue you were already owed.
+
+### The scorecard that matters
+
+If you want this to be more than a nice idea, track outcomes that map to revenue and workload:
+
+- **Recovered revenue lift** (recovered invoices, recovered MRR)
+- **Involuntary churn reduction** (before vs after, with a holdout if you can)
+- **Time to recover** (median and p90)
+- **Cost per recovered dollar** (including human time)
+- **Manual hours per recovered payment** (this is the hidden tax)
+- **Support load** (tickets per 1,000 failures)
+- **Customer trust signals** (complaints, opt outs, negative replies)
+
+This is how you keep the work grounded in business impact, not activity.
+
+---
+
+## Common mistakes we see when teams try to fix recovery
+
+### Mistake 1: Treating failures as one bucket
+
+"Payment failed" is not a segment.
+
+Soft declines, hard declines, auth failures, and delinquency each need different action.
+
+If you are not segmenting, you are retrying blindly.
+
+### Mistake 2: Segmenting by decline code only
+
+Decline codes are a start, not the strategy.
+
+You need customer history, communication history, risk context, and payment method lifecycle signals. Otherwise you get the worst of both worlds, too many retries for the wrong cases, and not enough help for the recoverable ones.
+
+### Mistake 3: Measuring activity instead of outcomes
+
+If you are tracking "emails sent" and "retries attempted," you will fool yourself.
+
+You need to measure recovered revenue lift, time to recovery, manual hours per recovered payment, and complaint rate.
+
+Without that, you cannot prove ROI, and you cannot improve policy.
+
+### Mistake 4: Forgetting compliance once you cross into collections
+
+Once you move from dunning into collections, the tone, consent, and process requirements tighten fast.
+
+Your agent needs guardrails, audit logs, and clear escalation paths.
+
+This is also where you want human override built in. Not because AI cannot do it, but because you want control when a situation gets sensitive.
+
+---
+
+## Why most teams struggle to implement this well
+
+The hard part is not writing a retry job or adding another email sequence.
+
+The hard part is building a recovery system that is coherent across your stack, and safe to run at scale.
+
+This is where teams get stuck:
+
+- **Failure taxonomy that matches reality**, across processors, decline reasons, and auth flows
+- **State and identity**, so you know what happened to this customer and this payment method over time
+- **Coordination across systems**, billing, payments, CRM, support, and risk tooling
+- **Experimentation without chaos**, so you can test changes without spamming customers or hurting trust
+- **Observability and auditability**, so you can explain what happened, and roll back safely
+- **Guardrails for tone and compliance**, especially when you cross from recovery into collections workflows
+
+If you skip these, you end up with a pile of automations that never improves, and a recovery process that becomes its own operational burden.
+
+---
+
+## Where Devbrew fits
+
+You probably already have pieces of this scattered across your stack.
+
+Retries in billing. Emails in a CRM. Support tickets in a queue. A spreadsheet for delinquency.
+Maybe a rules engine nobody wants to touch.
+
+Devbrew builds the production grade recovery agent that stitches those pieces into one system:
+
+- a clean failure taxonomy
+- a decision layer for timing, channel, and message selection
+- integrations into your existing billing and processor flows
+- experimentation, monitoring, and audit logs
+- guardrails that protect customer trust while improving recovery
+
+The target is practical:
+
+- measurable lift in recovered revenue
+- clear drop in manual hours per recovered payment
+- better customer experience during failure states, so recovery does not become churn
+
+If you want, we can map your failed payment funnel and recovery flow, then point out the highest leverage fixes and the measurements that prove impact.
+
+No pitch. Just clarity on where you are leaking recovered revenue and what it would take to plug it.
+
+If you want us to map this to your stack, reach out through our [contact page](https://devbrew.ai/contact).
+
+[^1]:
+    Stripe Docs, "Automate payment retries (Smart Retries)."
+    https://docs.stripe.com/billing/revenue-recovery/smart-retries
+
+[^2]:
+    Stripe, "How we built it: Smart Retries."
+    https://stripe.com/blog/how-we-built-it-smart-retries
+
+[^3]:
+    Stripe, "Payment retries 101."
+    https://stripe.com/resources/more/payment-retries-101-how-businesses-can-make-the-most-of-this-important-detail
+
+[^4]:
+    ACA International, "2020 State of the Industry Report" (includes industry recovery rate figures).
+    https://policymakers.acainternational.org/whitepapers/2020/09/21/2018-state-of-the-industry-report/
+
+[^5]:
+    Tratta, "Average Recovery Rates for Collections: Industry Benchmark."
+    https://www.tratta.io/blog/collection-agencies-average-recovery-rate-insights
+
+[^6]:
+    McKinsey, "Holistic customer assistance through digital-first collections."
+    https://www.mckinsey.com/capabilities/risk-and-resilience/our-insights/holistic-customer-assistance-through-digital-first-collections
+
+[^7]:
+    BCG, "Branches to Bots: Will AI Transform Retail Banking?" (collections success rates, costs, cure rates).
+    https://www.bcg.com/publications/2025/branches-to-bots-will-ai-transform-retail-banking
+
+[^8]:
+    RTS Labs, "AI Debt Collection" (routine query automation benchmarks).
+    https://rtslabs.com/ai-debt-collection/
+
+[^9]:
+    Moveo, "AI Voice for Debt Recovery" (automation benchmarks for incoming calls).
+    https://moveo.ai/blog/ai-voice-for-debt-recovery

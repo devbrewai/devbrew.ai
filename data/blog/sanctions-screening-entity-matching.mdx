@@ -1,0 +1,327 @@
+---
+title: 'Sanctions Screening 2.0: Using AI to Go Beyond Exact Match Search'
+date: '2025-12-31'
+lastmod: '2025-12-31'
+slug: 'sanctions-screening-entity-matching'
+tags: ['sanctions', 'aml', 'compliance', 'risk-management', 'payments', 'ai', 'machine-learning']
+draft: false
+summary: 'Cut sanctions false positives by up to 60%, without missing real threats, in 30 days.'
+images: ['/static/images/blog/sanctions-screening-entity-matching/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Sanctions Screening 2.0: Using AI to Go Beyond Exact Match Search'
+ogDescription: 'Cut sanctions false positives by up to 60%, without missing real threats, in 30 days.'
+---
+
+Your compliance team is drowning in false positives.
+
+Every day, your sanctions screening flags hundreds of transactions. Most are false alarms. A "Michael Smith" in Ohio gets routed to review because your system thinks he looks close enough to a sanctioned "Mikhail Smirnov."
+
+So analysts grind through the queue, legitimate payments get delayed, customers get stuck, and revenue recognition slows.
+
+And even after all that work, you still do not feel confident you are catching the real threats, the ones hiding behind aliases, transliteration, and small variations your rules miss.
+
+If you run payments at scale, sanctions screening turns into a daily tradeoff you never asked for:
+
+- **Miss a real match,** and you carry regulatory risk.
+- **Flag too much noise,** and your team drowns, approvals slow down, and good customers get trapped.
+
+Then the blame gets messy. Compliance gets labeled as "the team slowing growth," even though you are the person who has to defend every decision when regulators ask questions.
+
+And the worst part is that the pain grows with volume. What felt fine at 5,000 transactions a day collapses at 500,000.
+
+Let's talk about why this happens, and what sanctions screening looks like when it is built like a modern risk system.
+
+---
+
+## The mistake: treating sanctions screening like a spelling problem
+
+Most teams start with a reasonable idea:
+
+"Let's compare names against OFAC, EU, and other lists. If they are close enough, flag it."
+
+So they implement fuzzy matching using basic string distance, usually **Levenshtein** or something similar.
+
+It sounds fine, until reality shows up:
+
+- Names have **aliases** and **multiple scripts**
+- People reorder names: _Mohamed Ali_ vs _Ali Mohamed_
+- Transliteration varies: _Muhammad_ vs _Mohammed_ vs _Mohamad_
+- Entities share common words: _Trading_, _Holdings_, _Group_
+- Addresses and dates are messy or missing
+- Your own customer data is inconsistent across systems
+
+String distance was never designed for "identify the same entity in the real world." It was designed for "these two strings look similar."
+
+So teams end up tuning thresholds forever:
+
+- Raise the threshold and you reduce false positives, but you increase false negatives.
+- Lower the threshold and you catch more, but you flood the queue with junk.
+
+That is not a sustainable control. It is a permanent fight.
+
+---
+
+## The fix: move from fuzzy matching to intelligent entity matching
+
+Here is the core mechanism:
+
+**Sanctions screening should not ask, "Do these two names look similar?"**
+
+It should ask, **"Is this the same real world entity, based on all the evidence we have?"**
+
+That shift changes everything, because now you can use more than the name.
+
+Sanctions Screening 2.0 is an **entity resolution system** designed for compliance constraints:
+
+- High recall on true matches
+- Low noise for analysts
+- Fast enough for real-time approvals
+- Fully auditable decisions
+
+You are still screening against OFAC, EU, UN, UK HMT, and other lists.
+
+But you are doing it with a system that understands identity as a bundle of signals, not a single string.
+
+Here's a simple example of the difference:
+
+A transaction comes in for **"Mohamed Al Haj."**
+
+A sanctions list entry shows **"Muhammad Al Hajj,"** with an alias tied to the same person.
+
+A basic fuzzy match sees a common name pattern and returns a messy pile of "close" results. Your analyst gets 50 to 200 lookalikes, most of them unrelated.
+
+An entity matching system does something more useful:
+
+- It pulls a short candidate list using tokens plus corridor context.
+- It checks structured signals like country and year of birth when available.
+- It produces two candidates, not two hundred.
+- It routes only the truly ambiguous one to review, with the exact reasons why.
+
+That is the difference between screening that creates queues, and screening that creates decisions.
+
+---
+
+## The system, broken into simple steps
+
+Think of it like a funnel. Wide at the top, strict at the bottom.
+
+### Step 1: Normalize inputs so you are not comparing chaos
+
+Before any matching, you standardize what you can:
+
+- Name cleaning (whitespace, punctuation, casing)
+- Tokenization (split into meaningful parts)
+- Transliteration handling where relevant
+- Business suffix removal (_Ltd_, _LLC_, _GmbH_) for entity names
+- Address normalization if you have it
+
+This alone can remove a surprising amount of noise.
+
+### Step 2: Generate smart candidates so you do not brute force everything
+
+At high volume, you cannot compare every transaction against every sanctions record.
+
+So you do candidate retrieval:
+
+- Fast lexical filters (tokens, initials, shared rare terms)
+- Country or region filters when available
+- Date of birth range checks for individuals
+- Organization type hints for businesses
+
+The goal is simple: pull back a small shortlist of "possible matches" in milliseconds.
+
+This is how you keep latency predictable without weakening controls.
+
+### Step 3: Score candidates using signals that actually represent identity
+
+Now the system evaluates similarity using multiple features, not one distance score:
+
+**Name signals**
+
+- Token overlap and rarity weighting
+- Alias awareness (known variations from lists)
+- Phonetic similarity when useful
+- Multilingual similarity handling
+
+**Non name signals**
+
+- Date of birth, year of birth
+- Country, nationality
+- Address proximity
+- Document identifiers when present
+- For businesses: registration hints, domain, location, directors (if you have them)
+
+This is where AI helps. Not as magic, but as a better similarity engine that can generalize across real world variation.
+
+This is not a generative model making guesses. It is a scoring system with auditable features and traceable reasons.
+
+In practice, many teams use a hybrid approach:
+
+- An embedding model to capture semantic similarity in names and aliases
+- A feature based model for structured signals
+- A rules layer for hard constraints and policy requirements
+
+### Step 4: Make a decision with clear outcomes, not one fuzzy score
+
+Instead of "match or no match," use a three lane result:
+
+- **Clear non match**: auto approve
+- **Clear match**: block or escalate immediately
+- **Uncertain**: route to analyst review with a concise explanation
+
+This single design choice is what stops your team from drowning.
+
+### Step 5: Explain every flag like you expect an auditor to read it
+
+Every alert should come with:
+
+- What list entry it matched
+- Which signals contributed most
+- Why it was not auto cleared
+- What additional info would resolve it fastest
+
+If your analysts cannot explain a decision in one minute, the system is not helping them.
+
+### Step 6: Feed outcomes back into the system so it gets better
+
+You already have labels, you just do not treat them like training data:
+
+- Analyst cleared it as a false positive
+- Analyst confirmed a match
+- Customer provided new info that changed the decision
+
+These outcomes become feedback for:
+
+- Threshold tuning
+- Feature improvements
+- Model retraining
+- Monitoring for drift
+
+---
+
+## Common failure patterns we see in payments teams
+
+Even smart teams get trapped by a few patterns.
+
+### 1) Only matching on names, then wondering why the queue is on fire
+
+If you ignore DOB, address, country, and context, you force string matching to do a job it cannot do.
+
+### 2) Treating all matches as equal
+
+A weak match on a common name is not the same as a strong match with shared DOB and nationality. Your workflow should reflect that.
+
+### 3) No candidate retrieval strategy
+
+If you brute force comparisons, you either accept slow performance or you reduce checks until you are blind.
+
+### 4) No feedback loop
+
+If analyst decisions are not captured and reused, you pay the same investigation cost forever.
+
+### 5) No monitoring
+
+Lists change. Your customer base changes. Fraud patterns change. If you do not monitor alert rates, decision distributions, and model drift, the system quietly degrades.
+
+---
+
+## What this unlocks in business terms
+
+When you move to intelligent entity matching, the business impact is not subtle.
+
+In practice, teams often see:
+
+- **30 to 60% fewer false positives**, depending on baseline data quality, list mix, and how much structured data you capture
+- **Lower compliance ops cost**, because analyst time shifts from repetitive clearing to true risk
+- **Faster approvals**, which reduces customer drop off and speeds up revenue recognition
+- **Better coverage**, because you catch variants that string matching misses
+
+The exact lift depends on your baseline false positive rate and how complete your identity fields are, but the direction is consistent.
+
+The compounding effect is the real win. Every day you reduce noise, your team gets capacity back. Every day you approve faster, you stop leaking good transactions out of the funnel.
+
+---
+
+## Why most teams cannot implement this in house
+
+Here is the honest truth:
+
+The hard part is not "use an AI model."
+
+The hard part is the system around it:
+
+- Data quality and identity consistency across products
+- Low latency retrieval and scoring at high throughput
+- Auditability, explainability, and policy controls
+- Safe thresholding that compliance can defend
+- Feedback pipelines that turn analyst work into improvement
+- Monitoring that catches drift before regulators do
+
+Most Series A to C payments companies are busy shipping product and keeping risk under control with limited headcount. Building a production grade entity resolution system is not a side quest.
+
+---
+
+## A simple 30 day plan to get started
+
+If you want progress fast without boiling the ocean, here is a practical path.
+
+### Week 1: baseline and visibility
+
+**Deliverable:** a baseline dashboard and alert taxonomy
+
+- Measure false positive rate, review volume, and clearance time
+- Categorize alerts by root cause (name variants, common tokens, missing DOB, weak candidate retrieval)
+- Identify the top lists and corridors generating the most noise
+
+### Week 2: data readiness and feedback capture
+
+**Deliverable:** normalized inputs and clean outcome labels
+
+- Improve name parsing and normalization
+- Confirm which structured fields are reliable (DOB, country, address)
+- Capture analyst decisions in a way the model can learn from later
+
+### Week 3: candidate retrieval plus triage lanes
+
+**Deliverable:** three lane decisions behind a feature flag
+
+- Implement fast candidate retrieval so screening stays low latency at scale
+- Introduce outcomes: auto clear, escalate, review
+- Start conservative, then measure queue reduction safely
+
+### Week 4: intelligent scoring pilot
+
+**Deliverable:** a pilot evaluated on your own historical cases
+
+- Add smarter name and alias similarity scoring
+- Combine with structured signals for final ranking
+- Validate against a labeled sample from your past investigations
+- Compare alert volume and clearance time before you roll wider
+
+By the end of 30 days, you should have a working pilot and real numbers, not opinions.
+
+---
+
+## Where Devbrew fits
+
+At Devbrew, we build sanctions screening that catches real threats without drowning your team in false alerts.
+
+We plug into your existing stack and deliver the full system, not just a model:
+
+- Data pipelines connecting your KYC and customer systems, transaction flow, and external watchlists
+- Entity matching tuned for transliteration, aliases, and partial identity data
+- Candidate retrieval and real-time screening APIs designed for low latency decisions in production
+- Analyst review workflows with explainable outputs, so cases clear fast and decisions are defensible
+- Monitoring for false positive rates, clearance time, drift, and decision distributions
+- Replayable audit trails, watchlist and model versioning, and documentation built for regulatory review
+
+You get precision compliance at scale, without slowing down the roadmap or forcing your team onto new tools.
+
+## See how this maps to your screening workflow
+
+If you want, we can map this approach to your current sanctions flow and quantify the opportunity.
+
+No pitch. Just a clear breakdown of where false positives are coming from, what an entity matching system would catch that you are currently missing, and what the ROI could look like at your scale.
+
+Book 30 minutes with me at [cal.com/joekariuki](https://cal.com/joekariuki/ai-strategy-call) or email me directly at [joe@devbrew.ai](mailto:joe@devbrew.ai).

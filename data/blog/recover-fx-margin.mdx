@@ -1,0 +1,189 @@
+---
+title: 'Real-Time FX Execution: How ML Recovers Hidden Margin on Every Transfer'
+date: '2026-01-02'
+lastmod: '2026-01-02'
+slug: 'recover-fx-margin'
+tags: ['fx', 'treasury', 'cross-border-payments', 'payments', 'ai', 'machine-learning']
+draft: false
+summary: 'Recover hidden FX margin without changing providers, starting in the next seven days.'
+images: ['/static/images/blog/recover-fx-margin/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Real-Time FX Execution: How ML Recovers Hidden Margin on Every Transfer'
+ogDescription: 'Recover hidden FX margin without changing providers, starting in the next seven days.'
+---
+
+FX usually gets treated like plumbing.
+
+Treasury negotiates terms. Product ships the flow. Engineering integrates a provider. Finance reviews the monthly averages. Then everyone moves on.
+
+The problem is that FX is not static, and execution is not neutral. Timing and routing decisions compound.
+
+At Series A to C scale, that compounding turns into real money, even when provider terms look competitive. Not because anyone is getting gouged, but because static execution creates avoidable slippage.
+
+Processing $250 million in cross-border volume every year means thousands of conversions, USD to EUR, GBP to JPY, AUD to CAD. Every transfer hits an FX provider, executes at the quoted rate at that time, and the cost either goes to customers or shows up as lower margin.
+
+Here, FX leakage is the gap between your executed rate and the best available rate from your approved providers within the same short time window.
+
+Here's what almost no one measures: many payments companies leak avoidable basis points (bps) on every transfer because they execute FX the same way every time, regardless of market conditions, time of day, or which approved provider is most competitive right now.
+
+Even a handful of basis points sounds modest. On a single \$10,000 transfer, 5 to 15 bps is only \$5 to \$15.
+
+But across $250 million in annual flow, scenario ranges get serious fast:
+
+- If avoidable slippage is **5 bps**, that is **$125,000** per year
+- If it is **10 bps**, that is **$250,000** per year
+- If it is **30 bps**, that is **$750,000** per year
+
+The money is there. It just needs a system that captures it.
+
+## Why FX leakage stays invisible
+
+Most treasury teams treat foreign exchange like payment rails or compliance checks. It is infrastructure. Something that just has to happen. Rates get negotiated with providers 18 months ago, the integration gets built, and now it runs on autopilot.
+
+But FX is not static. Prices move constantly. Liquidity shifts. Providers update quotes based on market conditions, risk limits, and inventory.
+
+When FX executes on demand, the moment a user clicks "send," the system accepts whatever the market looks like in that exact instant. Sometimes it is favorable. Sometimes it is not. Over thousands of transfers, those small differences add up into real slippage versus what you could have achieved with better execution.
+
+The second issue is routing. Many companies send most volume through one provider, or route based on rules that have not changed since launch. Provider A gets EUR corridors. Provider B gets emerging markets. Done.
+
+But provider competitiveness is not constant. Across providers, quotes for the same pair can differ materially in the same moment depending on liquidity, inventory, and internal risk limits. Static routing cannot adapt, so basis points get left on the table every day.
+
+The painful part is visibility. Most dashboards show aggregated monthly FX costs. They do not show per transaction performance, per provider dispersion, or time of day patterns. The leakage stays invisible.
+
+## What ML-based FX execution does
+
+The system starts by collecting clean, granular rate and execution data across the providers you already use. Not monthly averages. Timestamped quotes and fills at the level needed to measure execution quality.
+
+Then you build decision logic that optimizes two things at the time a transfer is initiated:
+
+1. **Timing**
+2. **Routing**
+
+### **Timing**
+
+The goal is not predicting long term FX direction. It is short window execution decisions.
+
+For each transfer, the system asks: does this flow need immediate execution, or can it tolerate a short delay without breaking product promises?
+
+Many cross-border transfers are not urgent. In flows where you are not promising instant execution or a guaranteed quote, a short delay can be acceptable. Sometimes that delay captures a better rate because prices and provider quotes can improve within the next minute.
+
+### **Routing**
+
+At the moment of execution, the system compares executable quotes across your approved providers and routes the transfer to the best option for that pair at that moment.
+
+Not based on static rules. Based on live, measurable quote dispersion.
+
+Every executed transfer becomes feedback. You can measure whether the decision improved execution quality and adjust the policy over time.
+
+Monitoring then makes the invisible visible. It tracks execution quality by provider, corridor, time of day, and product flow. That is where the real opportunities show up, like a provider consistently underperforming during specific market hours, or one corridor having unusually wide quote dispersion.
+
+That is the system. It is not magic. It is treating FX execution like a dynamic optimization problem instead of a fixed cost you cannot control.
+
+## The mistakes that make FX leakage worse
+
+**Mistake 1: Executing every transfer immediately by default.**
+
+Most teams default to "execute now" because it is simpler to build and easier to explain. But that is still a policy choice, not a requirement. In flows where you are not promising instant execution or a guaranteed quote, a short delay window can be acceptable, and it can reduce the odds you execute in a bad micro moment. Even if timing only moves the needle by a few basis points in your top corridors, that is meaningful at Series A to C volume.
+
+**Mistake 2: Keeping launch day routing logic forever.**
+
+Routing decisions are often made once, early, then never revisited. Provider competitiveness changes by corridor, market session, ticket size, and volatility regime, but routing rules stay frozen because nobody owns re-evaluation. The result is predictable: you systematically miss the best executable quote some percentage of the time. If you want credibility here, the fix is not "trust the model," it is "measure provider quote dispersion by pair and time window."
+
+**Mistake 3: Treating FX as a contract negotiation problem, not an execution problem.**
+
+Negotiating spreads and fees matters, but it does not solve execution quality. Even with strong terms, you can still leak margin if you always execute on demand and route statically. Contracts set the playing field, execution decides the outcome. The opportunity lives in the last mile decisions that happen on every transfer.
+
+**Mistake 4: Measuring at the wrong granularity.**
+
+Monthly averages make FX look stable, which is exactly why leakage stays invisible. The opportunity usually concentrates in a few corridors, a few providers, and specific time windows where quote dispersion is widest. If you cannot see execution quality per transfer, you cannot tell whether the problem is pricing, routing, timing, or all three. And when you cannot separate those drivers, it is hard for finance, treasury, and product to align on what is worth fixing first.
+
+**Mistake 5: Assuming an internal team can build it as a side project.**
+
+It is tempting to think this is "just a model." In reality, production grade optimization is a system: multiple provider rate ingestion, normalization and data quality, a decision service fast enough to avoid quote drift, governance and rollback, and monitoring with safe fallbacks. That is a dedicated workstream with real operational ownership. If you do not staff it like one, it will stall and the leakage will continue.
+
+## The margin sitting on the table
+
+The honest answer is that the impact depends on your corridors, provider mix, product constraints, and how you define the benchmark.
+
+But the math is simple once you express it as scenario ranges.
+
+On **$250 million** in annual cross-border flow:
+
+- **5 bps** improvement = **$125,000** per year
+- **10 bps** improvement = **$250,000** per year
+- **20 bps** improvement = **$500,000** per year
+- **30 bps** improvement = **$750,000** per year
+
+If you process **$50 million per month**, the same scenario ranges look like this:
+
+- **5 bps** improvement = **$25,000** per month
+- **10 bps** improvement = **$50,000** per month
+- **20 bps** improvement = **$100,000** per month
+- **30 bps** improvement = **$150,000** per month
+
+Some of that improvement can come from timing in flows that allow small delays. Some can come from routing when providers diverge meaningfully by pair and time window. The combined result is corridor dependent, but at Series A to C volume, even single digit basis points can be worth real money.
+
+A note on context: banks often embed FX markups that can be measured in percentage points, especially on smaller tickets and less competitive corridors. Specialist FX providers can be meaningfully tighter than banks, but execution slippage can still show up when routing is static and timing is fully on demand. Optimization targets that execution level slippage that can remain even after you have negotiated strong provider terms.
+
+## Why internal builds hit the same walls
+
+The pattern is consistent. Teams start with a model. The model is not the hard part. Production is.
+
+First challenge: ingesting rate feeds across providers, normalizing formats, handling gaps and bad ticks, and storing the data so it supports both measurement and real-time decisions.
+
+Second challenge: governance and iteration. Any adaptive policy needs versioning, rollback, and clear evaluation to avoid quietly making execution worse.
+
+Third challenge: a decision service that is fast enough that quotes do not drift between decision and execution. That usually requires low latency design and careful engineering.
+
+Fourth challenge: monitoring and incident response. If a rate feed degrades, a provider's quote quality shifts, or decisions drift, you need alarms and fallback logic before the issue costs money.
+
+Six months in, the project has consumed meaningful cycles. Core product slips. The work stalls. FX remains "a pass-through cost," and the leakage continues.
+
+## What your team can do this week
+
+You do not need ML infrastructure to get clarity. You need measurement, and you need it at the level where execution decisions actually happen.
+
+The goal for the next seven days is simple: quantify the opportunity as a scenario range using your own transfers, then pinpoint whether the driver is timing, routing, or both.
+
+**Step 1: Pull the last 60 to 90 days of FX transfers.**
+
+Export every cross-border transfer with currency pair, amount, execution timestamp, provider used, and executed rate. If you have it, include product flow type and any "rate locked" or "quote valid until" fields. This dataset is your baseline, and it is usually enough to expose where slippage concentrates.
+
+**Step 2: Measure execution quality per transfer using two benchmarks.**
+
+Start with a reference rate at the timestamp to spot broad patterns and outliers. Then do the actionable comparison: benchmark each transfer against the best executable quote available from your approved providers within the same short time window. The first tells you "are we paying up." The second tells you "is our execution policy leaving money on the table."
+
+**Step 3: Rank corridors and flows by dollars, not opinions.**
+
+Identify the top three corridors by volume and the top flows by contribution margin. This keeps the work focused and avoids debates about edge cases. In most payments businesses, a small number of corridors drive most of the opportunity, so you can get 80% of the insight with 20% of the analysis.
+
+**Step 4: Map provider performance by time of day and market session.**
+
+Bucket transfers into four-hour windows and compare execution quality by provider and corridor. Look for repeatable patterns like a provider consistently underperforming during a specific session or certain corridors showing unusually wide quote dispersion. These are the pockets where dynamic routing tends to matter most.
+
+**Step 5: Run a small timing experiment in a safe flow.**
+
+Pick a non-urgent flow where you are not promising instant execution or a guaranteed quote. For a small sample, compare immediate execution versus a short, defined delay window. You are not trying to be perfect here. You are trying to learn whether timing is worth 1 to 3 bps, 5 to 10 bps, or basically zero for your product constraints.
+
+**Step 6: Turn the results into scenario ranges the whole team can align on.**
+
+Once you have even a directional estimate, express it as "if then" math. If we improve execution by 5 bps, here is the annual impact. If it is 10 bps, here is the impact. If it is 20 bps, here is the impact. That framing keeps it credible, makes tradeoffs explicit, and makes it easier for finance, treasury, and product to decide what is worth fixing first.
+
+These steps take hours, not weeks. And they give you enough evidence to answer the real question everyone cares about: is there meaningful margin here, and where exactly is it coming from?
+
+## How Devbrew turns leakage into recovered margin
+
+At Devbrew, we build end-to-end FX execution optimization systems for payments companies.
+
+We handle the full system: provider rate ingestion, data quality, measurement, decision services for timing and routing, and monitoring with safe fallbacks.
+
+The goal is simple: plug into your existing workflows, improve execution quality where the product allows it, and make the impact measurable by corridor, provider, and time window.
+
+We build production grade ML systems in payments infrastructure, and we can show you the architecture, evaluation plan, and operational requirements before you commit to anything.
+
+If it would be useful, we can run a lightweight evaluation using your last 60 to 90 days of transfers to quantify the opportunity as scenario ranges, then map what it would take to capture it without breaking your product constraints.
+
+Reach out at [joe@devbrew.ai](mailto:joe@devbrew.ai) or book time directly at [cal.com/joekariuki/devbrew](https://cal.com/joekariuki/devbrew).
+
+Every basis point recovered goes straight to margin. The first step is making the basis points visible.

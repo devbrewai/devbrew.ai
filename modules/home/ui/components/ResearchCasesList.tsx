@@ -18,10 +18,10 @@ export function ResearchCasesList() {
   // Same sample items as the card layout for visual comparison
   const items = [
     {
-      title: 'AI Fraud Detection & Sanctions Screening for Cross‑Border Payments',
+      title: 'Sentinel: AI Fraud Detection & Sanctions Screening for Cross‑Border Payments',
       description:
         'Detect and prevent fraud in card-not-present transactions while screening against OFAC sanctions lists. Reduced fraud loss by 38%, cut false positives by 60% with sub-200ms latency.',
-      href: '/case-studies/fraud-detection',
+      href: '/case-studies/sentinel',
       status: 'in-progress' as const,
     },
     {

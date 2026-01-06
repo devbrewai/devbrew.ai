@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
+// import { Badge } from '@/components/ui/badge'
 import { motion, useReducedMotion } from 'framer-motion'
 
 export function ResearchCasesList() {
@@ -18,25 +18,24 @@ export function ResearchCasesList() {
   // Same sample items as the card layout for visual comparison
   const items = [
     {
-      title: 'Sentinel: AI Fraud Detection & Sanctions Screening for Cross‑Border Payments',
+      title: 'Sentinel: AI fraud detection & sanctions screening for cross‑border payments',
       description:
-        'Detect and prevent fraud in card-not-present transactions while screening against OFAC sanctions lists. Reduced fraud loss by 38%, cut false positives by 60% with sub-200ms latency.',
+        'Stop fraud faster and stay compliant with ML-powered transaction scoring. Demonstrated 88% fraud detection accuracy, 97% sanctions screening precision, and up to $225K in potential annual savings—all in under 200ms.',
       href: '/case-studies/sentinel',
-      status: 'in-progress' as const,
     },
     {
       title: 'AI Chargeback Prediction & Prevention',
       description:
         'Predict chargebacks before they occur and trigger prevention strategies to reduce disputes and losses. 20-35% chargeback reduction with less than 2% conversion impact.',
       href: '/case-studies/chargeback-prevention',
-      status: 'coming-soon' as const,
+      // status: '' as const,
     },
     {
       title: 'AI Merchant Risk Scoring & Portfolio Optimization',
       description:
         'Score merchants by risk to optimize underwriting and portfolio exposure. 15-25% fraud exposure reduction while reviewing 30% fewer merchants.',
       href: '/case-studies/merchant-risk-scoring',
-      status: 'coming-soon' as const,
+      // status: 'coming-soon' as const,
     },
   ]
 
@@ -93,12 +92,15 @@ export function ResearchCasesList() {
                           <h3 className="text-base leading-snug font-medium sm:text-lg">
                             {itemData.title}
                           </h3>
-                          <Badge
-                            variant={itemData.status === 'in-progress' ? 'default' : 'secondary'}
-                            className="text-[10px] sm:text-xs"
-                          >
-                            {itemData.status === 'in-progress' ? 'In Progress' : 'Coming Soon'}
-                          </Badge>
+
+                          {/* {itemData.status && (
+                            <Badge
+                              variant={itemData.status === 'in-progress' ? 'default' : 'secondary'}
+                              className="text-[10px] sm:text-xs"
+                            >
+                              {itemData.status === 'in-progress' ? 'In Progress' : 'Coming Soon'}
+                            </Badge>
+                          )} */}
                         </div>
                         <p className="text-muted-foreground mt-2 text-xs">{itemData.description}</p>
                       </div>

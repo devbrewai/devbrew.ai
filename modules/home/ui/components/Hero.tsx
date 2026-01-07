@@ -35,7 +35,7 @@ export function Hero() {
             <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
               <Button
                 size="lg"
-                className="group inline-flex items-center justify-between rounded-none bg-blue-600 px-10 text-sm font-semibold text-white hover:bg-blue-700 sm:justify-center sm:bg-blue-600 sm:text-white"
+                className="group inline-flex items-center justify-between rounded-sm bg-blue-600 px-10 text-sm font-semibold text-white hover:bg-blue-700 sm:justify-center sm:bg-blue-600 sm:text-white"
               >
                 <Link href="/get-started" className="flex w-full items-center justify-center">
                   Get started
@@ -56,9 +56,9 @@ export function Hero() {
             animate={{ opacity: 1, y: 0, filter: reduce ? 'none' : 'blur(0px)' }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <div className="relative mx-auto w-full max-w-2xl rounded-md border border-neutral-200 bg-white p-4 shadow-2xl md:rounded-none">
-              <div className="absolute -top-8 -left-8 hidden h-16 w-16 rotate-12 rounded-md bg-blue-500/10 blur-2xl sm:block" />
-              <div className="absolute -right-10 -bottom-8 hidden h-16 w-16 -rotate-12 rounded-md bg-purple-500/10 blur-2xl sm:block" />
+            <div className="relative mx-auto w-full max-w-2xl rounded-sm border border-neutral-200 bg-white p-4 shadow-2xl md:rounded-none">
+              <div className="absolute -top-8 -left-8 hidden h-16 w-16 rotate-12 rounded-sm bg-blue-500/10 blur-2xl sm:block" />
+              <div className="absolute -right-10 -bottom-8 hidden h-16 w-16 -rotate-12 rounded-sm bg-purple-500/10 blur-2xl sm:block" />
 
               {/* Mock dashboard header */}
               {/* <div className="flex items-center justify-between rounded-xs border border-neutral-200 bg-neutral-50 px-4 py-3">
@@ -112,7 +112,7 @@ export function HeroCentered() {
           <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center">
             <Button
               size="lg"
-              className="group inline-flex items-center justify-between rounded-none bg-blue-600 px-10 text-sm font-semibold text-white hover:bg-blue-700 sm:justify-center sm:bg-blue-600 sm:text-white"
+              className="group inline-flex items-center justify-between rounded-sm bg-blue-600 px-10 text-sm font-semibold text-white hover:bg-blue-700 sm:justify-center sm:bg-blue-600 sm:text-white"
             >
               <Link href="/get-started" className="flex w-full items-center justify-center">
                 Get started
@@ -133,7 +133,7 @@ export function HeroCentered() {
 function LogoPlaceholderLight({ label }: { label: string }) {
   return (
     <div
-      className="flex h-8 items-center justify-center rounded-md border border-neutral-300 bg-white px-3 text-xs font-semibold text-neutral-500"
+      className="flex h-8 items-center justify-center rounded-sm border border-neutral-300 bg-white px-3 text-xs font-semibold text-neutral-500"
       aria-label={`${label} logo placeholder`}
       role="img"
     >

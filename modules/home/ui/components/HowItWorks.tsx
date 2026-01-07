@@ -52,7 +52,7 @@ function StepCard({ step, title, body }: { step: string; title: string; body: st
     <Card>
       <CardHeader>
         <div className="flex items-center gap-3">
-          <Badge variant="secondary" className="rounded-md">
+          <Badge variant="secondary" className="rounded-sm">
             {step}
           </Badge>
           <CardTitle className="text-base">{title}</CardTitle>

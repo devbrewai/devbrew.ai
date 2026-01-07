@@ -84,7 +84,7 @@ export function ResearchCasesList() {
                 <motion.li key={itemData.href} className="w-full" variants={item}>
                   <Link
                     href={itemData.href}
-                    className="block rounded-lg border from-blue-400/15 to-blue-600/20 p-4 transition hover:bg-gradient-to-tr hover:text-blue-800"
+                    className="block rounded-sm border from-blue-400/15 to-blue-600/20 p-4 transition hover:bg-gradient-to-tr hover:text-blue-800"
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0 flex-1">

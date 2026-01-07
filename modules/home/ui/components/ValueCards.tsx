@@ -59,8 +59,7 @@ export function ValueCards({ className = '' }: { className?: string }) {
                     aria-labelledby={headingId}
                     className={cn(
                       'flex h-full flex-col',
-                      'rounded-none',
-                      'border border-neutral-200 bg-white text-neutral-900 shadow-sm transition-shadow hover:shadow-md'
+                      'border border-neutral-200 bg-white text-neutral-900 transition-shadow hover:shadow-md'
                     )}
                   >
                     <CardHeader className="p-5 lg:p-6">

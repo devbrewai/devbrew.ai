@@ -146,7 +146,7 @@ export function CTA({
               asChild
               size="lg"
               className={cn(
-                'rounded-none bg-blue-600 px-8 text-white hover:bg-blue-700',
+                'rounded-sm bg-blue-600 px-8 text-white hover:bg-blue-700',
                 buttonClassName
               )}
             >

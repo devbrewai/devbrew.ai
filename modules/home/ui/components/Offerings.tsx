@@ -83,7 +83,7 @@ export function Offerings({
               <motion.div key={itm.title} variants={item}>
                 <Card
                   className={cn(
-                    'h-full rounded-xl border border-neutral-200 bg-white p-6 text-neutral-900 shadow-sm',
+                    'h-full rounded-sm border border-neutral-200 bg-white p-6 text-neutral-900 shadow-sm',
                     'transition-shadow hover:shadow-md'
                   )}
                 >
@@ -110,7 +110,7 @@ export function Offerings({
             {/* Sixth CTA tile */}
 
             <motion.div variants={item}>
-              <Card className="flex h-full flex-col justify-between rounded-xl border border-neutral-200 bg-white p-6 shadow-sm">
+              <Card className="flex h-full flex-col justify-between rounded-sm border border-neutral-200 bg-white p-6 shadow-sm">
                 <div>
                   <h3 className="text-lg font-semibold">From Use Case to Production</h3>
                   <p className="mt-2 text-sm leading-relaxed text-neutral-700">

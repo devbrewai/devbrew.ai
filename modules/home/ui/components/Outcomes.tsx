@@ -57,7 +57,7 @@ function OutcomeCard({
   return (
     <Card>
       <CardHeader className="flex flex-row items-start gap-3">
-        <div className="text-muted-foreground mt-1 rounded-md border p-2">{icon}</div>
+        <div className="text-muted-foreground mt-1 rounded-sm border p-2">{icon}</div>
         <div className="space-y-1">
           <CardTitle className="text-base">{title}</CardTitle>
           <CardDescription>{body}</CardDescription>

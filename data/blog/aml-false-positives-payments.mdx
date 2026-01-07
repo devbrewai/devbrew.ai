@@ -1,0 +1,258 @@
+---
+title: 'How to Reduce AML False Positives in Payments'
+date: '2026-01-07'
+lastmod: '2026-01-07'
+slug: 'aml-false-positives-payments'
+tags:
+  [
+    'aml',
+    'transaction-monitoring',
+    'false-positives',
+    'compliance',
+    'financial-crime',
+    'machine-learning',
+    'payments',
+  ]
+draft: false
+summary: 'Cut AML false positives by 50% to 70% without replacing your transaction monitoring system, often within a single quarter.'
+images: ['/static/images/blog/aml-false-positives-payments/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+---
+
+If your compliance team is investigating thousands of alerts every month, you already know the pattern.
+
+Most alerts close as false positives.
+
+That means investigators spend a huge share of their week clearing legitimate activity, instead of digging into the cases that actually deserve time.
+
+You know you need improvement, but the standard pitch sounds brutal. Replace your platform, rebuild integrations, retrain the team, and spend months in implementation while alerts keep piling up.
+
+There is a simpler path. Most teams start by targeting the highest volume alert categories first, then expand coverage.
+
+You can layer a machine learning overlay on top of your existing transaction monitoring system and materially reduce false positives, often within a single quarter, without ripping out your current platform.
+
+Results vary by alert mix, corridors, thresholds, and data quality. But the approach is proven because it works with the program you already have.
+
+## The core idea: overlay, not rebuild
+
+Your transaction monitoring system already does something useful. It generates signals.
+
+The problem is that it generates too many.
+
+An overlay treats your existing platform as a signal source, not the final decision maker.
+
+Here is the flow:
+
+1. Your current system generates alerts as it does today.
+2. The overlay scores and routes those alerts before they hit the investigator queue.
+3. Investigators keep using the same tools, but they see far fewer low value alerts.
+
+This does not replace your AML program. It improves triage and prioritization with governance controls built in.
+
+## What the overlay does in practice
+
+### 1) Ingest alerts from your existing system output
+
+Some platforms support real time APIs. Others rely on exports, queues, or file drops. An overlay can work with any of these, as long as you can reliably pull alert payloads and related context.
+
+Latency requirements depend on your workflow. Real time scoring is common, but it is not always required to deliver value.
+
+### 2) Learn what "true risk" looks like in your program
+
+The model learns from your historical alert outcomes and the context available in your stack, such as:
+
+- Transaction and velocity patterns
+- Customer behavior relative to baseline
+- Counterparty and relationship history
+- Product usage and corridor behavior
+- Prior investigator decisions and reason codes
+
+The goal is simple. Learn which patterns usually escalate, and which patterns usually close as false positives.
+
+### 3) Score and route alerts, with human control
+
+Instead of a binary yes or no, alerts receive a score and a routing decision, for example:
+
+- High priority: route to senior investigators, faster escalation lanes
+- Standard: normal review
+- Low priority: low touch lane, batch review, or sampling based review
+
+Two controls matter a lot for compliance leaders:
+
+- **Human override:** investigators can always override routing decisions.
+- **Safe rollout:** routing is staged, with sampling and rollback criteria from day one.
+
+Many programs avoid fully automated dismissal. A common pattern is deprioritization plus sampling, so low priority lanes are still periodically reviewed to validate performance and satisfy internal controls.
+
+### 4) Learn from closed case outcomes
+
+Closed alerts, escalations, and SAR outcomes become training data. Over time, the overlay adapts to your specific customer base, product behavior, and risk posture.
+
+### 5) Monitor performance and program impact
+
+This is not about vanity ML metrics. It is about operational and compliance outcomes:
+
+- False positives reduced by alert type
+- Investigation time per alert, and analyst throughput
+- Escalation and SAR rates, plus quality indicators
+- Sampling results for low priority lanes
+- Drift detection when behavior shifts
+- Audit logs for scoring, thresholds, retraining, and changes
+
+## The three mistakes that keep teams stuck
+
+### Mistake 1: Waiting for a perfect, new platform
+
+Many teams delay because they assume improvement requires a full platform replacement. Meanwhile, false positives keep eating budget and capacity.
+
+Overlay approaches exist because most organizations cannot pause operations for a long rebuild.
+
+### Mistake 2: Treating all alerts as equally urgent
+
+Rule based systems often generate alerts with wildly different true risk, yet they land in the queue with the same urgency.
+
+Without prioritization, your team only learns what matters after the time has already been spent.
+
+### Mistake 3: Assuming "AI modules" are truly plug and play
+
+Vendor modules can help, but generic models often struggle with the specifics that drive your alert outcomes, for example your customers, corridors, products, thresholds, reason codes, and investigator workflows.
+
+If the system does not learn from your historical dispositions and program context, teams often end up tuning rules and exceptions long after launch.
+
+## The business outcomes that matter
+
+Let's translate alert noise into cost and capacity.
+
+Example scenario:
+
+- 18,000 alerts per month
+- 96% close as false positives
+- Average investigation time: 15 minutes
+- Loaded analyst cost: $85 per hour
+
+That is:
+
+- 17,280 false positive alerts per month
+- 4,320 hours per month spent on legitimate activity
+- About $367,000 per month in investigation labor, or about $4.4M per year
+
+If an overlay reduces false positives by 70% in the highest volume categories:
+
+- About 12,096 fewer low value alerts
+- About 3,024 hours per month reclaimed
+- About $257,000 per month saved, or about $3.1M per year in direct capacity
+
+Swap in your own numbers and you will get a more accurate estimate. The point is not the exact assumptions. The point is that alert noise hides a large, measurable opportunity. If your average review time is 8 minutes instead of 15, the savings are lower, but the capacity impact is still material.
+
+The bigger outcome is focus. When investigators are not buried, they can work deeper on high risk cases. That tends to improve escalation quality, strengthen SAR narratives, reduce reporting delays, and lower regulatory risk.
+
+## What regulators and partners will ask for
+
+Compliance leaders are right to be cautious. Any change to alert handling will be scrutinized.
+
+A regulator ready overlay typically includes, at minimum:
+
+- Clear documentation of purpose, scope, and limitations
+- An audit trail for scoring, routing, and threshold changes
+- Back testing results, broken down by alert type and scenario
+- A sampling and QA plan for low priority lanes
+- Explainability artifacts that support investigator notes
+- Drift monitoring plus defined retraining and rollback triggers
+- Change control workflow with approvals and sign offs
+
+The goal is not "the model is smarter." The goal is "the program is more effective, and we can prove it."
+
+## Why this is harder than it looks to build internally
+
+A classifier in a notebook is not the hard part.
+
+The hard part is building a production system that is safe in a compliance environment:
+
+- Reliable ingestion without slowing alert generation
+- Feature pipelines that handle missing data, schema changes, edge cases
+- Scoring that is resilient, observable, and auditable
+- Monitoring that catches drift before outcomes degrade
+- Retraining that does not introduce silent regressions
+- Explainability and logs designed for audit
+- Staged rollout with sampling, override, and rollback
+
+Many teams have strong analysts and great compliance operators. This requires a blend of ML engineering, data architecture, and model governance that is rarely available in house.
+
+## The fastest way to get clarity: a low risk evaluation and pilot
+
+You do not need to commit to a full build to understand your opportunity.
+
+A practical pilot is designed to answer three questions:
+
+1. Can we materially reduce false positives in your top alert categories?
+2. Can we do it with governance controls your compliance leadership is comfortable with?
+3. Can we quantify capacity reclaimed and program effectiveness improvements?
+
+Typical pilot deliverables:
+
+- Baseline analysis of alert volume, false positives, and investigation time
+- Back tested overlay scoring on historical data, with lift by alert type
+- Routing plan aligned to your risk posture, including sampling rates
+- Governance package, audit logs, monitoring, and change control
+- Rollout plan with staged thresholds and explicit rollback criteria
+- Implementation plan with realistic integration paths for your stack
+
+## How Devbrew helps
+
+Devbrew builds custom ML overlay systems that integrate with your existing transaction monitoring platform in weeks, not years.
+
+We focus on your alert history, your dispositions, your reason codes, and your risk posture, so the model learns your program, not a generic average.
+
+We deliver the full stack:
+
+- Ingestion from your existing system output
+- Feature engineering and model training on your historical outcomes
+- Scoring and routing infrastructure designed for reliability
+- Monitoring tied to compliance outcomes, not vanity ML metrics
+- Explainability and audit trails suitable for review
+- Governance workflows for updates, thresholds, and retraining
+
+Your team keeps the tools they already know. The workflow stays familiar. What changes is the signal to noise ratio.
+
+## FAQ
+
+**Does this increase regulatory risk?**
+
+Done correctly, it reduces operational risk by improving focus on higher risk cases and strengthening consistency. The key is governance: audit logs, documented thresholds, sampling plans, and change control. We treat the overlay as a controlled model within your AML program, not a replacement for it.
+
+**Do you auto close alerts?**
+
+Typically, no. Most programs start with routing and prioritization, plus sampling in low priority lanes. Investigators keep full override control, and rollout includes clear rollback criteria.
+
+**How do you prove it works before it touches production workflows?**
+
+We back test on your historical alerts and dispositions, report lift by alert type, and quantify hours and cost reclaimed. Then we run a staged rollout with sampling to validate performance in real conditions before expanding coverage.
+
+**What data do you need to start?**
+
+At minimum: 60 to 90 days of alert history, dispositions, reason codes, timestamps, and the key fields used in alert generation. If you have case notes or investigation outcomes in your case management tool, that can improve performance, but it is not always required to start.
+
+**How does this integrate with our existing monitoring platform?**
+
+We integrate with the output you already have, for example APIs, queues, exports, or file drops. The overlay sits upstream of the investigator queue and does not require replacing your transaction monitoring platform.
+
+**How fast can we see impact?**
+
+Back testing can usually quantify opportunity quickly once data access is available. Many teams see measurable reduction in false positives within the first quarter, depending on alert mix, data quality, and rollout controls.
+
+**Who needs to be involved internally?**
+
+Usually a compliance owner, an AML ops lead, and one technical point of contact for data access and integration mapping. Legal or risk governance can be included early if your organization requires formal model approvals.
+
+## Want to map this to your alert volume?
+
+If you want clarity on whether an overlay approach fits your program, book a discovery call.
+
+We'll discuss the problem you are trying to solve, what is at stake if it remains unsolved, and where AI can create meaningful leverage in your payments stack. If it makes sense, we'll outline a low risk evaluation plan and what you would need internally for data access and governance.
+
+Book 30 minutes here: https://cal.com/joekariuki/devbrew
+
+Or email: [joe@devbrew.ai](mailto:joe@devbrew.ai)
+
+Please share a brief description of your problem and what is at stake when booking. This helps us make the most of our time together.

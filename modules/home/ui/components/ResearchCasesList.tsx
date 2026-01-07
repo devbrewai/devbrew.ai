@@ -20,7 +20,7 @@ export function ResearchCasesList() {
     {
       title: 'Sentinel: AI fraud detection & sanctions screening for cross‑border payments',
       description:
-        'Stop fraud faster and stay compliant with ML-powered transaction scoring. Demonstrated 88% fraud detection accuracy, 97% sanctions screening precision, and up to $225K in potential annual savings—all in under 200ms.',
+        'Stop fraud faster and stay compliant with ML-powered transaction scoring. Demonstrated 88% fraud detection accuracy, 97% sanctions screening precision, and up to $225K in potential annual savings, all in under 200ms.',
       href: '/case-studies/sentinel',
     },
     {

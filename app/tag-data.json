@@ -11,9 +11,13 @@
   "payments": 25,
   "latency": 1,
   "real-time": 1,
-  "kyc": 4,
+  "aml": 3,
+  "transaction-monitoring": 1,
+  "false-positives": 1,
   "compliance": 10,
+  "financial-crime": 1,
   "machine-learning": 11,
+  "kyc": 4,
   "onboarding": 4,
   "explainable-ai": 1,
   "trust": 1,
@@ -58,7 +62,6 @@
   "subscriptions": 1,
   "billing": 1,
   "routing": 1,
-  "aml": 3,
   "fraud-prevention": 2,
   "ai-roi": 1,
   "fundraising": 1,
@@ -68,8 +71,5 @@
   "prediction": 1,
   "merchant-risk": 1,
   "portfolio-optimization": 1,
-  "underwriting": 1,
-  "transaction-monitoring": 1,
-  "false-positives": 1,
-  "financial-crime": 1
+  "underwriting": 1
 }

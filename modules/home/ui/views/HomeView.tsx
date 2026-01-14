@@ -12,7 +12,7 @@ export default function HomeView() {
       <HeroCentered />
       <IntroSplit />
       {/* What We Do / Offerings */}
-      <Offerings title="What We Do" className="bg-neutral-50" />
+      <Offerings title="What we do" className="bg-neutral-50" />
       {/* Proof / Case studies */}
       <ResearchCasesList />
       {/* Value */}

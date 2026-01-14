@@ -54,9 +54,9 @@ export function ResearchCasesList() {
           >
             <motion.h2
               variants={item}
-              className="text-4xl leading-tight font-medium tracking-tighter text-balance sm:text-5xl lg:text-5xl"
+              className="text-4xl leading-tight font-medium tracking-tight text-balance sm:text-5xl"
             >
-              Case Studies With Measurable Impact
+              Case studies with measurable impact
             </motion.h2>
             <motion.p variants={item} className="mt-4 text-balance text-neutral-700">
               Explore case studies showing how applied AI solves high-cost problems in payments,

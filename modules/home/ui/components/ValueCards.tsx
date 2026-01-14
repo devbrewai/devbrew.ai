@@ -34,7 +34,7 @@ export function ValueCards({ className = '' }: { className?: string }) {
 
   return (
     <section className={cn('relative w-full bg-neutral-50 text-neutral-900', className)}>
-      <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 md:pt-12 md:pb-32">
+      <div className="mx-auto max-w-7xl px-4 pt-10 pb-24 sm:px-6 md:pt-12 md:pb-32 lg:px-8">
         <motion.div
           variants={container}
           initial="hidden"
@@ -42,7 +42,9 @@ export function ValueCards({ className = '' }: { className?: string }) {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.div variants={item} className="mb-10">
-            <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">Why Devbrew</h2>
+            <h2 className="text-4xl leading-tight font-medium tracking-tight text-balance sm:text-5xl">
+              Why Devbrew
+            </h2>
             <p className="mt-4 max-w-2xl text-balance text-neutral-700">
               Every engagement is guided by the same principles: fast execution, lower risk, and
               lasting impact.

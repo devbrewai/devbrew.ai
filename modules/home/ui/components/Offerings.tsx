@@ -71,7 +71,9 @@ export function Offerings({
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.div variants={item} className="mb-10">
-            <h2 className="text-4xl font-semibold tracking-tight sm:text-5xl">{title}</h2>
+            <h2 className="text-4xl leading-tight font-medium tracking-tight text-balance sm:text-5xl">
+              {title}
+            </h2>
             <p className="mt-4 max-w-2xl text-balance text-neutral-700">
               More than code or slides, we act as your embedded AI partner to design, build, and
               launch solutions that stick.

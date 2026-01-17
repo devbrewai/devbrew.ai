@@ -1,228 +1,143 @@
 ---
-title: 'Sentinel: AI Fraud Detection & Sanctions Screening for Cross-Border Payments'
-date: '2025-10-15'
-lastmod: '2026-01-07'
+title: 'Sentinel: AI Fraud Detection & Sanctions Screening'
+date: '2025-10-1'
+lastmod: '2026-01-17'
 slug: 'sentinel'
 tags: ['ai', 'fraud-detection', 'payments', 'fintech', 'machine-learning', 'compliance']
 draft: false
-summary: 'Stop fraud faster and stay compliant with ML-powered transaction scoring. Demonstrated 88% fraud detection accuracy, 97% sanctions screening precision, and up to $225K in potential annual savings, all in under 200ms.'
+summary: 'AI-powered fraud scoring and sanctions screening for cross-border payments. Detect fraud in real-time. Stay compliant automatically.'
 images: ['/static/images/case-studies/sentinel/og.png']
-authors: ['joe-kariuki']
+authors: ['']
 layout: PostLayout
 clientLogo: '/static/images/case-studies/sentinel/sentinel-white-logo.svg'
 clientName: 'Devbrew'
 ---
 
-## Overview
+**[Try live demo](https://sentinel.devbrew.ai)** | **[View Code](https://github.com/devbrewai/sentinel)**
 
-Sentinel is an open-source AI pipeline demonstrating production-grade fraud detection and sanctions screening for cross-border payments. Built with LightGBM, RapidFuzz, and FastAPI, it achieves 88% fraud detection accuracy, 97% sanctions precision, and sub-200ms API latency.
+{/* Embed 3-minute demo video here */}
 
-**[Try the live demo](https://sentinel.devbrew.ai)** | **[View source code](https://github.com/devbrewai/sentinel)**
+---
+
+## The results
+
+**88% fraud detection accuracy**\
+Catch more fraud while reducing false positives
+
+**30ms API latency**\
+Real-time scoring that doesn't slow down checkout
+
+**97% sanctions precision**\
+Screen against OFAC lists with confidence
+
+**$225K demonstrated savings**\
+Optimize decision thresholds for maximum ROI
 
 ---
 
 ## The problem
 
-Payment processors and financial institutions face a dual challenge that costs billions annually:
+Payment companies face impossible tradeoffs:
 
-**Fraud losses are escalating.** Card-not-present (CNP) transactions, the backbone of e-commerce and cross-border payments, are increasingly targeted by sophisticated fraud rings. Traditional rule-based systems can't keep pace with evolving attack patterns.
+**Fraud is rising**: Card-not-present fraud costs billions annually
 
-**False positives kill conversion.** Legacy fraud systems flag 10-20% of legitimate transactions as suspicious, forcing manual review queues that delay payments, frustrate customers, and cost millions in lost revenue.
+**False positives kill conversion**: Legacy systems flag 10-20% of good customers
 
-**Compliance is non-negotiable.** Every cross-border payment must be screened against OFAC, EU, and UN sanctions lists in real-time. Slow or inaccurate screening creates regulatory risk and operational bottlenecks.
+**Compliance is complex**: OFAC screening must happen in milliseconds
 
-The industry needs a solution that detects fraud accurately, reduces false positives dramatically, and maintains sub-200ms latency, all while meeting compliance requirements.
+Traditional rule-based systems can't keep up with evolving fraud patterns.
+
+---
 
 ## The solution
 
-We built an **AI-powered fraud detection and sanctions screening pipeline** that demonstrates production-grade ML engineering for financial services:
+Sentinel combines ML-based fraud detection with real-time sanctions screening:
 
-- **High-accuracy fraud detection** using ensemble gradient boosting models (LightGBM) achieving ROC-AUC of 0.8861 (exceeding industry benchmarks)
-- **Intelligent sanctions screening** with fuzzy matching algorithms (RapidFuzz) against OFAC SDN and Consolidated Lists, achieving 97.5% precision while handling name variations
-- **Real-time inference** with sub-200ms API latency through optimized model serving and caching strategies
-- **Explainable AI** using SHAP values to provide transparent, auditable predictions that meet regulatory requirements
+### Fraud detection
 
-### System architecture & capabilities
+- LightGBM gradient boosting trained on 429 features
+- Explainable AI (SHAP values) for regulatory compliance
+- Calibrated probabilities with cost-optimized thresholds
 
-**Fraud detection engine**
+### Sanctions screening
 
-- **ML models**: LightGBM gradient boosting (1.18 MB, 295 trees) optimized for imbalanced fraud datasets, delivering ROC-AUC 0.8861 and PR-AUC 0.4743
-- **Feature engineering**: 429 production-grade features including velocity counters (transaction frequency by time windows), device fingerprinting, BIN-IP geographic mismatch detection, and z-scored transaction amounts
-- **Decision optimization**: Isotonic regression calibration (ECE 0.0050) with cost-sensitive thresholds demonstrating $225K in potential savings at optimal operating point
-- **Explainability**: SHAP TreeExplainer providing regulatory-compliant feature attribution with \<10ms inference overhead
+- Fuzzy name matching against 39,350 OFAC entities
+- Handles typos, name variations, and transliterations
+- Sub-50ms screening with 97.5% precision
 
-**Sanctions screening module**
+### Production-ready API
 
-- **Fuzzy matching**: Token-based composite scoring (token set + token sort + partial ratio) using RapidFuzz to handle name variations, transliterations, and common data quality issues
-- **Performance**: 97.5% precision at top-1, 98.0% recall at top-3, with 47.51ms p95 latency
-- **Smart filtering**: Multi-strategy blocking achieving 100% recall with 99% search space reduction across 39,350 OFAC entities
-- **Confidence scoring**: Three-tier decision logic (match ≥0.90, review 0.80-0.90, no match \<0.80) with probabilistic match scoring
-- **Compliance trail**: Complete audit logging of all screening decisions with match rationale
+- FastAPI with async processing
+- Redis caching for sub-200ms latency
+- PostgreSQL audit logs for compliance
 
-**Production-ready API infrastructure**
+---
 
-- **Service layer**: FastAPI-based REST API with `/score` endpoint delivering fraud risk scores, SHAP explanations, and sanctions matches in a single request (~30ms p95 latency)
-- **Performance optimization**: Redis caching for velocity features and parallel execution of fraud scoring + sanctions screening
-- **Data persistence**: PostgreSQL for audit logs, transaction history, and compliance reporting
-- **Observability**: Structured logging, request tracing, and performance metrics for production monitoring
+## How it works
 
-**Interactive demo dashboard**
+1. **Submit a transaction** via REST API or demo UI
+2. **Get instant results**: fraud risk score, SHAP explanations, sanctions match
+3. **Make informed decisions** with transparent, auditable predictions
 
-- Real-time transaction scoring with visual risk indicators and gauge visualization
-- Feature importance visualization showing SHAP contribution values
-- Sanctions match alerts with confidence scores and match details
-- Batch processing support (CSV upload for bulk screening)
-- Performance analytics tracking transaction volume, risk distribution, and latency trends
+Built with LightGBM, FastAPI, Redis, and Next.js.
 
-## Technology stack
+**[Try live demo](https://sentinel.devbrew.ai)**
 
-Built on battle-tested, production-grade technologies:
+---
 
-- **ML framework**: Python with LightGBM for gradient boosting, SHAP for explainability, scikit-learn for preprocessing and calibration
-- **API layer**: FastAPI for high-performance async request handling with automatic OpenAPI documentation
-- **Caching**: Redis for low-latency velocity feature lookups (sub-millisecond access)
-- **Database**: PostgreSQL for ACID-compliant audit logs and transaction storage
-- **Frontend**: Next.js 16 with React 19, TypeScript, Tailwind CSS for styling, Recharts for data visualization
-- **Infrastructure**: Docker containerization, deployed on Render (API) and Vercel (UI)
-- **Monitoring**: Structured logging with correlation IDs, ready for metrics export to Prometheus/Grafana
-
-## Results & performance
-
-This case study achieved measurable results across all success criteria:
-
-**Fraud detection performance**
-
-- **ROC-AUC:** 0.8861 (exceeds 0.85 target by 4.2%)
-- **PR-AUC:** 0.4743 (exceeds 0.35 target by 35.5%)
-- **Calibration ECE:** 0.0050 (50x better than 0.10 target)
-- **Cost Savings:** $225K demonstrated at optimal threshold (55.5% reduction)
-- **Model Size:** 1.18 MB (edge-deployable)
-
-**Sanctions screening performance**
-
-- **Precision@1:** 97.5% (exceeds 95% target)
-- **Recall@top3:** 98.0% (meets 98% target)
-- **Latency p95:** 47.51ms (under 50ms target)
-- **Coverage:** 39,350 OFAC entities indexed
-
-**System performance**
-
-- **API latency p95:** ~30ms (7x better than 200ms target)
-- **End-to-end with SHAP:** ~1-1.5s (explainability overhead)
-- **Throughput:** 422 queries/sec (single-process benchmark)
-
-## What this demonstrates
-
-This reference implementation showcases production-grade ML engineering patterns that solve real business problems:
-
-### Technical depth & business impact
-
-- **Advanced feature engineering**: 429 domain-specific features (velocity counters, device fingerprinting, BIN-IP mismatch) that capture fraud patterns rule-based systems miss, directly reducing fraud losses
-- **Real-time ML inference**: Architecture optimized for \<200ms API latency through model optimization (1.18 MB model), Redis caching, and async parallel processing
-- **Intelligent fuzzy matching**: Two-stage adaptive scoring achieving 97.5% precision while handling real-world data quality issues (name variations, typos, transliterations)
-- **Regulatory-grade explainability**: SHAP TreeExplainer providing auditable feature attribution for every prediction, meeting compliance requirements for model transparency
-- **Production-ready architecture**: Comprehensive logging, audit trails, and error handling designed for high-stakes financial environments
-
-### Industry applications
-
-This approach is applicable to:
-
-- Payment processors screening high-volume card transactions
-- Money transfer operators managing cross-border payment risk
-- Banking-as-a-Service platforms providing fraud detection to fintech clients
-- Digital wallets protecting users from account takeover and unauthorized transactions
-- E-commerce platforms reducing chargeback rates and fraud losses
-
-### Demonstrated outcomes
-
-This case study demonstrates:
-
-- **Model performance:** ROC-AUC 0.8861, PR-AUC 0.4743 (exceeding industry benchmarks)
-- **Cost optimization:** $225K in demonstrated savings through intelligent threshold selection
-- **Low latency:** \<200ms API response time for real-time transaction scoring
-- **High precision:** 97.5% sanctions screening precision with 47ms latency
-- **Explainable AI:** SHAP-based attribution meeting regulatory requirements
-
-## Data sources & research restrictions
-
-This reference implementation uses publicly available datasets to demonstrate production-grade ML engineering patterns:
-
-**Fraud detection datasets**
-
-- **[IEEE-CIS Fraud Detection Dataset](https://www.kaggle.com/c/ieee-fraud-detection)** — Real-world e-commerce transaction data (non-commercial research use only)
-- **[PaySim Synthetic Dataset](https://www.kaggle.com/ntnu-testimon/paysim1)** — Synthetic mobile money transactions (open data)
-
-**Sanctions screening**
-
-- **[OFAC SDN and Consolidated Lists](https://sanctionslist.ofac.treas.gov/Home)** — U.S. Treasury sanctions data (public domain)
-
-### Important: Dataset licensing restrictions
+## Research project disclaimer
 
 > [!WARNING]
-> **Research use only**: Models trained on IEEE-CIS data are restricted to **non-commercial research use**. This dataset cannot be redistributed or used for commercial model training.
+> This is a **research case study** demonstrating production-grade ML engineering. Models are trained on public datasets (IEEE-CIS, PaySim) for **non-commercial research use only**.
 >
-> **Production deployments**: Any commercial implementation requires retraining on proprietary or licensed datasets with appropriate usage rights.
+> **For production deployments:** We train custom models on your transaction data, achieving 20-30% higher accuracy by learning your specific fraud patterns.
 
-This restriction is why we position this as a **research case study and reference implementation**. It demonstrates our technical capabilities and ML engineering expertise while respecting dataset licensing terms.
+---
 
-## Open source & license
+## Pilot Sentinel with your transaction data
 
-**Repository**: [github.com/devbrewai/sentinel](https://github.com/devbrewai/sentinel)  
-**Live demo**: [sentinel.devbrew.ai](https://sentinel.devbrew.ai)
+We're offering **free pilots** to Series A-C payments companies.
 
-**License**: Apache 2.0 — enterprise-friendly, permissive, and patent-protected.
+### What you get
 
-### Why open source?
+- Custom fraud detection model trained on your transaction data
+- 2-3 week side-by-side comparison with your current system
+- Detailed analysis: accuracy improvements, false positive reduction, cost savings
 
-We built this project in public to:
+### What we need
 
-1. **Demonstrate our expertise** in production-grade AI systems for fintech and payments companies
-2. **Accelerate safe adoption** by providing reference implementations with real performance benchmarks
-3. **Build trust through transparency** in how AI-powered fraud detection works
+- Access to 3-6 months of historical transaction data (anonymized customer data accepted)
+- Weekly check-ins to review results and gather feedback
+- A testimonial if we reduce false positives by 20%+ or improve fraud detection by 15%+
 
-The repository includes complete source code, trained models (with artifacts), API implementation, interactive demo UI, and comprehensive phase-by-phase technical documentation.
+**No cost. No long-term commitment.** If we don't hit the improvement threshold, you've lost nothing. If we do, you get early access to production-ready fraud detection built for your specific patterns.
 
-### Enterprise deployment
+**Spots available:** 5 companies per month
 
-This open-source project demonstrates core capabilities and ML engineering patterns. **For production deployments**, we provide:
-
-- **Custom model training** on your proprietary transaction data (achieving 20-30% accuracy improvements from your specific fraud patterns)
-- **Infrastructure setup** and scaling guidance for production workloads (99.9% uptime SLAs)
-- **Integration support** with your existing payment stack and compliance systems
-- **Ongoing optimization** and model retraining pipelines with drift detection
-- **Security hardening** including penetration testing, rate limiting, and incident response procedures
-- **Compliance consulting** for regulatory requirements (PCI-DSS, SOC 2, GDPR, etc.)
-
-**Why this matters**: Production fraud detection systems require training on real transaction data from your specific business context. This case study demonstrates the infrastructure, pipelines, and ML engineering patterns. In production, your proprietary data unlocks significantly higher accuracy by learning your specific fraud patterns.
-
-### Research vs. Production
-
-| Aspect             | This research case study           | Production implementation           |
-| ------------------ | ---------------------------------- | ----------------------------------- |
-| **Data**           | Public datasets (IEEE-CIS, PaySim) | Your proprietary transaction data   |
-| **Models**         | ROC-AUC 0.8861 (demonstration)     | Custom-trained (typically 20-30% ↑) |
-| **Infrastructure** | Reference architecture (Render)    | Enterprise-grade with 99.9% SLA     |
-| **Compliance**     | Basic audit logging                | Full regulatory compliance (PCI)    |
-| **Support**        | Community (GitHub)                 | Dedicated engineering team          |
-| **License**        | Apache 2.0 (research use)          | Commercial license with your data   |
-
-This approach lets us demonstrate technical expertise transparently while respecting dataset licensing and setting clear expectations for production deployments.
+**[Book pilot kickoff call](https://cal.com/joekariuki/devbrew?utm_source=case-study&utm_medium=page&utm_campaign=sentinel_fraud_detection&problem=Fraud%20detection%20gaps%20from%20high%20false%20positives%2C%20missed%20fraud%20patterns%2C%20and%20static%20rule-based%20systems&stake=Revenue%20loss%20from%20fraud%2C%20customer%20friction%20from%20false%20declines%2C%20and%20operational%20costs%20from%20manual%20review)**
 
 ---
 
 ## Try it yourself
 
-**Live demo:** [sentinel.devbrew.ai](https://sentinel.devbrew.ai)  
-**Video walkthrough:** [coming soon]
+**[Try live demo](https://sentinel.devbrew.ai)** — Test with sample transactions
 
-The demo computes full SHAP explanations for transparency, adding ~1-1.5s overhead. Production deployments pre-compute or sample explanations for \<200ms inference.
+**[View source code](https://github.com/devbrewai/sentinel)** — Apache 2.0 licensed
 
 ---
 
 ## About Devbrew
 
-Devbrew partners with Series A-C payments companies to design and deploy production-grade AI solutions for payments, compliance, and risk.
+We build custom AI solutions for cross-border payments companies. Sentinel demonstrates our technical depth in ML engineering, real-time systems, and regulatory compliance.
 
-From prototypes to full-scale systems, we help teams ship faster, improve decision accuracy, and unlock measurable ROI through custom AI that fits directly into existing workflows.
+{/* Other case studies: */}
 
-**Want to explore how this solution could work for your payments company?** [Book a discovery call](/contact) to discuss your fraud detection and compliance challenges.
+{/* - **Veritas** - KYC/AML automation (48 hours → 4 seconds) */}
+
+{/* - **Meridian** — Multi-corridor liquidity forecasting */}
+
+**[View all case studies](/case-studies)**
+
+---
+
+**Questions?** [Contact us](/contact) | **View repo:** [GitHub](https://github.com/devbrewai/sentinel) | [LinkedIn](https://linkedin.com/company/devbrewco)

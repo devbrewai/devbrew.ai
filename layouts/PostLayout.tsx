@@ -34,7 +34,7 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 
 interface LayoutProps {
   content: CoreContent<Research | Blog | CaseStudy>
-  authorDetails: CoreContent<Authors>[]
+  authorDetails?: CoreContent<Authors>[]
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
   related?: Array<{
@@ -49,7 +49,7 @@ interface LayoutProps {
 
 export default function PostLayout({
   content,
-  authorDetails,
+  authorDetails = [],
   next,
   prev,
   related = [],
@@ -118,68 +118,75 @@ export default function PostLayout({
                     </div>
                   </div>
 
-                  {/* Author Info */}
-                  <div className="flex items-start gap-4">
-                    {authorDetails[0]?.avatar && (
-                      // TODO: uncomment once authors page is ready
-                      // <Link href={`/authors/${authorDetails[0].slug}`} className="flex-shrink-0">
-                      <Image
-                        src={authorDetails[0].avatar}
-                        width={40}
-                        height={40}
-                        alt={authorDetails[0].name}
-                        className="rounded-full ring-2 ring-white/20"
-                      />
-                      // </Link>
-                    )}
-                    <div className="flex flex-col justify-center">
-                      <div className="flex flex-wrap items-center gap-2">
-                        {authorDetails.map((author, index) => (
-                          <div key={author.name} className="flex items-center gap-4">
-                            {index > 0 && <span className="text-blue-400">•</span>}
+                  {/* Author Info - Only show if authorDetails has valid entries */}
+                  {authorDetails.length > 0 && authorDetails.some((a) => a?.name) && (
+                    <div className="flex items-start gap-4">
+                      {authorDetails[0]?.avatar && (
+                        // TODO: uncomment once authors page is ready
+                        // <Link href={`/authors/${authorDetails[0].slug}`} className="flex-shrink-0">
+                        <Image
+                          src={authorDetails[0].avatar}
+                          width={40}
+                          height={40}
+                          alt={authorDetails[0].name || 'Author'}
+                          className="rounded-full ring-2 ring-white/20"
+                        />
+                        // </Link>
+                      )}
+                      <div className="flex flex-col justify-center">
+                        <div className="flex flex-wrap items-center gap-2">
+                          {authorDetails.map(
+                            (author, index) =>
+                              author?.name && (
+                                <div key={author.name} className="flex items-center gap-4">
+                                  {index > 0 && <span className="text-blue-400">•</span>}
 
-                            <div className="flex flex-col">
-                              <span className="text-sm font-semibold text-white">
-                                {author.name}
-                              </span>
-                              {author.occupation && (
-                                <span className="text-xs text-blue-200">{author.occupation}</span>
-                              )}
-                            </div>
+                                  <div className="flex flex-col">
+                                    <span className="text-sm font-semibold text-white">
+                                      {author.name}
+                                    </span>
+                                    {author.occupation && (
+                                      <span className="text-xs text-blue-200">
+                                        {author.occupation}
+                                      </span>
+                                    )}
+                                  </div>
 
-                            {/* Social icons commented out
-                            <div className="flex items-center gap-1.5">
-                              {author.twitter && (
-                                <Link
-                                  href={`https://x.com/intent/follow?screen_name=${author.twitter.split('/').pop()}`}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-blue-200 transition-colors hover:text-white"
-                                  aria-label={`Follow ${author.name} on X/Twitter`}
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  <XIcon className="h-3.5 w-3.5 fill-current" />
-                                </Link>
-                              )}
-                              {author.linkedin && (
-                                <Link
-                                  href={author.linkedin}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-blue-200 transition-colors hover:text-white"
-                                  aria-label={`${author.name} on LinkedIn`}
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  <LinkedinIcon className="h-3.5 w-3.5 fill-current" />
-                                </Link>
-                              )}
-                            </div>
-                            */}
-                          </div>
-                        ))}
+                                  {/* Social icons commented out
+                                  <div className="flex items-center gap-1.5">
+                                    {author.twitter && (
+                                      <Link
+                                        href={`https://x.com/intent/follow?screen_name=${author.twitter.split('/').pop()}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-200 transition-colors hover:text-white"
+                                        aria-label={`Follow ${author.name} on X/Twitter`}
+                                        onClick={(e) => e.stopPropagation()}
+                                      >
+                                        <XIcon className="h-3.5 w-3.5 fill-current" />
+                                      </Link>
+                                    )}
+                                    {author.linkedin && (
+                                      <Link
+                                        href={author.linkedin}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="text-blue-200 transition-colors hover:text-white"
+                                        aria-label={`${author.name} on LinkedIn`}
+                                        onClick={(e) => e.stopPropagation()}
+                                      >
+                                        <LinkedinIcon className="h-3.5 w-3.5 fill-current" />
+                                      </Link>
+                                    )}
+                                  </div>
+                                  */}
+                                </div>
+                              )
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
 
                 {/* Client/Company Logo or Badge */}

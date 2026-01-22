@@ -7,12 +7,12 @@ tags:
   [
     'payment-reconciliation',
     'reconciliation-automation',
+    'transaction-matching',
     'multi-currency',
     'payouts',
     'finance-ops',
-    'controllers',
-    'transaction-matching',
     'payments',
+    'machine-learning',
   ]
 draft: false
 summary: 'Recover missed cash with ML-powered transaction matching, without adding reconciliation headcount, in 90 days.'
@@ -23,11 +23,11 @@ layout: PostLayout
 
 If you run accounting or finance ops at a payment processor or marketplace, reconciliation is where reality shows up.
 
-It's where "we launched a new rail" turns into "we added another week of close risk." It's where growth quietly turns into headcount.
+It's where “we launched a new rail” turns into “we added another week of close risk.” It's where growth quietly turns into headcount.
 
-Modern Treasury's 2025 State of Payment Operations research found that **98\% of companies still perform some payment operations processes manually**, and **49\% use five or more systems to manage payments**, with **13\% spread across ten or more systems**. Source: [Modern Treasury, The State of Payment Operations 2025](https://www.moderntreasury.com/journal/the-state-of-payment-operations-2025)
+Modern Treasury’s [2025 State of Payment Operations](https://www.moderntreasury.com/journal/the-state-of-payment-operations-2025) research found that **98% of companies still perform some payment operations processes manually**, and **49% use five or more systems to manage payments**, with **13% spread across ten or more systems**.
 
-Kani's 2025 payments reconciliation and reporting survey found that **56\% of UK payments businesses still rely on spreadsheets** for reconciliation and reporting. It also estimates that a three hour daily pre-reconciliation data preparation routine equals **750 hours per year**. Source: [Kani Payments, Reconciliation and Reporting Survey 2025 PDF](https://kanipayments.com/wp-content/uploads/2025/04/Reconciliation-and-Reporting-Survey-2025_Kani-Payments.pdf)
+Kani’s 2025 [payments reconciliation and reporting survey](https://kanipayments.com/wp-content/uploads/2025/04/Reconciliation-and-Reporting-Survey-2025_Kani-Payments.pdf) found that **56% of UK payments businesses still rely on spreadsheets** for reconciliation and reporting. It also estimates that a three hour daily pre-reconciliation data preparation routine equals **750 hours per year**.
 
 Both are vendor-led surveys, directional but useful.
 
@@ -41,7 +41,7 @@ In multi-currency payouts, you're matching across sources that disagree by desig
 
 Three things create most of the pain:
 
-- **Timing**: settlement delays, bank cutoffs, and time zones push money into the "wrong" day.
+- **Timing**: settlement delays, bank cutoffs, and time zones push money into the “wrong” day.
 - **Shape**: one payout becomes multiple deposits, or multiple deposits net into one entry.
 - **Math**: fees, FX, and intermediary deductions mean net rarely equals gross minus fee.
 
@@ -68,7 +68,7 @@ That framing is the real cost. The person signing the budget isn't paying for sp
 - Revenue leakage hiding in exceptions
 - Slower expansion because every new rail adds manual work
 
-Payment reconciliation is a financial control. It proves your internal records match external statements, and it surfaces discrepancies while they're still fixable. Source: [Stripe, Payment Reconciliation, What It Is and How It's Done](https://stripe.com/resources/more/payment-reconciliation-101)
+[Payment reconciliation](https://stripe.com/resources/more/payment-reconciliation-101) is a financial control. It proves your internal records match external statements, and it surfaces discrepancies while they're still fixable.
 
 Here's the shift.
 
@@ -76,7 +76,7 @@ Reconciliation isn't back office work. It's a core operations system.
 
 ## The system: how ML-powered reconciliation works in practice
 
-It's tempting to imagine one big model that "does reconciliation." That's not how production systems work.
+It's tempting to imagine one big model that “does reconciliation.” That's not how production systems work.
 
 A practical ML-powered engine is a pipeline with three parts:
 
@@ -117,7 +117,7 @@ That's where machine learning earns its keep.
 
 Not by replacing rules, but by scoring ambiguous candidates where rules are too strict and humans are too slow.
 
-The output is "match likelihood," with an explanation of what drove the score.
+The output is “match likelihood,” with an explanation of what drove the score.
 
 ### Why ML matters
 
@@ -133,7 +133,7 @@ This is the same underlying idea behind modern **transaction matching** products
 
 ### 3) Treat exception management like a product
 
-If exceptions live in a spreadsheet tab called "Needs Review," you'll always bottleneck.
+If exceptions live in a spreadsheet tab called “Needs Review,” you'll always bottleneck.
 
 Exception management should answer three questions fast:
 
@@ -191,26 +191,26 @@ Most work becomes automatic, and review becomes targeted.
 
 ## How to justify this in dollars, risk, and close speed
 
-If you're asking for budget, don't pitch "AI." Pitch a cleaner close.
+If you're asking for budget, don't pitch “AI.” Pitch a cleaner close.
 
 Frame it in three buckets your company already cares about: **time**, **headcount**, and **late surprises**.
 
 Start with what you can defend.
 
-Kani's 2025 survey notes that if you reconcile daily, a three hour pre-reconciliation data prep routine equals **750 hours per year**. Source: [Kani Payments, Reconciliation and Reporting Survey 2025 PDF](https://kanipayments.com/wp-content/uploads/2025/04/Reconciliation-and-Reporting-Survey-2025_Kani-Payments.pdf)
+Kani’s [2025 survey](https://kanipayments.com/wp-content/uploads/2025/04/Reconciliation-and-Reporting-Survey-2025_Kani-Payments.pdf) notes that if you reconcile daily, a three hour pre-reconciliation data prep routine equals **750 hours per year**.
 
 Now use conservative math.
 
-- Hours reclaimed per year = 750 × 50\% = **375**
-- Median wage baseline = **\$81,680 per year** (BLS, May 2024, latest OOH figure) Source: [BLS, Accountants and Auditors, Occupational Outlook Handbook](https://www.bls.gov/ooh/business-and-financial/accountants-and-auditors.htm)
-- Fully loaded hourly cost = \$39 × 1.4 (assumption for benefits and overhead)
-- Annual value = 375 × \$55 ≈ **\$20,625**
+- Hours reclaimed per year = 750 × 50% = **375**
+- Median wage baseline = **$81,680 per year** ([BLS, May 2024, latest OOH figure](https://www.bls.gov/ooh/business-and-financial/accountants-and-auditors.htm))
+- Fully loaded hourly cost = $39 × 1.4 (assumption for benefits and overhead)
+- Annual value = 375 × $55 ≈ **$20,625**
 
 Now add the avoided hire.
 
-- Median wage baseline = \$81,680 per year (BLS)
-- Fully loaded cost = \$81,680 × 1.3 to 1.4 (assumption for benefits and overhead)
-- Estimated fully loaded annual cost = **~\$106K to \$114K**
+- Median wage baseline = $81,680 per year (BLS)
+- Fully loaded cost = $81,680 × 1.3 to 1.4 (assumption for benefits and overhead)
+- Estimated fully loaded annual cost = **~$106K to $114K**
 
 If automation delays even one reconciliation hire, the ROI conversation changes fast.
 
@@ -236,7 +236,7 @@ We focus on the parts multi-currency teams trip over:
 
 - Multi-hop transactions where identifiers shift across intermediaries
 - Intermediary deductions and net settlement logic that break naive matching
-- Auditability that Controllers can defend, not just "automation that works"
+- Auditability that Controllers can defend, not just “automation that works”
 
 If you want to sanity check whether this approach fits your reconciliation reality, book a call.
 

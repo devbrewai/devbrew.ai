@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
             {/* Title */}
             <div
               style={{
-                fontSize: 54,
+                fontSize: 56,
                 fontWeight: 'bold',
                 color: 'white',
                 lineHeight: 1.2,

@@ -1,0 +1,108 @@
+---
+title: 'How CFOs Cut Payment Costs 18-25% Without Renegotiating Processor Terms'
+date: '2026-01-29'
+lastmod: '2026-01-29'
+slug: 'payment-routing-optimization'
+tags: ['payments', 'cross-border-payments', 'ai', 'routing', 'treasury', 'capital-efficiency']
+draft: false
+summary: 'Recover $105K-$150K in leaked margin in 60 days'
+images: ['/static/images/blog/payment-routing-optimization/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+---
+
+Your board asks the question every CFO dreads: "Why are payment costs going UP as volume scales? Shouldn't unit economics improve?"
+
+The answer? Your routing rules haven't changed since you set them up 18 months ago. Every transaction still follows the same static path, regardless of what's actually optimal today.
+
+[Adyen's 2024 pilot program](https://www.adyen.com/press-and-media/adyens-intelligent-payment-routing-usdebit) with over 20 enterprise merchants, including Microsoft, eBay, and 24 Hour Fitness, found participants saved an average of 26\% on costs using AI-powered routing. Some saw savings as high as 55\%. For a \$150M volume company, that's \$105K-\$150K in leaked margin annually. Not rounding error. Margin your board cares about.
+
+The fix isn't renegotiating processor terms. It's building custom AI that evaluates every transaction in real-time and picks the optimal rail automatically.
+
+## The problem with static routing
+
+You set your routing logic during initial provider integration. "All EUR-USD goes through Provider A, all GBP-USD through Provider B, all APAC through Provider C." Those rules made sense then.
+
+But provider costs change quarterly. Clearing speeds shift with banking infrastructure updates. Provider A's EUR-USD costs might have increased 15 bps last quarter. Provider B's GBP clearing may have slowed by 8 hours. Your static rules keep sending transactions the same way, optimizing for conditions that existed 18 months ago.
+
+You have 5+ payment rails: SWIFT, local banks, card networks, instant payment schemes. Each has different cost structures, speed characteristics, success rates, and coverage areas. Your finance team can't manually evaluate which rail is optimal for each of thousands of daily transactions. So you use the same routing rules for everything, optimizing for nothing.
+
+## The mistakes that leak margin
+
+**Setting routing rules once and forgetting them.** The [FSB's 2025 cross-border payments report](https://www.fsb.org/2025/10/g20-roadmap-for-cross-border-payments-consolidated-progress-report-for-2025/) notes that despite years of industry effort, payment costs in many regions were higher in 2024 than 2023. Your static rules may be routing you into those higher-cost paths.
+
+**Routing by provider, not transaction characteristics.** A \$50K B2B payment has different optimization variables than a \$200 consumer payout. Enterprise customers pay for speed. Consumer payouts optimize for cost. Same corridor, different optimal rails.
+
+**Assuming lowest cost is always optimal.** Provider B might cost 8 bps less but clear 2 days slower. Two days of float on \$150M annual volume at 5\% cost of capital is roughly \$41K per year. Sometimes the "expensive" rail is actually cheaper.
+
+**Building routing as infrastructure instead of a finance system.** Routing is often built for reliability first, not unit economics first. Engineering makes it work. But routing decisions hit your P&L directly, and most companies never revisit the logic after launch.
+
+## The solution: custom AI routing
+
+This isn't rule-based orchestration with a better UI. It's custom machine learning trained on your transaction patterns.
+
+[PYMNTS research on 2025 payment trends](https://www.pymnts.com/news/cross-border-commerce/cross-border-payments/2025/how-ai-and-orchestration-rewired-cross-border-payments-in-2025) describes how the winning model has become "tighter, AI-driven multi-rail orchestration, dynamically routing payments across cards, ACH, real-time rails, local clearing and APMs to optimize outcomes."
+
+**Multi-variable optimization.** Every transaction gets evaluated for cost, speed, success probability, and working capital impact simultaneously. Not just "which rail is cheapest" but "which rail optimizes total value for this specific transaction."
+
+**Custom ML trained on your data.** Models learn from your 12+ months of transaction history. Which corridors work best at which times with which providers. Not industry averages. Your actual patterns.
+
+**Continuous learning.** As provider costs change and new rails are added, models retrain automatically. No manual rule updates. The system adapts to current conditions.
+
+In Adyen's pilot, one customer saw savings of \$600,000 within the first 30 days.
+
+## Target implementation: 60 days, zero disruption
+
+**Weeks 1-2:** Connect to all payment providers. Aggregate 12+ months of transaction history. Identify which routes leak the most margin.
+
+**Weeks 3-5:** Train ML on your transaction outcomes. Build real-time cost/speed/success prediction by corridor. Run what-if analysis: "If you'd routed optimally last quarter, savings would be \$X."
+
+**Weeks 6-8:** Deploy as real-time decision engine. The system runs in parallel initially, so you see predicted savings before routing a single transaction through the AI. Finance dashboards for unit economics visibility. Model retraining as patterns evolve.
+
+## The ROI math
+
+Based on industry benchmarks and the Adyen pilot results, here's what intelligent routing can unlock:
+
+**\$100M annual volume:**
+
+- Potential cost reduction: 15-20\% (\$60K-\$80K annual savings)
+- Settlement acceleration: \$80K-\$120K working capital unlocked
+- Estimated total value: \$140K-\$200K annually
+
+**\$250M annual volume:**
+
+- Potential cost reduction: 20-25\% (\$200K-\$262K annual savings)
+- Gross margin improvement: up to 1.8 percentage points
+- Estimated total value: \$300K-\$450K annually
+
+Typical payback: 2-4 months.
+
+**Your board narrative:** Q2: "Identified \$100K+ in payment routing inefficiency." Q3: "Deployed custom AI routing, targeting 15\% cost reduction." Q4: "Optimization live, payment costs improving with scale."
+
+## Why custom AI, not off-the-shelf
+
+Your routes aren't like other companies' routes. Your corridors, transaction sizes, customer segments, and provider mix are unique.
+
+Off-the-shelf payment orchestration platforms give you rule-based routing: "if EUR-USD, use Provider A." That's the static rules problem repackaged with better reporting.
+
+Custom AI learns your patterns. Which providers perform best for your transaction types. How your costs vary by time, day, and corridor. This requires ML engineering specialized for payments, not configuring a payment gateway.
+
+## How Devbrew builds this
+
+At Devbrew, we're an AI engineering firm that builds custom routing intelligence for payments companies. Our target delivery is 60 days, and here's what we build:
+
+- Multi-provider data connectors across your payment stack
+- Custom ML models trained on your transaction history
+- Real-time decision engine optimized for low latency
+- Finance dashboards with unit economics visibility
+- Continuous learning that adapts as providers change
+
+Built for cross-border payments companies processing \$50M-\$500M annually.
+
+---
+
+If you're processing \$50M+ and payment costs aren't improving with scale, let's talk. 30-minute conversation to understand your routing challenges, what's at stake, and whether custom AI routing makes sense for your situation. No pitch - just clarity on your options.
+
+**Book a call:** [cal.com/joekariuki/devbrew](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=payment_routing_costs)
+
+Or email joe@devbrew.ai with a brief description of your challenge.

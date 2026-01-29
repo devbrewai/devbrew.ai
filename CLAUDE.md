@@ -76,3 +76,10 @@ Follow Angular commit conventions:
 ```
 
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+**Rules:**
+
+- Do not include "Co-Authored-By" or any AI-generated attribution comments
+- Use bullet points in the commit body to describe changes
+- Keep commits atomic: one logical change per commit
+- Commit methodically: stage and commit related changes together

@@ -265,7 +265,7 @@ export default function PostLayout({
                           Related {basePath === 'case-studies' ? 'Case Studies' : 'Content'}
                         </h2>
                         <ul className="space-y-6">
-                          {related.slice(0, 4).map((item) => (
+                          {related.slice(0, 3).map((item) => (
                             <li key={item.path} className="space-y-2">
                               <Link
                                 href={`/${item.path}`}

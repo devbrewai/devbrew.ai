@@ -89,5 +89,6 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 - Blog content follows the Devbrew content framework. Use the `devbrew-blog` skill.
 - Blog posts are in `data/blog/` (MDX files)
 - Devbrew is spelled "Devbrew" (not "DevBrew")
-- **Escape `$` and `%` in blog content:** MDX uses LaTeX for math. Escape currency and percentages in the body (not frontmatter) so they render as text: `$200K` → `\$200K`, `80%` → `80\%`
+- **Escape `$` and `%` in blog body only:** MDX uses LaTeX for math. Escape currency and percentages in the body so they render as text: `$200K` → `\$200K`, `80%` → `80\%`
+- **NEVER escape `$` or `%` in frontmatter:** The YAML frontmatter (title, summary, etc.) must use plain characters. Escaping in frontmatter causes build errors. Write `title: "The $40 Hidden Tax"` not `title: "The \$40 Hidden Tax"`
 - **OG images:** Download dynamically from `/api/og/blog?title={title}&description={summary}` and save to `public/static/images/blog/<slug>/og.png`

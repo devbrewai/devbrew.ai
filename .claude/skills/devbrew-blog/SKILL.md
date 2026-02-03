@@ -29,6 +29,7 @@ Devbrew is an AI engineering and applied research firm helping Series A-C cross-
 - Every number and outcome must be mathematically verifiable and transparently sourced.
 - NEVER fabricate case studies, client testimonials, or unsourced metrics. Devbrew has not worked with clients yet. All content avoids fabricated social proof.
 - Source stats from: Federal Reserve, U.S. Treasury, PYMNTS Intelligence, IBM Security, McKinsey, FSB, Adyen, or equivalent credible, citable sources.
+- **Citation anchor text must be short**: Use 2-5 words for linked text, not entire sentences. Good: "costs [vary by corridor](url)". Bad: "[the number of intermediaries and fees depend on the currencies involved](url)".
 - Always anchor AI and machine learning as the core solution. Emphasize "custom AI trained on YOUR data" rather than generic automation.
 
 ## Blog post workflow
@@ -44,13 +45,27 @@ Before writing, confirm you have:
 
 If any are missing, ask before proceeding.
 
-### Step 2: Craft the headline
+### Step 2: Scan for related existing blog posts
+
+Before writing, scan the blog content directory for posts related to the current topic. For detailed instructions on how to scan, reference, and link, read [references/internal-linking.md](references/internal-linking.md).
+
+Quick process:
+
+1. Scan `data/blog/` for all existing `.mdx` or `.md` files
+2. Read the frontmatter (title, slug, tags, summary) of each post
+3. Identify posts with overlapping tags or related topics
+4. Note 1-3 related posts to reference naturally in the new article
+5. Read the body of those related posts to find quotable insights or data points
+
+Only reference posts that genuinely add value. Do not force internal links.
+
+### Step 3: Craft the headline
 
 Use formula: `[Result they want] + [Objection] + [Time frame]`
 
 Title case. Create emotional response with words like "steal," "lost," "missed." The title is your TAM (total addressable market). Aim for a single specific number, not a range.
 
-### Step 3: Write using the 8-step content framework
+### Step 4: Write using the 8-step content framework
 
 Follow the Devbrew "Explain the System, Sell the Implementation" framework. For detailed instructions with examples, read [references/content-framework.md](references/content-framework.md).
 
@@ -65,7 +80,7 @@ The 8 steps in order:
 7. **Devbrew's solution** - connect Devbrew's capability to the hard part naturally
 8. **Soft CTA** - light, optional, value-based. Thought partner, not vendor.
 
-### Step 4: Format the blog post
+### Step 5: Format the blog post
 
 - Target 5-6 minute read (1,000-1,200 words). Shorter articles get better completion rates.
 - Subheadings every 200-300 words (sentence case, not title case)
@@ -76,7 +91,7 @@ The 8 steps in order:
 - Reference a clear implementation timeframe (e.g., 60 days)
 - End with one specific, low-friction next step
 
-### Step 5: Self-edit passes
+### Step 6: Self-edit passes
 
 Run three editing passes before delivering:
 
@@ -86,7 +101,23 @@ Run three editing passes before delivering:
 
 **Readability:** No paragraphs over 3-4 lines. Transitions between ideas. Line breaks for breathing room. Read it aloud mentally. Every sentence must earn its place.
 
-### Step 6: Generate the Cal.com tracking link
+### Step 7: Generate blog post metadata
+
+Every blog post requires YAML frontmatter metadata. For the full template and field-by-field rules, read [references/blog-metadata.md](references/blog-metadata.md).
+
+Key rules:
+
+- **NEVER escape `$` or `%` in frontmatter**: Use plain characters in title, summary, and all YAML fields. Escaping causes build errors. Write `title: "The $40 Hidden Tax"` not `title: "The \$40 Hidden Tax"`. Only escape these characters in the blog body content.
+- **slug** (REQUIRED): Short, SEO-friendly, lowercase, hyphen-separated. Must match the filename without `.mdx`. This field is required by Contentlayer and the build will fail without it.
+- **summary**: This doubles as the subtitle. Write it as a short, SEO-optimized sentence that captures the core value proposition. Speaks directly to the pain point and outcome.
+- **tags**: 6-7 tags maximum. ALWAYS read the project's `tag-data.json` file first to check existing tags. Prefer reusing existing tags over creating new ones. Only create a new tag if no existing tag fits.
+- **authors**: Always `['joe-kariuki']`
+- **layout**: Always `PostLayout`
+- **ogTitle**: Mirrors the title exactly
+- **ogDescription**: Mirrors the summary exactly
+- **images**: Follow the path pattern `/static/images/blog/{slug}/og.png`
+
+### Step 8: Generate the Cal.com tracking link
 
 Every blog post needs a UTM-tracked Cal.com booking link for the CTA. For the full framework with templates and examples, read [references/utm-tracking.md](references/utm-tracking.md).
 
@@ -133,6 +164,14 @@ Before delivering any content:
 - [ ] Devbrew spelled correctly (not "DevBrew")
 - [ ] CTA is soft, value-based, positions Devbrew as thought partner
 - [ ] Headline follows the formula: result + objection + timeframe
+- [ ] Blog metadata frontmatter is complete and valid YAML
+- [ ] No escaped `$` or `%` in frontmatter (only escape in body content)
+- [ ] Slug is short, SEO-friendly, and matches the topic intent
+- [ ] Summary is a concise SEO subtitle (not a generic description)
+- [ ] Tags are 6-7 max, checked against tag-data.json, existing tags preferred
+- [ ] Scanned existing blog posts for related content
+- [ ] 1-3 internal links included where genuinely relevant (not forced)
+- [ ] Internal links use descriptive anchor text and correct /blog/{slug} format
 - [ ] Cal.com link generated with proper UTM parameters
 - [ ] Blog is 1,000-1,200 words (5-6 min read)
 - [ ] LinkedIn post is 80-100 words, prose, no bullets

@@ -83,3 +83,9 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 - Use bullet points in the commit body to describe changes
 - Keep commits atomic: one logical change per commit
 - Commit methodically: stage and commit related changes together
+
+## Content
+
+- Blog content follows the Devbrew content framework. Use the `devbrew-blog` skill.
+- Blog posts are in /content/blog/ or /src/content/blog/ (adjust to your actual path)
+- Devbrew is spelled "Devbrew" (not "DevBrew")

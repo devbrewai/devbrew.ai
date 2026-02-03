@@ -87,5 +87,7 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 ## Content
 
 - Blog content follows the Devbrew content framework. Use the `devbrew-blog` skill.
-- Blog posts are in /content/blog/ or /src/content/blog/ (adjust to your actual path)
+- Blog posts are in `data/blog/` (MDX files)
 - Devbrew is spelled "Devbrew" (not "DevBrew")
+- **Escape `$` and `%` in blog content:** MDX uses LaTeX for math. Escape currency and percentages in the body (not frontmatter) so they render as text: `$200K` → `\$200K`, `80%` → `80\%`
+- **OG images:** Download dynamically from `/api/og/blog?title={title}&description={summary}` and save to `public/static/images/blog/<slug>/og.png`

@@ -56,7 +56,7 @@ export function ResearchCasesList() {
 
           <motion.div
             variants={item}
-            className="rounded-lg border bg-gradient-to-br from-neutral-50 to-white p-6 sm:p-8"
+            className="rounded-sm border bg-gradient-to-br from-neutral-50 to-white p-6 sm:p-8"
           >
             <p className="text-balance text-neutral-700">
               Stop fraud faster and stay compliant with ML-powered transaction scoring. Sentinel

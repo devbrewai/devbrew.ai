@@ -7,9 +7,7 @@ description: Write blog posts and social media promotion content for Devbrew, an
 
 ## Company identity
 
-Devbrew is an AI engineering and applied research firm helping Series A-C cross-border payments companies design and deploy custom AI solutions for fraud detection, compliance automation, treasury optimization, and settlement processing.
-
-**Target audience:** CTOs, CFOs, VPs of Risk, Compliance Officers, and Treasury Managers at U.S.-based payments companies processing $50M-$500M annually.
+Devbrew is an AI engineering and applied research firm helping Series A-C U.S.-based (or have operations in the U.S) payments companies solve their pain points with custom AI (designing and deploying custom AI solutions) that fit within their existing workflows.
 
 **Core positioning:** "Explain the system, sell the implementation." Give away technical insights freely to build trust. Position why professional implementation matters. Make readers think "we need custom AI" and see Devbrew as the team to build it.
 

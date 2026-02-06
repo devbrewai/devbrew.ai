@@ -27,6 +27,7 @@ Devbrew is an AI engineering and applied research firm helping Series A-C U.S.-b
 - Every number and outcome must be mathematically verifiable and transparently sourced.
 - NEVER fabricate case studies, client testimonials, or unsourced metrics. Devbrew has not worked with clients yet. All content avoids fabricated social proof.
 - Source stats from: Federal Reserve, U.S. Treasury, PYMNTS Intelligence, IBM Security, McKinsey, FSB, Adyen, or equivalent credible, citable sources.
+- **Prefer primary sources over secondary sources.** Use original research, government reports, and regulatory filings over vendor whitepapers, news articles summarizing studies, or competitor content. If citing a secondary source, verify the original data and link to the primary source when possible.
 - **Citation anchor text must be short**: Use 2-5 words for linked text, not entire sentences. Good: "costs [vary by corridor](url)". Bad: "[the number of intermediaries and fees depend on the currencies involved](url)".
 - Always anchor AI and machine learning as the core solution. Emphasize "custom AI trained on YOUR data" rather than generic automation.
 
@@ -57,11 +58,22 @@ Quick process:
 
 Only reference posts that genuinely add value. Do not force internal links.
 
-### Step 3: Craft the headline
+### Step 3: Craft the title
 
-Use formula: `[Result they want] + [Objection] + [Time frame]`
+The main title is SEO-friendly, contextual, and speaks directly to the target audience. It does not need to follow a formula. If the content brief or topic already includes a title, use that as the blog title.
 
-Title case. Create emotional response with words like "steal," "lost," "missed." The title is your TAM (total addressable market). Aim for a single specific number, not a range.
+- **Title case** (capitalize major words)
+- Hook the reader with curiosity, a specific number, or a counterintuitive statement
+- Create emotional response with words like "steal," "lost," "missed," "hidden," "trap"
+- The title is your TAM (total addressable market)
+- Keep it concise (under 70 characters ideal)
+
+**Good titles:**
+
+- "The FX Trap"
+- "Show ROI First. Build Later"
+- "The $100K Cost of Unpredictable Settlements"
+- "Frictionless Onboarding Is Not a Feature"
 
 ### Step 4: Write using the 8-step content framework
 
@@ -157,15 +169,16 @@ Before delivering any content:
 - [ ] No em dashes anywhere in the content
 - [ ] No fabricated claims, stats, case studies, or client references
 - [ ] All numbers sourced from credible, citable data
+- [ ] Stats and data sourced from primary sources (not vendor whitepapers or news summaries)
 - [ ] AI/ML positioned as the core solution throughout
 - [ ] Emphasizes "custom AI trained on YOUR data" (not generic automation)
 - [ ] Devbrew spelled correctly (not "DevBrew")
 - [ ] CTA is soft, value-based, positions Devbrew as thought partner
-- [ ] Headline follows the formula: result + objection + timeframe
+- [ ] Summary follows the headline formula (result + objection + timeframe) and is sentence case
 - [ ] Blog metadata frontmatter is complete and valid YAML
 - [ ] No escaped `$` or `%` in frontmatter (only escape in body content)
 - [ ] Slug is short, SEO-friendly, and matches the topic intent
-- [ ] Summary is a concise SEO subtitle (not a generic description)
+- [ ] Summary complements the title (not a repeat or truncation)
 - [ ] Tags are 6-7 max, checked against tag-data.json, existing tags preferred
 - [ ] Scanned existing blog posts for related content
 - [ ] 1-3 internal links included where genuinely relevant (not forced)

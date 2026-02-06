@@ -80,24 +80,30 @@ ogDescription: 'Short SEO-optimized subtitle that captures the core value propos
 
 ### summary
 
-- This is the **subtitle** of the blog post. It appears below the title on the blog listing and in search results.
-- Write it as a short, SEO-optimized sentence (1-2 sentences max).
-- Must capture the core value proposition and speak directly to the pain point and outcome.
-- Target the same keywords the audience would search for.
-- Include a specific number or outcome when possible.
-- Mirrors `ogDescription` exactly.
+The summary is the **subtitle** of the blog post. It appears below the title and uses the headline formula.
 
-**Good summaries:**
+**Headline formula:** `[Result they want] + [Objection] + [Time frame]`
 
-- "Cut downtime related revenue loss by 30 to 50 percent without hiring a big SRE team, using anomaly detection and AI observability across your payment flows."
-- "Recover $47K per quarter in trapped settlement float using predictive timing models and adaptive clearing optimization."
-- "Reduce false positive rates by 60 percent in your AML monitoring with custom ML models trained on your transaction data."
+- **Sentence case** (capitalize only the first word and proper nouns)
+- 1-2 sentences maximum
+- Must complement the title, not repeat it
+- Include a specific number or outcome
+- Mirrors `ogDescription` exactly
+
+**Good summaries (follow the formula):**
+
+- "Turn your AI idea into ROI in 30 days, even if nothing is built yet."
+  - Result: ROI | Objection: nothing built | Timeframe: 30 days
+- "Stop losing $100K to unpredictable settlements and free 35% of your buffer in 60 days, without switching banks."
+  - Result: stop losing $100K | Objection: without switching banks | Timeframe: 60 days
+- "Recover 2 to 5 basis points in FX margin with applied AI, even if your pricing already looks efficient."
+  - Result: recover 2-5 bps | Objection: pricing looks efficient | Timeframe: implied (with AI)
 
 **Bad summaries:**
 
-- "A blog post about payment reliability." (too vague, not SEO-friendly)
+- "A blog post about payment reliability." (too vague, no formula)
 - "In this article we discuss..." (generic, wastes characters)
-- "Devbrew can help you with payments." (company-focused, not value-focused)
+- "The $100K Cost of Unpredictable Settlements" (just repeats title)
 
 ### images
 

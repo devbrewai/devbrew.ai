@@ -105,6 +105,24 @@ Use this sparingly. Inline contextual links are stronger for both SEO and reader
 - Link to draft posts (check that `draft: false` in the referenced post)
 - Break the reading flow to insert a reference
 
+### Internal link title formatting
+
+**Always use sentence case** for internal link anchor text. This maintains reading continuity within paragraphs and sentences.
+
+- Convert the original title to sentence case when linking
+- Paraphrase or adapt when it improves flow (optional, but often better)
+- The goal is natural reading, not preserving the original title formatting
+
+**Examples:**
+
+Original title: "How Settlement Float Costs You $47K Per Quarter"
+
+- Using title in sentence case: "We covered this in [how settlement float costs you $47K per quarter](/blog/settlement-float-recovery)."
+- Adapted for flow (often better): "We covered this in [our analysis of settlement float costs](/blog/settlement-float-recovery)."
+- Paraphrased for context: "As we explained in [how settlement float quietly drains working capital](/blog/settlement-float-recovery), the real cost is liquidity trapped between clearing and funding."
+
+**Do not use title case** in anchor text, even if that's how the original post title is formatted. Title case breaks reading flow within sentences.
+
 ### Link format
 
 All internal blog links use the pattern: `/blog/{slug}`

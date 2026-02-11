@@ -7,7 +7,7 @@ description: Review and evaluate Devbrew blog posts for claim accuracy, source q
 
 This skill performs verification and evaluation of Devbrew blog posts. It does not create or rewrite content. It produces a structured review report with specific pass/fail results, a composite score, and prioritized action items.
 
-This skill evaluates against the standards defined in the `devbrew-blog` skill. Cross-reference that skill's quality checklist, voice rules, and content framework for the creation standards this review validates against.
+This skill evaluates against the standards defined in the `write-blog` skill. Cross-reference that skill's quality checklist, voice rules, and content framework for the creation standards this review validates against.
 
 ## Review workflow
 
@@ -22,7 +22,7 @@ If either input is missing, ask before proceeding. Both are required for a compl
 
 ### Step 2: Structural and metadata review
 
-Validate all frontmatter fields against the rules in the `devbrew-blog` skill's [references/blog-metadata.md](../devbrew-blog/references/blog-metadata.md). Check every item below:
+Validate all frontmatter fields against the rules in the `write-blog` skill's [references/blog-metadata.md](../write-blog/references/blog-metadata.md). Check every item below:
 
 - `slug` is present and matches the filename (without `.mdx`)
 - `title` is title case
@@ -70,7 +70,7 @@ Extract all links from the post (markdown link syntax). Categorize and check eac
 
 - **External links** (https://...): Run `curl -sL -o /dev/null -w "%{http_code}" {url}` to check HTTP status. PASS = 200-299. FAIL = 4xx/5xx. WARN = 3xx (redirects, note the destination). If a site blocks curl or times out, note "unable to verify" rather than marking as FAIL.
 - **Internal links** (/blog/{slug}): Verify the target file exists at `data/blog/{slug}.mdx` and that `draft` is not `true` in that file's frontmatter. Do not link to draft posts.
-- **Cal.com links**: Verify the link follows the UTM template from the `devbrew-blog` skill's [references/utm-tracking.md](../devbrew-blog/references/utm-tracking.md). Check: `utm_source=blog`, `utm_medium=post`, `utm_campaign` follows the slug naming convention, `problem` and `stake` parameters are present and URL-encoded.
+- **Cal.com links**: Verify the link follows the UTM template from the `write-blog` skill's [references/utm-tracking.md](../write-blog/references/utm-tracking.md). Check: `utm_source=blog`, `utm_medium=post`, `utm_campaign` follows the slug naming convention, `problem` and `stake` parameters are present and URL-encoded.
 - **Email links** (mailto:joe@devbrew.ai): Verify format.
 
 ### Step 5: Source quality assessment

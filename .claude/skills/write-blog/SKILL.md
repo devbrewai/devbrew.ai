@@ -1,5 +1,5 @@
 ---
-name: devbrew-blog
+name: write-blog
 description: Write blog posts and social media promotion content for Devbrew, an AI engineering firm serving fintech and payments companies. Use when asked to write, draft, create, or edit a blog post, article, LinkedIn post, X/Twitter post, or any marketing content for devbrew.ai. Also use when asked to promote a blog post on social media, generate a Cal.com tracking link, or create content following the Devbrew content framework.
 ---
 

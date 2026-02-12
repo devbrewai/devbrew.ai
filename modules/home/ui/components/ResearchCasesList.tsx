@@ -17,7 +17,6 @@ export function ResearchCasesList() {
   }
 
   const metrics = [
-    { value: '88%', label: 'Fraud detection accuracy' },
     { value: '30ms', label: 'API latency' },
     { value: '97%', label: 'Sanctions precision' },
     { value: '$225K', label: 'Demonstrated savings' },
@@ -64,7 +63,7 @@ export function ResearchCasesList() {
               delivering explainable decisions in under 200ms.
             </p>
 
-            <div className="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-4">
+            <div className="mt-8 grid grid-cols-3 gap-6">
               {metrics.map((metric) => (
                 <div key={metric.label}>
                   <p className="text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">

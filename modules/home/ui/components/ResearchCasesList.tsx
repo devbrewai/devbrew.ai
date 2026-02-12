@@ -17,9 +17,9 @@ export function ResearchCasesList() {
   }
 
   const metrics = [
+    { value: '55%', label: 'Cost reduction' },
     { value: '30ms', label: 'API latency' },
     { value: '97%', label: 'Sanctions precision' },
-    { value: '$225K', label: 'Demonstrated savings' },
   ]
 
   return (

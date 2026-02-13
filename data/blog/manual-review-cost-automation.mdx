@@ -1,0 +1,133 @@
+---
+title: 'Manual Review Is Eating Your Margins'
+date: '2026-02-13'
+lastmod: '2026-02-13'
+slug: 'manual-review-cost-automation'
+tags:
+  [
+    'risk-ops',
+    'payments',
+    'ai',
+    'fintech',
+    'machine-learning',
+    'risk-management',
+    'fraud-detection',
+  ]
+draft: false
+summary: 'Cut your cost per reviewed transaction by 40% with automated triage, without replacing your risk team, in 60 days.'
+images: ['/static/images/blog/manual-review-cost-automation/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Manual Review Is Eating Your Margins'
+ogDescription: 'Cut your cost per reviewed transaction by 40% with automated triage, without replacing your risk team, in 60 days.'
+---
+
+Quarterly ops review. Volume doubled, flagged cases doubled, and somehow cost per reviewed transaction got worse. Your next risk hire should be a model, not an analyst.
+
+## Why manual review crushes unit economics
+
+Every payments company hits the same wall. Transaction volume grows, flagged cases grow with it, and the only way to keep up is hiring more reviewers. Each new analyst tops out at the same number of cases per day as the last one you hired.
+
+This is the linear cost trap. Revenue scales with volume. Review costs scale with headcount. And headcount scales with volume too, which means your cost per transaction never improves.
+
+LexisNexis found that 44\% of financial institutions still rely mostly or entirely on manual processes for fraud and risk operations.[^1] And the cost of getting it wrong keeps climbing. Every dollar lost to fraud now costs financial institutions more than \$5 in total expenses, a 25\% increase from four years ago.[^2]
+
+Most teams treat this as a hiring problem. It is an architecture problem.
+
+## How automated triage works
+
+The fix is not replacing your risk team. It is filtering out the cases that never needed a human in the first place.
+
+Here is the system.
+
+1. **Ingest transactions and risk signals** from your existing fraud, AML, and sanctions systems. You are adding a scoring layer on top, not ripping out your stack.
+
+2. **Score risk on a continuous scale.** Not binary approve or decline, but a 0 to 100 risk score. This turns a queue into a prioritized workflow.
+
+3. **Route decisions by risk tier.** Auto-approve clean transactions, roughly 80\% of volume. Send medium-risk to light-touch review. Escalate high-risk to senior analysts with full context.
+
+4. **Feed outcomes back into the model.** Every review decision, chargeback, and false positive becomes training data. The model gets sharper with every case your team processes.
+
+5. **Monitor performance with human override.** Analysts can always override. Audit trails and governance controls stay intact.
+
+The goal is triage, not replacement. Filter the 80\% of cases that are obvious so your team can focus on the 20\% that require judgment. This is the same concept behind [reducing AML false positives](/blog/aml-false-positives-payments), applied to the full review queue.
+
+Accenture found that top performers have already automated 40\% of manual tasks and augmented another 39\% of human tasks in payments operations.[^3]
+
+## The mistakes that keep teams stuck
+
+**Treating all reviews as equally urgent.** Most review queues are first in, first out. Your analysts spend the same six minutes on an obvious approval as they do on a genuinely suspicious transaction. No prioritization means wasted capacity on cases that should have been auto-resolved.
+
+**Measuring fraud loss but not review cost.** Every risk team tracks fraud loss rate. Few track cost per review, queue backlog time, or the revenue impact of false positives. Run those numbers over four quarters. If review volume grows 15\% each quarter and you hire to match, headcount compounds while cost per transaction stays flat. The AFP found that 79\% of organizations were victims of payments fraud in 2024.[^4] The response is almost always more reviewers, rarely a better system.
+
+**Hiring reactively instead of building systems.** Volume spikes, you hire. Unit economics worsen. The board asks why margins are not improving.
+
+## What changes when you automate triage
+
+Here is a simple example for a Series C payments company processing 1.2 million transactions per month, with 10\% flagged for review.
+
+**Before automation:** 120,000 monthly reviews at \$3.20 loaded cost per review. That is \$384,000 per month, or \$4.6M annually. Backlog stretches to 18 or more hours on medium-risk cases, and different analysts apply different judgment to the same patterns.
+
+**After automated triage:** 80\% of flagged cases are handled by automated scoring and routing. Only 24,000 genuinely ambiguous cases reach human reviewers. Cost per reviewed transaction drops to \$1.92, a 40\% reduction. Annual savings: approximately \$1.8M in direct review cost, plus faster decisions and consistent logic across every case.
+
+The secondary benefits matter too. J.P. Morgan's research shows that false positive losses account for 19\% of the total cost of fraud, nearly three times the 7\% from actual fraud losses.[^5] Fewer false positives means retained revenue, not just lower costs.
+
+If you are building the business case for automation, the approach we covered in [building an AI roadmap your board will fund](/blog/ai-roadmap-board-funding) applies directly. Translate review cost savings into the KPIs your board already tracks.
+
+## Why most teams cannot ship this internally
+
+The model is not the hard part. It is the system behind it.
+
+Production-grade automated triage needs real-time scoring at authorization latency, feature pipelines that handle missing data and schema changes, continuous retraining as fraud patterns shift, and explainability with audit-ready reason codes. We covered the retraining challenge in [fraud model retraining for expansion](/blog/fraud-drift-retraining). On top of that, you need staged rollout, monitoring, drift detection, and rollback mechanisms.
+
+Most mid-market payments companies have one or two ML-adjacent people stretched across fraud, underwriting, and compliance. Engineering is already at capacity on product and payments infrastructure. Building this takes six or more months of dedicated ML engineering time you do not have.
+
+## How to start in the next 60 days
+
+Start with the foundation.
+
+**Weeks 1-2: Quantify your baseline.** Pull 90 days of review data: volume, time per review, analyst headcount, cost per reviewed transaction. Segment by type. Which reviews are repetitive approvals and which are genuinely complex?
+
+**Weeks 3-4: Map your workflow.** Document every step from flagged transaction to resolution. Identify bottlenecks and estimate what percentage of reviews are obvious approvals that a model could handle.
+
+**Weeks 5-6: Model the opportunity.** If 80\% of low-risk reviews were automated, what capacity frees up? Calculate saved analyst hours multiplied by loaded cost per hour. Draft the business case for your CFO.
+
+**Weeks 7-8: Run a retrospective pilot.** Score the last 60 days of reviews with an ML model. Measure whether automation would have caught the same fraud with fewer manual reviews. This gives you proof before you commit budget.
+
+If the pilot confirms the opportunity, the next question is production. That is a different challenge from running the experiment.
+
+## How Devbrew builds automated triage systems
+
+We start with your review queue data, flagging logic, and analyst workflows. In the first two weeks we build a scoring model on your historical reviews and run it in shadow mode. No production changes until the model proves it matches your team's judgment on clear cases.
+
+From there we build the production system: real-time scoring, tiered routing, retraining pipelines, and governance. Human override, audit trails, and rollback criteria are built in from day one. Every model is trained on your data, your outcomes, and your risk appetite.
+
+## Next step
+
+If manual review costs are growing faster than your transaction volume, we should talk.
+
+The goal of this conversation is to understand the problem you are trying to solve, what is at stake if it stays unsolved, and where AI creates meaningful impact in your risk operations. You will leave with clarity on options, direction, and whether automated triage makes sense for your setup.
+
+When booking, share a brief description of your challenge and what is at stake. It helps us make the most of our time together.
+
+[Book a 30-minute call](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=manual_review_automation_60d&problem=Manual%20review%20headcount%20scaling%20linearly%20with%20transaction%20volume%2C%20crushing%20unit%20economics%20and%20review%20consistency&stake=Unsustainable%20cost%20per%20transaction%2C%20analyst%20burnout%2C%20and%20risk%20ops%20becoming%20the%20bottleneck%20to%20growth) or reach out at [joe@devbrew.ai](mailto:joe@devbrew.ai).
+
+[^1]:
+    LexisNexis, "2025 True Cost of Fraud Study."
+    https://risk.lexisnexis.com/insights-resources/research/us-ca-true-cost-of-fraud-study
+
+[^2]:
+    LexisNexis, "Fraud Multiplier Surpasses $5 for Every $1 of Fraud Loss."
+    https://risk.lexisnexis.com/about-us/press-room/press-release/20250910-fraud-multiplier
+
+[^3]:
+    Accenture, "Payments Technology Reinvention."
+    https://www.accenture.com/us-en/insights/banking/payments-technology-reinvention
+
+[^4]:
+    Association for Financial Professionals, "2025 Payments Fraud Survey."
+    https://www.financialprofessionals.org/training-resources/resources/survey-research-economic-data/details/payments-fraud
+
+[^5]:
+    J.P. Morgan, "CNP Fraud Prevention: Combat Chargebacks."
+    https://www.jpmorgan.com/insights/payments/analytics-and-insights/cnp-fraud-prevention-combat-chargebacks

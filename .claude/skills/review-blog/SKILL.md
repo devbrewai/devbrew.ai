@@ -47,7 +47,7 @@ Validate all frontmatter fields against the rules in the `write-blog` skill's [r
 
 The ban is on em dashes (—) used as sentence punctuation, where a comma, period, or semicolon should be used instead. Hyphens in compound words are always allowed:
 
-- **Allowed:** "pre-trained models," "real-time scoring," "end-to-end pipeline," "Series A-C"
+- **Allowed:** "pre-trained models," "real-time scoring," "end-to-end pipeline," "Series B-D or mid-market"
 - **Not allowed:** "The system processes payments — even cross-border ones — in real time." Replace with: "The system processes payments, even cross-border ones, in real time."
 
 When an em dash is found as sentence punctuation, flag it and recommend replacing with a comma or period.
@@ -98,7 +98,7 @@ This is the qualitative evaluation. Score each criterion using the detailed rubr
 **Audience value** (1-5 per criterion):
 
 - Does the post address a specific pain point for a specific role?
-- Is the target audience within Devbrew's TAM (Series A-C U.S.-based payments companies)?
+- Is the target audience within Devbrew's TAM (Series B-D or mid-market U.S.-based payments companies)?
 - Does it provide actionable insights the reader can use immediately?
 - Does the reader learn something they did not know before?
 - Is the technical depth appropriate for the target audience?
@@ -120,6 +120,20 @@ This is the qualitative evaluation. Score each criterion using the detailed rubr
 - Active voice, present tense?
 - 8th grade reading level (unless technical depth required)?
 - No fabricated case studies, client testimonials, or unsourced metrics?
+
+### Step 7: Qualitative content review
+
+After completing the scored evaluation (Steps 1-6), perform a qualitative content review using [references/qualitative-review.md](references/qualitative-review.md).
+
+This step evaluates the post as a piece of writing, not just as a checklist. It assesses voice consistency, narrative arc, audience alignment, conversion logic, and consistency with published posts. It does not change the 100-point score.
+
+To perform this step:
+
+1. Read the post once through without scoring. Note your overall impression.
+2. Read 2-3 of the most recently published posts (by `date` field, where `draft: false`) from `data/blog/` for comparison.
+3. Work through each dimension in the qualitative review reference, answering the specific questions.
+4. Write the qualitative assessment in the format specified in the reference.
+5. Add any editorial recommendations to the action items section.
 
 ## Output format
 
@@ -231,6 +245,37 @@ Produce the review report in this exact structure:
 
 ---
 
+## 7. Qualitative content review
+
+### Content quality
+
+{2-4 sentence assessment}
+**Strongest section:** {section name and why}
+**Weakest section:** {section name and why}
+**Recommendation:** {specific action or "No changes needed"}
+
+### Target audience alignment
+
+**Target reader:** {role at company type, from content brief}
+**Self-identification test:** {(a), (b), or (c) with explanation}
+**Recommendation:** {specific action or "No changes needed"}
+
+### Conversion effectiveness
+
+**Funnel logic:** {Does the "I could do this / but I can't" sequence land?}
+**Differentiation:** {Is the "why Devbrew" case clear?}
+**Objections addressed:** {list which ones are handled, which are missed}
+**Recommendation:** {specific action or "No changes needed"}
+
+### Cross-post consistency
+
+**Compared against:** {2-3 post slugs}
+**Voice consistent:** Yes/No {brief note if No}
+**Quality baseline met:** Yes/No {brief note if No}
+**Positioning consistent:** Yes/No {brief note if No}
+
+---
+
 ## Summary
 
 | Dimension                | Score  | Weight   | Weighted    |
@@ -257,6 +302,10 @@ Produce the review report in this exact structure:
 
 1. {specific action item}
 
+### Editorial (qualitative review)
+
+1. {specific editorial recommendation from the qualitative review}
+
 ### Source upgrade opportunities
 
 1. {Tier 3 source that could be upgraded to Tier 1-2, with suggested alternative}
@@ -266,7 +315,7 @@ Produce the review report in this exact structure:
 
 | Dimension                | Weight | Rationale                                                                                                                                                                                    |
 | ------------------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Claim Validation         | 25%    | Highest weight. The target audience (analytical finance buyers at Series A-C payments companies) verifies claims. A false number destroys credibility.                                       |
+| Claim Validation         | 25%    | Highest weight. The target audience (analytical finance buyers at Series B-D or mid-market payments companies) verifies claims. A false number destroys credibility.                         |
 | Metadata & Structure     | 20%    | Structural compliance ensures the post builds correctly, renders properly, and follows the 8-step framework.                                                                                 |
 | Source Quality           | 15%    | Primary sources build authority. Vendor whitepapers undermine Devbrew's positioning as an independent engineering firm.                                                                      |
 | Link Integrity           | 15%    | Broken links damage UX and SEO. Dead sources undermine cited claims.                                                                                                                         |

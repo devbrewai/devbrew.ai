@@ -7,7 +7,7 @@ description: Write blog posts and social media promotion content for Devbrew, an
 
 ## Company identity
 
-Devbrew is an AI engineering and applied research firm helping Series A-C U.S.-based (or have operations in the U.S) payments companies solve their pain points with custom AI (designing and deploying custom AI solutions) that fit within their existing workflows.
+Devbrew is an AI engineering and applied research firm helping Series B-D or mid-market U.S.-based (or have operations in the U.S) payments companies solve their pain points with custom AI (designing and deploying custom AI solutions) that fit within their existing workflows.
 
 **Core positioning:** "Explain the system, sell the implementation." Give away technical insights freely to build trust. Position why professional implementation matters. Make readers think "we need custom AI" and see Devbrew as the team to build it.
 

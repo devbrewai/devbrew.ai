@@ -148,19 +148,18 @@ Quick reference:
 
 **LinkedIn posts:**
 
-- 80-100 words maximum. Posts over 147 words get zero engagement.
+- 100 words or less. Posts over 147 words get zero engagement.
+- Follow the AIDA formula: Attention, Interest, Desire, Action.
 - Prose format only. NO bullet points. Bullets signal "scan this" not "engage."
 - Single specific pain point. Single specific number (not a range).
 - Line breaks every 1-2 sentences for mobile readability.
 - End with a question or direct CTA.
-- Follow the AIDA formula: Attention, Interest, Desire, Action.
 
 **X/Twitter posts:**
 
-- Under 280 characters. 30-50 words ideal.
-- Single hook + single insight + CTA.
+- 280 characters or less.
+- Follow the AIDA formula: Attention, Interest, Desire, Action.
 - No threads. Single posts perform better.
-- Best days: Monday through Thursday. Friday kills X reach.
 
 ## Quality checklist
 

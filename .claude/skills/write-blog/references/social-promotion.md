@@ -33,7 +33,7 @@ Rules:
 
 **Format rules (from performance data):**
 
-- 80-100 words maximum. Posts at 147+ words get ZERO engagement.
+- 100 words or less.
 - Prose format ONLY. NO bullet points. Bullets signal "scan this" not "engage with this."
 - Single specific pain point per post. Multiple topics dilute impact.
 - Single specific number ("$47K" not "$40-80K").
@@ -66,7 +66,7 @@ Rules:
 
 **Format rules:**
 
-- Under 280 characters. 30-50 words ideal.
+- 280 characters or less.
 - Single hook + single insight + link or CTA.
 - No threads. Single posts perform better.
 - Post Monday through Thursday. Friday kills X reach (73% drop observed).

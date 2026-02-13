@@ -119,7 +119,7 @@ Always light, always optional, always value-based. Position Devbrew as a thought
 - **Too broad:** One topic per post. "Working capital management" is too broad. "How settlement float costs you $47K per quarter" is specific.
 - **Too technical for the audience:** If targeting CFOs, do not write like you are explaining to engineers.
 - **Ranges instead of specifics:** "$47K" converts better than "$40-80K."
-- **Missing sources:** Every data point needs a credible citation. Analytical finance buyers verify claims.
+- **Missing sources:** Every data point needs a credible citation. Analytical finance buyers verify claims. Use MDX footnotes for external sources (see [sourcing-citations.md](sourcing-citations.md) for the format).
 - **Lecture tone:** Write WITH the reader. "You already know your settlement cycle is slow" not "Companies often have slow settlement cycles."
 - **Hiding behind jargon:** If a simpler word works, use it.
 - **Multiple pain points in one post:** Dilutes impact. Pick one and go deep.

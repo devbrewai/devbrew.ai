@@ -29,6 +29,7 @@ Devbrew is an AI engineering and applied research firm helping Series A-C U.S.-b
 - Source stats from: Federal Reserve, U.S. Treasury, PYMNTS Intelligence, IBM Security, McKinsey, FSB, Adyen, or equivalent credible, citable sources.
 - **Prefer primary sources over secondary sources.** Use original research, government reports, and regulatory filings over vendor whitepapers, news articles summarizing studies, or competitor content. If citing a secondary source, verify the original data and link to the primary source when possible.
 - **Citation anchor text must be short**: Use 2-5 words for linked text, not entire sentences. Good: "costs [vary by corridor](url)". Bad: "[the number of intermediaries and fees depend on the currencies involved](url)".
+- **External sources use footnotes, internal links use inline embeds.** External stats and claims get MDX footnote citations (`[^1]`, `[^2]`). Internal Devbrew blog references use inline embedded links. For the full format and examples, read [references/sourcing-citations.md](references/sourcing-citations.md).
 - Always anchor AI and machine learning as the core solution. Emphasize "custom AI trained on YOUR data" rather than generic automation.
 
 ## Blog post workflow
@@ -97,7 +98,7 @@ The 8 steps in order:
 - Short intro paragraph: 2-3 sentences maximum
 - No paragraph longer than 3-4 lines on screen
 - One core problem, one solution per post
-- Include credible sources with specific citations
+- Cite external sources using MDX footnote citations and internal blog references using inline links. See [references/sourcing-citations.md](references/sourcing-citations.md) for the format.
 - Reference a clear implementation timeframe (e.g., 60 days)
 - End with one specific, low-friction next step
 
@@ -181,8 +182,10 @@ Before delivering any content:
 - [ ] Summary complements the title (not a repeat or truncation)
 - [ ] Tags are 6-7 max, checked against tag-data.json, existing tags preferred
 - [ ] Scanned existing blog posts for related content
+- [ ] External sources use MDX footnote citations (`[^1]`, `[^2]`), not inline links
+- [ ] Footnote definitions at bottom of file include organization name, document title, and URL
 - [ ] 1-3 internal links included where genuinely relevant (not forced)
-- [ ] Internal links use descriptive anchor text and correct /blog/{slug} format
+- [ ] Internal references use inline embedded links (`/blog/{slug}`), not footnotes
 - [ ] Cal.com link generated with proper UTM parameters
 - [ ] Blog is 1,000-1,200 words (5-6 min read)
 - [ ] LinkedIn post is 80-100 words, prose, no bullets

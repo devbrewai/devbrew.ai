@@ -1,12 +1,20 @@
 'use client'
 
-import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
+import {
+  Dialog,
+  DialogPanel,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Transition,
+  TransitionChild,
+} from '@headlessui/react'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import { Fragment, useState, useEffect, useRef } from 'react'
 import Link from './Link'
 import headerNavLinks from '@/data/headerNavLinks'
 import { buttonVariants } from './ui/button'
-import { Menu, X } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 
 const MobileNav = () => {
   const [navShow, setNavShow] = useState(false)
@@ -65,16 +73,46 @@ const MobileNav = () => {
               >
                 {headerNavLinks
                   .filter((link) => link.href !== '/contact')
-                  .map((link) => (
-                    <Link
-                      key={link.title}
-                      href={link.href}
-                      className="hover:text-primary-500 dark:hover:text-primary-400 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 outline outline-0 dark:text-gray-100"
-                      onClick={onToggleNav}
-                    >
-                      {link.title}
-                    </Link>
-                  ))}
+                  .map((link) => {
+                    if (link.children) {
+                      return (
+                        <Disclosure key={link.title} as="div" className="w-full">
+                          {({ open }) => (
+                            <>
+                              <DisclosureButton className="hover:text-primary-500 dark:hover:text-primary-400 mb-4 flex w-full items-center gap-2 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 outline-none dark:text-gray-100">
+                                {link.title}
+                                <ChevronDown
+                                  className={`h-5 w-5 transition-transform ${open ? 'rotate-180' : ''}`}
+                                />
+                              </DisclosureButton>
+                              <DisclosurePanel className="mb-4 ml-4 space-y-2">
+                                {link.children!.map((child) => (
+                                  <Link
+                                    key={child.href}
+                                    href={child.href}
+                                    className="hover:text-primary-500 dark:hover:text-primary-400 block py-1 pl-4 text-xl font-medium text-gray-700 dark:text-gray-300"
+                                    onClick={onToggleNav}
+                                  >
+                                    {child.title}
+                                  </Link>
+                                ))}
+                              </DisclosurePanel>
+                            </>
+                          )}
+                        </Disclosure>
+                      )
+                    }
+                    return (
+                      <Link
+                        key={link.title}
+                        href={link.href}
+                        className="hover:text-primary-500 dark:hover:text-primary-400 mb-4 py-2 pr-4 text-2xl font-bold tracking-widest text-gray-900 outline outline-0 dark:text-gray-100"
+                        onClick={onToggleNav}
+                      >
+                        {link.title}
+                      </Link>
+                    )
+                  })}
 
                 <Link
                   href="/contact"

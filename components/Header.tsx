@@ -29,12 +29,12 @@ function NavDropdown({ link }: { link: NavLink }) {
   return (
     <div className="relative" onMouseEnter={handleEnter} onMouseLeave={handleLeave}>
       <button
-        className="hover:text-primary-500 dark:hover:text-primary-400 m-1 inline-flex items-center gap-1 font-medium text-gray-900 dark:text-gray-100"
+        className="hover:text-primary-500 dark:hover:text-primary-400 m-1 inline-flex cursor-pointer items-center gap-1 font-medium text-gray-900 dark:text-gray-100"
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
       >
         {link.title}
-        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+        {/* <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`} /> */}
       </button>
 
       <Transition
@@ -46,12 +46,12 @@ function NavDropdown({ link }: { link: NavLink }) {
         leaveFrom="opacity-100 translate-y-0"
         leaveTo="opacity-0 translate-y-1"
       >
-        <div className="absolute top-full left-0 z-50 mt-2 min-w-[200px] rounded-md border border-gray-200 bg-white py-1 shadow-lg dark:border-gray-700 dark:bg-gray-900">
+        <div className="absolute top-full left-0 z-50 mt-2 min-w-[200px] rounded-md border border-gray-200 bg-white py-1 shadow-lg">
           {link.children!.map((child) => (
             <Link
               key={child.href}
               href={child.href}
-              className="hover:text-primary-500 dark:hover:text-primary-400 block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-gray-800"
+              className="hover:text-primary-500 dark:hover:text-primary-400 block px-4 py-2 text-sm text-gray-700 dark:text-gray-200"
               onClick={() => setOpen(false)}
             >
               {child.title}
@@ -93,7 +93,7 @@ const Header = () => {
           </div>
         </Link>
         <div className="flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6">
-          <div className="no-scrollbar hidden max-w-40 items-center gap-x-4 overflow-x-auto sm:flex md:max-w-72 lg:max-w-96">
+          <div className="hidden max-w-40 items-center gap-x-4 sm:flex md:max-w-72 lg:max-w-96">
             {headerNavLinks
               .filter((link) => link.href !== '/' && link.href !== '/contact')
               .map((link) => {

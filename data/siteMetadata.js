@@ -3,8 +3,10 @@ const siteMetadata = {
   title: 'Devbrew',
   author: 'Devbrew',
   headerTitle: 'Devbrew',
+  // Old description:
+  // 'Devbrew is an AI engineering and research firm. We partner with payments companies to research, design, and deploy custom AI solutions',
   description:
-    'Devbrew is an AI engineering and research firm. We partner with payments companies to research, design, and deploy custom AI solutions',
+    'Devbrew is an AI-native agency for mid-market cross-border payments companies. We deliver AI infrastructure and agents for fraud detection, KYC automation, and liquidity forecasting.',
   language: 'en-us',
   theme: 'light', // system, dark or light
   siteUrl: 'https://www.devbrew.ai',
@@ -14,7 +16,7 @@ const siteMetadata = {
   // mastodon: 'https://mastodon.social/@mastodonuser',
   // email: 'hello@devbrew.ai',
   // github: 'https://github.com/DevbrewCo',
-  // x: 'https://twitter.com/devbrew',
+  x: 'https://x.com/devbrewai',
   // twitter: 'https://twitter.com/Twitter',
   // facebook: 'https://facebook.com',
   // youtube: 'https://youtube.com',

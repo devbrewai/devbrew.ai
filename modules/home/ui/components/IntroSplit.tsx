@@ -69,25 +69,58 @@ export function IntroSplit() {
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">How to think of us</h2>
               <p className="mt-2 text-neutral-700">
-                We are an AI engineering and applied research firm for payments. We help payments
-                companies solve their biggest pain points with custom AI solutions that fit directly
-                into their existing workflows.
+                We are an AI-native agency for mid-market cross-border payments companies.
               </p>
+              <p className="mt-2 text-neutral-700">
+                We deliver AI infrastructure and agents that help payments companies detect fraud,
+                automate KYC, and forecast liquidity at a fraction of the cost and timeline of
+                building in-house.
+              </p>
+              {/* <p className="mt-2 text-neutral-700">
+                We work with founders and risk, compliance, and finance leaders at companies
+                processing $100M–$2B in annual transaction volume—companies where fraud, compliance,
+                and treasury are critical problems but building AI in-house means competing for
+                scarce talent and spending years before seeing ROI.
+              </p> */}
             </motion.div>
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">What makes us different</h2>
+              {/* <p className="mt-2 text-neutral-700">
+                We don&apos;t sell you software or lend you engineers. We solve the problem and
+                guarantee the outcome.
+                
+              </p> */}
               <p className="mt-2 text-neutral-700">
-                We research and combine deep technical expertise with direct execution. We don't
-                just advise, we build alongside you.
+                {/* We price on outcomes, not engineering hours. If we don't deliver measurable results, you don't pay. */}
+                We deliver production AI in weeks, priced based on outcomes, not engineering hours.
+                75% of our fee is contingent on hitting your success metrics.
               </p>
             </motion.div>
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">Where we drive impact</h2>
               <p className="mt-2 text-neutral-700">
-                We design, build, and deploy AI across the payments stack to raise approvals, cut
-                losses, and automate operations, covering fraud, merchant risk, disputes,
-                chargebacks, KYC/KYB, reconciliation, and more.
+                We deliver AI infrastructure and agents for three critical functions in cross-border
+                payments:
               </p>
+              <ul className="mt-3 space-y-3 text-sm text-neutral-700">
+                <li>
+                  <span className="font-semibold text-neutral-900">
+                    Fraud detection & sanctions screening
+                  </span>{' '}
+                  — 55% cost reduction vs. legacy vendors, sub-30ms scoring latency, real-time OFAC
+                  screening with 97% precision.
+                </li>
+                {/* <li>
+                  <span className="font-semibold text-neutral-900">KYC/AML Automation</span>{' '}
+                  — 48-hour manual reviews compressed to 4 seconds, 65% cost reduction, 95%
+                  document accuracy.
+                </li>
+                <li>
+                  <span className="font-semibold text-neutral-900">Liquidity Forecasting</span>{' '}
+                  — 30% reduction in trapped capital across payment corridors, 7-to-90-day forecast
+                  horizons.
+                </li> */}
+              </ul>
             </motion.div>
           </motion.div>
         </div>

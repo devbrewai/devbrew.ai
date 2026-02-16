@@ -64,8 +64,8 @@ interface CTAProps {
 
 export function CTA({
   eyebrow = 'Ready to get started?',
-  title = 'Turn AI potential into ROI in weeks',
-  description = 'We help payments companies build AI solutions that accelerate growth and deliver measurable returns.',
+  title = 'Ship Fraud Detection in Weeks, Not Months',
+  description = "We deliver production AI for cross-border payments companies. Free pilot. Outcome-based pricing. If we don't hit your metrics, you don't pay the success fee.",
   buttonText = 'Get Started',
   buttonHref = '/get-started',
   variant = 'default',
@@ -123,7 +123,7 @@ export function CTA({
               variants={item}
               className={cn(
                 'font-medium tracking-tighter text-balance',
-                isCompact ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-6xl',
+                isCompact ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl',
                 titleClassName
               )}
             >

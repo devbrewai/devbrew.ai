@@ -96,17 +96,18 @@ export function HeroCentered() {
     <section className="relative overflow-hidden bg-white">
       <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-24 lg:px-6 lg:py-32">
         <motion.div
-          className="mx-auto max-w-2xl text-center"
+          className="mx-auto max-w-4xl text-center"
           initial={{ opacity: 0, y: reduce ? 0 : 16, filter: reduce ? 'none' : 'blur(8px)' }}
           animate={{ opacity: 1, y: 0, filter: reduce ? 'none' : 'blur(0px)' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <h1 className="text-4xl font-medium tracking-tighter text-balance text-neutral-900 sm:text-5xl lg:text-6xl">
-            AI Engineering for Payments
+            AI Infrastructure & Agents for Cross-Border Payments
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-balance text-neutral-700 sm:text-base">
-            We design and deploy custom AI solutions for payments companies.
+            We deliver fraud detection, KYC automation, and liquidity forecasting for mid-market
+            payments companies at a fraction of the cost and timeline of building in-house.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center">

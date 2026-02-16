@@ -39,7 +39,7 @@ Exceeds the 0.85 industry benchmark for fraud detection
 
 Payment companies face impossible tradeoffs:
 
-**Fraud is rising**: Card-not-present fraud costs billions annually
+**Fraud is rising**: Card-not-present fraud costs cross-border payment companies 1.5\% of transaction volume (\$1.5M lost on $100M volume)
 
 **False positives kill conversion**: Legacy systems flag 10-20% of good customers
 
@@ -75,13 +75,21 @@ Sentinel combines ML-based fraud detection with real-time sanctions screening:
 
 ## How it works
 
+### Simple process
+
 1. **Submit a transaction** via REST API or demo UI
-2. **Get instant results**: fraud risk score, SHAP explanations, sanctions match
-3. **Make informed decisions** with transparent, auditable predictions
+2. **Get fraud score + explanation** in under 30ms
+3. **Accept, decline, or flag for manual review** with full audit trail
 
-Built with LightGBM, FastAPI, Redis, and Next.js.
+### Technical implementation
 
-**[Try live demo](https://sentinel.devbrew.ai)**
+Built with LightGBM for fraud detection, fuzzy matching for sanctions screening, and FastAPI for real-time API performance. Includes:
+
+- **Instant results**: fraud risk score, SHAP explanations, sanctions match
+- **Transparent decisions**: auditable predictions for compliance teams
+- **Production stack**: Redis caching, PostgreSQL audit logs, Next.js dashboard
+
+**[Try live demo](https://sentinel.devbrew.ai)** | **[Book pilot call](https://cal.com/joekariuki/devbrew?utm_source=case-study&utm_medium=page&utm_campaign=sentinel_fraud_detection&problem=Fraud%20detection%20gaps%20from%20high%20false%20positives%2C%20missed%20fraud%20patterns%2C%20and%20static%20rule-based%20systems&stake=Revenue%20loss%20from%20fraud%2C%20customer%20friction%20from%20false%20declines%2C%20and%20operational%20costs%20from%20manual%20review)**
 
 ---
 
@@ -96,7 +104,7 @@ Built with LightGBM, FastAPI, Redis, and Next.js.
 
 ## Pilot Sentinel with your transaction data
 
-We're offering **free pilots** to Series A-C payments companies.
+We're offering **free pilots** to Series B-D payments companies.
 
 ### What you get
 
@@ -128,7 +136,7 @@ We're offering **free pilots** to Series A-C payments companies.
 
 ## About Devbrew
 
-We build custom AI solutions for cross-border payments companies. Sentinel demonstrates our technical depth in ML engineering, real-time systems, and regulatory compliance.
+We deliver custom AI solutions for cross-border payments companies. Sentinel demonstrates our technical depth in ML engineering, real-time systems, and regulatory compliance.
 
 {/* Other case studies: */}
 

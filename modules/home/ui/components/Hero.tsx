@@ -41,11 +41,11 @@ export function Hero() {
                   Get started
                 </Link>
               </Button>
-              <Button size="lg" variant="ghost">
+              {/* <Button size="lg" variant="ghost">
                 <Link href="/case-studies" className="flex items-center justify-center">
                   View Case Studies
                 </Link>
-              </Button>
+              </Button> */}
             </div>
           </motion.div>
 

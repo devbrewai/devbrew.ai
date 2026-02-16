@@ -1,7 +1,6 @@
 import { HeroCentered } from '../components/Hero'
 import { IntroSplit } from '../components/IntroSplit'
 import { ValueCards } from '../components/ValueCards'
-import { Offerings } from '../components/Offerings'
 import { ResearchCasesList } from '../components/ResearchCasesList'
 import { CTA } from '@/components/CTA'
 
@@ -11,8 +10,8 @@ export default function HomeView() {
       {/* Hero */}
       <HeroCentered />
       <IntroSplit />
-      {/* What We Do / Offerings */}
-      <Offerings title="What we do" className="bg-neutral-50" />
+      {/* What We Do / Offerings — commented out per website audit (reads like a dev shop) */}
+      {/* <Offerings title="What we do" className="bg-neutral-50" /> */}
       {/* Proof / Case studies */}
       <ResearchCasesList />
       {/* Value */}

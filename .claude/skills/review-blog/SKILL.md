@@ -41,7 +41,7 @@ Validate all frontmatter fields against the rules in the `write-blog` skill's [r
 - No paragraph longer than 4 lines
 - All 8 content framework sections are present (core mechanism, system steps, common mistakes, quantified outcomes, hidden difficulty, action steps, Devbrew's solution, soft CTA)
 - "Devbrew" is spelled correctly (not "DevBrew")
-- Short intro: 2-3 sentences maximum
+- Short intro: 3-5 sentences maximum
 
 #### Em dash rule
 

@@ -95,7 +95,7 @@ The 8 steps in order:
 
 - Target 5-6 minute read (1,000-1,200 words). Shorter articles get better completion rates.
 - Subheadings every 200-300 words (sentence case, not title case)
-- Short intro paragraph: 2-3 sentences maximum
+- Short intro paragraph: 3-5 sentences maximum
 - No paragraph longer than 3-4 lines on screen
 - One core problem, one solution per post
 - Cite external sources using MDX footnote citations and internal blog references using inline links. See [references/sourcing-citations.md](references/sourcing-citations.md) for the format.

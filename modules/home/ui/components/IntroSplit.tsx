@@ -69,12 +69,12 @@ export function IntroSplit() {
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">How to think of us</h2>
               <p className="mt-2 text-neutral-700">
-                We are an AI-native agency for mid-market cross-border payments companies.
+                We are an applied AI engineering firm for mid-market cross-border payments
+                companies.
               </p>
               <p className="mt-2 text-neutral-700">
-                We deliver AI infrastructure and agents that help payments companies detect fraud,
-                automate KYC, and forecast liquidity at a fraction of the cost and timeline of
-                building in-house.
+                We build AI systems that help payments companies detect fraud, automate KYC, and
+                forecast liquidity at a fraction of the cost and timeline of building in-house.
               </p>
               {/* <p className="mt-2 text-neutral-700">
                 We work with founders and risk, compliance, and finance leaders at companies
@@ -92,8 +92,8 @@ export function IntroSplit() {
               </p> */}
               <p className="mt-2 text-neutral-700">
                 {/* We price on outcomes, not engineering hours. If we don't deliver measurable results, you don't pay. */}
-                We deliver production AI in weeks, priced based on outcomes, not engineering hours.
-                75% of our fee is contingent on hitting your success metrics.
+                We build and deploy production AI in weeks. An onboarding fee gets things started;
+                the rest you only pay when we hit the success metrics we define together.
               </p>
             </motion.div>
             <motion.div variants={item}>
@@ -108,7 +108,7 @@ export function IntroSplit() {
                     Fraud detection & sanctions screening
                   </span>{' '}
                   — 55% cost reduction vs. legacy vendors, sub-30ms scoring latency, real-time OFAC
-                  screening with 97% precision.
+                  screening with 97.5% precision.
                 </li>
                 {/* <li>
                   <span className="font-semibold text-neutral-900">KYC/AML Automation</span>{' '}

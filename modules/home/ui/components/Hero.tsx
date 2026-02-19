@@ -102,12 +102,13 @@ export function HeroCentered() {
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <h1 className="text-4xl font-medium tracking-tighter text-balance text-neutral-900 sm:text-5xl lg:text-6xl">
-            AI Infrastructure & Agents for Cross-Border Payments
+            Applied AI Engineering for Cross-Border Payments
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-balance text-neutral-700 sm:text-base">
-            We deliver fraud detection, KYC automation, and liquidity forecasting for mid-market
-            payments companies at a fraction of the cost and timeline of building in-house.
+            We build AI systems that detect fraud, automate KYC, and forecast liquidity for
+            mid-market payments companies at a fraction of the cost and timeline of building
+            in-house.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center">

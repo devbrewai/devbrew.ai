@@ -6,7 +6,7 @@ const siteMetadata = {
   // Old description:
   // 'Devbrew is an AI engineering and research firm. We partner with payments companies to research, design, and deploy custom AI solutions',
   description:
-    'Devbrew is an AI-native agency for mid-market cross-border payments companies. We deliver AI infrastructure and agents for fraud detection, KYC automation, and liquidity forecasting.',
+    'Devbrew is an applied AI engineering firm for mid-market cross-border payments companies. We build AI systems for fraud detection, KYC automation, and liquidity forecasting.',
   language: 'en-us',
   theme: 'light', // system, dark or light
   siteUrl: 'https://www.devbrew.ai',

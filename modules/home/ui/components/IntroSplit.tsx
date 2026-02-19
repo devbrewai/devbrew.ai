@@ -99,8 +99,8 @@ export function IntroSplit() {
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">Where we drive impact</h2>
               <p className="mt-2 text-neutral-700">
-                We deliver AI infrastructure and agents for three critical functions in cross-border
-                payments:
+                Our first deployed system targets one of the most critical challenges in
+                cross-border payments:
               </p>
               <ul className="mt-3 space-y-3 text-sm text-neutral-700">
                 <li>

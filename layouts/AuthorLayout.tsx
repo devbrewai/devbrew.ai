@@ -24,8 +24,8 @@ export default function AuthorLayout({ children, content }: Props) {
             Your AI Engineering Partner for Fintech Growth
           </h1>
           <p className="text-muted-foreground mx-auto mt-5 max-w-7xl text-base sm:mt-6 sm:text-lg">
-            We design and deliver custom AI systems for U.S. fintech startups that automate
-            workflows, enhance decision-making, and unlock new revenue
+            We design and deliver custom AI infrastructure and agents for U.S. fintech startups that
+            automate workflows, enhance decision-making, and unlock new revenue
           </p>
         </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0 xl:gap-x-8">

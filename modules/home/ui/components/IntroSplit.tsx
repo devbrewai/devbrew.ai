@@ -73,8 +73,9 @@ export function IntroSplit() {
                 companies.
               </p>
               <p className="mt-2 text-neutral-700">
-                We build AI systems that help payments companies detect fraud, automate KYC, and
-                forecast liquidity at a fraction of the cost and timeline of building in-house.
+                We build AI infrastructure and agents that help payments companies detect fraud,
+                automate KYC, and forecast liquidity at a fraction of the cost and timeline of
+                building in-house.
               </p>
               {/* <p className="mt-2 text-neutral-700">
                 We work with founders and risk, compliance, and finance leaders at companies

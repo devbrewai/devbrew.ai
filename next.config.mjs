@@ -60,6 +60,8 @@ export default () => {
         { source: '/book', destination: '/contact', permanent: true },
         { source: '/call', destination: '/contact', permanent: true },
         { source: '/schedule-call', destination: '/contact', permanent: true },
+        { source: '/case-studies', destination: '/work', permanent: true },
+        { source: '/case-studies/:path*', destination: '/work/:path*', permanent: true },
       ]
     },
     webpack: (config) => {

@@ -4,7 +4,7 @@ This guide explains how to create and manage case studies for the Devbrew websit
 
 ## Adding a New Case Study
 
-1. Create a new `.mdx` file in `/data/case-studies/`
+1. Create a new `.mdx` file in `/data/work/`
 2. Add the required frontmatter fields:
 
 ```yaml
@@ -18,7 +18,7 @@ summary: 'A brief summary of the case study'
 images: ['/static/images/case-studies/your-case-study-slug/og.png']
 authors: ['default']
 layout: PostLayout
-canonicalUrl: 'https://www.devbrew.ai/case-studies/your-case-study-slug'
+canonicalUrl: 'https://www.devbrew.ai/work/your-case-study-slug'
 clientLogo: '/static/images/logos/client-logo.svg' # Optional: Client logo path
 clientName: 'Client Name' # Optional: Client name for alt text
 ---

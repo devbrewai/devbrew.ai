@@ -30,7 +30,7 @@ Dynamic Open Graph (OG) images have been implemented for case studies and resear
 
 ### Files Modified
 
-1. **`/app/case-studies/[...slug]/page.tsx`**
+1. **`/app/work/[...slug]/page.tsx`**
    - Updated `generateMetadata` function to use dynamic OG image URL
    - Removed static image fallback logic
 

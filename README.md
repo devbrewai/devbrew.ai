@@ -6,9 +6,9 @@ Sections:
 
 - Research (public)
 - Insights (currently private)
-- Case Studies (currently private)
+- Work (public, at /work — formerly Case Studies)
 
-While Insights and Case Studies are private, routes live in private folders (`app/_insights`, `app/_case-studies`) and are excluded from the sitemap, RSS, and tags.
+While Insights is private, its route lives in a private folder (`app/_insights`) and is excluded from the sitemap, RSS, and tags. Work is served from `app/work/` with content in `data/work/`.
 
 When you are ready to publish these sections, follow the publish checklist near the bottom of this file.
 
@@ -89,7 +89,7 @@ canonicalUrl (optional)
 
 Authoring flow:
 
-- Add MDX under `data/research/` (or `insights/`, `case-studies/` when publishing those sections).
+- Add MDX under `data/research/`, `data/work/`, or `data/blog/`.
 - Use valid frontmatter. Prefer absolute OG image URLs or paths that resolve against `siteUrl`.
 - For draft content, set `draft: true` to exclude from sitemap/RSS.
 
@@ -167,11 +167,14 @@ import Image from '@/components/Image'
   - `app/research/` – list, pagination, and dynamic article routes.
   - `app/tags/` – tag index and per‑tag pagination.
 
+- Work (public)
+  - `app/work/` – serves at /work (content in `data/work/`)
+
 - Private sections (hidden routes)
   - `app/_insights/`
-  - `app/_case-studies/`
+  - `app/_case-studies/` – archived, replaced by `app/work/`
 
-Private folders are ignored by Next.js routing. We still keep code and content in place for later publishing.
+Private folders are ignored by Next.js routing.
 
 ## Search, Tags, Sitemap, RSS
 
@@ -217,22 +220,20 @@ yarn lint
 - `app/` – App Router pages (public + private folders)
 - `components/` – UI and MDX components
 - `layouts/` – Article/list layouts
-- `data/` – MDX sources (`research/`, `insights/`, `case-studies/`, `authors/`)
+- `data/` – MDX sources (`research/`, `blog/`, `work/`, `case-studies/`, `authors/`)
 - `scripts/` – postbuild and RSS feed generator
 - `public/` – static assets and generated search index
 
-## Publish Checklist (Insights / Case Studies)
+## Publish Checklist (Insights)
 
-When you’re ready to publish Insights or Case Studies:
+When you’re ready to publish Insights:
 
-1. Rename private folders to public routes:
+1. Rename private folder to public route:
    - `app/_insights/` → `app/insights/`
-   - `app/_case-studies/` → `app/case-studies/`
-2. Update `app/sitemap.ts` to include the sections.
-3. Update `scripts/rss.mjs` to include them in the feed.
-4. Update `app/tags/[tag]/` pages to aggregate across all sections.
-5. Run a fresh build to regenerate Contentlayer types and verify routes.
-6. Optional: re‑enable corresponding navigation links.
+2. Update `app/sitemap.ts` to include the section.
+3. Update `scripts/rss.mjs` to include it in the feed.
+
+Note: Case Studies has been migrated to Work (`app/work/`, `data/work/`) and is already public. 4. Update `app/tags/[tag]/` pages to aggregate across all sections. 5. Run a fresh build to regenerate Contentlayer types and verify routes. 6. Optional: re‑enable corresponding navigation links.
 
 ## Contact
 

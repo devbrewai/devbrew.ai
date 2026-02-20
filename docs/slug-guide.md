@@ -47,7 +47,7 @@ tags: ['ai', 'payments']
 With a custom slug, your URLs will be:
 
 - **Blog**: `https://devbrew.ai/blog/short-slug`
-- **Case Studies**: `https://devbrew.ai/case-studies/short-slug`
+- **Work**: `https://devbrew.ai/work/short-slug`
 - **Research**: `https://devbrew.ai/research/short-slug`
 
 Without a custom slug, the system falls back to the filename (minus the content type prefix).

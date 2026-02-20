@@ -18,10 +18,11 @@ Pre-commit hooks (Husky + lint-staged) automatically format staged files.
 
 **Stack:** Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS 4, Contentlayer2 (MDX)
 
-**Content Types:** Three MDX document types with shared frontmatter structure:
+**Content Types:** Four MDX document types with shared frontmatter structure:
 
 - `data/blog/` - Blog posts (Insights)
-- `data/case-studies/` - Case studies
+- `data/work/` - Work (served at /work, formerly case studies)
+- `data/case-studies/` - Case studies (reserved for future client case studies)
 - `data/authors/` - Author metadata
 
 **Key Directories:**

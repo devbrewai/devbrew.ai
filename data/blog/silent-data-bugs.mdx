@@ -31,7 +31,7 @@ A silent data bug is simply a data change that hurts fraud performance without s
 
 **Example from our own work:**
 
-While building Devbrew’s [AI fraud detection case study](/case-studies/fraud-detection) for cross border payments, the very first issue we caught was not fraud at all. It was a silent bug in our own pipeline. A helper function dropped values for a key feature without throwing an error. The model would have trained fine and dashboards would have stayed green, but the signal feeding the model was already broken.
+While building Devbrew’s [AI fraud detection case study](/work/fraud-detection) for cross border payments, the very first issue we caught was not fraud at all. It was a silent bug in our own pipeline. A helper function dropped values for a key feature without throwing an error. The model would have trained fine and dashboards would have stayed green, but the signal feeding the model was already broken.
 
 This is exactly the kind of issue that tanks fraud performance quietly in production.
 
@@ -49,7 +49,7 @@ Silent bugs hide in the same places your headaches usually start, like mismatche
 
 **Another simple example:**
 
-In one dataset from our [case study](/case-studies/fraud-detection), about half a percent of cards appeared only once. A standard deviation computed on a single transaction always returns NaN. If you do not handle that edge case, everything still runs and the model still trains, but the model loses accuracy because a core feature is quietly corrupted.
+In one dataset from our [case study](/work/fraud-detection), about half a percent of cards appeared only once. A standard deviation computed on a single transaction always returns NaN. If you do not handle that edge case, everything still runs and the model still trains, but the model loses accuracy because a core feature is quietly corrupted.
 Small edge cases can quietly break your fraud model while everything still appears normal.
 
 ---

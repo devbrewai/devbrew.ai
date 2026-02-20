@@ -48,7 +48,7 @@ const caseStudies: CaseStudy[] = [
       { value: '30ms', label: 'API latency' },
       { value: '97.5%', label: 'Sanctions precision' },
     ],
-    caseStudyUrl: '/case-studies/sentinel',
+    caseStudyUrl: '/work/sentinel',
     demoUrl: 'https://sentinel.devbrew.ai',
     status: 'published',
   },
@@ -67,7 +67,7 @@ const caseStudies: CaseStudy[] = [
   //     { value: '65%', label: 'Cost reduction' },
   //     { value: '95%', label: 'Accuracy' },
   //   ],
-  //   caseStudyUrl: '/case-studies/veritas',
+  //   caseStudyUrl: '/work/veritas',
   //   demoUrl: 'https://veritas.devbrew.ai',
   //   status: 'coming-soon',
   // },
@@ -86,7 +86,7 @@ const caseStudies: CaseStudy[] = [
   //     { value: '$180K', label: 'FX savings (90 days)' },
   //     { value: '7-90d', label: 'Forecast horizon' },
   //   ],
-  //   caseStudyUrl: '/case-studies/meridian',
+  //   caseStudyUrl: '/work/meridian',
   //   demoUrl: 'https://meridian.devbrew.ai',
   //   status: 'coming-soon',
   // },
@@ -104,7 +104,7 @@ export function ResearchCasesList() {
   const isSingleCase = publishedCases.length === 1
 
   return (
-    <section className="bg-background" id="case-studies">
+    <section className="bg-background" id="work">
       <div className="mx-auto max-w-7xl px-4 py-32 sm:px-6 lg:px-8">
         <motion.div
           className="flex flex-col gap-8"

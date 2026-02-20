@@ -42,8 +42,8 @@ export function Hero() {
                 </Link>
               </Button>
               {/* <Button size="lg" variant="ghost">
-                <Link href="/case-studies" className="flex items-center justify-center">
-                  View Case Studies
+                <Link href="/work" className="flex items-center justify-center">
+                  View Work
                 </Link>
               </Button> */}
             </div>
@@ -121,8 +121,8 @@ export function HeroCentered() {
               </Link>
             </Button>
             {/* <Button size="lg" variant="ghost">
-              <Link href="#case-studies" className="flex items-center justify-center">
-                View Case Studies
+              <Link href="#work" className="flex items-center justify-center">
+                View Work
               </Link>
             </Button> */}
           </div>

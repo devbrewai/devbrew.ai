@@ -8,9 +8,9 @@ const headerNavLinks: NavLink[] = [
   { href: '/', title: 'Home' },
   { href: '/blog', title: 'Insights' },
   {
-    href: '/case-studies',
-    title: 'Case Studies',
-    children: [{ href: '/case-studies/sentinel', title: 'Sentinel' }],
+    href: '/work',
+    title: 'Work',
+    children: [{ href: '/work/sentinel', title: 'Sentinel' }],
   },
   { href: '/#services', title: 'Services' },
   { href: '/#about', title: 'About' },

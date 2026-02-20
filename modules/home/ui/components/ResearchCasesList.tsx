@@ -115,7 +115,7 @@ export function ResearchCasesList() {
         >
           <motion.div className="max-w-xl" variants={item}>
             <p className="text-sm font-medium tracking-wider text-neutral-500 uppercase">
-              {isSingleCase ? 'Featured case study' : 'Case studies'}
+              {isSingleCase ? 'Featured work' : 'Work'}
             </p>
             {isSingleCase && publishedCases[0] && (
               <>

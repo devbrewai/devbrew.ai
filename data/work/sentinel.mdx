@@ -1,0 +1,151 @@
+---
+title: 'Sentinel: AI Fraud Detection & Sanctions Screening'
+date: '2025-10-1'
+lastmod: '2026-01-17'
+slug: 'sentinel'
+tags: ['ai', 'fraud-detection', 'payments', 'fintech', 'machine-learning', 'compliance']
+draft: false
+summary: 'AI-powered fraud scoring and sanctions screening for cross-border payments. Detect fraud in real-time. Stay compliant automatically.'
+images: ['/static/images/case-studies/sentinel/og.png']
+authors: ['']
+layout: PostLayout
+clientLogo: '/static/images/case-studies/sentinel/sentinel-white-logo.svg'
+clientName: 'Devbrew'
+---
+
+**[Try live demo](https://sentinel.devbrew.ai)** | **[View Code](https://github.com/devbrewai/sentinel)**
+
+{/* Embed 3-minute demo video here */}
+
+---
+
+## The results
+
+**55% cost reduction**\
+Cost-optimized decision thresholds vs. baseline
+
+**30ms API latency**\
+Real-time scoring that doesn't slow down checkout
+
+**97% sanctions precision**\
+Screen against OFAC lists with confidence
+
+**ROC-AUC 0.8861**\
+Exceeds the 0.85 industry benchmark for fraud detection
+
+---
+
+## The problem
+
+Payment companies face impossible tradeoffs:
+
+**Fraud is rising**: Card-not-present fraud costs cross-border payment companies 1.5\% of transaction volume (\$1.5M lost on $100M volume)
+
+**False positives kill conversion**: Legacy systems flag 10-20% of good customers
+
+**Compliance is complex**: OFAC screening must happen in milliseconds
+
+Traditional rule-based systems can't keep up with evolving fraud patterns.
+
+---
+
+## The solution
+
+Sentinel combines ML-based fraud detection with real-time sanctions screening:
+
+### Fraud detection
+
+- LightGBM gradient boosting trained on 429 features
+- Explainable AI (SHAP values) for regulatory compliance
+- Calibrated probabilities with cost-optimized thresholds
+
+### Sanctions screening
+
+- Fuzzy name matching against 39,350 OFAC entities
+- Handles typos, name variations, and transliterations
+- Sub-50ms screening with 97.5% precision
+
+### Production-ready API
+
+- FastAPI with async processing
+- Redis caching for sub-200ms latency
+- PostgreSQL audit logs for compliance
+
+---
+
+## How it works
+
+### Simple process
+
+1. **Submit a transaction** via REST API or demo UI
+2. **Get fraud score + explanation** in under 30ms
+3. **Accept, decline, or flag for manual review** with full audit trail
+
+### Technical implementation
+
+Built with LightGBM for fraud detection, fuzzy matching for sanctions screening, and FastAPI for real-time API performance. Includes:
+
+- **Instant results**: fraud risk score, SHAP explanations, sanctions match
+- **Transparent decisions**: auditable predictions for compliance teams
+- **Production stack**: Redis caching, PostgreSQL audit logs, Next.js dashboard
+
+**[Try live demo](https://sentinel.devbrew.ai)** | **[Book pilot call](https://cal.com/joekariuki/devbrew?utm_source=case-study&utm_medium=page&utm_campaign=sentinel_fraud_detection&problem=Fraud%20detection%20gaps%20from%20high%20false%20positives%2C%20missed%20fraud%20patterns%2C%20and%20static%20rule-based%20systems&stake=Revenue%20loss%20from%20fraud%2C%20customer%20friction%20from%20false%20declines%2C%20and%20operational%20costs%20from%20manual%20review)**
+
+---
+
+## Research project disclaimer
+
+> [!WARNING]
+> This is a **research case study** demonstrating production-grade ML engineering. Models are trained on public datasets (IEEE-CIS, PaySim) for **non-commercial research use only**.
+>
+> **For production deployments:** We train custom models on your transaction data, achieving 20-30% higher accuracy by learning your specific fraud patterns.
+
+---
+
+## Pilot Sentinel with your transaction data
+
+We're offering **free pilots** to Series B-D payments companies.
+
+### What you get
+
+- Custom fraud detection model trained on your transaction data
+- 2-3 week side-by-side comparison with your current system
+- Detailed analysis: accuracy improvements, false positive reduction, cost savings
+
+### What we need
+
+- Access to 3-6 months of historical transaction data (anonymized customer data accepted)
+- Weekly check-ins to review results and gather feedback
+- A testimonial if we reduce false positives by 20%+ or improve fraud detection by 15%+
+
+**No cost. No long-term commitment.** If we don't hit the improvement threshold, you've lost nothing. If we do, you get early access to production-ready fraud detection built for your specific patterns.
+
+**Spots available:** 5 companies per month
+
+**[Book pilot kickoff call](https://cal.com/joekariuki/devbrew?utm_source=case-study&utm_medium=page&utm_campaign=sentinel_fraud_detection&problem=Fraud%20detection%20gaps%20from%20high%20false%20positives%2C%20missed%20fraud%20patterns%2C%20and%20static%20rule-based%20systems&stake=Revenue%20loss%20from%20fraud%2C%20customer%20friction%20from%20false%20declines%2C%20and%20operational%20costs%20from%20manual%20review)**
+
+---
+
+## Try it yourself
+
+**[Try live demo](https://sentinel.devbrew.ai)** — Test with sample transactions
+
+**[View source code](https://github.com/devbrewai/sentinel)** — Apache 2.0 licensed
+
+---
+
+## About Devbrew
+
+We build production AI systems for cross-border payments companies. Sentinel demonstrates our technical depth in ML engineering, real-time systems, and regulatory compliance.
+
+{/* Other case studies: */}
+
+{/* - **Veritas** - KYC/AML automation (48 hours → 4 seconds) */}
+
+{/* - **Meridian** — Multi-corridor liquidity forecasting */}
+
+**[View all case studies](/case-studies)**
+
+---
+
+**Questions?** [Contact us](/contact) | **View repo:** [GitHub](https://github.com/devbrewai/sentinel) | [LinkedIn](https://linkedin.com/company/devbrewco)

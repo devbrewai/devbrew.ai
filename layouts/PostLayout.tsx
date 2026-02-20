@@ -3,7 +3,7 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import { useRouter } from 'next/navigation'
-import type { Authors, Research, Blog, CaseStudy } from 'contentlayer/generated'
+import type { Authors, Research, Blog, CaseStudy, Work } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import { Linkedin as LinkedinIcon, X as XIcon } from '@/components/social-icons/icons'
 // import PageTitle from '@/components/PageTitle'
@@ -33,7 +33,7 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 }
 
 interface LayoutProps {
-  content: CoreContent<Research | Blog | CaseStudy>
+  content: CoreContent<Research | Blog | CaseStudy | Work>
   authorDetails?: CoreContent<Authors>[]
   next?: { path: string; title: string }
   prev?: { path: string; title: string }
@@ -262,7 +262,7 @@ export default function PostLayout({
                     {related.length > 0 && (
                       <div className="py-4 xl:py-8">
                         <h2 className="mb-6 text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          Related {basePath === 'case-studies' ? 'Case Studies' : 'Content'}
+                          Related {basePath === 'work' ? 'Case Studies' : 'Content'}
                         </h2>
                         <ul className="space-y-6">
                           {related.slice(0, 3).map((item) => (
@@ -297,7 +297,7 @@ export default function PostLayout({
                         {prev && prev.path && (
                           <div>
                             <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                              Previous {basePath === 'case-studies' ? 'Case Study' : 'Article'}
+                              Previous {basePath === 'work' ? 'Case Study' : 'Article'}
                             </h2>
                             <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                               <Link href={`/${prev.path}`}>{prev.title}</Link>
@@ -307,7 +307,7 @@ export default function PostLayout({
                         {next && next.path && (
                           <div>
                             <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                              Next {basePath === 'case-studies' ? 'Case Study' : 'Article'}
+                              Next {basePath === 'work' ? 'Case Study' : 'Article'}
                             </h2>
                             <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                               <Link href={`/${next.path}`}>{next.title}</Link>

@@ -2,7 +2,7 @@ import { slug } from 'github-slugger'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import siteMetadata from '@/data/siteMetadata'
 import ListLayout from '@/layouts/ListLayoutWithTags'
-import { allResearch, allBlogs, allCaseStudies } from 'contentlayer/generated'
+import { allResearch, allBlogs, allWorks } from 'contentlayer/generated'
 import tagData from 'app/tag-data.json'
 import { genPageMetadata } from 'app/seo'
 import { Metadata } from 'next'
@@ -38,7 +38,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
   const params = await props.params
   const tag = decodeURI(params.tag)
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
-  const combined = [...allResearch, ...allBlogs, ...allCaseStudies]
+  const combined = [...allResearch, ...allBlogs, ...allWorks]
   const filteredPosts = allCoreContent(
     sortPosts(
       combined.filter((post) => post.tags && post.tags.map((t: string) => slug(t)).includes(tag))

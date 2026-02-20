@@ -29,6 +29,7 @@ import type {
   Research as ResearchDoc,
   Blog as BlogDoc,
   CaseStudy as CaseStudyDoc,
+  Work as WorkDoc,
 } from 'contentlayer/generated'
 
 const root = process.cwd()
@@ -187,6 +188,44 @@ export const CaseStudy = defineDocumentType(() => ({
   },
 }))
 
+export const Work = defineDocumentType(() => ({
+  name: 'Work',
+  filePathPattern: 'work/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    slug: { type: 'string', required: true },
+    tags: { type: 'list', of: { type: 'string' }, default: [] },
+    lastmod: { type: 'date' },
+    draft: { type: 'boolean' },
+    summary: { type: 'string' },
+    images: { type: 'json' },
+    authors: { type: 'list', of: { type: 'string' } },
+    layout: { type: 'string' },
+    bibliography: { type: 'string' },
+    canonicalUrl: { type: 'string' },
+    clientLogo: { type: 'string' },
+    clientName: { type: 'string' },
+  },
+  computedFields: {
+    ...computedFields,
+    structuredData: {
+      type: 'json',
+      resolve: (doc) => ({
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: doc.title,
+        datePublished: doc.date,
+        dateModified: doc.lastmod || doc.date,
+        description: doc.summary,
+        image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
+        url: `${siteMetadata.siteUrl}/${doc._raw.flattenedPath}`,
+      }),
+    },
+  },
+}))
+
 export const Research = defineDocumentType(() => ({
   name: 'Research',
   filePathPattern: 'research/**/*.mdx',
@@ -244,7 +283,7 @@ export const Authors = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Research, Blog, CaseStudy, Authors],
+  documentTypes: [Research, Blog, CaseStudy, Work, Authors],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [
@@ -279,11 +318,13 @@ export default makeSource({
       allResearch?: ResearchDoc[]
       allBlogs?: BlogDoc[]
       allCaseStudies?: CaseStudyDoc[]
+      allWorks?: WorkDoc[]
     }
     const allDocs = [
       ...(data.allResearch ?? []),
       ...(data.allBlogs ?? []),
       ...(data.allCaseStudies ?? []),
+      ...(data.allWorks ?? []),
     ]
     createTagCount(allDocs)
     createSearchIndex(allDocs)

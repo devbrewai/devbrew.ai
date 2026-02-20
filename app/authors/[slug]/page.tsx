@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
-import { allAuthors, allBlogs, allResearch, allCaseStudies } from 'contentlayer/generated'
+import { allAuthors, allBlogs, allResearch, allWorks } from 'contentlayer/generated'
 import type { Authors } from 'contentlayer/generated'
 import { coreContent } from 'pliny/utils/contentlayer'
 import { sortPosts } from 'pliny/utils/contentlayer'
@@ -40,7 +40,7 @@ function getAuthorPosts(authorSlug: string) {
   const allPosts = [
     ...allBlogs.filter((p) => p.authors?.includes(authorSlug) && p.draft !== true),
     ...allResearch.filter((p) => p.authors?.includes(authorSlug) && p.draft !== true),
-    ...allCaseStudies.filter((p) => p.authors?.includes(authorSlug) && p.draft !== true),
+    ...allWorks.filter((p) => p.authors?.includes(authorSlug) && p.draft !== true),
   ]
 
   return sortPosts(allPosts).map((post) => ({
@@ -49,7 +49,7 @@ function getAuthorPosts(authorSlug: string) {
     summary: post.summary,
     date: post.date,
     images: post.images,
-    type: post._raw.sourceFileDir.split('/')[0], // 'blog', 'research', or 'case-studies'
+    type: post._raw.sourceFileDir.split('/')[0], // 'blog', 'research', or 'work'
   }))
 }
 

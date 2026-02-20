@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next'
-import { allResearch, allCaseStudies, allBlogs } from 'contentlayer/generated'
+import { allResearch, allWorks, allBlogs } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
 
 export const dynamic = 'force-static'
@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.lastmod || post.date,
     }))
 
-  const caseStudyRoutes = allCaseStudies
+  const caseStudyRoutes = allWorks
     .filter((post) => !post.draft)
     .map((post) => ({
       url: `${siteUrl}/${post.path}`,
@@ -28,12 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.lastmod || post.date,
     }))
 
-  const routes = ['', 'about', 'case-studies', 'blog', 'services', 'tags', 'contact'].map(
-    (route) => ({
-      url: `${siteUrl}/${route}`,
-      lastModified: new Date().toISOString().split('T')[0],
-    })
-  )
+  const routes = ['', 'about', 'work', 'blog', 'services', 'tags', 'contact'].map((route) => ({
+    url: `${siteUrl}/${route}`,
+    lastModified: new Date().toISOString().split('T')[0],
+  }))
 
   return [...routes, ...researchRoutes, ...caseStudyRoutes, ...blogRoutes]
 }

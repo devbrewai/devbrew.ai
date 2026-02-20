@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog, CaseStudy, Research } from 'contentlayer/generated'
+import type { Blog, CaseStudy, Research, Work } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Image from '@/components/Image'
 import { Badge } from '@/components/ui/badge'
@@ -18,10 +18,10 @@ interface PaginationProps {
 }
 
 interface CardListLayoutProps {
-  posts: CoreContent<Blog | CaseStudy | Research>[]
+  posts: CoreContent<Blog | CaseStudy | Research | Work>[]
   title: string
   description?: string
-  initialDisplayPosts?: CoreContent<Blog | CaseStudy | Research>[]
+  initialDisplayPosts?: CoreContent<Blog | CaseStudy | Research | Work>[]
   pagination?: PaginationProps
   showCTA?: boolean
   ctaProps?: {
@@ -186,8 +186,8 @@ export default function CardListLayout({
 
                 // Type guard for CaseStudy properties
                 const isCaseStudy = (
-                  p: CoreContent<Blog | CaseStudy | Research>
-                ): p is CoreContent<CaseStudy> => 'clientLogo' in p
+                  p: CoreContent<Blog | CaseStudy | Research | Work>
+                ): p is CoreContent<CaseStudy | Work> => 'clientLogo' in p
                 const clientLogo = isCaseStudy(post) ? post.clientLogo : undefined
                 const clientName = isCaseStudy(post) ? post.clientName : undefined
                 const images = 'images' in post ? (post.images as string[]) : []

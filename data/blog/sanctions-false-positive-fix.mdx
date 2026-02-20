@@ -32,7 +32,7 @@ Peer-reviewed research shows sanctions screening generates false positives on ov
 
 Take a cross-border payments company processing 50,000 transactions a month. If your screening engine flags 10\% and 90\% of those are false positives, your analysts manually review 4,500 legitimate transactions every month.
 
-At 10 minutes per review and a fully loaded analyst cost of around \$65 per hour[^2], that is 750 hours and roughly \$49,000 per month in analyst time spent confirming "this is fine."
+At 10 minutes per review and a fully loaded analyst cost of around \$65 per hour (median base of roughly \$37 per hour plus benefits and overhead)[^2], that is 750 hours and roughly \$49,000 per month in analyst time spent confirming "this is fine."
 
 Nearly \$600,000 a year. And it scales linearly. Double your volume, double your compliance labor.
 
@@ -80,7 +80,7 @@ A 2025 Federal Reserve working paper validated this approach, finding AI-powered
 
 ## What the numbers look like after the fix
 
-Federal Reserve research shows AI-powered screening can reduce false positives by over 90\%.[^5] McKinsey found ML-based approaches cut manual review workload by up to 50\%.[^6] Based on these benchmarks, even conservative implementations typically achieve 50 to 70\% reductions in alerts requiring human review.
+Federal Reserve research shows AI-powered screening can reduce false positives by over 90\%.[^5] McKinsey found ML-based approaches improved suspicious activity identification by up to 40\% and increased operational efficiency by up to 30\%.[^6] Based on these benchmarks, a 50 to 70\% reduction in alerts requiring human review is a reasonable target for well-implemented systems.
 
 For that same team processing 50,000 monthly transactions, the math shifts. Your 4,500 monthly false positives drop to 1,350 or fewer. Your analyst queue goes from 750 hours to under 250. That is 375 to 525 hours per month you redirect to true risk investigation, exam preparation, or supporting volume growth without proportional hiring.
 
@@ -106,7 +106,11 @@ Most Series B to D payments companies do not have ML engineers who understand bo
 
 ## Where Devbrew fits
 
-At Devbrew, we build ML-powered sanctions screening overlays that sit on top of your existing platform. Our models learn the difference between "Mohammed Al-Rahman" who sends monthly remittances to Jordan and a sanctioned individual with a similar name, and they document the reasoning in examiner-ready format. We deliver the full system: data pipelines, entity matching models trained on your transaction patterns, real-time scoring APIs, automated disposition, and monitoring tied to compliance outcomes.
+Devbrew builds ML-powered sanctions screening overlays that sit on top of your existing platform. The models we build learn the difference between "Mohammed Al-Rahman" who sends monthly remittances to Jordan and a sanctioned individual with a similar name, and document the reasoning in examiner-ready format.
+
+Our approach includes data pipelines, entity matching models trained on your transaction patterns, real-time scoring APIs, automated disposition, and monitoring tied to compliance outcomes.
+
+You can see this architecture in practice in our [Sentinel case study](/case-studies/sentinel), where we built a sanctions screening engine with sub-50ms latency and 97.5\% precision against OFAC watchlists.
 
 Your screening platform stays in place. Your analysts keep the tools they know. What changes is the signal-to-noise ratio.
 

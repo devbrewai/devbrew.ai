@@ -12,7 +12,7 @@ const headerNavLinks: NavLink[] = [
     title: 'Work',
     children: [{ href: '/work/sentinel', title: 'Sentinel' }],
   },
-  { href: '/#services', title: 'Services' },
+  // { href: '/#services', title: 'Services' },
   { href: '/#about', title: 'About' },
   { href: '/contact', title: 'Contact' },
 ]

@@ -40,14 +40,15 @@ const caseStudies: CaseStudy[] = [
     title: 'Sentinel',
     tagline: 'AI fraud detection & sanctions screening',
     description:
-      'Stop fraud faster and stay compliant with ML-powered transaction scoring. Sentinel combines LightGBM-based fraud detection with real-time OFAC sanctions screening, delivering explainable decisions in under 30ms.',
+      'Stop fraud faster and stay compliant with ML-powered transaction scoring. Sentinel combines LightGBM-based fraud detection with real-time OFAC sanctions screening, delivering explainable decisions in under 50ms.',
     logo: '/static/images/logos/sentinel-logo-emblem.svg',
     logoAlt: 'Sentinel logo',
     metrics: [
       { value: '55%', label: 'Cost reduction' },
-      { value: '30ms', label: 'API latency' },
+      { value: '<50ms', label: 'Scoring latency' },
       { value: '97.5%', label: 'Sanctions precision' },
     ],
+
     caseStudyUrl: '/work/sentinel',
     demoUrl: 'https://sentinel.devbrew.ai',
     status: 'published',

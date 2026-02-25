@@ -69,8 +69,7 @@ export function IntroSplit() {
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">How to think of us</h2>
               <p className="mt-2 text-neutral-700">
-                We are an applied AI engineering firm for mid-market cross-border payments
-                companies.
+                We are an applied AI engineering firm for payments companies.
               </p>
               <p className="mt-2 text-neutral-700">
                 We build AI infrastructure and agents that help payments companies detect fraud,
@@ -100,8 +99,7 @@ export function IntroSplit() {
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">Where we drive impact</h2>
               <p className="mt-2 text-neutral-700">
-                Our first deployed system targets one of the most critical challenges in
-                cross-border payments:
+                Our first deployed system targets one of the most critical challenges in payments:
               </p>
               <ul className="mt-3 space-y-3 text-sm text-neutral-700">
                 <li>

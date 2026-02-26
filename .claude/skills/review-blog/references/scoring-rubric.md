@@ -16,13 +16,13 @@ Detailed scoring criteria for the qualitative dimensions of the blog review. Use
 
 ### Within Devbrew's TAM
 
-| Score | Description                                                                                                                                                       |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 5     | Perfect fit: the post directly targets decision-makers at Series A-C U.S.-based payments companies. The problem, language, and scale match this audience exactly. |
-| 4     | Strong fit with minor stretch. The core audience is payments companies, but the problem could also apply to adjacent fintech segments.                            |
-| 3     | Fits payments broadly but is not specifically targeted to the TAM. Could apply to any financial services company.                                                 |
-| 2     | Tangentially related to payments. More relevant to general fintech or enterprise software.                                                                        |
-| 1     | Outside TAM entirely. The topic has no clear connection to payments companies.                                                                                    |
+| Score | Description                                                                                                                                                                     |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 5     | Perfect fit: the post directly targets decision-makers at Series B-D or mid-market U.S.-based payments companies. The problem, language, and scale match this audience exactly. |
+| 4     | Strong fit with minor stretch. The core audience is payments companies, but the problem could also apply to adjacent fintech segments.                                          |
+| 3     | Fits payments broadly but is not specifically targeted to the TAM. Could apply to any financial services company.                                                               |
+| 2     | Tangentially related to payments. More relevant to general fintech or enterprise software.                                                                                      |
+| 1     | Outside TAM entirely. The topic has no clear connection to payments companies.                                                                                                  |
 
 ### Actionable insights
 

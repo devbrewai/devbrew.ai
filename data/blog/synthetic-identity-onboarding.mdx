@@ -1,0 +1,109 @@
+---
+title: 'The $3.3 Billion Blind Spot in Your Onboarding'
+date: '2026-03-02'
+lastmod: '2026-03-02'
+slug: 'synthetic-identity-onboarding'
+tags:
+  [
+    'synthetic-identity-fraud',
+    'fraud-detection',
+    'ai',
+    'machine-learning',
+    'payments',
+    'kyc',
+    'risk-ops',
+  ]
+draft: false
+summary: 'Catch synthetic identities before the bust-out, even without an in-house ML team, in 60 days.'
+images: ['/static/images/blog/synthetic-identity-onboarding/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'The $3.3 Billion Blind Spot in Your Onboarding'
+ogDescription: 'Catch synthetic identities before the bust-out, even without an in-house ML team, in 60 days.'
+---
+
+An account passes every identity check you have. Documents match. Address verifies. Watchlist comes back clean. For months the account builds history, makes small payments on time, and looks like your best customer. Then it maxes out credit lines across multiple products and vanishes. Six figures, gone.
+
+That is synthetic identity fraud. Criminals combine real Social Security numbers, often from children or elderly individuals whose credit goes unmonitored, with fabricated names, addresses, and dates of birth to create entirely new personas. These are not stolen identities that a victim reports. They are manufactured identities that exist only to defraud.
+
+U.S. lenders faced over \$3.3 billion in synthetic identity exposure by end of 2024.[^1] Fraud models built to detect traditional identity fraud miss 85 to 95\% of synthetic applicants at onboarding.[^4] And generative AI is accelerating how fast these identities get created, making fake personas more convincing at scale.[^3]
+
+Your onboarding was designed to verify that documents are real. Synthetic identities are built to make sure they are.
+
+## How a detection system actually works
+
+Catching synthetic identities requires signals your current onboarding process does not collect and analysis your rules engine cannot perform. Here is the architecture:
+
+**1. Collect behavioral and device signals at onboarding.** Beyond document scans, capture keystroke cadence, device fingerprints, session behavior, and interaction patterns. These create a profile that is nearly impossible to fake at scale.
+
+**2. Build identity graphs across accounts.** Link accounts by shared devices, IP addresses, phone numbers, and behavioral patterns. Synthetic identities often share infrastructure even when the personas look unrelated. This is where [graph-based detection uncovers networks your rules miss](/blog/graph-ml-fraud-networks).
+
+**3. Score against synthetic identity indicators.** Methodical credit-building behavior, missing "living characteristics" like voter registration or vehicle ownership, and patterns inconsistent with stated account purpose all raise the probability score.
+
+**4. Monitor across the full account lifecycle.** Onboarding is one data point. Behavioral drift, transaction pattern changes, and sudden activity spikes reveal synthetics that passed initial checks.
+
+**5. Feed outcomes back into models.** Every confirmed synthetic and every false positive improves the next cycle. The system learns what synthetic behavior looks like in your specific transaction environment.
+
+## The mistakes most payments companies make
+
+If you are processing hundreds of millions in annual volume at Series B to D scale, you have likely outgrown manual review but have not built the ML infrastructure to catch what rules miss. Three patterns show up consistently.
+
+**Treating KYC as a gate instead of a process.** You verify identity once at onboarding and assume it holds. Synthetic identities are designed to pass that single checkpoint. They fall apart when you evaluate behavior over time.
+
+**Relying on document verification alone.** Synthetics pass document checks because the documents are technically valid. The SSN is real. The format is correct. What is missing is the behavioral and network context that reveals the identity was manufactured. As we covered in [why rule-based fraud detection costs you millions](/blog/ai-fraud-attacks), static checks cannot adapt to threats engineered to circumvent them.
+
+**Waiting for losses to investigate.** Most synthetic identities are discovered after the bust-out. By then, credit lines are maxed and the money is gone. The detection window closes months before the loss event.
+
+## The numbers that matter
+
+Synthetic identity fraud accounts for 10 to 15\% of charge-offs in a typical unsecured lending portfolio.[^2] Run the math on a mid-market payments company processing \$200M annually. If 2\% of volume charges off and 12.5\% of those charge-offs are synthetic, you are looking at \$500K in synthetic-specific losses per year. Catch 60\% of those before the bust-out and you have recovered \$300K, before accounting for investigation costs and banking partner penalties.
+
+The bust-out timeline makes this worse. Fraudsters nurture synthetic identities for months, sometimes years, before extraction.[^2] The accounts causing your next major fraud loss may already be in your portfolio, building history and looking like model customers.
+
+Early detection before the bust-out is the difference between a flagged account and a write-off. It also protects the fraud loss ratios your banking partners, card networks, and insurance providers evaluate.
+
+## Why most teams cannot build this internally
+
+The concept is straightforward. The implementation is not.
+
+You need a graph database handling millions of entity relationships with real-time query support. Behavioral biometrics pipelines processing session data at scale. ML models trained on your specific synthetic fraud patterns, not generic benchmarks. Real-time scoring infrastructure evaluating every transaction against the full identity graph in milliseconds. And continuous retraining as fraud tactics evolve.
+
+The hard part is not the model. It is the production system behind it. If your team is [deploying ML with limited historical data](/blog/cold-start-fraud-detection), adding graph-based synthetic identity detection on top multiplies the infrastructure challenge.
+
+## What you can do in the next 60 days
+
+**Week 1-2: Audit your charge-offs.** Pull your last 100 accounts that defaulted or were written off. Check each for shared device fingerprints, common IP addresses, or overlapping behavioral patterns. If more than 10\% share attributes with other flagged accounts, you likely have synthetic exposure.
+
+**Week 3-4: Map account clusters.** For flagged accounts, cross-reference shared devices, IPs, addresses, and phone numbers. Document clusters of seemingly unrelated accounts connected through shared infrastructure. This surfaces synthetic rings your rules never saw.
+
+**Week 5-6: Gap your verification.** Compare what your KYC process currently checks against what synthetic identity detection requires: behavioral biometrics, device intelligence, network relationships, lifecycle monitoring. The gap is your exposure surface.
+
+**Week 7-8: Calculate your bust-out exposure.** Apply the 10 to 15\% benchmark against your charge-off data.[^2] That number is your business case for detection infrastructure.
+
+## How Devbrew builds this
+
+At Devbrew, we build AI systems that detect synthetic identities across the full account lifecycle. Device intelligence, behavioral biometrics, network graph analysis, and transaction pattern recognition, deployed into your existing stack without requiring an in-house data science team.
+
+The models train on your data, not generic fraud benchmarks. They learn what synthetic behavior looks like in your transaction environment and improve with every confirmed outcome. Typical deployment reaches production in 60 days. For U.S. payments companies at Series B to D scale, this is the capability that protects your banking relationships and your fraud loss ratios.
+
+---
+
+If you want to understand where synthetic identities might be hiding in your portfolio, we can walk through your current detection gaps and what the options look like.
+
+[Book a discovery call](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=synth_id_onboard_60d&problem=Synthetic%20identities%20passing%20onboarding%20from%20document-only%20KYC%2C%20no%20behavioral%20or%20network-level%20detection&stake=Bust-out%20losses%2C%20deteriorating%20fraud%20loss%20ratios%2C%20banking%20partner%20and%20compliance%20exposure) or email [joe@devbrew.ai](mailto:joe@devbrew.ai) with a brief description of your situation and what is at stake. It helps us make the most of our time together.
+
+[^1]:
+    TransUnion, "TransUnion Research Highlights Power of Public Data in Uncovering $3.3B Synthetic Identity Threat."
+    https://newsroom.transunion.com/transunion-research-highlights-power-of-public-data-in-uncovering-33b-synthetic-identity-threat/
+
+[^2]:
+    McKinsey & Company, "Fighting back against synthetic identity fraud."
+    https://www.mckinsey.com/capabilities/risk-and-resilience/our-insights/fighting-back-against-synthetic-identity-fraud
+
+[^3]:
+    Boston Federal Reserve, "Gen AI is ramping up the threat of synthetic identity fraud."
+    https://www.bostonfed.org/news-and-events/news/2025/04/synthetic-identity-fraud-financial-fraud-expanding-because-of-generative-artificial-intelligence.aspx
+
+[^4]:
+    Federal Reserve, "Detecting Synthetic Identity Fraud in the U.S. Payment System."
+    https://fedpaymentsimprovement.org/wp-content/uploads/frs-synthetic-identity-payments-fraud-white-paper-october-2019.pdf

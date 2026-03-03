@@ -1,0 +1,108 @@
+---
+title: 'Built for $10M, Examined at $100M: Why AML Compliance Breaks at Scale'
+date: '2026-03-03'
+lastmod: '2026-03-03'
+slug: 'aml-fines-scaling-compliance'
+tags: ['aml', 'compliance', 'payments', 'fintech', 'risk-management', 'machine-learning', 'ai']
+draft: false
+summary: 'Get examination-ready at current scale, without a full stack rebuild, in 90 days.'
+images: ['/static/images/blog/aml-fines-scaling-compliance/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Built for $10M, Examined at $100M: Why AML Compliance Breaks at Scale'
+ogDescription: 'Get examination-ready at current scale, without a full stack rebuild, in 90 days.'
+---
+
+Global AML penalties totaled \$3.8 billion in 2025, down from \$4.6 billion the year before.[^1] But first-half fines surged 417\% over the same period in 2024.[^2] Enforcement is not slowing. It is shifting toward companies at your stage: Block paid \$40 million after NYDFS found that rapid growth created a transaction alert backlog left unaddressed for years.[^3]
+
+## What AI-augmented compliance looks like
+
+The core problem is not that your rules are wrong. It is that the infrastructure behind them stopped evolving when the business did not. The fix is not more headcount or tighter thresholds. It is AI infrastructure that adapts as you scale. You do not need to rip out your stack. You need to make it adaptive and auditable.
+
+1. **ML-driven monitoring recalibration.** Transaction monitoring thresholds and scenarios continuously adjust against your actual customer behavior, product mix, and corridor risk, not the profile you had two years ago.
+2. **NLP-powered SAR narratives.** Consistent, examination-ready narratives with complete audit trails, so every investigator produces documentation that holds up under scrutiny.
+3. **Living risk assessments.** When you add corridors or products, the risk assessment updates automatically instead of waiting for the next annual cycle.
+4. **Real-time regulatory tracking.** New obligations across every jurisdiction you operate in surface in a workflow, not in someone's inbox, before they become examination findings.
+5. **Outcome feedback loops.** The system learns from closed cases, escalations, and SAR outcomes so it gets stronger as volume grows instead of drowning in noise.
+
+That is the architecture. The hard part is building it so it runs in production, passes audit, and fits your existing controls.
+
+## Where scaling payments teams get stuck
+
+If you have scaled from Series B to Series D, you have probably seen these patterns firsthand.
+
+**Monitoring rules that never grew up.** Thresholds and scenarios were set for your early customer base. You have since expanded corridors, shifted customer mix, and added products. The rules stayed the same.
+
+**Headcount instead of automation.** The compliance team grew from one officer to five. But the workflows are still manual. The same spreadsheets, the same copy-paste SAR narratives, the same quarterly scramble to update risk assessments.
+
+**Inconsistent documentation.** Five investigators write SARs five different ways. When an examiner pulls a sample, the quality gap is obvious.
+
+**Risk assessments gathering dust.** Your enterprise risk assessment is an annual PDF. It does not reflect the three new corridors you opened in Q2 or the product you launched last month.
+
+## The numbers behind the gap
+
+Financial institutions in the U.S. and Canada spend a combined \$61 billion per year on compliance.[^4] SAR filings have climbed 51.8\% since 2020, with 4.7 million filed in fiscal year 2024 alone.[^5] Volume is up, complexity is up, and most programs are still running on infrastructure designed for a fraction of today's load.
+
+Meanwhile, 86\% of fintech companies have already paid compliance fines exceeding \$50,000, and 37\% have exceeded \$500,000.[^6] Those numbers do not capture the real cost. A consent order freezes product development, erodes banking partner trust built over years, and can derail an M&A process or Series D at the worst possible moment.
+
+On the other side, McKinsey finds that AI and generative AI already deliver [15 to 20 percent productivity gains](https://www.mckinsey.com/capabilities/risk-and-resilience/our-insights/how-agentic-ai-can-change-the-way-banks-fight-financial-crime) in compliance functions through automated investigation, documentation, and regulatory analysis.[^7] For programs still running manual workflows across monitoring, SAR writing, and regulatory tracking, those gains compound across every step of the compliance process.
+
+## Why most teams cannot build this internally
+
+The concept is straightforward. The execution is not.
+
+Running ML and NLP in production for compliance requires data pipelines that handle messy real-world inputs, model governance and retraining workflows, multi-jurisdiction regulatory mapping that stays accurate, and audit-grade documentation that regulators and banking partners can trust. The hard part is not the model. It is the system behind it: governance, observability, retraining, and evidence generation.
+
+Most compliance and risk teams have strong operators. They do not have ML engineering capacity, data infrastructure experience, or the tooling to keep these systems reliable in production. That is a different skill set, and it is rarely available in-house at this stage.
+
+## What you can do in the next 90 days
+
+You do not need a vendor or a full rebuild to start closing the gap. These steps give you a clear picture of where you stand.
+
+1. **Audit monitoring thresholds and scenarios** against your current corridor mix and product set. If they were tuned when you had a fraction of today's volume, document the gap and plan a recalibration.
+2. **Map every jurisdiction you operate in** to a single list of regulatory sources (FinCEN, OCC, state regulators, FATF) and assign ownership for tracking and impact review. If this list does not exist, you are flying blind.
+3. **Sample recent SARs for consistency.** Pull ten from different investigators. If narratives vary in structure, completeness, or evidence quality, fix the process before the next exam.
+4. **Benchmark compliance ops costs per alert** against industry data. If you do not know what each alert costs you in analyst time, you cannot measure whether automation is worth it.
+5. **Assess automation readiness** of your highest-volume manual workflows. Identify which processes are candidates for ML-driven triage, NLP-powered documentation, or rules-engine recalibration.
+
+If you want to go deeper on [reducing AML false positives without increasing risk](/blog/aml-false-positives-payments) or [automating KYC and AML with machine learning](/blog/automate-kyc-compliance-machine-learning), we have written about both.
+
+## How Devbrew builds this
+
+At Devbrew, we build AI compliance infrastructure for scaling payments companies. Custom AI trained on your data, your corridors, your risk profile. End-to-end: data pipelines, monitoring recalibration, SAR narrative generation, regulatory change tracking, and audit trails. Every model produces explainable outputs and examination-ready documentation, so your team can demonstrate to regulators exactly how and why the system flagged a transaction. Production-grade systems that satisfy examiners and banking partners, not proofs of concept that stall after a demo.
+
+You do not have to choose between moving fast and staying compliant.
+
+## Understand the problem and where AI can help
+
+If you want to talk through where your compliance program stands and where AI could create leverage, [book a discovery call](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=aml_fines_compliance_90d&problem=AML%20compliance%20program%20built%20for%20earlier%20scale%2C%20monitoring%20thresholds%20not%20recalibrated%2C%20SAR%20documentation%20inconsistent%2C%20no%20real-time%20regulatory%20tracking&stake=Consent%20order%20risk%2C%20banking%20partner%20trust%20erosion%2C%20M%26A%20and%20Series%20D%20disruption%2C%20compliance%20costs%20scaling%20linearly%20with%20headcount). The goal is to understand the problem you are trying to solve, what is at stake if it remains unsolved, and where we can add clarity on options and next steps.
+
+Or reach out directly at [joe@devbrew.ai](mailto:joe@devbrew.ai).
+
+[^1]:
+    Fenergo, "Global Financial Regulatory Penalties Fall by 18% in 2025."
+    https://resources.fenergo.com/newsroom/global-financial-regulatory-penalties-fall-by-18-in-2025-as-enforcement-shifts-from-us-to-emea-and-apac
+
+[^2]:
+    Fenergo, "Regulatory Penalties for Global Financial Institutions Skyrocket 417% in H1 2025."
+    https://resources.fenergo.com/newsroom/regulatory-penalties-for-global-financial-institutions-skyrocket-417-in-h1-2025
+
+[^3]:
+    NYDFS, "Superintendent Secures $40 Million Settlement with Block, Inc."
+    https://www.dfs.ny.gov/reports_and_publications/press_releases/pr202504101
+
+[^4]:
+    LexisNexis Risk Solutions and Forrester Consulting, "True Cost of Financial Crime Compliance Study."
+    https://risk.lexisnexis.com/about-us/press-room/press-release/20240221-true-cost-of-compliance-us-ca
+
+[^5]:
+    FinCEN, "SAR Stats."
+    https://www.fincen.gov/reports/sar-stats
+
+[^6]:
+    Alloy, "State of Compliance Benchmark Report."
+    https://www.alloy.com/reports/state-of-compliance-benchmark-report-2023
+
+[^7]:
+    McKinsey & Company, "How Agentic AI Can Change the Way Banks Fight Financial Crime."
+    https://www.mckinsey.com/capabilities/risk-and-resilience/our-insights/how-agentic-ai-can-change-the-way-banks-fight-financial-crime

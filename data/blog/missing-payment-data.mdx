@@ -1,0 +1,111 @@
+---
+title: 'Your Ops Team Is Chasing Missing Payment Data'
+date: '2026-03-05'
+lastmod: '2026-03-05'
+slug: 'missing-payment-data'
+tags:
+  [
+    'cross-border-payments',
+    'payments',
+    'ai',
+    'machine-learning',
+    'reconciliation-automation',
+    'iso-20022',
+    'data-quality',
+  ]
+draft: false
+summary: 'Resolve 60-80% of truncated payment exceptions automatically with AI-powered enrichment, without adding analysts, in 60 days.'
+images: ['/static/images/blog/missing-payment-data/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Your Ops Team Is Chasing Missing Payment Data'
+ogDescription: 'Resolve 60-80% of truncated payment exceptions automatically with AI-powered enrichment, without adding analysts, in 60 days.'
+---
+
+An inbound wire hits your platform. The invoice reference is gone. The beneficiary name is cut off at 35 characters. The ordering customer field says "VARIOUS." Your ops analyst fires off an email to the correspondent bank and starts the manual hunt that takes an hour. They do this dozens of times a day.
+
+The payments industry spends \$1.6 billion per year on labor-intensive processes to investigate payments that get held up in transit.[^1] The average case takes 5 to 10 business days to resolve.[^1] The largest global banks incur more than \$20 million annually in fees and penalties from payment investigations alone.[^1] The root cause is not your team. It is what happens to your data between sender and receiver.
+
+## Why payment data disappears in transit
+
+The BIS Committee on Payments and Market Infrastructures put it plainly: "Translations between the SWIFT MT and domestic proprietary standards sometimes lead to data truncation and fragmentation issues, delaying the processing of cross-border payments and driving up costs."[^2]
+
+Here is the mechanics. SWIFT MT103 messages cap remittance information at 140 characters (4 lines of 35). When a payment message passes through an intermediary that converts between MX and MT formats, any data that exceeds these field lengths gets truncated or dropped entirely. Fields with no MT equivalent are lost completely.[^3] As we covered in [why 74\% of cross-border payments still need a human](/blog/cross-border-reconciliation-stp), each intermediary hop compounds the damage to your data.
+
+The November 2025 ISO 20022 cutover moved 97\% of SWIFT payment instructions to the richer MX format.[^4] That is progress. But the problem has not vanished. The coexistence period introduced its own data quality issues: every MT-to-MX translation is a new opportunity for field mapping errors and data loss. Domestic clearing systems, legacy core banking platforms, and correspondent banks still running partial implementations continue to truncate structured data back into flat fields. Your ops team still gets payments with missing references.
+
+## How AI-powered payment enrichment works
+
+The fix is not more data at initiation. It is reconstructing what gets lost in transit using the contextual signals that survive the journey.
+
+1. **Ingest and normalize across formats.** Pull in MT, MX, and proprietary bank formats. Standardize timestamps, currency codes, reference fields, and fee breakdowns into a single schema.
+
+2. **Learn data loss patterns per corridor.** ML models map which correspondent banks truncate which fields, how fees get deducted without updating remittance amounts, and where timing mismatches are predictable. Your Frankfurt intermediary truncates at 16 characters. Your Singapore correspondent preserves the full reference. The model learns the difference.
+
+3. **Infer missing fields from contextual signals.** Transaction amount, timing, currency pair, and counterparty history create a fingerprint. When the reference field is gone, the model scores which expected transaction this payment most likely belongs to.
+
+4. **Extract references from unstructured narratives.** NLP models parse free-text payment descriptions and pull out invoice numbers, PO references, and customer IDs crammed into narrative fields instead of structured ones. As [ISO 20022 adoption](/blog/iso-20022-extraction-value) deepens, the system also handles MT-to-MX format translation without losing the richer data the new standard provides.
+
+5. **Feed resolutions back into the model.** Every confirmed match becomes training data. The system gets sharper on your specific corridors and banking relationships over time.
+
+## The mistakes that keep teams stuck
+
+**Building spreadsheet trackers and email chains.** When payments arrive with missing data, teams create shared spreadsheets and email-based tracking systems. These do not scale, they produce no structured data for process improvement, and when the analyst who built the tracker leaves, so does the institutional knowledge.
+
+**Hiring payment investigators instead of building systems.** Adding headcount to chase missing data is linear scaling for a systems problem. Every volume increase demands proportional staff, and the quality of investigation depends on individual expertise that walks out the door with every resignation.
+
+**Requiring more data at initiation.** Some teams try to fix the problem upstream by mandating additional fields from senders. This adds friction to the customer experience without addressing the core issue: data loss happens in transit, not at origination.
+
+## What this costs you in numbers
+
+Take a payments company processing 500 cross-border transactions daily. If even 15\% arrive with truncated or missing remittance data, that is 75 transactions per day requiring manual investigation. At 30 to 45 minutes per case, your team burns 37 to 56 hours daily on data reconstruction.
+
+AI-powered enrichment automates 60 to 80\% of those cases. That means 45 to 60 of those 75 daily exceptions resolve without a human touching them. Your investigation queue drops from 75 to as few as 15. Settlement times improve because payments get identified faster. Customer inquiries about "where is my money" decline because you can confirm receipt sooner.
+
+Every resolution the model processes makes it better at handling the next one on that corridor. Manual investigation does not compound. It resets every morning.
+
+## Why most teams cannot build this internally
+
+**The data pipeline problem.** You need to ingest and normalize data from multiple correspondent banks, each with different formats, update frequencies, and data quality levels. Building and maintaining those connectors is a multi-month effort before you write a single enrichment rule.
+
+**The ML specificity problem.** Generic matching tools do not know the truncation patterns specific to your banking relationships. Each corridor behaves differently. Models must be trained on your transaction data to be accurate, not industry averages.
+
+**The production reliability problem.** The system must handle format changes from banking partners without warning and maintain accuracy as payment patterns evolve. Most internal builds work in staging and break in production when a correspondent bank changes its message format overnight.
+
+## What you can do in the next 60 days
+
+**Weeks 1 to 2: Audit your truncation exposure.** Pull 60 days of transaction data. Flag every payment that required manual investigation. Segment by corridor and correspondent bank. You will find 2 to 3 banking relationships that account for most of your exceptions.
+
+**Weeks 3 to 4: Map root causes and quantify cost.** For your worst corridors, classify every exception: reference truncation, beneficiary name cutoff, fee adjustment without remittance update, or timing mismatch. Calculate the hours your team spends on each category.
+
+**Weeks 5 to 6: Deploy rule-based enrichment.** Start with deterministic cases: known correspondent banks with predictable truncation patterns. Simple rules can catch the obvious matches and reduce your queue by 30 to 40\%.
+
+**Weeks 7 to 8: Add ML-powered enrichment for the long tail.** Train on your historical exception data. The model handles cases where rules fail: partial references, adjusted amounts, timing mismatches across time zones.
+
+## How Devbrew builds payment enrichment systems
+
+At Devbrew, we build AI systems that reconstruct what correspondent banks lose in transit. Our models learn the data loss patterns specific to your banking relationships and corridors, then automatically enrich incoming payments with the missing information your ops team currently tracks down manually. Custom AI trained on your transaction data, not industry benchmarks. Each model is tuned to the truncation behavior of your actual correspondent chains and improves with every resolution it processes. As the industry continues its ISO 20022 transition, our systems handle the format complexity so your team does not have to.
+
+## Next step
+
+If your ops team is spending more time chasing missing payment data than processing payments, we should talk.
+
+The goal is to understand your challenge, what is at stake if it remains unsolved, and where AI can create meaningful impact in your payment operations. When booking, share a brief description of your truncation challenges and highest-volume corridors.
+
+[Book a discovery call](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=missing-payment-data&problem=Manual%20payment%20investigation%20from%20SWIFT%20data%20truncation%20and%20missing%20remittance%20fields&stake=Hours%20of%20daily%20ops%20time%2C%20settlement%20delays%2C%20and%20key-person%20dependency%20risk) or reach out at [joe@devbrew.ai](mailto:joe@devbrew.ai).
+
+[^1]:
+    SWIFT, "Solution for Managing Cross-border Payments Investigations Could Save Industry Millions in Operational Costs."
+    https://www.swift.com/news-events/press-releases/swift-solution-managing-cross-border-payments-investigations-could-save-industry-millions-operational-costs
+
+[^2]:
+    Bank for International Settlements, "Harmonised ISO 20022 Data Requirements for Enhancing Cross-border Payments."
+    https://www.bis.org/cpmi/publ/d218.pdf
+
+[^3]:
+    SWIFT, "ISO 20022 FAQs: Translation Services."
+    https://www.swift.com/standards/iso-20022/iso-20022-faqs/translation-services
+
+[^4]:
+    SWIFT, "Global Financial Community Completes Switch to ISO 20022."
+    https://www.swift.com/news-events/press-releases/global-financial-community-completes-switch-iso-20022-paving-way-new-levels-cross-border-payment-speed-and-innovation-around-world

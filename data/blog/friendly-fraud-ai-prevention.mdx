@@ -1,0 +1,125 @@
+---
+title: 'Friendly Fraud Is Your Fastest-Growing Loss Category'
+date: '2026-03-09'
+lastmod: '2026-03-09'
+slug: 'friendly-fraud-ai-prevention'
+tags:
+  [
+    'friendly-fraud',
+    'chargeback-prevention',
+    'fraud-detection',
+    'cross-border-payments',
+    'payments',
+    'ai',
+    'machine-learning',
+  ]
+draft: false
+summary: 'Prevent 30-50% of friendly fraud chargebacks before customers call their bank, without overhauling your dispute workflow, in 90 days.'
+images: ['/static/images/blog/friendly-fraud-ai-prevention/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'Friendly Fraud Is Your Fastest-Growing Loss Category'
+ogDescription: 'Prevent 30-50% of friendly fraud chargebacks before customers call their bank, without overhauling your dispute workflow, in 90 days.'
+---
+
+A customer sends \$800 to family in Mexico through your platform. Two weeks later, they file a dispute with their bank: "I don't recognize this charge." Your fraud system never flagged it because the right person logged in from the right device and initiated the transfer themselves. This is friendly fraud, and it accounts for up to 75\% of all chargebacks.[^1]
+
+## Why your fraud system cannot see friendly fraud
+
+Traditional fraud detection asks one question: is this an authorized user? It checks device fingerprints, login behavior, IP geolocation, velocity patterns. Friendly fraud passes every one of those checks because the access pattern is indistinguishable from a normal transaction.
+
+In cross-border payments, three factors make this worse.
+
+**Confusing transaction descriptors.** Your customer sees "INTL\*PYMTS\*MXN 14,522" instead of "Transfer to Maria Garcia, Mexico City." 40\% of consumers report not recognizing purchases because of unclear billing descriptors.[^2] In cross-border, where currency codes and intermediary names appear in the descriptor, that number is likely higher.
+
+**Currency conversion surprise.** A customer sends \$800 but their statement shows \$817.40 after FX markup and fees. That gap creates doubt, and doubt drives disputes.
+
+**Delayed settlement windows.** Cross-border transfers can take days to settle. The longer the gap between initiation and statement appearance, the higher the dispute probability.
+
+## What upstream prevention actually looks like
+
+The core idea is to identify transactions likely to be disputed before the customer contacts their bank.
+
+1. **Build a dispute propensity model from your chargeback history.** Past chargebacks carry behavioral signals: support contact history, previous dispute patterns, corridor, amount, and whether the customer viewed the confirmation page. These features train a model that scores new transactions at completion.
+
+2. **Score every transaction at completion.** The model runs inline, not in batch. High-scoring transactions trigger intervention workflows.
+
+3. **Trigger proactive interventions on high-risk transactions.** A clear confirmation email restating what the customer paid, to whom, and what FX rate applied. An SMS with transaction details. Fill the information gap before confusion turns into a dispute.
+
+4. **Route the highest-risk transactions to pre-dispute resolution.** "Hi Sarah, your transfer of \$800 to Mexico City completed successfully. Maria received 14,522 MXN. The \$17.40 difference reflects the FX conversion rate." That one message can prevent a \$74 chargeback.[^3]
+
+5. **Feed outcomes back into the model.** Every flagged transaction that did not result in a dispute strengthens the model. Every missed dispute becomes training data.
+
+For teams working downstream, [chargeback representment automation](/blog/chargeback-dispute-automation) recovers revenue after disputes are filed. But representment is expensive and win rates are capped. Prevention is where the economics shift.
+
+## Three mistakes that keep friendly fraud growing
+
+**Treating chargebacks as a cost of doing business.** Each dispute costs at least \$74 in processing fees, labor, and network penalties.[^3] Every dollar of fraud costs U.S. merchants \$4.61 in total impact including operational overhead, lost goods, and fees.[^4] Writing off a \$200 friendly fraud chargeback actually costs you closer to \$920. Worse, it pushes you toward network monitoring thresholds. Visa's VAMP flags merchants exceeding a 2.2\% combined fraud-and-dispute ratio, dropping to 1.5\% in North America and the EU from April 2026.[^8] Friendly fraud can push you past those thresholds faster than true fraud.
+
+**Applying true-fraud models to a behavior problem.** Friendly fraud comes from the account holder, not a criminal. Retraining a true-fraud model to catch it introduces noise that degrades performance on actual fraud. As we explored in [reducing false positives](/blog/ml-fraud-false-positives), pushing a single model to solve two fundamentally different problems creates tradeoffs that hurt both.
+
+**Ignoring the descriptor as a root cause.** 76\% of cardholders prefer resolving disputes through their bank rather than the merchant.[^2] If your transaction descriptor is a cryptic string of abbreviations and currency codes, you have already lost the window to prevent the dispute.
+
+## What the numbers say about the opportunity
+
+Global chargebacks cost \$33.8 billion in 2025, projected to reach \$41.7 billion by 2028.[^5] In the U.S., cardholders disputed \$9.8 billion in charges in 2024, resulting in \$5.9 billion in completed chargebacks.[^6] If 60-75\% of those are friendly fraud, you are looking at \$20-25 billion in global losses from a fundamentally preventable problem.
+
+McKinsey's research shows AI in payment security can reduce fraud-related costs by up to 50\%.[^7] Applied to friendly fraud, upstream prevention models deliver significant reductions because the behavioral signals are strong and the intervention points are clear.
+
+## Why most teams stall when they try to build this
+
+**Data integration is the real project.** Chargeback data in one system, transaction data in another, support data in a third. Joining all three across different identifiers, timestamps, and schemas takes months before you write a single line of model code. You need at least six months of labeled chargeback history to train a meaningful model.
+
+**The features that predict friendly fraud are not standard fraud features.** Did the customer contact support after the transaction? Have they disputed similar amounts before? What is the dispute rate for this corridor with this descriptor format? Your fraud system was not built to track post-transaction customer behavior.
+
+**Intervention logic must be real-time without adding friction.** Timing, content, and channel must adapt to the transaction's risk profile and integrate with your existing notification systems. As with any production ML system, [model drift and retraining](/blog/fraud-drift-retraining) add operational complexity that compounds over time.
+
+## What to do in the next 90 days
+
+**Weeks 1-2: Classify your chargebacks.** Pull six months of chargebacks and categorize each one: true fraud, friendly fraud, or merchant error. If you cannot separate these categories today, that is your first gap.
+
+**Weeks 3-4: Audit your transaction descriptors.** For your top five corridors, pull descriptors as they appear on customer statements. Ask someone outside your payments team to identify what each charge is for. If they cannot, your customers cannot either.
+
+**Month 2: Map support contacts to dispute outcomes.** For every chargeback in your sample, check whether the customer contacted support before filing. This mapping reveals where a proactive message could have prevented the dispute.
+
+**Month 3: Build the business case.** Three numbers: (1) total cost of friendly fraud chargebacks per quarter including fees and penalties, (2) your chargeback ratio relative to VAMP and Mastercard thresholds, and (3) representment cost per dispute versus the cost of a proactive confirmation message.
+
+## How Devbrew builds this
+
+We build dispute propensity models trained on your transaction, support, and chargeback data, not generic risk scores from a platform or off-the-shelf chargeback tools that apply the same rules to every merchant. The model scores transactions at completion and triggers interventions tuned to your corridors: clearer descriptors, confirmation messages with human-readable details, and preemptive outreach for the highest-risk transactions. The hard part is the data integration, the intervention logic that fires at the right moment, and the monitoring pipeline that keeps the model accurate as your customer mix shifts. That is what we engineer.
+
+## Understand where your chargebacks are actually coming from
+
+If you do not know what percentage of your chargebacks are friendly fraud versus true fraud, or your chargeback ratio is climbing and your fraud system is not catching the cause, that is worth understanding before it triggers a network monitoring program. [Book a discovery call](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=friendly_fraud_prevention&problem=Friendly%20fraud%20chargebacks%20growing%20faster%20than%20true%20fraud%20with%20no%20upstream%20prevention&stake=Rising%20chargeback%20ratios%20threatening%20processor%20relationships%20and%20revenue%20written%20off%20to%20uncontested%20disputes) to talk through what you are seeing, or reach out at [joe@devbrew.ai](mailto:joe@devbrew.ai).
+
+[^1]:
+    Visa, "What Every Merchant Needs to Know About Friendly Fraud."
+    https://corporate.visa.com/en/sites/visa-perspectives/security-trust/what-every-merchant-needs-to-know-about-friendly-fraud.html
+
+[^2]:
+    Chargebacks911, "2025 Cardholder Dispute Index."
+    https://chargebacks911.com/the-2025-cardholder-dispute-index-is-here/
+
+[^3]:
+    Mastercard, "Why Chargebacks Cost More Than You Think."
+    https://www.mastercard.com/us/en/news-and-trends/Insights/2025/what-s-the-true-cost-of-a-chargeback-in-2025.html
+
+[^4]:
+    LexisNexis Risk Solutions, "True Cost of Fraud Study: U.S. and Canada, 2025."
+    https://risk.lexisnexis.com/insights-resources/research/us-ca-true-cost-of-fraud-study
+
+[^5]:
+    Mastercard and Datos Insights, "2025 Global Chargebacks Outlook."
+    https://www.mastercard.com/us/en/news-and-trends/Insights/2025/2025-global-chargebacks-outlook.html
+
+[^6]:
+    Consumer Financial Protection Bureau, "The Consumer Credit Card Market, 2025."
+    https://www.consumerfinance.gov/data-research/research-reports/the-consumer-credit-card-market-2025/
+
+[^7]:
+    McKinsey, "Combating Payments Fraud and Enhancing Customer Experience."
+    https://www.mckinsey.com/industries/financial-services/our-insights/combating-payments-fraud-and-enhancing-customer-experience
+
+[^8]:
+    Visa, "Visa Acquirer Monitoring Program Fact Sheet, 2025."
+    https://corporate.visa.com/content/dam/VCOM/corporate/visa-perspectives/security-and-trust/documents/visa-acquirer-monitoring-program-fact-sheet-2025.pdf

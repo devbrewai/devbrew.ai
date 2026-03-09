@@ -1,5 +1,7 @@
 # Social media promotion guide
 
+**Audience positioning:** All social content targets cross-border payments companies at the Series B-D stage and beyond. This stage range is never explicitly stated, but informs topic selection, specificity, and assumed reader context. Write for operators with real transaction volume, established fraud/compliance processes, and budget for AI infrastructure.
+
 ## AIDA formula
 
 Use this framework for all LinkedIn and X/Twitter posts:

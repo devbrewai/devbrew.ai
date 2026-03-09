@@ -13,6 +13,16 @@ Devbrew is an AI engineering and applied research firm helping Series B-D or mid
 
 **Contact:** joe@devbrew.ai | https://cal.com/joekariuki/devbrew
 
+## Content positioning
+
+Content (blog posts, LinkedIn posts, X posts) is created for and targeted at cross-border payments companies at the Series B-D stage and beyond. This stage range is never explicitly stated in the content itself, but informs the tone, topics, and depth of what gets published. The content assumes the reader has:
+
+- Real transaction volume across multiple corridors
+- Established fraud and compliance processes (not greenfield)
+- Budget and appetite for AI infrastructure investments
+
+Write for operators who have outgrown rules-based systems but have not yet built custom ML pipelines. They know the problem. They need the solution.
+
 ## Voice and style rules
 
 - Write WITH the reader, not AT them. Conversational, not instructional.

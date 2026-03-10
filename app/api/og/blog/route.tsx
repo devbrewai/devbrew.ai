@@ -59,6 +59,7 @@ export async function GET(request: NextRequest) {
                 lineHeight: 1.2,
                 display: 'flex',
                 flexWrap: 'wrap',
+                textWrap: 'balance',
               }}
             >
               {title}
@@ -73,6 +74,7 @@ export async function GET(request: NextRequest) {
                   lineHeight: 1.4,
                   display: 'flex',
                   maxWidth: '900px',
+                  textWrap: 'balance',
                 }}
               >
                 {truncatedDescription}

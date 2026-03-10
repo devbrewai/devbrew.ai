@@ -69,12 +69,12 @@ export function IntroSplit() {
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">How to think of us</h2>
               <p className="mt-2 text-neutral-700">
-                We are an applied AI engineering firm for payments companies.
+                We are an applied AI engineering firm for cross-border payments companies.
               </p>
               <p className="mt-2 text-neutral-700">
-                We build AI infrastructure and agents that help payments companies detect fraud,
-                automate KYC, and forecast liquidity at a fraction of the cost and timeline of
-                building in-house.
+                We build AI infrastructure and agents that help cross-border payments companies
+                detect fraud, automate KYC, and forecast liquidity at a fraction of the cost and
+                timeline of building in-house.
               </p>
               {/* <p className="mt-2 text-neutral-700">
                 We work with founders and risk, compliance, and finance leaders at companies
@@ -99,7 +99,8 @@ export function IntroSplit() {
             <motion.div variants={item}>
               <h2 className="text-base font-semibold text-neutral-700">Where we drive impact</h2>
               <p className="mt-2 text-neutral-700">
-                Our first deployed system targets one of the most critical challenges in payments:
+                Our first published case study targets one of the most critical challenges in
+                payments:
               </p>
               <ul className="mt-3 space-y-3 text-sm text-neutral-700">
                 <li>

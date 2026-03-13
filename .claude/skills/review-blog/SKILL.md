@@ -35,6 +35,7 @@ Validate all frontmatter fields against the rules in the `write-blog` skill's [r
 - `images` path follows `/static/images/blog/{slug}/og.png`
 - No escaped `$` or `%` in frontmatter fields
 - `$` and `%` are properly escaped in body content (for LaTeX rendering)
+- Forced negation rule applied correctly (see below)
 - Em dash rule applied correctly (see below)
 - Word count is 1,000-1,200 (report actual count)
 - Subheadings appear every 200-300 words, in sentence case
@@ -42,6 +43,17 @@ Validate all frontmatter fields against the rules in the `write-blog` skill's [r
 - All 8 content framework sections are present (core mechanism, system steps, common mistakes, quantified outcomes, hidden difficulty, action steps, Devbrew's solution, soft CTA)
 - "Devbrew" is spelled correctly (not "DevBrew")
 - Short intro: 3-5 sentences maximum
+
+#### Forced negation rule
+
+Forced negation patterns and staccato restatements are AI writing tells. Flag any instance of:
+
+- "It's not X, it's Y." or "The problem is not X. The problem is Y."
+- "Not A. Not B. Not C. But D."
+
+These patterns delay the point with unnecessary negatives. The fix is to state the point directly. "The problem is not that payments fail. The problem is that failure is structural." becomes "In cross-border, failure is structural."
+
+When a forced negation is found, flag it and recommend rewriting to lead with the positive assertion.
 
 #### Em dash rule
 

@@ -29,6 +29,7 @@ Write for operators who have outgrown rules-based systems but have not yet built
 - Professional but approachable. Technical but explains clearly.
 - Confident without hype. Direct, no fluff.
 - NEVER use em dashes (--). Use commas, periods, or restructure the sentence.
+- NEVER use forced negation patterns or staccato restatements. These are AI writing tells. Avoid: "It's not X, it's Y." "Not A. Not B. But C." Just state the point directly. Say "failure is structural" not "the problem is not that payments fail. The problem is that failure is structural."
 - NEVER use: "revolutionize," "game-changer," "cutting-edge," "world-class," "leverage."
 - Active voice. Present tense when possible. Second person "you" focused.
 - 8th grade reading level unless technical depth is required for the audience.

@@ -1,0 +1,99 @@
+---
+title: 'One Name, 20 Spellings: How AI Solves Sanctions Screening for Non-Latin Scripts'
+date: '2026-03-18'
+lastmod: '2026-03-18'
+slug: 'sanctions-screening-non-latin-names'
+tags:
+  [
+    'sanctions',
+    'compliance',
+    'aml',
+    'ai',
+    'cross-border-payments',
+    'machine-learning',
+    'false-positives',
+  ]
+draft: false
+summary: 'Cut transliteration-driven false positives by 40-60% and catch sanctioned entities your current system misses, in 60 days.'
+images: ['/static/images/blog/sanctions-screening-non-latin-names/og.png']
+authors: ['joe-kariuki']
+layout: PostLayout
+ogTitle: 'One Name, 20 Spellings: How AI Solves Sanctions Screening for Non-Latin Scripts'
+ogDescription: 'Cut transliteration-driven false positives by 40-60% and catch sanctioned entities your current system misses, in 60 days.'
+---
+
+If you run sanctions screening for a payments company processing through Middle East, South Asian, or African corridors, your matching engine has a blind spot. It was built to compare "John Smith" against a watchlist, and it works well enough when both sides use the same alphabet and the same spelling conventions.
+
+Cross-border payments rarely give you that luxury. A single Arabic name like محمد can be romanized as Muhammad, Mohamed, Mohammed, Mohamad, or any of a dozen other valid English spellings. The Library of Congress maintains an entire romanization standard just for Arabic script, and it only covers one of the systems in use.[^1] Chinese names carry the same challenge across Pinyin, Wade-Giles, and regional dialect romanizations. Cyrillic, Hindi, and Bengali each introduce their own transliteration ambiguity.
+
+Your screening engine sees each spelling as a different string. The sanctioned individual's listing uses one transliteration. Your customer's passport uses another. Both are correct representations of the same name, but your system treats them as unrelated.
+
+This is where false positives and missed matches originate in your highest-growth corridors.
+
+## How phonetic name matching works
+
+Traditional screening uses edit-distance algorithms like Levenshtein to measure how many character changes separate two strings. "Mohamed" and "Mohammed" score as a close match because only one character differs. But "Muhammad" and "Mohamad," which are phonetically identical, score as distant because multiple characters differ. The algorithm sees spelling, not sound.
+
+AI-powered name matching flips this by encoding names as phonetic structures rather than character sequences. Here is how the system works:
+
+1. **Detect the script and normalize:** the incoming name, handling Arabic, Chinese, Cyrillic, and other scripts with language-specific rules
+2. **Generate phonetic encodings:** that capture pronunciation across known transliteration variants for that script
+3. **Score candidate matches:** using phonetic similarity instead of character distance, so "Muhammad" and "Mohamad" resolve to the same phonetic root
+4. **Cross-reference contextual signals:** like date of birth, nationality, and address fragments to separate true matches from phonetic coincidences
+5. **Route results into three lanes:** auto-clear for obvious non-matches, auto-escalate for high-confidence hits, and analyst review for ambiguous cases
+6. **Feed analyst decisions back:** into the model so it improves with every review cycle
+
+You can see how this approach connects to the broader entity-matching framework we outlined in [how AI goes beyond exact match search](/blog/sanctions-screening-entity-matching). Transliteration handling is the layer that makes entity matching work for non-Latin corridors.
+
+## The mistakes teams make on non-Latin corridors
+
+**Maxing out sensitivity across the board.** When your screening flags every close string match on Arabic or South Asian names, you flood analysts with alerts that share phonetic roots but have zero connection to sanctioned entities. Your team burns hours clearing noise while real threats sit deeper in the queue.
+
+**Maintaining manual transliteration lookup tables.** Some teams build internal dictionaries mapping known variants ("Muhammad" maps to "Mohamed," "Mohammed," etc.). These tables are always incomplete, because transliteration is generative. New valid spellings appear with every new customer from a different region or dialect. A static table cannot keep pace with a living language.
+
+**Applying the same matching logic to every corridor.** Latin-script name matching and Arabic-script name matching are fundamentally different problems. Teams that use a single fuzzy matching threshold across all corridors either over-flag non-Latin names or under-flag Latin ones. Neither outcome is acceptable when OFAC operates on strict liability.
+
+## What the numbers show
+
+OFAC issued \$48.8 million in enforcement penalties across 12 actions in 2024 alone.[^2] The legal standard leaves no room for "we used a different spelling." If a sanctioned entity's name appears on the SDN list under one transliteration and your customer uses another, you are exposed.
+
+A 2025 Federal Reserve working paper tested large language models against traditional fuzzy matching algorithms for sanctions screening and found that AI reduced false positives by 92\% while increasing detection rates by 11\%.[^3] That research focused on name and address similarity across the full screening pipeline. Even conservatively, teams applying phonetic matching specifically to non-Latin corridors typically see 40 to 60\% false positive reductions on those corridors within the first 60 days.
+
+Meanwhile, the corridors where transliteration matters most are growing fast. Remittances to low and middle-income countries reached \$685 billion in 2024, with South Asia posting 11.8\% growth and the Middle East and North Africa recovering at 5.4\%.[^4] As we covered in [reducing sanctions screening false positives with AI](/blog/sanctions-false-positive-fix), the cost of false positives scales linearly with volume. More non-Latin corridor transactions means more transliteration noise in your queue.
+
+## Why this is hard to build in-house
+
+Phonetic name matching sounds straightforward in concept, but production implementation requires multilingual training corpora spanning 12 or more scripts, phonetic encoding models tuned to each script's transliteration patterns, and inference fast enough to screen at transaction speed. You also need continuous retraining as sanctions lists update (OFAC alone [added 3,135 entries to the SDN list in 2024](/blog/sanctions-watchlist-screening)), and every matching decision needs an audit trail that satisfies examiners.
+
+Most payments companies have strong compliance teams and capable engineers. What they typically lack is the specialized ML infrastructure to build, train, deploy, and monitor multilingual name-matching models in production. The hard part is the system around the model, including data pipelines, retraining loops, monitoring, and explainability.
+
+## What your team can do in the next 30 days
+
+1. **Segment your false positive data by script and corridor.** Pull your last 90 days of cleared alerts and tag each by the origin script. You will likely find that Arabic, Chinese, and South Asian name corridors generate disproportionate false positive volume relative to their transaction share.
+2. **Test your system against known transliteration variants.** Pick 10 names from the OFAC SDN list that have Arabic or Chinese origin. Generate 5 plausible romanization variants for each and run them through your screening. Track which variants your system catches and which it misses.
+3. **Benchmark phonetic matching against your top corridors.** Open-source phonetic algorithms like Double Metaphone or Soundex can serve as a baseline comparison against your current edit-distance approach. The gap will quantify your exposure.
+4. **Document your current transliteration handling for your next exam.** Regulators increasingly expect you to articulate how your screening handles non-Latin names. Having a documented assessment, even one that identifies gaps, demonstrates good faith and positions you for a technology upgrade.
+
+## How Devbrew builds this
+
+At Devbrew, we build multilingual name-matching AI systems trained on your transaction data and tuned to your specific corridors. The multilingual training corpora, phonetic encoding models across 12+ scripts, retraining pipelines that keep pace with list updates, and the audit trails your examiners expect, we handle that entire stack. Production APIs, contextual scoring, and monitoring, all engineered to plug into your existing screening workflow without slowing down your roadmap.
+
+## Talk to us
+
+If you want to understand where transliteration gaps exist in your current screening, we can walk through your corridor data and identify where false positives concentrate and where true matches may be slipping through. [Book a discovery call](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=sanctions_nonlatin_60d&problem=Transliteration%20variants%20breaking%20sanctions%20screening%2C%20driving%20false%20positives%20on%20non-Latin%20corridors&stake=OFAC%20enforcement%20risk%2C%20analyst%20overload%2C%20and%20inability%20to%20scale%20into%20high-growth%20corridors) or reach out at joe@devbrew.ai.
+
+[^1]:
+    Library of Congress, "ALA-LC Romanization Tables: Arabic."
+    https://www.loc.gov/catdir/cpso/romanization/arabic.pdf
+
+[^2]:
+    OFAC, "2024 Civil Penalties and Enforcement Information."
+    https://ofac.treasury.gov/civil-penalties-and-enforcement-information/2024-enforcement-information
+
+[^3]:
+    Federal Reserve, "Can LLMs Improve Sanctions Screening in the Financial System? Evidence from a Fuzzy Matching Assessment."
+    https://www.federalreserve.gov/econres/feds/can-llms-improve-sanctions-screening-in-the-financial-system-evidence-from-a-fuzzy-matching-assessment.htm
+
+[^4]:
+    World Bank, "In 2024, Remittance Flows to Low- and Middle-Income Countries Are Expected to Reach \$685 Billion."
+    https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar

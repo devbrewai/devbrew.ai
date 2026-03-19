@@ -13,8 +13,7 @@ export default function Newsletter() {
               Stay Updated with AI Insights
             </h1>
             <p className="text-lg text-balance text-gray-600">
-              Subscribe to our newsletter for the latest AI trends, case studies, and insights for
-              fintech and finance.
+              Subscribe to our newsletter for insights on building AI into real products.
             </p>
           </div>
 

@@ -15,7 +15,7 @@ export function Hero() {
       >
         <div className="text-muted-foreground inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm">
           <Cpu className="h-4 w-4" />
-          <span>AI engineering for FinTech</span>
+          <span>AI engineering for startups</span>
         </div>
         <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">Services</h1>
         <p className="text-muted-foreground mx-auto mt-3 max-w-2xl">

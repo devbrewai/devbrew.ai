@@ -65,7 +65,7 @@ export async function GET() {
               textAlign: 'center',
             }}
           >
-            We research, design and deploy custom AI solutions for payments companies.
+            AI engineering for B2B startups. Agents, LLM integrations, and intelligent automations.
           </div>
         </div>
       </div>

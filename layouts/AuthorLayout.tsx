@@ -21,11 +21,11 @@ export default function AuthorLayout({ children, content }: Props) {
         </div>
         <div>
           <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            Your AI Engineering Partner for Fintech Growth
+            AI Engineering for B2B Startups
           </h1>
           <p className="text-muted-foreground mx-auto mt-5 max-w-7xl text-base sm:mt-6 sm:text-lg">
-            We design and deliver custom AI infrastructure and agents for U.S. fintech startups that
-            automate workflows, enhance decision-making, and unlock new revenue
+            We build AI agents, LLM integrations, and intelligent automations that become part of
+            your product. Production AI shipped in weeks.
           </p>
         </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:space-y-0 xl:gap-x-8">

@@ -6,15 +6,9 @@ interface NavLink {
 
 const headerNavLinks: NavLink[] = [
   { href: '/', title: 'Home' },
-  { href: '/blog', title: 'Insights' },
-  {
-    href: '/work',
-    title: 'Work',
-    children: [{ href: '/work/sentinel', title: 'Sentinel' }],
-  },
-  // { href: '/#services', title: 'Services' },
-  { href: '/#about', title: 'About' },
-  { href: '/contact', title: 'Contact' },
+  { href: '/work', title: 'Work' },
+  { href: '/services', title: 'Services' },
+  { href: '/blog', title: 'Blog' },
 ]
 
 export type { NavLink }

@@ -120,7 +120,10 @@ export function HeroCentered() {
             </Button>
             <Button size="lg" variant="ghost" className="text-neutral-600" asChild>
               <Link href="/work">
-                See our work <span aria-hidden="true">&rarr;</span>
+                See our work{' '}
+                <span aria-hidden="true" className="ml-2">
+                  &rarr;
+                </span>
               </Link>
             </Button>
           </div>

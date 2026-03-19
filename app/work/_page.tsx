@@ -5,7 +5,11 @@ import { genPageMetadata } from 'app/seo'
 
 const POSTS_PER_PAGE = 6
 
-export const metadata = genPageMetadata({ title: 'Work' })
+export const metadata = genPageMetadata({
+  title: 'Our Work',
+  description:
+    "AI features we've built for B2B startups. Agents, RAG systems, document AI, and workflow automation.",
+})
 
 export default async function WorkPage() {
   const posts = allCoreContent(sortPosts(allWorks))
@@ -23,14 +27,14 @@ export default async function WorkPage() {
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
       title="Work"
-      description="Explore our work showing how applied AI solves high-cost problems in fintech and payments, reducing losses, improving decisions, and delivering measurable value."
+      description="AI features we've built for B2B startups. Agents, RAG systems, document AI, and workflow automation."
       showCTA={true}
       ctaProps={{
-        eyebrow: 'You have seen the outcomes',
-        title: 'Now create yours',
+        eyebrow: 'Like what you see?',
+        title: 'Want something like this for your product?',
         description:
-          'If you run cross border payments, you know how much impact AI can have. We help teams reduce losses, improve routing, and ship production AI fast.',
-        buttonText: 'Start Now',
+          "Tell us what you're building. We'll tell you where AI fits and how fast we can ship it.",
+        buttonText: 'Get Started',
         buttonHref: '/get-started',
       }}
     />

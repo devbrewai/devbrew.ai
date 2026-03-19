@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Build smarter, faster with Devbrew’s AI engineering for Fintech. Choose our 2–4 week AI Prototype Accelerator or 4–6 week AI MVP Launchpad to go from idea to production with secure, scalable solutions.',
+    'AI agents, LLM integration, RAG, document processing, and workflow automation for B2B startups. Fixed scope. Fixed timeline. You own everything.',
 }
 
 export default function Page() {

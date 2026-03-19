@@ -2,9 +2,9 @@ import { Metadata } from 'next'
 import ContactForm from '@/modules/contact/ui/components/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: 'Get Started',
   description:
-    "Tell us about your needs. We'll review and reply within one business day. Book a quick briefing or send details and we’ll scope a rapid prototype.",
+    "Tell us what you're building. We'll tell you where AI fits and how fast we can ship it.",
   alternates: { canonical: '/contact' },
 }
 
@@ -20,7 +20,7 @@ export default function Page() {
             Tell us about your needs
           </h1>
           <p className="text-muted-foreground mt-4 max-w-xl">
-            Thanks for your interest. Share a bit about your project, goals, and timeline. We’ll
+            Thanks for your interest. Share a bit about your project, goals, and timeline. We'll
             follow up within one business day to schedule a short call and discuss next steps.
           </p>
         </div>

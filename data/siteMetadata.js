@@ -3,10 +3,8 @@ const siteMetadata = {
   title: 'Devbrew',
   author: 'Devbrew',
   headerTitle: 'Devbrew',
-  // Old description:
-  // 'Devbrew is an AI engineering and research firm. We partner with payments companies to research, design, and deploy custom AI solutions',
   description:
-    'Devbrew is an applied AI engineering firm for mid-market cross-border payments companies. We build AI infrastructure and agents for fraud detection, KYC automation, and liquidity forecasting.',
+    'We build AI agents, LLM integrations, and intelligent automations that become part of your product. Production AI shipped in weeks.',
   language: 'en-us',
   theme: 'light', // system, dark or light
   siteUrl: 'https://www.devbrew.ai',

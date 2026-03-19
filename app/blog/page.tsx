@@ -5,7 +5,11 @@ import { genPageMetadata } from 'app/seo'
 
 const POSTS_PER_PAGE = 5
 
-export const metadata = genPageMetadata({ title: 'Blog' })
+export const metadata = genPageMetadata({
+  title: 'Blog',
+  description:
+    'Insights on building AI into real products. Practical guides on agents, RAG, LLMs, and AI engineering for startups.',
+})
 
 export default async function InsightsPage() {
   const posts = allCoreContent(sortPosts(allBlogs))
@@ -22,8 +26,8 @@ export default async function InsightsPage() {
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
-      title="Insights"
-      description="Discover insights, research, and thought leadership on applied AI in fintech and payments."
+      title="Blog"
+      description="Insights on building AI into real products."
     />
   )
 }

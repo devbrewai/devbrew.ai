@@ -1,13 +1,13 @@
 ---
 name: write-blog
-description: Write blog posts and social media promotion content for Devbrew, an AI engineering firm serving fintech and payments companies. Use when asked to write, draft, create, or edit a blog post, article, LinkedIn post, X/Twitter post, or any marketing content for devbrew.ai. Also use when asked to promote a blog post on social media, generate a Cal.com tracking link, or create content following the Devbrew content framework.
+description: Write blog posts and social media promotion content for Devbrew, an AI engineering firm serving B2B tech startups. Use when asked to write, draft, create, or edit a blog post, article, LinkedIn post, X/Twitter post, or any marketing content for devbrew.ai. Also use when asked to promote a blog post on social media, generate a Cal.com tracking link, or create content following the Devbrew content framework.
 ---
 
 # Devbrew Blog Content Creation
 
 ## Company identity
 
-Devbrew is an AI engineering and applied research firm helping Series B-D or mid-market U.S.-based (or have operations in the U.S) payments companies solve their pain points with custom AI (designing and deploying custom AI solutions) that fit within their existing workflows.
+Devbrew is an AI engineering and applied research firm helping B2B tech startup founders ship AI features faster than they can hire or build in-house. We design and deploy custom AI solutions that fit within existing workflows.
 
 **Core positioning:** "Explain the system, sell the implementation." Give away technical insights freely to build trust. Position why professional implementation matters. Make readers think "we need custom AI" and see Devbrew as the team to build it.
 
@@ -15,13 +15,13 @@ Devbrew is an AI engineering and applied research firm helping Series B-D or mid
 
 ## Content positioning
 
-Content (blog posts, LinkedIn posts, X posts) is created for and targeted at cross-border payments companies at the Series B-D stage and beyond. This stage range is never explicitly stated in the content itself, but informs the tone, topics, and depth of what gets published. The content assumes the reader has:
+Content (blog posts, LinkedIn posts, X posts) is created for and targeted at B2B tech startup founders (CEO/CTO) at the Seed to Series A stage. This stage range is never explicitly stated in the content itself, but informs the tone, topics, and depth of what gets published. The content assumes the reader has:
 
-- Real transaction volume across multiple corridors
-- Established fraud and compliance processes (not greenfield)
-- Budget and appetite for AI infrastructure investments
+- A working product with real users
+- A small engineering team (5-20 engineers)
+- A need to ship AI features faster than they can hire or build in-house
 
-Write for operators who have outgrown rules-based systems but have not yet built custom ML pipelines. They know the problem. They need the solution.
+Write for founders who know what they want to build but lack the AI/ML expertise or bandwidth to execute. They have the product context. They need the implementation partner.
 
 ## Voice and style rules
 
@@ -50,7 +50,7 @@ Write for operators who have outgrown rules-based systems but have not yet built
 Before writing, confirm you have:
 
 - Topic and specific pain point (hyper-specific treasury/payments topics work best)
-- Target audience (specific role: CFO, Treasury Manager, VP of Risk, etc.)
+- Target audience (specific role: CEO, CTO, VP of Engineering, Head of Product, etc.)
 - Key research, data points, or source material
 - Desired reader action after reading
 
@@ -95,7 +95,7 @@ The 8 steps in order:
 
 1. **Core mechanism** - explain the underlying idea in clear, simple language
 2. **System steps** - show the architecture/workflow, not the engineering
-3. **Common mistakes** - highlight failure patterns fintech and payments teams make
+3. **Common mistakes** - highlight failure patterns startup engineering teams make
 4. **Quantified outcomes** - specific numbers backed by credible sources
 5. **Hidden difficulty** - why most teams cannot implement this internally
 6. **Action steps** - what the reader can start doing in a defined timeframe (tied to headline)

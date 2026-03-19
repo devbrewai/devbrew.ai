@@ -6,23 +6,23 @@ Detailed scoring criteria for the qualitative dimensions of the blog review. Use
 
 ### Specific pain point for specific role
 
-| Score | Description                                                                                                                                              |
-| ----- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 5     | Names an exact role (e.g., "VP of Treasury Operations") and an exact pain point with a specific scenario the reader would recognize from their own work. |
-| 4     | Clear role identified, clear pain point, but the scenario is somewhat general rather than deeply specific.                                               |
-| 3     | Role is implied but not named. Pain point is mentioned but broad (e.g., "payments teams struggle with fraud").                                           |
-| 2     | No specific role. Pain point is generic and could apply to any industry.                                                                                 |
-| 1     | No clear audience. No identifiable pain point.                                                                                                           |
+| Score | Description                                                                                                                                               |
+| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 5     | Names an exact role (e.g., "CTO at a 15-person startup") and an exact pain point with a specific scenario the reader would recognize from their own work. |
+| 4     | Clear role identified, clear pain point, but the scenario is somewhat general rather than deeply specific.                                                |
+| 3     | Role is implied but not named. Pain point is mentioned but broad (e.g., "payments teams struggle with fraud").                                            |
+| 2     | No specific role. Pain point is generic and could apply to any industry.                                                                                  |
+| 1     | No clear audience. No identifiable pain point.                                                                                                            |
 
 ### Within Devbrew's TAM
 
-| Score | Description                                                                                                                                                                     |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 5     | Perfect fit: the post directly targets decision-makers at Series B-D or mid-market U.S.-based payments companies. The problem, language, and scale match this audience exactly. |
-| 4     | Strong fit with minor stretch. The core audience is payments companies, but the problem could also apply to adjacent fintech segments.                                          |
-| 3     | Fits payments broadly but is not specifically targeted to the TAM. Could apply to any financial services company.                                                               |
-| 2     | Tangentially related to payments. More relevant to general fintech or enterprise software.                                                                                      |
-| 1     | Outside TAM entirely. The topic has no clear connection to payments companies.                                                                                                  |
+| Score | Description                                                                                                                                                             |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 5     | Perfect fit: the post directly targets B2B tech startup founders (CEO/CTO) at the Seed to Series A stage. The problem, language, and scale match this audience exactly. |
+| 4     | Strong fit with minor stretch. The core audience is startup founders, but the problem could also apply to slightly larger or adjacent tech companies.                   |
+| 3     | Fits B2B tech broadly but is not specifically targeted to the TAM. Could apply to any tech company regardless of stage.                                                 |
+| 2     | Tangentially related to startups. More relevant to enterprise or large-scale companies.                                                                                 |
+| 1     | Outside TAM entirely. The topic has no clear connection to startup founders or early-stage companies.                                                                   |
 
 ### Actionable insights
 
@@ -46,13 +46,13 @@ Detailed scoring criteria for the qualitative dimensions of the blog review. Use
 
 ### Technical depth appropriate
 
-| Score | Description                                                                                                                                                                                                        |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 5     | Technical depth matches the target role exactly. A CFO gets business impact and system architecture without implementation details. A VP of Engineering gets enough technical specificity to evaluate feasibility. |
-| 4     | Slightly too technical or too simple in 1-2 places, but overall well-calibrated.                                                                                                                                   |
-| 3     | Mixed: some sections hit the right level, others miss (too technical for the audience or too shallow for the topic).                                                                                               |
-| 2     | Consistently wrong level. Writing for engineers when targeting CFOs, or oversimplifying for a technical audience.                                                                                                  |
-| 1     | Completely mismatched. The technical depth makes the post unusable for the target audience.                                                                                                                        |
+| Score | Description                                                                                                                                                                                                         |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 5     | Technical depth matches the target role exactly. A CEO gets business impact and ROI framing without implementation details. A CTO gets enough technical specificity to evaluate feasibility and integration effort. |
+| 4     | Slightly too technical or too simple in 1-2 places, but overall well-calibrated.                                                                                                                                    |
+| 3     | Mixed: some sections hit the right level, others miss (too technical for the audience or too shallow for the topic).                                                                                                |
+| 2     | Consistently wrong level. Writing for engineers when targeting CEOs, or oversimplifying for a technical audience.                                                                                                   |
+| 1     | Completely mismatched. The technical depth makes the post unusable for the target audience.                                                                                                                         |
 
 ## Conversion effectiveness rubric (1-5 per criterion)
 

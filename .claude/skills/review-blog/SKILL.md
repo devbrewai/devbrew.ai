@@ -59,7 +59,7 @@ When a forced negation is found, flag it and recommend rewriting to lead with th
 
 The ban is on em dashes (—) used as sentence punctuation, where a comma, period, or semicolon should be used instead. Hyphens in compound words are always allowed:
 
-- **Allowed:** "pre-trained models," "real-time scoring," "end-to-end pipeline," "Series B-D or mid-market"
+- **Allowed:** "pre-trained models," "real-time scoring," "end-to-end pipeline," "Seed-to-Series-A"
 - **Not allowed:** "The system processes payments — even cross-border ones — in real time." Replace with: "The system processes payments, even cross-border ones, in real time."
 
 When an em dash is found as sentence punctuation, flag it and recommend replacing with a comma or period.
@@ -110,7 +110,7 @@ This is the qualitative evaluation. Score each criterion using the detailed rubr
 **Audience value** (1-5 per criterion):
 
 - Does the post address a specific pain point for a specific role?
-- Is the target audience within Devbrew's TAM (Series B-D or mid-market U.S.-based payments companies)?
+- Is the target audience within Devbrew's TAM (B2B tech startup founders at the Seed to Series A stage)?
 - Does it provide actionable insights the reader can use immediately?
 - Does the reader learn something they did not know before?
 - Is the technical depth appropriate for the target audience?
@@ -327,7 +327,7 @@ Produce the review report in this exact structure:
 
 | Dimension                | Weight | Rationale                                                                                                                                                                                    |
 | ------------------------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Claim Validation         | 25%    | Highest weight. The target audience (analytical finance buyers at Series B-D or mid-market payments companies) verifies claims. A false number destroys credibility.                         |
+| Claim Validation         | 25%    | Highest weight. The target audience (technical startup founders) verifies claims. A false number destroys credibility.                                                                       |
 | Metadata & Structure     | 20%    | Structural compliance ensures the post builds correctly, renders properly, and follows the 8-step framework.                                                                                 |
 | Source Quality           | 15%    | Primary sources build authority. Vendor whitepapers undermine Devbrew's positioning as an independent engineering firm.                                                                      |
 | Link Integrity           | 15%    | Broken links damage UX and SEO. Dead sources undermine cited claims.                                                                                                                         |

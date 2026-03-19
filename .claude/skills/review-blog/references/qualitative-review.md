@@ -53,28 +53,27 @@ Evaluate whether the post speaks to a specific person, not a demographic.
 ### Reader recognition
 
 - In the first 3 sentences, would the target reader (named in the content brief) think "this is about me"?
-- Does the post use language the reader uses internally? (e.g., "false positives" and "alert fatigue" for risk ops, "burn rate" and "path to profitability" for a CFO, "loaded cost" and "queue backlog" for ops leaders)
+- Does the post use language the reader uses internally? (e.g., "burn rate" and "runway" for a CEO, "tech debt" and "build vs. buy" for a CTO, "sprint velocity" and "feature backlog" for engineering leads)
 - Are the scenarios described ones the reader has personally experienced, or are they textbook examples?
 
 ### Persona-specific needs
 
 Does the post address what this specific role cares about, not what the company cares about in general?
 
-- **CFO:** dollar impact, margin, board metrics, capital efficiency
-- **VP of Engineering:** feasibility, integration complexity, team capacity
-- **Head of Risk/Compliance:** regulatory exposure, false positive rates, audit readiness
-- **Treasury Manager:** float, settlement timing, FX exposure, liquidity
-- **Ops Leader:** cost per transaction, headcount efficiency, queue throughput, consistency
+- **CEO/Founder:** ROI, time-to-value, competitive advantage, investor narrative, burn rate impact
+- **CTO:** feasibility, integration complexity, team bandwidth, technical debt, build vs. buy
+- **VP of Engineering:** implementation timeline, hiring pressure, team skill gaps, maintenance burden
+- **Head of Product:** feature velocity, user impact, roadmap prioritization, competitive differentiation
 
 Would a person in a different role at the same company find this equally relevant? If yes, the targeting may be too broad.
 
 ### Stage and size signaling
 
 - Does the post signal that it understands the reader's company stage?
-  - **Series B-D or mid-market:** constrained engineering resources, board scrutiny on spend, need to show ROI before building, competing priorities
-  - **NOT enterprise:** unlimited budget, dedicated AI teams, 18-month roadmaps
-  - **NOT seed/Series A:** pre-product, no transaction data, survival mode
-- Are the examples and numbers scaled to the right company size? (A \$500M annual volume example fits mid-market. A \$50B example does not.)
+  - **Seed to Series A:** small engineering team (5-20), working product with real users, need to move fast, can't justify 6-month AI hiring cycles, every engineering hour is precious
+  - **NOT enterprise:** unlimited budget, dedicated AI teams, 18-month roadmaps, procurement cycles
+  - **NOT pre-product:** no users, no data, pure ideation stage
+- Are the examples and numbers scaled to the right company size? (A 15-person team example fits. A 500-person org example does not.)
 - Does the post avoid enterprise-only language ("digital transformation," "center of excellence," "AI governance framework") that signals the wrong audience?
 
 ### Self-identification test

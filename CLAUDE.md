@@ -87,7 +87,7 @@ Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 ## Content
 
-- **Audience:** Cross-border payments companies at the Series B-D stage and beyond. This is never stated explicitly in content but informs tone, topics, and depth. Assume the reader has real transaction volume, established fraud/compliance processes, and budget for AI infrastructure.
+- **Audience:** B2B tech startup founders at the Seed to Series A stage. This is never stated explicitly in content but informs tone, topics, and depth. Assume the reader is a founder (CEO/CTO) with a working product, real users, a small engineering team, and a need to ship AI features faster than they can hire or build in-house.
 - Blog content follows the Devbrew content framework. Use the `write-blog` skill.
 - Blog posts are in `data/blog/` (MDX files)
 - Devbrew is spelled "Devbrew" (not "DevBrew")

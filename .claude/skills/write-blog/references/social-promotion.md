@@ -1,6 +1,6 @@
 # Social media promotion guide
 
-**Audience positioning:** All social content targets cross-border payments companies at the Series B-D stage and beyond. This stage range is never explicitly stated, but informs topic selection, specificity, and assumed reader context. Write for operators with real transaction volume, established fraud/compliance processes, and budget for AI infrastructure.
+**Audience positioning:** All social content targets B2B tech startup founders (CEO/CTO) at the Seed to Series A stage. This stage range is never explicitly stated, but informs topic selection, specificity, and assumed reader context. Write for founders with a working product, a small engineering team, and a need to ship AI features faster than they can hire or build in-house.
 
 ## AIDA formula
 

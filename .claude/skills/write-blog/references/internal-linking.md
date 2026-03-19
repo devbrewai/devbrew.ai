@@ -134,7 +134,7 @@ Example: A post with slug `settlement-float-recovery` links as `/blog/settlement
 When multiple posts are related, prioritize:
 
 1. Posts that provide data or analysis supporting the current argument
-2. Posts targeting the same audience role (e.g., Treasury Manager to Treasury Manager)
+2. Posts targeting the same audience role (e.g., CTO to CTO)
 3. Recent posts (within the last 30-60 days) for freshness signals
 4. Posts with higher tag overlap (3+ shared tags)
 5. Posts that cover a prerequisite or deeper dive on a sub-topic

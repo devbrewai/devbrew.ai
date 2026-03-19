@@ -1,6 +1,11 @@
-# Devbrew
+<p align="center">
+  <img src="public/static/images/devbrew-black.svg" alt="Devbrew" height="40" />
+</p>
 
-Devbrew is an AI engineering firm for B2B startups. We build AI agents, LLM integrations, and intelligent automations that become part of your product. This is the source for [devbrew.ai](https://www.devbrew.ai).
+<p align="center">
+  AI engineering firm for B2B startups. We build AI agents, LLM integrations, and intelligent automations that become part of your product.<br/>
+  This is the source for <a href="https://www.devbrew.ai">devbrew.ai</a>.
+</p>
 
 ## Tech Stack
 

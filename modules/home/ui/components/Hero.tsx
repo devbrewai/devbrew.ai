@@ -94,37 +94,35 @@ export function HeroCentered() {
   const reduce = useReducedMotion()
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-24 lg:px-6 lg:py-32">
+      <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-6 lg:py-36">
         <motion.div
           className="mx-auto max-w-4xl text-center"
           initial={{ opacity: 0, y: reduce ? 0 : 16, filter: reduce ? 'none' : 'blur(8px)' }}
           animate={{ opacity: 1, y: 0, filter: reduce ? 'none' : 'blur(0px)' }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <h1 className="text-4xl font-medium tracking-tighter text-balance text-neutral-900 sm:text-5xl lg:text-5xl">
-            Applied AI Engineering for Cross-Border Payments
+          <h1 className="font-heading text-4xl font-semibold tracking-tight text-balance text-neutral-900 sm:text-5xl lg:text-6xl">
+            We build AI into your product.
           </h1>
 
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-balance text-neutral-700 sm:text-base">
-            We build AI infrastructure and agents that detect fraud, automate KYC, and forecast
-            liquidity for cross-border payments companies at a fraction of the cost and timeline of
-            building in-house.
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-balance text-neutral-600 sm:text-xl">
+            Devbrew is an AI engineering firm for B2B startups. We build agents, LLM integrations,
+            and intelligent automations that ship in weeks and become part of your product.
           </p>
 
-          <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center">
+          <div className="mt-10 flex w-full flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:justify-center">
             <Button
               size="lg"
-              className="group inline-flex items-center justify-between rounded-sm bg-blue-600 px-10 text-sm font-semibold text-white hover:bg-blue-700 sm:justify-center sm:bg-blue-600 sm:text-white"
+              className="bg-primary hover:bg-primary/90 inline-flex items-center justify-center px-10 text-sm font-semibold text-white"
+              asChild
             >
-              <Link href="/get-started" className="flex w-full items-center justify-center">
-                Get started
+              <Link href="/get-started">Get started</Link>
+            </Button>
+            <Button size="lg" variant="ghost" className="text-neutral-600" asChild>
+              <Link href="/work">
+                See our work <span aria-hidden="true">&rarr;</span>
               </Link>
             </Button>
-            {/* <Button size="lg" variant="ghost">
-              <Link href="#work" className="flex items-center justify-center">
-                View Work
-              </Link>
-            </Button> */}
           </div>
         </motion.div>
       </div>

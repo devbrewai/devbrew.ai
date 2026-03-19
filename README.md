@@ -1,8 +1,8 @@
-# Devbrew.ai — AI Engineering for B2B Startups
+# Devbrew
 
-We build AI agents, LLM integrations, and intelligent automations that become part of your product. This is the source for [devbrew.ai](https://www.devbrew.ai).
+Devbrew is an AI engineering firm for B2B startups. We build AI agents, LLM integrations, and intelligent automations that become part of your product. This is the source for [devbrew.ai](https://www.devbrew.ai).
 
-## Stack
+## Tech Stack
 
 - Next.js 15 (App Router), React 19, TypeScript
 - Tailwind CSS 4

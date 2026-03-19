@@ -53,6 +53,7 @@ export default function Footer() {
           <div className="flex flex-wrap justify-center gap-4 md:justify-end">
             <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={4} />
             <SocialIcon kind="x" href={siteMetadata.x} size={4} />
+            <SocialIcon kind="github" href={siteMetadata.github} size={4} />
           </div>
         </div>
       </div>

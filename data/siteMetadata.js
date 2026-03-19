@@ -13,7 +13,7 @@ const siteMetadata = {
   socialBanner: process.env.BASE_PATH ? `${process.env.BASE_PATH}/api/og` : '/static/images/og.png',
   // mastodon: 'https://mastodon.social/@mastodonuser',
   // email: 'hello@devbrew.ai',
-  // github: 'https://github.com/DevbrewCo',
+  github: 'https://github.com/devbrewai',
   x: 'https://x.com/devbrewai',
   // twitter: 'https://twitter.com/Twitter',
   // facebook: 'https://facebook.com',

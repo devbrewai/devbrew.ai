@@ -161,30 +161,8 @@ Calculate the revenue impact of current failure rates. How much would a 2\% redu
 
 These steps won't get to 2\% failure rates. But they'll reduce failures by 20-30\% without requiring ML infrastructure while building foundation for intelligent systems.
 
-## How Devbrew builds production-grade payment recovery systems
+## About Devbrew
 
-We build the complete system, not just the model.
+Devbrew is an AI engineering firm for B2B startups. We build AI agents, LLM integrations, and intelligent automations that become part of your product. If you're exploring how AI fits into what you're building, we'd love to hear from you.
 
-This includes real-time data pipelines capturing every payment failure with full transaction context. Feature engineering that turns raw payment data into predictive signals. ML models predicting recovery probability and optimal retry timing. Decision APIs integrating with existing payment stacks. Monitoring systems detecting model drift and triggering retraining.
-
-The implementation plugs into current infrastructure. If teams use Stripe, we build on top of Stripe webhooks. If teams use custom payment processors, we integrate via API. No ripping out existing systems. Just adding intelligence on top.
-
-Our models train on client data, not generic payment patterns. A marketplace with international sellers has different failure patterns than a SaaS company. We build recovery logic specific to each customer base and payment method mix.
-
-The system learns continuously. Every retry attempt feeds back into training. As the business evolves, the model adapts. Recovery rates improve month over month as the system accumulates more outcome data.
-
-We handle the engineering most teams don't have capacity for. Model serving infrastructure. Real-time prediction pipelines. Automated retraining workflows. Monitoring dashboards. Clients get working software, not research notebooks.
-
-Typical implementation takes 6-8 weeks from kickoff to production. Weeks 1-2 we audit payment data and identify quick wins. Weeks 3-4 we build the data pipeline and train initial models. Weeks 5-6 we integrate with the payment stack and deploy to production. Weeks 7-8 we monitor, tune, and hand off to the team.
-
-## Understanding where intelligent retry fits your stack
-
-Most payment teams know they're losing revenue to failed transactions. The harder question is where to start and whether building internally makes sense for your specific situation.
-
-The goal of a conversation is simple: understand the problem you're solving, what's at stake if it remains unsolved, and where ML-powered retry creates meaningful leverage in your payments stack.
-
-We'll walk through your current failure rates, the decline codes costing you the most, and potential approaches. You'll leave with clarity on what's possible, what the path looks like, and whether Devbrew can help.
-
-Book 30 minutes at [cal.com/joekariuki/devbrew](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=payment_recovery_ml&problem=Cross-border%20payment%20failures%20and%20low%20recovery%20rates%20from%20basic%20retry%20logic&stake=Lost%20revenue%20from%20failed%20payments%2C%20customer%20churn%2C%20and%20rising%20support%20costs). When you book, share a brief description of your problem and what's at stake. That helps us make the most of our time together.
-
-Or reach me directly at [joe@devbrew.ai](mailto:joe@devbrew.ai).
+[Get in touch](/get-started)

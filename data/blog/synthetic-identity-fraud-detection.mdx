@@ -26,8 +26,6 @@ Most fraud systems catch these attacks after fraudsters have already transacted 
 
 Graph Neural Networks flip this timeline. They detect entire fraud rings at account opening, before the first withdrawal.
 
-**→ Want to see which fraud rings your current system is missing?** [Book 30 minutes](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=synthetic-identity-fraud-detection&problem=Fraud%20rings%20bypassing%20detection%20from%20account-level%20analysis%20missing%20network%20patterns%20and%20coordinated%20attack%20signatures&stake=%24500K%2B%20fraud%20losses%20per%20ring%2C%20investigation%20teams%20drowning%20in%20individual%20alerts%2C%20and%20good%20customers%20blocked%20by%20reactive%20controls) to walk through your fraud patterns, or email [joe@devbrew.ai](mailto:joe@devbrew.ai)
-
 ## The pattern hiding in your network data
 
 Most fraud detection systems analyze each account opening independently. They check transaction amounts, velocity, and location. They flag suspicious patterns using XGBoost or Random Forest to score risk. And they miss the fraud ring operating across dozens of accounts.
@@ -94,8 +92,6 @@ The operational impact:
 
 For a payments company processing \$100M in transaction volume, preventing fraud rings at onboarding instead of after bust-out typically translates to \$500K-1M in annual fraud prevention. The ROI compounds because you're not catching individual fraudsters—you're identifying entire coordinated operations before they extract value.
 
-→ **Want to see which fraud rings your current system is missing?** [Book 30 minutes](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=synthetic-identity-fraud-detection&problem=Fraud%20rings%20bypassing%20detection%20from%20account-level%20analysis%20missing%20network%20patterns%20and%20coordinated%20attack%20signatures&stake=%24500K%2B%20fraud%20losses%20per%20ring%2C%20investigation%20teams%20drowning%20in%20individual%20alerts%2C%20and%20good%20customers%20blocked%20by%20reactive%20controls) to walk through your fraud patterns, or email [joe@devbrew.ai](mailto:joe@devbrew.ai)
-
 ## Why most teams can't build this internally
 
 Building production-grade GNN fraud detection requires specialized capabilities across graph infrastructure, ML architecture, and systems engineering:
@@ -126,22 +122,8 @@ Start by identifying where relationship analysis would catch fraud your current 
 
 If the analysis shows significant coordinated fraud that relationship detection would catch, you have a clear path to implementation. That's where we come in.
 
-## How Devbrew builds GNN fraud detection systems
+## About Devbrew
 
-We build graph neural network fraud detection systems specifically for payments companies dealing with synthetic identity attacks. We handle the full technical implementation: graph database architecture, GNN model training on your historical fraud patterns, real-time scoring infrastructure that integrates with your onboarding flow, and continuous model updates as fraud evolves.
+Devbrew is an AI engineering firm for B2B startups. We build AI agents, LLM integrations, and intelligent automations that become part of your product. If you're exploring how AI fits into what you're building, we'd love to hear from you.
 
-The system scores new accounts against your entire relationship network in real-time. Fraud rings get flagged at account opening based on suspicious connection patterns. Your fraud team gets graph visualizations showing the entire coordinated operation, not just isolated alerts.
-
-Unlike fraud vendors that bolt GNN capabilities onto existing rule engines, we build this as a production system from the ground up. Typical deployment: 8-12 weeks from kickoff to production scoring on live traffic, with the first 4 weeks focused on historical data analysis and fraud pattern discovery in your specific network.
-
-We build this to scale with your transaction volume and adapt as fraud patterns evolve.
-
-## Understand the problem and where AI can help
-
-The goal is to understand the problem you're trying to solve, what's at stake if it remains unsolved, and where AI can create meaningful leverage in your payments stack.
-
-We'll discuss the core challenges you're facing with fraud detection, explore how graph neural networks would map to your specific fraud patterns, and outline the next steps. You'll leave with clarity on whether relationship analysis would catch the fraud rings your current system is missing.
-
-→ **Want to see which fraud rings your current system is missing?** [Book 30 minutes](https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign=synthetic-identity-fraud-detection&problem=Fraud%20rings%20bypassing%20detection%20from%20account-level%20analysis%20missing%20network%20patterns%20and%20coordinated%20attack%20signatures&stake=%24500K%2B%20fraud%20losses%20per%20ring%2C%20investigation%20teams%20drowning%20in%20individual%20alerts%2C%20and%20good%20customers%20blocked%20by%20reactive%20controls) to discuss your fraud detection architecture, or email [joe@devbrew.ai](mailto:joe@devbrew.ai)
-
-Please share a brief description of your fraud patterns and what's at stake when booking, it helps us make the most of our time together.
+[Get in touch](/get-started)

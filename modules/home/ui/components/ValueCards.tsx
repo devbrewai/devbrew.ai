@@ -1,217 +1,111 @@
 'use client'
 
-import * as React from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 
-import { cn } from '@/lib/utils'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+const steps = [
+  {
+    number: '1',
+    title: 'Discovery',
+    description:
+      'We look at your product, your stack, and where AI creates the most value for your users. One call. No decks.',
+  },
+  {
+    number: '2',
+    title: 'Build',
+    description:
+      'We design and build the AI feature, integrated into your codebase and your infrastructure. Weekly demos so you see progress in real time.',
+  },
+  {
+    number: '3',
+    title: 'Ship',
+    description:
+      'We deploy to production, hand over everything, and make sure your team can maintain it. You own all the code, models, and data.',
+  },
+]
 
-export function ValueCards({ className = '' }: { className?: string }) {
+export function ValueCards() {
   const reduce = useReducedMotion()
-  const container = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } }
+  const container = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } }
   const item = {
-    hidden: { opacity: 0, y: reduce ? 0 : 12, filter: reduce ? 'none' : 'blur(8px)' },
+    hidden: { opacity: 0, y: reduce ? 0 : 12, filter: reduce ? 'none' : 'blur(6px)' },
     show: { opacity: 1, y: 0, filter: reduce ? 'none' : 'blur(0px)' },
   }
 
-  const cards = [
-    {
-      title: 'Rapid Delivery',
-      body: 'Go from strategy to production with speed and precision. We prototype, validate, and deploy AI solutions in weeks, not months.',
-      Illustration: IllustrationAccelerated,
-    },
-    {
-      title: 'Secure Deployments',
-      body: 'We deploy with discipline. We pilot, measure, and scale through controlled rollouts, with security, compliance, and monitoring built in from day one.',
-      Illustration: IllustrationDerisked,
-    },
-    {
-      title: 'Measurable Impact',
-      body: 'We build AI with ROI at the core. Each solution is anchored to business objectives, guided by clear metrics, and designed to deliver lasting growth.',
-      Illustration: IllustrationROI,
-    },
-  ] as const
-
   return (
-    <section className={cn('relative w-full bg-neutral-50 text-neutral-900', className)}>
-      <div className="mx-auto max-w-7xl px-4 pt-10 pb-24 sm:px-6 md:pt-12 md:pb-32 lg:px-8">
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          <motion.div variants={item} className="mb-10">
-            <h2 className="text-4xl leading-tight font-medium tracking-tight text-balance sm:text-5xl">
-              Why Devbrew
+    <>
+      {/* How We Work */}
+      <section className="bg-neutral-50">
+        <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+          <motion.div
+            className="mx-auto max-w-2xl text-center"
+            initial={{ opacity: 0, y: reduce ? 0 : 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+              From first call to production in weeks.
             </h2>
-            <p className="mt-4 max-w-2xl text-balance text-neutral-700">
-              Every engagement is guided by the same principles: fast execution, lower risk, and
-              lasting impact.
-            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-            {cards.map(({ title, body, Illustration }) => {
-              const headingId = `card-${title.toLowerCase().replace(/\s+/g, '-')}`
-              return (
-                <motion.div key={title} variants={item}>
-                  <Card
-                    role="article"
-                    aria-labelledby={headingId}
-                    className={cn(
-                      'flex h-full flex-col',
-                      'border border-neutral-200 bg-white text-neutral-900 transition-shadow hover:shadow-md'
-                    )}
-                  >
-                    <CardHeader className="p-5 lg:p-6">
-                      <CardTitle
-                        id={headingId}
-                        className="text-xl font-semibold tracking-tight text-neutral-900"
-                      >
-                        <h3>{title}</h3>
-                      </CardTitle>
-                      <CardDescription className="mt-2 text-balance text-neutral-700">
-                        {body}
-                      </CardDescription>
-                    </CardHeader>
+          <motion.div
+            className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {steps.map((step) => (
+              <motion.div key={step.number} variants={item} className="text-center">
+                <div className="bg-primary text-primary-foreground mx-auto flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold">
+                  {step.number}
+                </div>
+                <h3 className="font-heading mt-4 text-xl font-semibold text-neutral-900">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{step.description}</p>
+              </motion.div>
+            ))}
+          </motion.div>
 
-                    <CardContent className={cn('p-5 pt-0 lg:p-6 lg:pt-0')}>
-                      <div
-                        className={cn(
-                          'mt-2 aspect-[16/9] w-full rounded-xs bg-gradient-to-tr from-blue-400/15 to-blue-600/20'
-                        )}
-                      >
-                        <Illustration className="h-full w-full text-blue-600" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              )
-            })}
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
+          <motion.p
+            className="mt-12 text-center text-sm font-medium text-neutral-500"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            Most projects take 2-4 weeks from kickoff to production.
+          </motion.p>
+        </div>
+      </section>
 
-/* Inline SVGs — minimal, geometric, use currentColor for themeability */
-function IllustrationAccelerated({ className = '' }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 400 225" role="img" preserveAspectRatio="xMidYMid meet">
-      <title>Accelerated delivery pipeline</title>
-      <defs>
-        <linearGradient id="devbrew-g1" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0" stopColor="currentColor" stopOpacity="0.15" />
-          <stop offset="1" stopColor="currentColor" stopOpacity="0.4" />
-        </linearGradient>
-        <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="1.5" />
-        </filter>
-      </defs>
-
-      {/* Track */}
-      <rect x="20" y="150" width="360" height="12" rx="1" fill="url(#devbrew-g1)" />
-
-      {/* Stages */}
-      {[60, 150, 240, 330].map((x, i) => (
-        <g key={i} transform={`translate(${x},100)`} aria-hidden="true">
-          <rect x="-18" y="-18" width="36" height="36" rx="2" fill="currentColor" opacity="0.08" />
-          <circle cx="0" cy="0" r="6" fill="currentColor" />
-        </g>
-      ))}
-
-      {/* Speed arrow (simple arrowhead, aligned) */}
-      <path
-        d="M40 80 H258"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="butt"
-      />
-      <path
-        d="M260 80 L248 68 M260 80 L248 92"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-      />
-      {/* trailing motion blur */}
-      <path
-        d="M40 80 H160"
-        stroke="currentColor"
-        strokeWidth="6"
-        opacity="0.08"
-        filter="url(#soft)"
-      />
-    </svg>
-  )
-}
-
-function IllustrationDerisked({ className = '' }: { className?: string }) {
-  const rowsY = [90, 118, 146]
-  return (
-    <svg className={className} viewBox="0 0 400 225" role="img" preserveAspectRatio="xMidYMid meet">
-      <title>Derisked deployments</title>
-
-      {/* Shield */}
-      <path
-        d="M200 40 l80 24 v56c0 58-80 85-80 85s-80-27-80-85V64z"
-        fill="currentColor"
-        opacity="0.08"
-      />
-      <path
-        d="M200 48 l70 21 v51c0 50-70 74-70 74s-70-24-70-74V69z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-
-      {/* Checklist rows */}
-      {rowsY.map((y, i) => (
-        <g key={i} transform={`translate(150, ${y})`} aria-hidden="true">
-          <rect x="0" y="0" width="150" height="12" rx="1" fill="currentColor" opacity="0.1" />
-          <path d="M10 6 l6 6 l12 -12" stroke="currentColor" strokeWidth="2.5" fill="none" />
-        </g>
-      ))}
-    </svg>
-  )
-}
-
-function IllustrationROI({ className = '' }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 400 225" role="img" preserveAspectRatio="xMidYMid meet">
-      <title>Real business value</title>
-
-      {/* Axes */}
-      <path d="M40 180 H360" stroke="currentColor" strokeWidth="2" opacity="0.3" />
-      <path d="M60 40 V180" stroke="currentColor" strokeWidth="2" opacity="0.3" />
-
-      {/* Bars */}
-      {[0, 1, 2, 3].map((i) => (
-        <rect
-          key={i}
-          x={80 + i * 60}
-          y={140 - i * 18}
-          width="34"
-          height={40 + i * 18}
-          rx="1"
-          fill="currentColor"
-          opacity={0.12 + i * 0.06}
-        />
-      ))}
-
-      {/* Growth line */}
-      <path
-        d="M70 155 L140 140 L200 120 L260 95 L330 70"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="square"
-      />
-    </svg>
+      {/* Who We Work With */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+          <motion.div
+            className="mx-auto max-w-2xl text-center"
+            initial={{ opacity: 0, y: reduce ? 0 : 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+              Built for B2B startups.
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-neutral-600">
+              We work with founders building B2B software who want AI in their product but don't
+              want to spend months hiring and figuring it out internally. Our sweet spot is pre-seed
+              to Series A startups with a working product and real users.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed text-neutral-600">
+              Fintech, healthtech, legaltech, HR tech, SaaS infrastructure, or something we haven't
+              seen before. If your product can get smarter with AI, we should talk.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    </>
   )
 }
 

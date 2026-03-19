@@ -64,8 +64,8 @@ interface CTAProps {
 
 export function CTA({
   eyebrow = 'Ready to get started?',
-  title = 'Ship Fraud Detection in Weeks, Not Months',
-  description = "We deliver production AI for cross-border payments companies. Free pilot. Outcome-based pricing. If we don't hit your metrics, you don't pay the success fee.",
+  title = 'Ready to add AI to your product?',
+  description = "Tell us what you're building. We'll tell you where AI fits and how fast we can ship it.",
   buttonText = 'Get Started',
   buttonHref = '/get-started',
   variant = 'default',

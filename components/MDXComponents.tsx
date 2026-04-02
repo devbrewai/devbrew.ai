@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Alert, AlertDescription } from './ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 import { Badge } from './ui/badge'
+import YouTubeEmbed from './YouTubeEmbed'
 
 export const components: MDXComponents = {
   Image,
@@ -33,4 +34,5 @@ export const components: MDXComponents = {
   TabsList,
   TabsTrigger,
   Badge,
+  YouTubeEmbed,
 }

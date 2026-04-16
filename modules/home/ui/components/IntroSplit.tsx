@@ -72,9 +72,8 @@ export function IntroSplit() {
                 We are an applied AI engineering firm for cross-border payments companies.
               </p>
               <p className="mt-2 text-neutral-700">
-                We build AI infrastructure and agents that help cross-border payments companies
-                detect fraud, automate KYC, and forecast liquidity at a fraction of the cost and
-                timeline of building in-house.
+                Our current focus is fraud detection and sanctions screening. We&apos;re also
+                building in KYC automation and liquidity forecasting for select clients.
               </p>
               {/* <p className="mt-2 text-neutral-700">
                 We work with founders and risk, compliance, and finance leaders at companies

@@ -106,9 +106,8 @@ export function HeroCentered() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-balance text-neutral-700 sm:text-base">
-            We build AI infrastructure and agents that detect fraud, automate KYC, and forecast
-            liquidity for cross-border payments companies at a fraction of the cost and timeline of
-            building in-house.
+            We build AI infrastructure that detects fraud and screens sanctions for cross-border
+            payments companies, at a fraction of the cost and timeline of building in-house.
           </p>
 
           <div className="mt-8 flex w-full flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center sm:justify-center">

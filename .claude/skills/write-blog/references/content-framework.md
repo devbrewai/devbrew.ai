@@ -110,8 +110,8 @@ Always light, always optional, always value-based. Position Devbrew as a thought
 
 - One sentence, maybe two
 - Offer value (evaluation, audit, walkthrough), not a demo or sales call
-- Include the Cal.com booking link with UTM tracking (see references/utm-tracking.md)
-- Alternative: direct to joe@devbrew.ai for a conversation
+- Link to https://devbrew.ai/contact as the single CTA destination
+- Do not include Cal.com booking links or email addresses in the blog body
 - "No pitch" language reduces friction
 
 ## Common pitfalls to avoid

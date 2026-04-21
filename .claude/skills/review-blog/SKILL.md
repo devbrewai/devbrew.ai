@@ -82,8 +82,7 @@ Extract all links from the post (markdown link syntax). Categorize and check eac
 
 - **External links** (https://...): Run `curl -sL -o /dev/null -w "%{http_code}" {url}` to check HTTP status. PASS = 200-299. FAIL = 4xx/5xx. WARN = 3xx (redirects, note the destination). If a site blocks curl or times out, note "unable to verify" rather than marking as FAIL.
 - **Internal links** (/blog/{slug}): Verify the target file exists at `data/blog/{slug}.mdx` and that `draft` is not `true` in that file's frontmatter. Do not link to draft posts.
-- **Cal.com links**: Verify the link follows the UTM template from the `write-blog` skill's [references/utm-tracking.md](../write-blog/references/utm-tracking.md). Check: `utm_source=blog`, `utm_medium=post`, `utm_campaign` follows the slug naming convention, `problem` and `stake` parameters are present and URL-encoded.
-- **Email links** (mailto:joe@devbrew.ai): Verify format.
+- **CTA link**: The soft CTA must link to `https://devbrew.ai/contact`. Flag any Cal.com links, booking links, or email addresses (e.g., `mailto:joe@devbrew.ai`, plain-text `joe@devbrew.ai`) in the blog body as a violation.
 
 ### Step 5: Source quality assessment
 
@@ -122,7 +121,7 @@ This is the qualitative evaluation. Score each criterion using the detailed rubr
 - Is the soft CTA genuinely value-based (evaluation/audit/walkthrough, not a demo or sales call)?
 - Does the post build trust through transparency (explaining the system, not hiding the concept)?
 - Does it position custom AI as the core solution?
-- Is the Cal.com link present with proper UTM tracking?
+- Does the soft CTA link to `https://devbrew.ai/contact` with no Cal.com links or email addresses in the body?
 
 **Voice compliance** (1-5):
 
@@ -199,15 +198,15 @@ Produce the review report in this exact structure:
 
 ## 3. Link integrity ({X}/15)
 
-| #   | Link text     | URL         | Type     | Status | Result |
-| --- | ------------- | ----------- | -------- | ------ | ------ |
-| 1   | "text"        | url         | External | 200    | PASS   |
-| 2   | "text"        | /blog/slug  | Internal | Exists | PASS   |
-| 3   | "Book a call" | cal.com/... | CTA      | 200    | PASS   |
+| #   | Link text          | URL                        | Type     | Status | Result |
+| --- | ------------------ | -------------------------- | -------- | ------ | ------ |
+| 1   | "text"             | url                        | External | 200    | PASS   |
+| 2   | "text"             | /blog/slug                 | Internal | Exists | PASS   |
+| 3   | "Talk to our team" | https://devbrew.ai/contact | CTA      | 200    | PASS   |
 
 **Links checked:** {N}
 **Passed:** {N} | **Failed:** {N} | **Warnings:** {N}
-**Cal.com UTM compliance:** PASS/FAIL
+**CTA compliance:** PASS/FAIL (links to `https://devbrew.ai/contact`; no Cal.com links or email addresses in body)
 **Section score:** {X}/15
 
 ---
@@ -244,14 +243,14 @@ Produce the review report in this exact structure:
 
 ## 6. Conversion effectiveness ({X}/10)
 
-| Criterion                            | Score (1-5) | Assessment         |
-| ------------------------------------ | ----------- | ------------------ |
-| Framework flows to Devbrew naturally | {N}         | {brief assessment} |
-| Hidden difficulty is convincing      | {N}         | {brief assessment} |
-| Soft CTA is value-based              | {N}         | {brief assessment} |
-| Builds trust through transparency    | {N}         | {brief assessment} |
-| Custom AI positioned as solution     | {N}         | {brief assessment} |
-| Cal.com link with UTM present        | {N}         | {brief assessment} |
+| Criterion                                | Score (1-5) | Assessment         |
+| ---------------------------------------- | ----------- | ------------------ |
+| Framework flows to Devbrew naturally     | {N}         | {brief assessment} |
+| Hidden difficulty is convincing          | {N}         | {brief assessment} |
+| Soft CTA is value-based                  | {N}         | {brief assessment} |
+| Builds trust through transparency        | {N}         | {brief assessment} |
+| Custom AI positioned as solution         | {N}         | {brief assessment} |
+| CTA links to /contact (no Cal.com/email) | {N}         | {brief assessment} |
 
 **Section score:** {sum}/30 normalized to {X}/10
 

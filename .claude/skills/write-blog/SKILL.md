@@ -1,6 +1,6 @@
 ---
 name: write-blog
-description: Write blog posts and social media promotion content for Devbrew, an AI engineering firm serving fintech and payments companies. Use when asked to write, draft, create, or edit a blog post, article, LinkedIn post, X/Twitter post, or any marketing content for devbrew.ai. Also use when asked to promote a blog post on social media, generate a Cal.com tracking link, or create content following the Devbrew content framework.
+description: Write blog posts and social media promotion content for Devbrew, an AI engineering firm serving fintech and payments companies. Use when asked to write, draft, create, or edit a blog post, article, LinkedIn post, X/Twitter post, or any marketing content for devbrew.ai. Also use when asked to promote a blog post on social media or create content following the Devbrew content framework.
 ---
 
 # Devbrew Blog Content Creation
@@ -11,7 +11,7 @@ Devbrew is an AI engineering and applied research firm helping Series B-D or mid
 
 **Core positioning:** "Explain the system, sell the implementation." Give away technical insights freely to build trust. Position why professional implementation matters. Make readers think "we need custom AI" and see Devbrew as the team to build it.
 
-**Contact:** joe@devbrew.ai | https://cal.com/joekariuki/devbrew
+**Contact:** https://devbrew.ai/contact
 
 ## Content positioning
 
@@ -139,17 +139,15 @@ Key rules:
 - **ogDescription**: Mirrors the summary exactly
 - **images**: Follow the path pattern `/static/images/blog/{slug}/og.png`
 
-### Step 8: Generate the Cal.com tracking link
+### Step 8: Add the CTA link
 
-Every blog post needs a UTM-tracked Cal.com booking link for the CTA. For the full framework with templates and examples, read [references/utm-tracking.md](references/utm-tracking.md).
-
-Quick reference:
+Every blog post's soft CTA links to the Devbrew contact page. Use this exact URL:
 
 ```
-https://cal.com/joekariuki/devbrew?utm_source=blog&utm_medium=post&utm_campaign={post_slug}&problem={url_encoded_problem}&stake={url_encoded_stake}
+https://devbrew.ai/contact
 ```
 
-Slug rules: `{topic}_{subtopic}_{timeframe}`, lowercase, underscores, under 30 characters. Use abbreviations for common terms (kyc, aml, kyb, etc.).
+Do not include Cal.com links, booking links, or email addresses in the blog body. The contact page is the single CTA destination.
 
 ## Social media promotion workflow
 
@@ -196,7 +194,7 @@ Before delivering any content:
 - [ ] Footnote definitions at bottom of file include organization name, document title, and URL
 - [ ] 1-3 internal links included where genuinely relevant (not forced)
 - [ ] Internal references use inline embedded links (`/blog/{slug}`), not footnotes
-- [ ] Cal.com link generated with proper UTM parameters
+- [ ] CTA links to https://devbrew.ai/contact (no Cal.com links, no email addresses in body)
 - [ ] Blog is 1,000-1,200 words (5-6 min read)
 - [ ] LinkedIn post is 80-100 words, prose, no bullets
 - [ ] X post is under 280 characters

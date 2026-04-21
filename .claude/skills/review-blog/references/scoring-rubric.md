@@ -78,13 +78,13 @@ Detailed scoring criteria for the qualitative dimensions of the blog review. Use
 
 ### Soft CTA is value-based
 
-| Score | Description                                                                                                                                                                                               |
-| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 5     | Value-first, no pressure. Offers a specific deliverable (evaluation, audit, walkthrough) that the reader would want even if they never hired Devbrew. "No pitch" language present. Cal.com link included. |
-| 4     | Good CTA with minor sales language. Still value-oriented but could be softer.                                                                                                                             |
-| 3     | Mix of value and sales language. Feels like it is trying to be soft but defaults to selling.                                                                                                              |
-| 2     | Direct sales pitch. "Book a demo," "schedule a call to learn more about our services."                                                                                                                    |
-| 1     | Hard sell or missing entirely.                                                                                                                                                                            |
+| Score | Description                                                                                                                                                                                                               |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 5     | Value-first, no pressure. Offers a specific deliverable (evaluation, audit, walkthrough) that the reader would want even if they never hired Devbrew. "No pitch" language present. Links to `https://devbrew.ai/contact`. |
+| 4     | Good CTA with minor sales language. Still value-oriented but could be softer.                                                                                                                                             |
+| 3     | Mix of value and sales language. Feels like it is trying to be soft but defaults to selling.                                                                                                                              |
+| 2     | Direct sales pitch. "Book a demo," "schedule a call to learn more about our services."                                                                                                                                    |
+| 1     | Hard sell or missing entirely.                                                                                                                                                                                            |
 
 ### Builds trust through transparency
 
@@ -106,15 +106,15 @@ Detailed scoring criteria for the qualitative dimensions of the blog review. Use
 | 2     | Generic automation language. "Automate your process" without AI specificity.                                                                                                   |
 | 1     | No AI positioning. The solution described does not clearly involve AI or machine learning.                                                                                     |
 
-### Cal.com link with UTM present
+### CTA links to /contact (no Cal.com/email)
 
-| Score | Description                                                                                                                                                                                          |
-| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 5     | Cal.com link present with all UTM parameters (`utm_source`, `utm_medium`, `utm_campaign`) and pre-filled fields (`problem`, `stake`) following the naming conventions in the UTM tracking reference. |
-| 4     | Cal.com link present with UTM parameters but missing one pre-fill field or minor convention deviation.                                                                                               |
-| 3     | Cal.com link present but missing UTM parameters or using incorrect values.                                                                                                                           |
-| 2     | Generic Cal.com link without any tracking parameters.                                                                                                                                                |
-| 1     | No Cal.com link. Only an email address or no CTA link at all.                                                                                                                                        |
+| Score | Description                                                                                                                                    |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 5     | Soft CTA links to `https://devbrew.ai/contact`. No Cal.com links, booking links, or email addresses anywhere in the body.                      |
+| 4     | CTA links to `https://devbrew.ai/contact` but includes incidental references to email or booking outside the CTA section.                      |
+| 3     | CTA link is present but points somewhere other than `https://devbrew.ai/contact` (e.g., a sub-page or anchor) and the body is otherwise clean. |
+| 2     | Cal.com link, booking link, or email address (e.g., `joe@devbrew.ai`) appears in the CTA or body in place of the contact page link.            |
+| 1     | No CTA link at all, or the CTA is built entirely around Cal.com/email with no link to `https://devbrew.ai/contact`.                            |
 
 ## Voice compliance rubric (single 1-5 scale)
 

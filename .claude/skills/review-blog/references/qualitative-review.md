@@ -142,7 +142,7 @@ Compare the post under review against 2-3 recent published posts in `data/blog/`
 - **Voice consistency across the blog.** Does this post sound like it was written by the same author as the others? Flag any voice deviations.
 - **Quality baseline.** Is this post at least as strong as the most recent published posts in specificity, narrative flow, and audience targeting?
 - **Positioning consistency.** Does the Devbrew value proposition sound the same as in other posts? (Custom AI, trained on your data, end-to-end implementation, production systems not demos.)
-- **CTA pattern consistency.** Does the CTA section follow the same pattern as other posts? (Value-based offer, no pitch language, Cal.com link, email alternative.)
+- **CTA pattern consistency.** Does the CTA section follow the same pattern as other posts? (Value-based offer, no pitch language, links to `https://devbrew.ai/contact` only, no Cal.com links or email addresses in the body.)
 
 To do this: read the 2-3 most recently published posts (by date, excluding drafts) and note any significant differences in tone, structure, or positioning.
 

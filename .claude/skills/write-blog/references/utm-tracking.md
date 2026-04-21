@@ -1,5 +1,7 @@
 # Cal.com UTM link generation framework
 
+> **Status: parked.** Blog CTAs currently link to `https://devbrew.ai/contact` only. No Cal.com links or email addresses in blog bodies. This file is kept as reference in case UTM-tracked booking links return to the content strategy.
+
 ## Base link structure
 
 ```
